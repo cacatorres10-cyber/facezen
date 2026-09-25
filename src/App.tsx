@@ -1,5 +1,5 @@
 import { useEffect, type ReactNode } from 'react'
-import { HashRouter, Navigate, Route, Routes, useLocation } from 'react-router-dom'
+import { HashRouter, MemoryRouter, Navigate, Route, Routes, useLocation } from 'react-router-dom'
 import { TabBar } from './components/TabBar'
 import { useStore } from './lib/store'
 import { Guide, GuideSection } from './screens/Guide'
@@ -65,14 +65,17 @@ function AppRoutes() {
   )
 }
 
+// Prévias embutidas (sem URL própria) usam rotas em memória.
+const Router = import.meta.env.VITE_MEMORY_ROUTER ? MemoryRouter : HashRouter
+
 export default function App() {
   useTheme()
   return (
-    <HashRouter>
+    <Router>
       <ScrollToTop />
       <div className="mx-auto min-h-full max-w-[480px] bg-bg shadow-[0_0_80px_-30px_rgb(0_0_0/0.25)]">
         <AppRoutes />
       </div>
-    </HashRouter>
+    </Router>
   )
 }
