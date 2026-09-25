@@ -1,0 +1,24 @@
+name: Atualizar aulas e fotos
+
+# Baixa a lista de vídeos da playlist, as capas (prévias) do YouTube e as fotos do Pexels
+# para dentro do repositório, para o app funcionar offline e sem depender de links externos.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  midia:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Aulas (playlist + aula guiada)
+        run: python3 scripts/baixar_midia.py
+      - name: Salvar no repositório
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/aulas public/fotos src/content/aulas.json
+          git diff --cached --quiet || git commit -m "Atualiza aulas e fotos"
+          git push
