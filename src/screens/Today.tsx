@@ -3,10 +3,13 @@ import { useMemo } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { FaceMap } from '../components/FaceMap'
 import { Button, Card, cx, Eyebrow, ProgressRing, Title } from '../components/ui'
-import { dayKey, formatDuration, formatLong, greeting, isMorning } from '../lib/dates'
+import { formatDuration, formatLong, greeting, isMorning } from '../lib/dates'
+import { useToday } from '../lib/useToday'
+import { AULA_GUIADA } from '../content/aulas'
+import { Photo } from '../components/Photo'
 import { buildSession, sessionsThisWeek, todayInfo, weekStart } from '../lib/plan'
 import { morningRoutine, nightRoutine } from '../lib/skincare'
-import { useStore } from '../lib/store'
+import { storageIsPersistent, useStore } from '../lib/store'
 
 export function Today() {
   const navigate = useNavigate()
@@ -18,8 +21,8 @@ export function Today() {
   const advanceWeek = useStore((s) => s.advanceWeek)
   const repeatWeek = useStore((s) => s.repeatWeek)
 
+  const today = useToday()
   const now = new Date()
-  const today = dayKey(now)
   const start = weekStart(program, now)
   const info = todayInfo({ sessions, week: program.week, weekStartedAt: start, profile, now })
   const index = sessionsThisWeek(sessions, start).length
@@ -47,6 +50,10 @@ export function Today() {
           {profile.name.slice(0, 1).toUpperCase()}
         </Link>
       </header>
+
+      {!storageIsPersistent() && (
+        <p className="mt-4 rounded-2xl bg-danger-soft p-3 text-sm text-ink">Seus dados não estão sendo salvos neste navegador (modo anônimo?). Abra numa aba normal.</p>
+      )}
 
       {/* Sessão do dia */}
       <section aria-label="Sessão de hoje" className="mt-6 overflow-hidden rounded-[32px] bg-hero p-5 text-on-hero shadow-soft">
@@ -106,16 +113,32 @@ export function Today() {
       </div>
 
       {/* Aulas */}
-      <Link to="/aulas" className="mt-4 flex items-center gap-4 rounded-3xl bg-quartz-soft p-4">
-        <span className="grid size-12 shrink-0 place-items-center rounded-full bg-surface text-rose-ink">
-          <PlayCircle className="size-6" />
+      <Link to={`/aulas#${AULA_GUIADA.id}`} className="mt-4 block overflow-hidden rounded-3xl bg-surface shadow-soft">
+        <span className="relative block aspect-video w-full bg-hero">
+          {AULA_GUIADA.thumb && <img src={AULA_GUIADA.thumb} alt="" className="size-full object-cover" />}
+          <PlayCircle className="absolute inset-0 m-auto size-14 text-white drop-shadow-lg" />
         </span>
-        <span className="min-w-0 flex-1">
-          <span className="block font-semibold text-ink">Vídeo-aulas</span>
-          <span className="block text-sm text-ink-soft">Veja os movimentos antes de praticar</span>
+        <span className="flex items-center gap-3 p-4">
+          <span className="min-w-0 flex-1">
+            <span className="block text-xs font-bold tracking-wider text-rose-ink uppercase">Aula guiada</span>
+            <span className="block font-semibold text-ink">{AULA_GUIADA.title}</span>
+          </span>
+          <ArrowRight className="size-5 text-ink-faint" />
         </span>
-        <ArrowRight className="size-5 text-ink-faint" />
       </Link>
+
+      <div className="mt-4 grid grid-cols-2 gap-3">
+        <Link to="/exercicios" className="relative h-32 overflow-hidden rounded-3xl shadow-soft">
+          <Photo k="pescoco" className="absolute inset-0" position="50% 30%" />
+          <span className="absolute inset-0 bg-gradient-to-t from-[rgb(8_20_17/0.7)] to-transparent" />
+          <span className="absolute bottom-3 left-3 font-semibold text-white">Exercícios</span>
+        </Link>
+        <Link to="/skincare" className="relative h-32 overflow-hidden rounded-3xl shadow-soft">
+          <Photo k="protetor" className="absolute inset-0" position="50% 30%" />
+          <span className="absolute inset-0 bg-gradient-to-t from-[rgb(8_20_17/0.7)] to-transparent" />
+          <span className="absolute bottom-3 left-3 font-semibold text-white">Skincare</span>
+        </Link>
+      </div>
     </div>
   )
 }

@@ -1,7 +1,7 @@
 import { AlertTriangle, Camera, CameraOff, Check, ChevronLeft, ChevronRight, Frown, Meh, Pause, Play, Smile, Volume2, VolumeX, X } from 'lucide-react'
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Link, useNavigate, useSearchParams } from 'react-router-dom'
-import { exerciseById, regionById } from '../content/exercises'
+import { moveById, regionById } from '../content/moves'
 import { STOP_SIGNALS } from '../content/guide'
 import { FaceMap } from '../components/FaceMap'
 import { Button, Card, Chip, cx, Eyebrow, Note, ProgressRing, Sheet, Title, YesNo } from '../components/ui'
@@ -28,11 +28,9 @@ export function Session() {
 
   const plan: SessionPlan = useMemo(() => {
     if (single) {
-      const ex = exerciseById(exerciseId!)!
-      const steps: SessionStep[] = [
-        { id: ex.id, key: ex.id, title: ex.title, kind: 'move', region: ex.region, exerciseId: ex.id, durationSec: ex.practiceSec, instruction: ex.cues.join('. ') + '.', sided: ex.sided },
-      ]
-      return { variant: 'essencial', title: ex.title, subtitle: `Ficha ${ex.number}`, steps, totalSec: totalOf(steps), adaptations: [] }
+      const m = moveById(exerciseId!)!
+      const steps: SessionStep[] = [{ ...m, key: m.id }]
+      return { variant: 'avulso', title: m.title, subtitle: 'Exercício avulso', steps, totalSec: totalOf(steps), adaptations: [] }
     }
     return buildSession(profile, { week: program.week, sessionIndex, skinIrritatedToday: !skinOk })
   }, [single, exerciseId, profile, program.week, sessionIndex, skinOk])
@@ -135,11 +133,11 @@ function Player({ plan, onFinish }: { plan: SessionPlan; onFinish: (practicedSec
   const settings = useStore((s) => s.settings)
   const updateSettings = useStore((s) => s.updateSettings)
 
-  const stageFor = (s: SessionStep) => (s.kind === 'move' ? 'prep' : 'run')
+  const stageFor = (_s: SessionStep): 'prep' | 'run' => 'prep'
   const [idx, setIdx] = useState(0)
   const step = steps[idx]
   const [stage, setStage] = useState<'prep' | 'run'>(() => stageFor(steps[0]))
-  const [left, setLeft] = useState(() => (steps[0].kind === 'move' ? PREP_SEC : steps[0].durationSec))
+  const [left, setLeft] = useState(PREP_SEC)
   const [paused, setPaused] = useState(false)
   const [stopOpen, setStopOpen] = useState(false)
   const [stopReasons, setStopReasons] = useState<string[]>([])
@@ -155,7 +153,7 @@ function Player({ plan, onFinish }: { plan: SessionPlan; onFinish: (practicedSec
         if (settings.sound) chime('next')
         if (settings.vibrate) vibrate(60)
       }
-      if (settings.voice && (kind === 'prep' || s.kind !== 'move')) speak(`${s.title}. ${s.instruction}`)
+      if (settings.voice && kind === 'prep') speak(`${s.title}. ${s.steps.join('. ')}.`)
     },
     [settings.sound, settings.vibrate, settings.voice],
   )
@@ -291,9 +289,16 @@ function Player({ plan, onFinish }: { plan: SessionPlan; onFinish: (practicedSec
           <p className="tnum mt-1 font-display text-5xl font-medium text-jade">{clock(left)}</p>
         </div>
 
-        <p className="mt-4 max-w-sm text-center text-[16px] leading-relaxed text-ink">{step.instruction}</p>
-        {step.exerciseId && (
-          <Link to={`/exercicios/${step.exerciseId}`} className="mt-2 text-sm font-semibold text-jade">
+        <ol className="mt-4 grid w-full max-w-sm gap-1.5 text-left">
+          {step.steps.map((c, n) => (
+            <li key={c} className="flex gap-2.5 text-[15px] text-ink">
+              <span className="tnum mt-0.5 grid size-5 shrink-0 place-items-center rounded-full bg-jade-soft text-[11px] font-bold text-jade">{n + 1}</span>
+              {c}
+            </li>
+          ))}
+        </ol>
+        {step.region && (
+          <Link to={`/exercicios/${step.id}`} className="mt-2 text-sm font-semibold text-jade">
             Ver o exercício
           </Link>
         )}

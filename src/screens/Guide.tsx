@@ -127,11 +127,11 @@ export const SECTIONS: Section[] = [
         <H2>Fotos</H2>
         <ul className="grid gap-2 text-sm">
           {Object.values(PHOTOS).map((p) => (
-            <li key={p.id}>
+            <li key={p.src}>
               <a href={p.page} target="_blank" rel="noreferrer" className="text-ink underline decoration-line underline-offset-4">
                 {p.alt}
               </a>{' '}
-              <span className="text-ink-faint">· {p.credit} no Unsplash</span>
+              <span className="text-ink-faint">· Pexels</span>
             </li>
           ))}
         </ul>
@@ -144,7 +144,7 @@ export function Guide() {
   return (
     <div className="pb-28">
       <div className="relative">
-        <Photo k="guaSha" className="h-60 w-full" width={1200} />
+        <Photo k="quartzo" className="h-52 w-full" />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-bg" />
       </div>
       <div className="-mt-12 px-5">

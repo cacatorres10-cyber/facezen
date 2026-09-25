@@ -9,7 +9,7 @@ import { formatShort } from '../lib/dates'
 import { daysLabel, downloadFile, exportBackup, parseBackup, practiceCalendar } from '../lib/files'
 import { canInstall, isStandalone, promptInstall } from '../lib/install'
 import { skinLabel } from '../lib/skincare'
-import { snapshot, useStore } from '../lib/store'
+import { snapshot, storageIsPersistent, useStore } from '../lib/store'
 
 export function Profile() {
   const navigate = useNavigate()
@@ -132,7 +132,11 @@ export function Profile() {
         <p className="mt-1 text-sm text-ink-soft">
           Fica tudo salvo neste celular. Para trocar de aparelho, exporte e importe.
         </p>
-        <p className="tnum mt-2 text-xs text-ink-faint">Aparelho {device.id.slice(0, 8)}</p>
+        {storageIsPersistent() ? (
+          <p className="mt-2 inline-flex items-center gap-1.5 rounded-full bg-ok-soft px-3 py-1 text-xs font-bold text-ok">✓ Salvando neste aparelho · {device.id.slice(0, 8)}</p>
+        ) : (
+          <Note tone="danger" className="mt-2">Este navegador não está guardando os dados (modo anônimo?). Abra o FaceZen numa aba normal para não perder nada.</Note>
+        )}
         <div className="mt-3 grid grid-cols-2 gap-2">
           <Button variant="soft" onClick={() => exportBackup(snapshot(state))}>
             <Download className="size-4" /> Exportar

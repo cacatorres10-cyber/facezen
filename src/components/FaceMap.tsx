@@ -1,5 +1,5 @@
 import type { RegionId } from '../content/types'
-import { regionById } from '../content/exercises'
+import { regionById } from '../content/moves'
 import { cx } from './ui'
 
 /**

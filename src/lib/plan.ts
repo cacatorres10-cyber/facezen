@@ -1,26 +1,15 @@
-import { exerciseById } from '../content/exercises'
 import { weekInfo, type ProgramWeek } from '../content/program'
-import { STEPS, type StepDef } from '../content/routine'
-import type { Exercise, RegionId, SafetyFlag } from '../content/types'
+import { MOVES, type Move } from '../content/moves'
+import type { RegionId, SafetyFlag } from '../content/types'
 import { addDays, dayKey } from './dates'
 import type { Profile, SessionLog } from './store'
 
-/** Segundos de preparação antes de cada passo com movimento. */
+/** Segundos de preparação antes de cada movimento. */
 export const PREP_SEC = 5
 
-export type VariantId =
-  | 'essencial'
-  | 'semana2'
-  | 'semana3'
-  | 'completa'
-  | 'foco-testa'
-  | 'foco-bochechas'
-  | 'foco-pescoco'
-  | 'curta'
-  | 'suave'
-  | 'pausa'
+export type VariantId = 'essencial' | 'completa' | 'curta' | 'suave' | 'pausa' | 'avulso'
 
-export interface SessionStep extends StepDef {
+export interface SessionStep extends Move {
   key: string
   focus?: boolean
 }
@@ -31,168 +20,83 @@ export interface SessionPlan {
   subtitle: string
   steps: SessionStep[]
   totalSec: number
-  /** O ajuste principal feito para esta pessoa, em uma frase (ou vazio). */
+  /** O ajuste feito para esta pessoa, em uma frase (ou vazio). */
   adaptations: string[]
 }
 
 export interface PlanContext {
   week: number
-  /** Quantas sessões completas já foram feitas nesta semana do programa. */
   sessionIndex: number
   /** A pessoa disse que a pele não está bem hoje. */
   skinIrritatedToday?: boolean
 }
 
-type ProfileLike = Pick<Profile, 'focus' | 'minutes' | 'safety' | 'sensitive' | 'mature' | 'skinBase'>
+type ProfileLike = Pick<Profile, 'focus' | 'minutes' | 'safety' | 'sensitive'>
 
-const REGION_STEPS: Record<RegionId, string> = {
-  testa: 'testa',
-  olhos: 'olhosCirculos',
-  bochechas: 'bochechasAr',
-  bigode: 'bigode',
-  mandibula: 'mandibula',
-  papada: 'queixo',
-  pescoco: 'pescoco',
-}
+const byId = (id: string) => MOVES.find((m) => m.id === id)!
 
-const REGION_ORDER: RegionId[] = ['testa', 'olhos', 'bochechas', 'bigode', 'mandibula', 'papada', 'pescoco']
-
-function step(id: string, overrides: Partial<StepDef> = {}): StepDef {
-  const def = STEPS[id]
-  if (!def) throw new Error(`Passo desconhecido: ${id}`)
-  return { ...def, ...overrides }
-}
-
-const has = (flags: SafetyFlag[], f: SafetyFlag) => flags.includes(f)
-
-const ids = (list: string[]) => list.map((id) => step(id))
-
-/** Ordena de cima para baixo do rosto, com aquecimento no início e o final no fim. */
-function inFaceOrder(list: string[]): string[] {
-  const unique = [...new Set(list)]
-  const rank = (id: string) => {
-    const r = STEPS[id]?.region
-    return r ? REGION_ORDER.indexOf(r) : 99
-  }
-  return unique.sort((a, b) => rank(a) - rank(b))
-}
-
-const ESSENTIAL = ['aquecimento', 'testa', 'olhosCirculos', 'mandibula', 'pescoco', 'encerramento']
-const COMPLETE = ['aquecimento', 'testa', 'testaSobrancelhas', 'olhosCirculos', 'olhosRastreamento', 'bochechasAr', 'bigode', 'mandibula', 'queixo', 'pescoco', 'encerramento']
-
-function shortSession(profile: ProfileLike, sessionIndex: number): StepDef[] {
-  const focus = REGION_ORDER.filter((r) => profile.focus.includes(r))
-  if (focus.length === 0) return ids(ESSENTIAL)
-  // Até três regiões de foco por sessão, em rodízio.
-  const picks = focus.length <= 3 ? focus : [0, 1, 2].map((i) => focus[(sessionIndex * 3 + i) % focus.length])
-  const middle = inFaceOrder([...picks.map((r) => REGION_STEPS[r]), 'pescoco'])
-  return ids(['aquecimento', ...middle, 'encerramento'])
-}
-
-const FOCUS = {
-  testa: ['aquecimento', 'testa', 'testaSobrancelhas', 'olhosCirculos', 'mandibula', 'encerramento'],
-  bochechas: ['aquecimento', 'bochechasAr', 'sorriso', 'bigode', 'encerramento'],
-  pescoco: ['aquecimento', 'queixo', 'projecao', 'pescoco', 'encerramento'],
-}
-
-interface Base {
-  variant: VariantId
-  title: string
-  subtitle: string
-  steps: StepDef[]
-}
-
-function baseFor(profile: ProfileLike, ctx: PlanContext): Base {
-  const { week, sessionIndex } = ctx
-  const five = profile.minutes === 5
-
-  if (week <= 1) {
-    return { variant: 'essencial', title: 'Sessão essencial', subtitle: 'Testa, olhos, mandíbula e pescoço', steps: ids(ESSENTIAL) }
-  }
-  if (week === 2) {
-    const list = [...ESSENTIAL]
-    // Bochechas em apenas duas sessões da semana (1ª e 3ª).
-    if (sessionIndex === 0 || sessionIndex === 2) list.splice(3, 0, 'bochechasAr')
-    return { variant: 'semana2', title: 'Sessão essencial', subtitle: 'Com calma, uma região por vez', steps: ids(list) }
-  }
-  if (week === 3) {
-    const mouth = sessionIndex % 2 === 0 ? 'sorriso' : 'bigode'
-    const list = ['aquecimento', 'testa', 'olhosCirculos', mouth, 'mandibula', ...(five ? [] : ['queixo']), 'pescoco', 'encerramento']
-    return { variant: 'semana3', title: 'Sessão curta', subtitle: mouth === 'sorriso' ? 'Hoje com sorriso protegido' : 'Hoje com bigode chinês', steps: ids(list) }
-  }
-  if (week === 5) {
-    const kind = sessionIndex <= 1 ? 'testa' : sessionIndex <= 3 ? 'bochechas' : 'pescoco'
-    const titles = {
-      testa: ['Foco: testa e mandíbula', 'Para soltar a tensão'],
-      bochechas: ['Foco: bochechas e bigode chinês', 'Consciência do sorriso'],
-      pescoco: ['Foco: pescoço e papada', 'Leve, sem forçar a nuca'],
-    } as const
-    return { variant: `foco-${kind}` as VariantId, title: titles[kind][0], subtitle: titles[kind][1], steps: ids(FOCUS[kind]) }
-  }
-  if (week === 6 && sessionIndex >= 5) {
-    return { variant: 'curta', title: 'Sessão extra, curta', subtitle: 'Só se não houve nenhum incômodo', steps: shortSession(profile, sessionIndex) }
-  }
-  if (five) {
-    return { variant: 'curta', title: 'Sessão de 5 minutos', subtitle: 'Com as regiões dos seus objetivos', steps: shortSession(profile, sessionIndex) }
-  }
-  return { variant: 'completa', title: 'Rotina completa', subtitle: 'O rosto inteiro, de cima para baixo', steps: ids(COMPLETE) }
-}
-
-const EYE_STEPS = new Set(['olhosCirculos', 'olhosRastreamento'])
-const JAW_STEPS = new Set(['mandibula', 'bochechasAr', 'projecao'])
-
-/** Monta a sessão do dia a partir do perfil, da semana e de como a pele está hoje. */
+/** Monta a sessão do dia: os movimentos da aula guiada liberados até a semana atual. */
 export function buildSession(profile: ProfileLike, ctx: PlanContext): SessionPlan {
   const flags = profile.safety
 
-  if (has(flags, 'procedimento')) {
-    return finish(
-      { variant: 'pausa', title: 'Sessões em pausa', subtitle: 'Até a liberação do seu procedimento', steps: [] },
-      profile,
-      ['Depois de um procedimento, espere a liberação de quem o realizou. Quando for liberado, desmarque em Perfil.'],
-    )
+  if (flags.includes('procedimento')) {
+    return finish('pausa', 'Sessões em pausa', 'Até a liberação do seu procedimento', [], profile, [
+      'Depois de um procedimento, espere a liberação de quem o realizou. Quando for liberado, desmarque em Perfil.',
+    ])
+  }
+  if (flags.includes('peleCrise') || ctx.skinIrritatedToday) {
+    return finish('suave', 'Sessão suave', 'Só pescoço e finalização', [byId('pescoco'), byId('finalizar')], profile, [
+      'Com a pele irritada, nada de massagem no rosto hoje.',
+    ])
   }
 
-  if (has(flags, 'peleCrise') || ctx.skinIrritatedToday) {
-    return finish(
-      { variant: 'suave', title: 'Sessão suave', subtitle: 'Só toques leves no pescoço', steps: ids(['toquesPescoco', 'encerramento']) },
-      profile,
-      ['Com a pele irritada, nada de massagem no rosto hoje.'],
-    )
-  }
+  const week = Math.max(1, ctx.week)
+  let moves = MOVES.filter((m) => m.week <= week && !m.avoidIf.some((f) => flags.includes(f)))
+  if (profile.sensitive) moves = moves.filter((m) => m.id !== 'pincamento')
 
-  const base = baseFor(profile, ctx)
-  let steps = base.steps
   const adaptations: string[] = []
+  if (flags.includes('atm')) adaptations.push('Sem movimentos de mandíbula, por causa da ATM.')
+  if (flags.includes('olhos')) adaptations.push('Sem movimentos nos olhos, por causa dos sintomas que você marcou.')
+  if (flags.includes('cervical')) adaptations.push('Pescoço sempre neutro, sem inclinar a cabeça para trás.')
+  if (profile.sensitive) adaptations.push('Pele sensível: toque mínimo e um pouco mais de hidratante.')
 
-  if (has(flags, 'olhos')) {
-    steps = steps.filter((s) => !EYE_STEPS.has(s.id))
-    adaptations.push('Sem exercícios nos olhos, por causa dos sintomas que você marcou.')
+  const complete = moves.length === MOVES.filter((m) => !m.avoidIf.some((f) => flags.includes(f))).length
+  if (profile.minutes === 5 && week >= 2) {
+    const focus = new Set<RegionId>(profile.focus)
+    const picked = moves.filter((m) => m.id === 'finalizar' || (m.region && focus.has(m.region)))
+    const chosen = picked.length >= 3 ? fitTo(picked, 5 * 60) : fitTo(moves, 5 * 60)
+    return finish('curta', 'Sessão de 5 minutos', 'Com os movimentos dos seus objetivos', chosen, profile, adaptations)
   }
-  if (has(flags, 'atm')) {
-    steps = steps.filter((s) => !JAW_STEPS.has(s.id))
-    adaptations.push('Sem exercícios de mandíbula, por causa da ATM.')
-  }
-  if (has(flags, 'cervical')) {
-    steps = steps.filter((s) => s.id !== 'projecao')
-    adaptations.push('Pescoço sempre neutro, sem inclinar a cabeça para trás.')
-  }
-  if (profile.sensitive) adaptations.push('Pele sensível: toque mínimo e um pouco mais de hidratante para deslizar.')
-
-  return finish(base, profile, adaptations, steps)
+  if (complete && week >= 4) return finish('completa', 'Aula guiada completa', 'Os 12 movimentos, do pescoço à testa', moves, profile, adaptations)
+  return finish('essencial', week === 1 ? 'Primeiros movimentos' : 'Sessão do dia', `${moves.length} movimentos da aula guiada`, moves, profile, adaptations)
 }
 
-function finish(base: Base, profile: ProfileLike, adaptations: string[], steps: StepDef[] = base.steps): SessionPlan {
-  const withKeys: SessionStep[] = steps.map((s, i) => ({
-    ...s,
-    key: `${s.id}-${i}`,
-    focus: !!s.region && profile.focus.includes(s.region),
-  }))
-  return { variant: base.variant, title: base.title, subtitle: base.subtitle, steps: withKeys, totalSec: totalOf(withKeys), adaptations }
+/** Mantém a ordem da aula, cortando até caber no tempo (sempre termina com "Finalizar"). */
+function fitTo(moves: Move[], seconds: number): Move[] {
+  const end = moves.find((m) => m.id === 'finalizar')
+  const out: Move[] = []
+  let total = end ? end.durationSec + PREP_SEC : 0
+  for (const m of moves) {
+    if (m.id === 'finalizar') continue
+    if (total + m.durationSec + PREP_SEC > seconds) break
+    out.push(m)
+    total += m.durationSec + PREP_SEC
+  }
+  return end ? [...out, end] : out
 }
 
-export function totalOf(steps: Pick<StepDef, 'durationSec' | 'kind'>[]): number {
-  return steps.reduce((sum, s) => sum + s.durationSec + (s.kind === 'move' ? PREP_SEC : 0), 0)
+function finish(variant: VariantId, title: string, subtitle: string, moves: Move[], profile: ProfileLike, adaptations: string[]): SessionPlan {
+  const steps: SessionStep[] = moves.map((m, i) => ({ ...m, key: `${m.id}-${i}`, focus: !!m.region && profile.focus.includes(m.region) }))
+  return { variant, title, subtitle, steps, totalSec: totalOf(steps), adaptations }
+}
+
+export function totalOf(steps: Pick<Move, 'durationSec'>[]): number {
+  return steps.reduce((sum, s) => sum + s.durationSec + PREP_SEC, 0)
+}
+
+/** Motivo pelo qual um movimento fica fora do plano desta pessoa (ou nada). */
+export function moveBlockedBy(m: Move, profile: Pick<Profile, 'safety'>): SafetyFlag[] {
+  return m.avoidIf.filter((f) => profile.safety.includes(f))
 }
 
 // ————— Semana e hoje —————
@@ -270,18 +174,6 @@ export function todayInfo(args: {
   return { ...base, state: 'praticar', message: 'Hoje é dia de prática.' }
 }
 
-/** Exercícios que o app não sugere para esta pessoa e por quê. */
-export function exerciseStatus(ex: Exercise, profile: Pick<Profile, 'safety'>, currentWeek: number) {
-  const blocked = ex.avoidIf.filter((f) => profile.safety.includes(f))
-  const caution = ex.cautionIf.filter((f) => profile.safety.includes(f))
-  return {
-    blocked: blocked.length > 0,
-    blockedBy: blocked,
-    caution,
-    early: currentWeek < ex.minWeek,
-  }
-}
-
 export const FLAG_REASON: Record<SafetyFlag, string> = {
   cervical: 'histórico cervical',
   atm: 'ATM / mandíbula',
@@ -290,14 +182,3 @@ export const FLAG_REASON: Record<SafetyFlag, string> = {
   gestante: 'gravidez ou amamentação',
   peleCrise: 'pele em crise',
 }
-
-/** Sessão mais recente que ainda pede o registro de "uma hora depois". */
-export function pendingHourCheck(sessions: SessionLog[], now = new Date()): SessionLog | undefined {
-  const latest = [...sessions].sort((a, b) => a.startedAt.localeCompare(b.startedAt)).at(-1)
-  if (!latest || latest.hourLater) return undefined
-  const elapsed = now.getTime() - new Date(latest.startedAt).getTime()
-  if (elapsed < 50 * 60_000 || elapsed > 24 * 60 * 60_000) return undefined
-  return latest
-}
-
-export { exerciseById }

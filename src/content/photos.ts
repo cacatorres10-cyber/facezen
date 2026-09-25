@@ -1,33 +1,30 @@
-/**
- * Fotos do Unsplash (licença Unsplash: uso livre, sem atribuição obrigatória — creditamos mesmo assim).
- * Carregadas sob demanda e guardadas em cache pelo service worker.
- * Se uma foto não carregar, o componente <Photo> mostra um degradê no lugar.
- */
+/** Fotos do Pexels (licença Pexels: uso livre). Baixadas para o app por `scripts/baixar_midia.py`. */
+import espelho from '../assets/fotos/pexels-5137547.jpg'
+import guaSha from '../assets/fotos/pexels-3865570.jpg'
+import toque from '../assets/fotos/pexels-4672662.jpg'
+import pescoco from '../assets/fotos/pexels-7321312.jpg'
+import produtos from '../assets/fotos/pexels-8102135.jpg'
+import protetor from '../assets/fotos/pexels-28112145.jpg'
+import quartzo from '../assets/fotos/pexels-8015877.jpg'
+import creme from '../assets/fotos/pexels-4960098.jpg'
+
 export interface PhotoInfo {
-  id: string
+  src: string
   alt: string
-  credit: string
   page: string
 }
 
-const photo = (id: string, slug: string, alt: string, credit: string): PhotoInfo => ({
-  id,
-  alt,
-  credit,
-  page: `https://unsplash.com/photos/${slug}-${id}`,
-})
+const pexels = (src: string, id: number, alt: string): PhotoInfo => ({ src, alt, page: `https://www.pexels.com/photo/${id}/` })
 
 export const PHOTOS = {
-  boasVindas: photo('ce1dK0U1Cb4', 'a-woman-smiling-and-touching-her-face-with-her-hands', 'Mulher sorrindo com as mãos no rosto', 'ohlamour studio'),
-  toque: photo('b7c1wTOfWoU', 'a-woman-smiling-and-touching-her-face-with-her-hand', 'Mulher sorrindo e tocando o rosto', 'Leandro Crespi'),
-  guaSha: photo('iwfhAYd9sUI', 'woman-using-a-pink-gua-sha-tool-on-her-face', 'Mulher usando gua sha de quartzo rosa no rosto', 'Unsplash'),
-  produtos: photo('dGd0yqp0QtA', 'amber-glass-cosmetic-bottles-set-and-eucalyptus-leaf-on-white-towel-spa-bathroom-natural-cosmetics-flat-lay-top-view', 'Frascos âmbar de cosméticos e folha de eucalipto sobre toalha branca', 'Unsplash'),
-  serum: photo('j24HPh0Q84g', 'serum-is-being-poured-from-a-dropper-bottle', 'Sérum saindo de um frasco conta-gotas', 'Mona Jain'),
-  bancada: photo('BCozEYDNmOQ', 'cosmetics-and-skincare-products-are-arranged-neatly', 'Produtos de skincare organizados', 'Unsplash'),
-  respiro: photo('59nv16DYPzs', 'woman-with-eyes-closed-practicing-yoga', 'Mulher de olhos fechados praticando yoga ao ar livre', 'Unsplash'),
+  toque: pexels(toque, 4672662, 'Mulher tocando o rosto depois do banho'),
+  guaSha: pexels(guaSha, 3865570, 'Massagem no rosto com gua sha de quartzo rosa'),
+  pescoco: pexels(pescoco, 7321312, 'Mulher fazendo massagem no pescoço em frente ao espelho'),
+  espelho: pexels(espelho, 5137547, 'Mulher cuidando da pele em frente ao espelho'),
+  produtos: pexels(produtos, 8102135, 'Frascos de sérum e gua sha'),
+  protetor: pexels(protetor, 28112145, 'Mulher aplicando protetor no rosto'),
+  quartzo: pexels(quartzo, 8015877, 'Rolo e gua sha de quartzo rosa'),
+  creme: pexels(creme, 4960098, 'Mulher aplicando creme em frente ao espelho'),
 } satisfies Record<string, PhotoInfo>
 
 export type PhotoKey = keyof typeof PHOTOS
-
-export const photoUrl = (p: PhotoInfo, width = 1080) =>
-  `https://unsplash.com/photos/${p.id}/download?force=true&w=${width}`

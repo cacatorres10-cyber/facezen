@@ -3,7 +3,9 @@ import { useState } from 'react'
 import { WEEKDAYS } from '../content/profileOptions'
 import { Photo } from '../components/Photo'
 import { Button, Card, cx, Eyebrow, Note, Segmented, Sheet, Title, Toggle } from '../components/ui'
-import { dayKey, isMorning } from '../lib/dates'
+import { isMorning } from '../lib/dates'
+import { useToday } from '../lib/useToday'
+import { SkincareHistory } from '../components/SkincareHistory'
 import { morningRoutine, NIGHT_LABEL, nightKind, nightRoutine, skinLabel, type RoutineStep } from '../lib/skincare'
 import { useStore } from '../lib/store'
 
@@ -17,7 +19,7 @@ export function Skincare() {
   const [prefsOpen, setPrefsOpen] = useState(false)
 
   const now = new Date()
-  const today = dayKey(now)
+  const today = useToday()
   const day = skincare[today] ?? { manha: [], noite: [], reaplicacoes: 0 }
   const night = nightRoutine(profile, prefs, now.getDay())
   const steps: RoutineStep[] = period === 'manha' ? morningRoutine(profile, prefs) : night.steps
@@ -27,7 +29,7 @@ export function Skincare() {
   return (
     <div className="pb-28">
       <div className="relative">
-        <Photo k="produtos" className="h-52 w-full" width={1200} />
+        <Photo k="creme" className="h-52 w-full" position="50% 30%" />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-bg" />
       </div>
       <div className="-mt-10 px-5">
@@ -40,6 +42,10 @@ export function Skincare() {
             <Settings2 className="size-4" /> Ajustar
           </Button>
         </div>
+
+        <Note className="mt-4" icon={<Check className="size-4" />}>
+          <b>Este é o básico:</b> limpar, hidratar e proteger. Use os produtos que você já tem e gosta. Se quiser, adicione extras em “Ajustar”.
+        </Note>
 
         {profile.safety.includes('gestante') && (
           <Note tone="warn" className="mt-4" icon={<AlertTriangle className="size-4" />}>
@@ -62,9 +68,9 @@ export function Skincare() {
             <div className="flex items-center gap-3">
               <span className="grid size-10 place-items-center rounded-full bg-surface-2 text-jade">{period === 'manha' ? <Sun className="size-5" /> : <Moon className="size-5" />}</span>
               <div>
-                <p className="font-display text-xl font-medium text-ink">{period === 'manha' ? 'Rotina da manhã' : NIGHT_LABEL[night.kind]}</p>
+                <p className="font-display text-xl font-medium text-ink">{period === 'manha' ? 'Manhã' : night.kind === 'hidratacao' ? 'Noite' : NIGHT_LABEL[night.kind]}</p>
                 <p className="tnum text-sm text-ink-soft">
-                  {done} de {steps.length} passos hoje
+                  {done} de {steps.length} hoje · zera à meia-noite
                 </p>
               </div>
             </div>
@@ -138,6 +144,9 @@ export function Skincare() {
           </Card>
         )}
 
+        <Card className="mt-4">
+          <SkincareHistory skincare={skincare} today={today} />
+        </Card>
       </div>
 
       <PrefsSheet open={prefsOpen} onClose={() => setPrefsOpen(false)} />

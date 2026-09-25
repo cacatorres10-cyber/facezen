@@ -35,7 +35,7 @@ function moisturizerTip(p: SkinProfile) {
 }
 
 export function morningRoutine(p: SkinProfile, prefs: SkincarePrefs): RoutineStep[] {
-  const steps: RoutineStep[] = [{ id: 'm-limpeza', title: 'Limpeza suave', detail: cleanserTip(p) }]
+  const steps: RoutineStep[] = [{ id: 'm-limpeza', title: 'Limpar', detail: cleanserTip(p) }]
   if (prefs.vitC) {
     steps.push({
       id: 'm-vitc',
@@ -63,11 +63,11 @@ export function morningRoutine(p: SkinProfile, prefs: SkincarePrefs): RoutineSte
       detail: 'Pouquinho, no osso ao redor dos olhos.',
     })
   }
-  steps.push({ id: 'm-hidratante', title: 'Hidratante', detail: moisturizerTip(p) })
+  steps.push({ id: 'm-hidratante', title: 'Hidratar', detail: moisturizerTip(p) })
   steps.push({
     id: 'm-protetor',
-    title: 'Protetor solar',
-    detail: 'FPS 30 ou mais, também no pescoço. Sempre o último passo.',
+    title: 'Proteger',
+    detail: 'Protetor solar FPS 30 ou mais, também no pescoço.',
   })
   return steps
 }
@@ -91,15 +91,9 @@ export function nightRoutine(p: SkinProfile, prefs: SkincarePrefs, weekday: numb
   const kind = nightKind(prefs, weekday, p)
   const steps: RoutineStep[] = [
     {
-      id: 'n-remocao',
-      title: prefs.makeup ? 'Remova maquiagem e protetor' : 'Remova o protetor solar',
-      detail: 'Água micelar ou óleo de limpeza, sem esfregar os olhos.',
-    },
-    {
       id: 'n-limpeza',
-      title: 'Limpeza facial',
-      detail:
-        'Água morna e o seu limpador. Seque sem esfregar.',
+      title: 'Limpar',
+      detail: prefs.makeup ? 'Tire a maquiagem e o protetor, depois lave com seu limpador.' : 'Tire o protetor e lave com seu limpador.',
     },
   ]
   if (prefs.toner) {
@@ -133,7 +127,7 @@ export function nightRoutine(p: SkinProfile, prefs: SkincarePrefs, weekday: numb
   if (prefs.eye) {
     steps.push({ id: 'n-olhos', title: 'Produto para olhos', optional: true, detail: 'Pouquinho, sem esfregar.' })
   }
-  steps.push({ id: 'n-hidratante', title: 'Hidratante', detail: moisturizerTip(p) })
+  steps.push({ id: 'n-hidratante', title: 'Hidratar', detail: moisturizerTip(p) })
   if (prefs.oil) {
     steps.push({ id: 'n-oleo', title: 'Óleo facial', optional: true, detail: 'Duas ou três gotas, por último.' })
   }
@@ -156,4 +150,15 @@ export function recipesFor(p: SkinProfile): Recipe[] {
 export function skinLabel(p: Pick<Profile, 'skinBase' | 'sensitive' | 'mature'>): string {
   const mods = [p.sensitive && 'sensível', p.mature && 'madura'].filter(Boolean)
   return `Pele ${p.skinBase}` + (mods.length ? `, ${mods.join(' e ')}` : '')
+}
+
+/** Passos básicos que contam para o histórico (os extras são opcionais). */
+export const BASIC = { manha: ['m-limpeza', 'm-hidratante', 'm-protetor'], noite: ['n-limpeza', 'n-hidratante'] } as const
+
+export type DayStatus = 'completo' | 'parcial' | 'nada'
+
+export function periodStatus(done: string[] | undefined, period: 'manha' | 'noite'): DayStatus {
+  const basic = BASIC[period]
+  const n = basic.filter((id) => done?.includes(id)).length
+  return n === basic.length ? 'completo' : n > 0 || (done?.length ?? 0) > 0 ? 'parcial' : 'nada'
 }

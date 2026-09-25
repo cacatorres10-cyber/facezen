@@ -1,80 +1,85 @@
 import { ExternalLink, Play } from 'lucide-react'
-import { useState } from 'react'
-import { PLAYLIST, VIDEO } from '../content/guide'
-import { Card, Eyebrow, PageHeader } from '../components/ui'
-
-const thumb = (id: string) => `https://i.ytimg.com/vi/${id}/hqdefault.jpg`
-
-/** Player do YouTube que só carrega quando a pessoa toca na prévia. */
-function VideoCard({ src, preview, title, subtitle }: { src: string; preview?: string; title: string; subtitle: string }) {
-  const [load, setLoad] = useState(false)
-  return (
-    <div className="overflow-hidden rounded-3xl bg-surface shadow-soft">
-      {load ? (
-        <iframe className="aspect-video w-full" src={src} title={title} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
-      ) : (
-        <button type="button" onClick={() => setLoad(true)} className="relative block aspect-video w-full overflow-hidden bg-hero" aria-label={`Assistir: ${title}`}>
-          {preview && <img src={preview} alt="" loading="lazy" className="absolute inset-0 size-full object-cover" onError={(e) => (e.currentTarget.style.display = 'none')} />}
-          <span className="absolute inset-0 bg-[rgb(8_20_17/0.25)]" />
-          <span className="absolute inset-0 grid place-items-center">
-            <span className="grid size-16 place-items-center rounded-full bg-quartz text-[#3a1f1c] shadow-soft">
-              <Play className="ml-1 size-7 fill-current" />
-            </span>
-          </span>
-        </button>
-      )}
-      <div className="p-4">
-        <p className="font-display text-xl font-medium text-ink">{title}</p>
-        <p className="text-sm text-ink-soft">{subtitle}</p>
-      </div>
-    </div>
-  )
-}
+import { useEffect, useState } from 'react'
+import { Link, useLocation } from 'react-router-dom'
+import { AULAS, embedUrl, youtubeUrl } from '../content/aulas'
+import { MOVES } from '../content/moves'
+import { Photo } from '../components/Photo'
+import { cx, Title } from '../components/ui'
 
 export function Lessons() {
+  const { hash } = useLocation()
+  const [playing, setPlaying] = useState<string | null>(null)
+
+  useEffect(() => {
+    const id = hash.replace('#', '')
+    if (!id) return
+    setPlaying(id)
+    document.getElementById(`aula-${id}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }, [hash])
+
   return (
-    <div className="px-5 pb-28">
-      <PageHeader eyebrow="Vídeo-aulas" title="Aulas" subtitle="Assista antes de praticar e use sempre toque leve." />
+    <div className="pb-28">
+      <div className="relative">
+        <Photo k="guaSha" className="h-44 w-full" position="50% 35%" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-bg" />
+      </div>
+      <div className="-mt-8 px-5">
+        <Title className="relative">Aulas</Title>
+        <p className="mt-1 text-ink-soft">{AULAS.length} vídeo-aulas, em ordem. Comece pela primeira.</p>
 
-      <Eyebrow className="mb-2">Aula 1 · comece por aqui</Eyebrow>
-      <VideoCard
-        src={`https://www.youtube-nocookie.com/embed/${VIDEO.youtubeId}?start=16&rel=0&autoplay=1`}
-        preview={thumb(VIDEO.youtubeId)}
-        title="Rotina guiada de yoga facial"
-        subtitle={`${VIDEO.channel.split(',')[0]} · cerca de 12 min`}
-      />
-      <details className="mt-2 rounded-2xl bg-surface-2/60 px-4 py-3">
-        <summary className="cursor-pointer text-sm font-semibold text-ink">O que tem nesta aula</summary>
-        <ol className="mt-2 grid gap-1 text-sm text-ink-soft">
-          {VIDEO.sequence.map((s, i) => (
-            <li key={s.title}>
-              {i + 1}. {s.title}
-            </li>
-          ))}
+        <ol className="mt-5 grid gap-4">
+          {AULAS.map((a, i) => {
+            const open = playing === a.id
+            return (
+              <li key={a.id} id={`aula-${a.id}`} className="scroll-mt-4 overflow-hidden rounded-3xl bg-surface shadow-soft">
+                {open ? (
+                  <iframe
+                    className="aspect-video w-full"
+                    src={embedUrl(a.id)}
+                    title={a.title}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                ) : (
+                  <button type="button" onClick={() => setPlaying(a.id)} className="relative block aspect-video w-full overflow-hidden bg-hero" aria-label={`Assistir aula ${i + 1}: ${a.title}`}>
+                    {a.thumb && <img src={a.thumb} alt="" loading={i < 2 ? 'eager' : 'lazy'} className="absolute inset-0 size-full object-cover" />}
+                    <span className="absolute inset-0 bg-[rgb(8_20_17/0.15)]" />
+                    <span className="absolute inset-0 grid place-items-center">
+                      <span className="grid size-14 place-items-center rounded-full bg-quartz/95 text-[#3a1f1c] shadow-soft">
+                        <Play className="ml-0.5 size-6 fill-current" />
+                      </span>
+                    </span>
+                    <span className="tnum absolute top-3 left-3 rounded-full bg-surface/95 px-2.5 py-1 text-xs font-bold text-ink">Aula {i + 1}</span>
+                  </button>
+                )}
+                <div className="flex items-start gap-3 p-4">
+                  <div className="min-w-0 flex-1">
+                    <p className="font-semibold leading-snug text-ink">{a.title}</p>
+                    <p className="mt-0.5 text-sm text-ink-soft">{a.channel}</p>
+                  </div>
+                  <a href={youtubeUrl(a.id)} target="_blank" rel="noreferrer" aria-label="Abrir no YouTube" className="grid size-9 shrink-0 place-items-center rounded-full bg-surface-2 text-ink-soft">
+                    <ExternalLink className="size-4" />
+                  </a>
+                </div>
+                {i === 0 && (
+                  <div className="border-t border-line px-4 py-3">
+                    <p className="mb-2 text-xs font-semibold text-ink-faint">Os movimentos desta aula</p>
+                    <div className="flex flex-wrap gap-1.5">
+                      {MOVES.map((m, n) => (
+                        <Link key={m.id} to={`/exercicios/${m.id}`} className={cx('rounded-full bg-surface-2 px-2.5 py-1 text-xs font-medium text-ink-soft')}>
+                          {n + 1}. {m.title}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </li>
+            )
+          })}
         </ol>
-      </details>
 
-      <Eyebrow className="mt-8 mb-2">Aulas 2 a {PLAYLIST.count + 1} · em ordem</Eyebrow>
-      <VideoCard
-        src={`https://www.youtube-nocookie.com/embed/videoseries?list=${PLAYLIST.url.split('list=')[1]}&rel=0&autoplay=1`}
-        title={PLAYLIST.title}
-        subtitle={`${PLAYLIST.channel} · ${PLAYLIST.count} vídeos, um depois do outro`}
-      />
-      <Card className="mt-3">
-        <ol className="grid gap-2.5">
-          {PLAYLIST.topics.map((t, i) => (
-            <li key={t} className="flex items-center gap-3">
-              <span className="tnum grid size-8 shrink-0 place-items-center rounded-full bg-jade-soft text-sm font-bold text-jade">{i + 2}</span>
-              <span className="text-ink">{t}</span>
-            </li>
-          ))}
-        </ol>
-        <a href={PLAYLIST.url} target="_blank" rel="noreferrer" className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-jade">
-          Abrir no YouTube <ExternalLink className="size-4" />
-        </a>
-      </Card>
-
-      <p className="mt-6 text-xs text-ink-faint">Vídeos dos canais Longevidade Yoga e Face Yoga Paula Sá, exibidos pelo YouTube. Os créditos são dos autores.</p>
+        <p className="mt-6 text-xs text-ink-faint">Vídeos dos canais Longevidade Yoga e Face Yoga Paula Sá, exibidos pelo YouTube. Pratique sempre com toque leve.</p>
+      </div>
     </div>
   )
 }

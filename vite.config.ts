@@ -37,14 +37,14 @@ export default defineConfig({
         ],
       },
       workbox: {
-        globPatterns: ['**/*.{js,css,html,svg,png,woff2}'],
+        globPatterns: ['**/*.{js,css,html,svg,png,jpg,woff2}'],
         // Só as fontes do alfabeto latino entram no cache offline.
         globIgnores: ['**/*cyrillic*', '**/*vietnamese*', '**/*greek*'],
         navigateFallback: 'index.html',
         runtimeCaching: [
           {
-            // Fotos do Unsplash ficam em cache para funcionar offline depois da 1ª visita.
-            urlPattern: ({ url }) => url.hostname.endsWith('unsplash.com'),
+            // Capas do YouTube carregadas pelo player ficam em cache.
+            urlPattern: ({ url }) => url.hostname.endsWith('ytimg.com'),
             handler: 'CacheFirst',
             options: {
               cacheName: 'facezen-fotos',

@@ -1,10 +1,12 @@
 import { AlertTriangle, Check, ChevronRight, Lock, Trash2 } from 'lucide-react'
 import { useState } from 'react'
 import { MAINTENANCE, PROGRAM, type ProgramWeek } from '../content/program'
-import { Button, cx, PageHeader, ProgressRing } from '../components/ui'
+import { Button, Card, cx, PageHeader, ProgressRing } from '../components/ui'
 import { formatDuration, formatShort, fromDayKey } from '../lib/dates'
 import { sessionsThisWeek, weekStart, weekTarget } from '../lib/plan'
 import { useStore } from '../lib/store'
+import { useToday } from '../lib/useToday'
+import { SkincareHistory } from '../components/SkincareHistory'
 
 const FEELING_LABEL = { bem: 'Foi bem', desconforto: 'Um incômodo', dor: 'Senti dor' } as const
 
@@ -14,6 +16,8 @@ export function Journey() {
   const profile = useStore((s) => s.profile)!
   const deleteSession = useStore((s) => s.deleteSession)
   const [confirm, setConfirm] = useState<string | null>(null)
+  const skincare = useStore((s) => s.skincare)
+  const today = useToday()
   const thisWeek = sessionsThisWeek(sessions, weekStart(program))
   const completed = sessions.filter((s) => s.completed)
   const totalMin = Math.round(sessions.reduce((s, x) => s + x.practicedSec, 0) / 60)
@@ -27,6 +31,10 @@ export function Journey() {
         <Stat value={completed.length} label={completed.length === 1 ? 'sessão feita' : 'sessões feitas'} />
         <Stat value={totalMin} label="minutos de cuidado" />
       </div>
+
+      <Card className="mt-4">
+        <SkincareHistory skincare={skincare} today={today} />
+      </Card>
 
       <section className="mt-6" aria-label="As 8 semanas">
         <h2 className="mb-3 font-display text-2xl font-medium text-ink">As 8 semanas</h2>

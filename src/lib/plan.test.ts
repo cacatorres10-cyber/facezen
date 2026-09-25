@@ -1,9 +1,10 @@
-import { describe, expect, it } from 'vitest'
+import { beforeEach, describe, expect, it, vi } from 'vitest'
+import { MOVES } from '../content/moves'
 import { weekInfo } from '../content/program'
 import type { SafetyFlag } from '../content/types'
 import { addDays, dayKey } from './dates'
-import { buildSession, todayInfo, weekTarget, type PlanContext } from './plan'
-import { nightRoutine } from './skincare'
+import { buildSession, todayInfo, weekStart, weekTarget, type PlanContext } from './plan'
+import { nightRoutine, periodStatus } from './skincare'
 import { defaultPrefsFor, type Profile, type SessionLog } from './store'
 
 const profile = (patch: Partial<Profile> = {}): Profile => ({
@@ -25,161 +26,124 @@ const profile = (patch: Partial<Profile> = {}): Profile => ({
 
 const ids = (p: Profile, ctx: Partial<PlanContext> = {}) => buildSession(p, { week: 1, sessionIndex: 0, ...ctx }).steps.map((s) => s.id)
 
-describe('buildSession — calendário de 8 semanas', () => {
-  it('semana 1: só testa, olhos com toque leve, mandíbula manual e pescoço, em até 5 min', () => {
+describe('sessões com os movimentos das aulas', () => {
+  it('semana 1: poucos movimentos, curtos, sempre terminando com "Finalizar"', () => {
     const plan = buildSession(profile(), { week: 1, sessionIndex: 0 })
-    expect(plan.steps.map((s) => s.id)).toEqual(['aquecimento', 'testa', 'olhosCirculos', 'mandibula', 'pescoco', 'encerramento'])
-    expect(plan.totalSec).toBeGreaterThanOrEqual(3.5 * 60)
+    expect(plan.steps.map((s) => s.id)).toEqual(['pescoco', 'papada', 'olhos', 'testa', 'finalizar'])
     expect(plan.totalSec).toBeLessThanOrEqual(5 * 60)
   })
 
-  it('semana 2: transferência de ar em apenas duas sessões', () => {
-    const withAir = [0, 1, 2, 3].filter((i) => ids(profile(), { week: 2, sessionIndex: i }).includes('bochechasAr'))
-    expect(withAir).toEqual([0, 2])
+  it('segue a ordem da aula guiada', () => {
+    const order = MOVES.map((m) => m.id)
+    const s = ids(profile(), { week: 3 })
+    expect([...s].sort((a, b) => order.indexOf(a) - order.indexOf(b))).toEqual(s)
   })
 
-  it('semana 3: alterna sorriso protegido e bigode chinês, nunca os dois', () => {
-    const a = ids(profile(), { week: 3, sessionIndex: 0 })
-    const b = ids(profile(), { week: 3, sessionIndex: 1 })
-    expect(a).toContain('sorriso')
-    expect(a).not.toContain('bigode')
-    expect(b).toContain('bigode')
-    expect(b).not.toContain('sorriso')
-  })
-
-  it('semana 4: rotina completa, sem nenhum passo de respiração', () => {
+  it('a partir da semana 4: a aula completa, com os 12 movimentos', () => {
     const plan = buildSession(profile(), { week: 4, sessionIndex: 0 })
     expect(plan.variant).toBe('completa')
-    expect(plan.totalSec).toBeGreaterThanOrEqual(7 * 60)
-    expect(plan.totalSec).toBeLessThanOrEqual(10 * 60)
-    expect(plan.steps.every((s) => s.kind === 'move' || s.id === 'encerramento')).toBe(true)
+    expect(plan.steps).toHaveLength(12)
   })
 
-  it('semana 5: foco alternado (2 testa/mandíbula, 2 bochechas/bigode, 1 pescoço/papada)', () => {
-    const variants = [0, 1, 2, 3, 4].map((i) => buildSession(profile(), { week: 5, sessionIndex: i }).variant)
-    expect(variants).toEqual(['foco-testa', 'foco-testa', 'foco-bochechas', 'foco-bochechas', 'foco-pescoco'])
-  })
-
-  it('semana 6: a sexta sessão é curta', () => {
-    expect(buildSession(profile(), { week: 6, sessionIndex: 5 }).variant).toBe('curta')
-  })
-
-  it('preferência de 5 minutos usa as regiões de foco', () => {
-    const plan = buildSession(profile({ minutes: 5, focus: ['bochechas', 'bigode'] }), { week: 4, sessionIndex: 0 })
-    expect(plan.variant).toBe('curta')
-    expect(plan.steps.map((s) => s.id)).toEqual(expect.arrayContaining(['bochechasAr', 'bigode']))
-    expect(plan.totalSec).toBeLessThanOrEqual(6 * 60)
-    expect(plan.steps.filter((s) => s.focus).map((s) => s.region)).toEqual(expect.arrayContaining(['bochechas', 'bigode']))
+  it('5 minutos: prioriza os movimentos dos objetivos e cabe no tempo', () => {
+    const plan = buildSession(profile({ minutes: 5, focus: ['papada', 'pescoco'] }), { week: 4, sessionIndex: 0 })
+    expect(plan.totalSec).toBeLessThanOrEqual(5 * 60)
+    expect(plan.steps.map((s) => s.id)).toEqual(['pescoco', 'papada', 'finalizar'])
   })
 })
 
-describe('buildSession — segurança', () => {
+describe('segurança', () => {
   const withFlags = (...safety: SafetyFlag[]) => profile({ safety })
 
-  it('procedimento recente: sessões em pausa, sem toque', () => {
-    const plan = buildSession(withFlags('procedimento'), { week: 4, sessionIndex: 0 })
-    expect(plan.variant).toBe('pausa')
-    expect(plan.steps).toHaveLength(0)
+  it('procedimento recente: sessões em pausa', () => {
+    expect(buildSession(withFlags('procedimento'), { week: 4, sessionIndex: 0 }).steps).toHaveLength(0)
   })
 
-  it('pele em crise ou irritada hoje: sessão suave', () => {
-    expect(buildSession(withFlags('peleCrise'), { week: 4, sessionIndex: 0 }).variant).toBe('suave')
-    expect(buildSession(profile(), { week: 4, sessionIndex: 0, skinIrritatedToday: true }).variant).toBe('suave')
+  it('pele irritada: só pescoço e finalização', () => {
+    expect(ids(profile(), { week: 4, skinIrritatedToday: true })).toEqual(['pescoco', 'finalizar'])
   })
 
-  it('ATM: sem massagem na mandíbula nem transferência de ar', () => {
+  it('ATM: sem masseter, contorno nem bochechas com ar', () => {
     const s = ids(withFlags('atm'), { week: 4 })
-    expect(s).not.toContain('mandibula')
-    expect(s).not.toContain('bochechasAr')
-    expect(s).not.toContain('projecao')
+    for (const id of ['masseter', 'contorno', 'bochechas']) expect(s).not.toContain(id)
   })
 
-  it('sintomas nos olhos: sem toques nem rastreamento', () => {
-    const s = ids(withFlags('olhos'), { week: 4 })
-    expect(s).not.toContain('olhosCirculos')
-    expect(s).not.toContain('olhosRastreamento')
+  it('olhos: sem o movimento dos olhos', () => {
+    expect(ids(withFlags('olhos'), { week: 4 })).not.toContain('olhos')
   })
 
-  it('cervical: sem projeção da mandíbula no foco de pescoço', () => {
-    expect(ids(profile(), { week: 5, sessionIndex: 4 })).toContain('projecao')
-    expect(ids(withFlags('cervical'), { week: 5, sessionIndex: 4 })).not.toContain('projecao')
+  it('pele sensível: sem pinçamento', () => {
+    expect(ids(profile({ sensitive: true }), { week: 4 })).not.toContain('pincamento')
   })
 })
 
-describe('todayInfo', () => {
-  const log = (date: string, completed = true): SessionLog => ({
-    id: date,
-    date,
-    startedAt: `${date}T08:00:00.000Z`,
-    week: 1,
-    variant: 'essencial',
-    title: 'x',
-    plannedSec: 300,
-    practicedSec: 300,
-    stepIds: [],
-    completed,
-    flagged: false,
+describe('semana e dia', () => {
+  const log = (date: string): SessionLog => ({
+    id: date, date, startedAt: `${date}T08:00:00.000Z`, week: 1, variant: 'essencial', title: 'x',
+    plannedSec: 300, practicedSec: 300, stepIds: [], completed: true, flagged: false,
   })
-  const monday = new Date(2026, 8, 28, 9) // segunda-feira
+  const monday = new Date(2026, 8, 28, 9)
   const today = dayKey(monday)
 
   it('semana 1 pede dias não consecutivos', () => {
-    const info = todayInfo({ sessions: [log(addDays(today, -1))], week: 1, weekStartedAt: '2026-01-01', profile: { days: [0, 1, 2, 3, 4, 5, 6] }, now: monday })
-    expect(info.state).toBe('descanso')
+    expect(todayInfo({ sessions: [log(addDays(today, -1))], week: 1, weekStartedAt: '2026-01-01', profile: { days: [0, 1, 2, 3, 4, 5, 6] }, now: monday }).state).toBe('descanso')
   })
 
   it('uma sessão por dia', () => {
-    const info = todayInfo({ sessions: [log(today)], week: 4, weekStartedAt: '2026-01-01', profile: { days: [1] }, now: monday })
-    expect(info.state).toBe('feita')
+    expect(todayInfo({ sessions: [log(today)], week: 4, weekStartedAt: '2026-01-01', profile: { days: [1] }, now: monday }).state).toBe('feita')
   })
 
-  it('dia fora do plano fica livre', () => {
-    const info = todayInfo({ sessions: [], week: 4, weekStartedAt: '2026-01-01', profile: { days: [2, 4, 6] }, now: monday })
-    expect(info.state).toBe('livre')
-  })
-
-  it('meta da semana respeita os dias escolhidos, com mínimo de 3', () => {
+  it('meta respeita os dias escolhidos', () => {
     expect(weekTarget(weekInfo(4), { days: [1, 3, 5] }).target).toBe(3)
     expect(weekTarget(weekInfo(4), { days: [1, 2, 3, 4, 5, 6] }).target).toBe(5)
-    expect(weekTarget(weekInfo(1), { days: [1, 2, 3, 4, 5] }).target).toBe(3)
+  })
+
+  it('manutenção recomeça toda segunda', () => {
+    const start = new Date(weekStart({ week: 9, weekStartedAt: '2026-01-01T00:00:00.000Z' }, new Date(2026, 9, 14, 10)))
+    expect(start.getDay()).toBe(1)
   })
 })
 
-describe('skincare', () => {
-  it('na gravidez, nenhuma noite de retinoide ou ácido', () => {
+describe('skincare básico', () => {
+  it('manhã completa só com limpar, hidratar e proteger', () => {
+    expect(periodStatus(['m-limpeza', 'm-hidratante', 'm-protetor'], 'manha')).toBe('completo')
+    expect(periodStatus(['m-limpeza'], 'manha')).toBe('parcial')
+    expect(periodStatus(undefined, 'noite')).toBe('nada')
+  })
+
+  it('na gravidez, nenhuma noite de retinoide', () => {
     const p = profile({ safety: ['gestante'] })
-    const prefs = { ...defaultPrefsFor(p), retinoid: true, retinoidNights: [0, 1, 2, 3, 4, 5, 6], acid: true, acidNights: [0, 1, 2, 3, 4, 5, 6] }
+    const prefs = { ...defaultPrefsFor(), retinoid: true, retinoidNights: [0, 1, 2, 3, 4, 5, 6] }
     for (let d = 0; d < 7; d++) expect(nightRoutine(p, prefs, d).kind).toBe('hidratacao')
   })
-
-  it('retinoide só nas noites escolhidas', () => {
-    const p = profile()
-    const prefs = { ...defaultPrefsFor(p), retinoid: true, retinoidNights: [3] }
-    expect(nightRoutine(p, prefs, 3).kind).toBe('retinoide')
-    expect(nightRoutine(p, prefs, 4).kind).toBe('hidratacao')
-  })
 })
 
-describe('manutenção', () => {
-  it('depois da semana 8, a contagem recomeça toda segunda-feira', async () => {
-    const { weekStart } = await import('./plan')
-    const wed = new Date(2026, 9, 14, 10) // quarta-feira
-    const start = new Date(weekStart({ week: 9, weekStartedAt: '2026-01-01T00:00:00.000Z' }, wed))
-    expect(start.getDay()).toBe(1)
-    expect(start.getDate()).toBe(12)
-    expect(weekStart({ week: 4, weekStartedAt: '2026-01-01T00:00:00.000Z' }, wed)).toBe('2026-01-01T00:00:00.000Z')
-  })
-})
-
-describe('objetivos', () => {
-  it('cada objetivo acende as regiões certas', async () => {
-    const { regionsForGoals } = await import('../content/profileOptions')
-    expect(regionsForGoals(['papada'])).toEqual(['papada', 'pescoco'])
-    expect(regionsForGoals(['linhas', 'olheiras'])).toEqual(['testa', 'olhos'])
+describe('dados salvos no aparelho', () => {
+  beforeEach(() => {
+    const mem = new Map<string, string>()
+    vi.stubGlobal('localStorage', {
+      getItem: (k: string) => mem.get(k) ?? null,
+      setItem: (k: string, v: string) => void mem.set(k, v),
+      removeItem: (k: string) => void mem.delete(k),
+    })
+    vi.resetModules()
   })
 
-  it('5 minutos com objetivo de papada inclui o queixo', () => {
-    const plan = buildSession(profile({ minutes: 5, focus: ['papada', 'pescoco'] }), { week: 4, sessionIndex: 0 })
-    expect(plan.steps.map((s) => s.id)).toContain('queixo')
+  it('grava o skincare do dia e zera no dia seguinte', async () => {
+    const { useStore, STORAGE_KEY } = await import('./store')
+    const d1 = '2026-09-25'
+    useStore.getState().toggleSkincareStep(d1, 'manha', 'm-limpeza')
+    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY)!)
+    expect(saved.state.skincare[d1].manha).toEqual(['m-limpeza'])
+    expect(useStore.getState().skincare[addDays(d1, 1)]).toBeUndefined()
+  })
+
+  it('recupera tudo ao reabrir o app', async () => {
+    const first = await import('./store')
+    first.useStore.getState().toggleFavorite('testa')
+    vi.resetModules()
+    const again = await import('./store')
+    expect(again.useStore.getState().favorites).toContain('testa')
+    expect(again.useStore.getState().device.id).toBe(first.useStore.getState().device.id)
   })
 })

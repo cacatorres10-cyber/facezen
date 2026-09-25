@@ -17,9 +17,10 @@ Vite + React 19 + TypeScript, Tailwind CSS v4 (tokens em `src/index.css`), React
 
 ## Onde fica cada coisa
 
-- Conteúdo do ebook: `src/content/` (texto fiel ao ebook; mudanças de conteúdo começam aqui).
+- Conteúdo: `src/content/` — `moves.ts` (os 12 movimentos da aula guiada = exercícios e sessões), `aulas.json`/`aulas.ts` (vídeo-aulas), `photos.ts` (fotos do Pexels em `src/assets/fotos`).
+- Aulas e fotos são baixadas pelo workflow "Atualizar aulas e fotos" (`scripts/baixar_midia.py`), que roda no GitHub.
 - Montagem das sessões e regras do calendário: `src/lib/plan.ts` (+ testes em `plan.test.ts`).
-- Rotina de skincare por tipo de pele: `src/lib/skincare.ts`.
+- Skincare: o básico (limpar, hidratar, proteger), salvo por dia em `skincare[AAAA-MM-DD]`; histórico em `SkincareHistory`.
 - Estado salvo por aparelho: `src/lib/store.ts`. Ao mudar o formato, suba `version` no `persist` e escreva `migrate`.
 
 ## Regras de conteúdo e tom

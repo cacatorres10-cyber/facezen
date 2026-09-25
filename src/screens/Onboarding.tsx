@@ -77,7 +77,7 @@ export function Onboarding() {
     return (
       <div className="flex min-h-full flex-col bg-bg">
         <div className="relative">
-          <Photo k="boasVindas" eager className="aspect-square w-full rounded-b-[40px]" width={1200} />
+          <Photo k="toque" eager className="aspect-square w-full rounded-b-[40px]" position="50% 25%" />
           <div className="absolute top-[calc(env(safe-area-inset-top,0px)+16px)] left-5 rounded-full bg-surface/90 px-3 py-1.5 backdrop-blur">
             <Wordmark className="[&_svg]:size-6 [&>span:last-child]:text-xl" />
           </div>

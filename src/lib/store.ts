@@ -165,6 +165,19 @@ export function uid(): string {
   }
 }
 
+/** O aparelho está guardando os dados de verdade? (falso em modo privado ou armazenamento bloqueado) */
+export function storageIsPersistent(): boolean {
+  try {
+    const k = '__facezen_test__'
+    localStorage.setItem(k, '1')
+    const ok = localStorage.getItem(k) === '1'
+    localStorage.removeItem(k)
+    return ok
+  } catch {
+    return false
+  }
+}
+
 /** localStorage que nunca lança erro (modo privado, armazenamento bloqueado etc.). */
 const memory = new Map<string, string>()
 export const safeStorage: StateStorage = {
@@ -191,21 +204,16 @@ export const safeStorage: StateStorage = {
   },
 }
 
-export function defaultPrefsFor(profile: Pick<Profile, 'skinBase' | 'sensitive' | 'mature' | 'concerns'>): SkincarePrefs {
-  const serum: SkincarePrefs['serum'] = profile.sensitive
-    ? 'nenhum'
-    : profile.skinBase === 'seca' || profile.mature
-      ? 'hialuronico'
-      : profile.skinBase === 'oleosa' || profile.skinBase === 'mista'
-        ? 'niacinamida'
-        : 'nenhum'
+/** Skincare começa no básico; extras a pessoa liga em "Ajustar". */
+export function defaultPrefsFor(_profile?: Pick<Profile, 'skinBase' | 'sensitive' | 'mature' | 'concerns'>): SkincarePrefs {
+  void _profile
   return {
     makeup: false,
-    vitC: profile.concerns.includes('tom') && !profile.sensitive,
-    serum,
+    vitC: false,
+    serum: 'nenhum',
     eye: false,
     toner: false,
-    oil: profile.skinBase === 'seca' || profile.mature,
+    oil: false,
     retinoid: false,
     retinoidNights: [3],
     acid: false,
@@ -222,7 +230,7 @@ const initialData = (): FaceZenData => ({
   favorites: [],
   practiced: {},
   skincare: {},
-  skincarePrefs: defaultPrefsFor({ skinBase: 'normal', sensitive: false, mature: false, concerns: [] }),
+  skincarePrefs: defaultPrefsFor(),
   patchTests: [],
   reviews: {},
   settings: { voice: false, sound: true, vibrate: true, mirror: false, theme: 'system' },
@@ -342,7 +350,7 @@ export const useStore = create<FaceZenState>()(
     }),
     {
       name: STORAGE_KEY,
-      version: 2,
+      version: 3,
       storage: createJSONStorage(() => safeStorage),
       // v1 → v2: "intenções" viraram "objetivos".
       migrate: (persisted, version) => {
@@ -351,6 +359,13 @@ export const useStore = create<FaceZenState>()(
           const { intentions: _old, ...rest } = state.profile
           void _old
           state.profile = { ...rest, goals: rest.goals ?? [] }
+        }
+        if (version < 3 && state.skincare) {
+          // "Remover" e "Limpar" da noite viraram um passo só.
+          for (const day of Object.values(state.skincare)) {
+            if (day.noite.includes('n-remocao') && !day.noite.includes('n-limpeza')) day.noite.push('n-limpeza')
+            day.noite = day.noite.filter((x) => x !== 'n-remocao')
+          }
         }
         return state
       },
