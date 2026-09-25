@@ -1,13 +1,13 @@
-import { BookOpen, Droplets, Hand, Route, Sunrise } from 'lucide-react'
+import { ChartNoAxesColumn, Droplets, Hand, PlayCircle, Sunrise } from 'lucide-react'
 import { NavLink } from 'react-router-dom'
 import { cx } from './ui'
 
 const TABS = [
   { to: '/', label: 'Hoje', icon: Sunrise, end: true },
-  { to: '/jornada', label: 'Jornada', icon: Route },
+  { to: '/aulas', label: 'Aulas', icon: PlayCircle },
   { to: '/exercicios', label: 'Exercícios', icon: Hand },
   { to: '/skincare', label: 'Skincare', icon: Droplets },
-  { to: '/guia', label: 'Guia', icon: BookOpen },
+  { to: '/jornada', label: 'Progresso', icon: ChartNoAxesColumn },
 ]
 
 export function TabBar() {

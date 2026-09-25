@@ -18,12 +18,11 @@ export type VariantId =
   | 'foco-pescoco'
   | 'curta'
   | 'suave'
-  | 'respiracao'
+  | 'pausa'
 
 export interface SessionStep extends StepDef {
   key: string
   focus?: boolean
-  note?: string
 }
 
 export interface SessionPlan {
@@ -32,7 +31,7 @@ export interface SessionPlan {
   subtitle: string
   steps: SessionStep[]
   totalSec: number
-  /** O que foi ajustado para esta pessoa, em linguagem simples. */
+  /** O ajuste principal feito para esta pessoa, em uma frase (ou vazio). */
   adaptations: string[]
 }
 
@@ -40,21 +39,20 @@ export interface PlanContext {
   week: number
   /** Quantas sessões completas já foram feitas nesta semana do programa. */
   sessionIndex: number
-  /** Resultado do checklist "antes" de hoje. */
+  /** A pessoa disse que a pele não está bem hoje. */
   skinIrritatedToday?: boolean
-  procedureToday?: boolean
 }
 
 type ProfileLike = Pick<Profile, 'focus' | 'minutes' | 'safety' | 'sensitive' | 'mature' | 'skinBase'>
 
-const REGION_STEPS: Record<RegionId, string[]> = {
-  testa: ['testa', 'testaSobrancelhas'],
-  olhos: ['olhosCirculos'],
-  bochechas: ['bochechasAr'],
-  bigode: ['bigode'],
-  mandibula: ['mandibula'],
-  papada: ['queixo'],
-  pescoco: ['pescoco', 'pescocoRespiracao'],
+const REGION_STEPS: Record<RegionId, string> = {
+  testa: 'testa',
+  olhos: 'olhosCirculos',
+  bochechas: 'bochechasAr',
+  bigode: 'bigode',
+  mandibula: 'mandibula',
+  papada: 'queixo',
+  pescoco: 'pescoco',
 }
 
 const REGION_ORDER: RegionId[] = ['testa', 'olhos', 'bochechas', 'bigode', 'mandibula', 'papada', 'pescoco']
@@ -67,40 +65,11 @@ function step(id: string, overrides: Partial<StepDef> = {}): StepDef {
 
 const has = (flags: SafetyFlag[], f: SafetyFlag) => flags.includes(f)
 
-function essential(short: boolean): StepDef[] {
-  return [
-    step('chegada', short ? { durationSec: 45 } : {}),
-    step('aquecimento', short ? { durationSec: 45 } : {}),
-    step('testa'),
-    step('olhosCirculos'),
-    step('mandibula'),
-    step('pescoco'),
-    step('encerramento', short ? { durationSec: 45 } : {}),
-  ]
-}
+const ids = (list: string[]) => list.map((id) => step(id))
 
-function complete(): StepDef[] {
-  return [
-    step('chegada'),
-    step('aquecimento'),
-    step('testa'),
-    step('olhosCirculos'),
-    step('olhosRastreamento'),
-    step('bochechasAr'),
-    step('bochechasPausa'),
-    step('bochechasAr2'),
-    step('bigode'),
-    step('mandibula'),
-    step('queixo'),
-    step('pescoco'),
-    step('pescocoRespiracao'),
-    step('encerramento'),
-  ]
-}
-
-/** Ordena passos seguindo a sequência de cima para baixo do rosto, mantendo abertura e fechamento. */
-function inFaceOrder(ids: string[]): string[] {
-  const unique = [...new Set(ids)]
+/** Ordena de cima para baixo do rosto, com aquecimento no início e o final no fim. */
+function inFaceOrder(list: string[]): string[] {
+  const unique = [...new Set(list)]
   const rank = (id: string) => {
     const r = STEPS[id]?.region
     return r ? REGION_ORDER.indexOf(r) : 99
@@ -108,25 +77,22 @@ function inFaceOrder(ids: string[]): string[] {
   return unique.sort((a, b) => rank(a) - rank(b))
 }
 
+const ESSENTIAL = ['aquecimento', 'testa', 'olhosCirculos', 'mandibula', 'pescoco', 'encerramento']
+const COMPLETE = ['aquecimento', 'testa', 'testaSobrancelhas', 'olhosCirculos', 'olhosRastreamento', 'bochechasAr', 'bigode', 'mandibula', 'queixo', 'pescoco', 'encerramento']
+
 function shortSession(profile: ProfileLike, sessionIndex: number): StepDef[] {
   const focus = REGION_ORDER.filter((r) => profile.focus.includes(r))
-  if (focus.length === 0) return essential(true)
-  // Até duas regiões de foco por sessão, em rodízio.
-  const picks = focus.length <= 2 ? focus : [0, 1].map((i) => focus[(sessionIndex * 2 + i) % focus.length])
-  const middle = inFaceOrder(picks.flatMap((r) => REGION_STEPS[r].slice(0, 1)).concat(['pescoco']))
-  return [step('chegada', { durationSec: 45 }), step('aquecimento', { durationSec: 45 }), ...middle.map((id) => step(id)), step('encerramento', { durationSec: 45 })]
+  if (focus.length === 0) return ids(ESSENTIAL)
+  // Até três regiões de foco por sessão, em rodízio.
+  const picks = focus.length <= 3 ? focus : [0, 1, 2].map((i) => focus[(sessionIndex * 3 + i) % focus.length])
+  const middle = inFaceOrder([...picks.map((r) => REGION_STEPS[r]), 'pescoco'])
+  return ids(['aquecimento', ...middle, 'encerramento'])
 }
 
-function focusSession(kind: 'testa' | 'bochechas' | 'pescoco', minutes: 5 | 10): StepDef[] {
-  const intro = [step('chegada', minutes === 5 ? { durationSec: 45 } : {}), step('aquecimento', minutes === 5 ? { durationSec: 45 } : {})]
-  const end = [step('encerramento', minutes === 5 ? { durationSec: 45 } : {})]
-  if (kind === 'testa') {
-    return [...intro, step('testa'), step('testaSobrancelhas'), step('olhosCirculos'), step('mandibula'), step('mandibulaSoltar'), ...end]
-  }
-  if (kind === 'bochechas') {
-    return [...intro, step('bochechasAr'), step('bochechasPausa'), step('sorriso'), step('bigode'), ...end]
-  }
-  return [...intro, step('queixo'), step('projecao'), step('pescoco'), step('pescocoRespiracao'), ...end]
+const FOCUS = {
+  testa: ['aquecimento', 'testa', 'testaSobrancelhas', 'olhosCirculos', 'mandibula', 'encerramento'],
+  bochechas: ['aquecimento', 'bochechasAr', 'sorriso', 'bigode', 'encerramento'],
+  pescoco: ['aquecimento', 'queixo', 'projecao', 'pescoco', 'encerramento'],
 }
 
 interface Base {
@@ -141,133 +107,77 @@ function baseFor(profile: ProfileLike, ctx: PlanContext): Base {
   const five = profile.minutes === 5
 
   if (week <= 1) {
-    return { variant: 'essencial', title: 'Sessão essencial', subtitle: 'Respiração, testa, olhos, mandíbula e pescoço', steps: essential(true) }
+    return { variant: 'essencial', title: 'Sessão essencial', subtitle: 'Testa, olhos, mandíbula e pescoço', steps: ids(ESSENTIAL) }
   }
   if (week === 2) {
-    const steps = essential(true)
-    // Transferência de ar em apenas duas sessões da semana (1ª e 3ª).
-    if (sessionIndex === 0 || sessionIndex === 2) steps.splice(4, 0, step('bochechasAr'))
-    return { variant: 'semana2', title: 'Uma região por vez', subtitle: 'A sessão essencial, com calma', steps }
+    const list = [...ESSENTIAL]
+    // Bochechas em apenas duas sessões da semana (1ª e 3ª).
+    if (sessionIndex === 0 || sessionIndex === 2) list.splice(3, 0, 'bochechasAr')
+    return { variant: 'semana2', title: 'Sessão essencial', subtitle: 'Com calma, uma região por vez', steps: ids(list) }
   }
   if (week === 3) {
-    const mouth = sessionIndex % 2 === 0 ? step('sorriso') : step('bigode')
-    const steps: StepDef[] = [
-      step('chegada', five ? { durationSec: 45 } : {}),
-      step('aquecimento', { durationSec: 45 }),
-      step('testa'),
-      step('olhosCirculos'),
-      mouth,
-      step('mandibula'),
-      ...(five ? [] : [step('queixo', { optional: true, options: undefined, instruction: 'Opcional: deixe o queixo repousar levemente sobre as pontas dos dedos por três respirações. Na semana 3, escolha o apoio dos dedos, não a extensão cervical.' })]),
-      step('pescoco'),
-      step('encerramento', { durationSec: 45 }),
-    ]
-    return {
-      variant: 'semana3',
-      title: 'Dose curta e controlada',
-      subtitle: sessionIndex % 2 === 0 ? 'Hoje com sorriso protegido' : 'Hoje com bigode chinês',
-      steps,
-    }
+    const mouth = sessionIndex % 2 === 0 ? 'sorriso' : 'bigode'
+    const list = ['aquecimento', 'testa', 'olhosCirculos', mouth, 'mandibula', ...(five ? [] : ['queixo']), 'pescoco', 'encerramento']
+    return { variant: 'semana3', title: 'Sessão curta', subtitle: mouth === 'sorriso' ? 'Hoje com sorriso protegido' : 'Hoje com bigode chinês', steps: ids(list) }
   }
   if (week === 5) {
     const kind = sessionIndex <= 1 ? 'testa' : sessionIndex <= 3 ? 'bochechas' : 'pescoco'
     const titles = {
-      testa: ['Foco: testa e mandíbula', 'Relaxamento de testa e mandíbula'],
+      testa: ['Foco: testa e mandíbula', 'Para soltar a tensão'],
       bochechas: ['Foco: bochechas e bigode chinês', 'Consciência do sorriso'],
-      pescoco: ['Foco: pescoço e papada', 'Leve, sem extensão forçada'],
+      pescoco: ['Foco: pescoço e papada', 'Leve, sem forçar a nuca'],
     } as const
-    return { variant: `foco-${kind}` as VariantId, title: titles[kind][0], subtitle: titles[kind][1], steps: focusSession(kind, profile.minutes) }
+    return { variant: `foco-${kind}` as VariantId, title: titles[kind][0], subtitle: titles[kind][1], steps: ids(FOCUS[kind]) }
   }
   if (week === 6 && sessionIndex >= 5) {
-    return { variant: 'curta', title: 'Sexta sessão opcional', subtitle: 'Apenas cinco minutos, se não houve reação', steps: shortSession(profile, sessionIndex) }
+    return { variant: 'curta', title: 'Sessão extra, curta', subtitle: 'Só se não houve nenhum incômodo', steps: shortSession(profile, sessionIndex) }
   }
   if (five) {
-    return { variant: 'curta', title: 'Sessão de 5 minutos', subtitle: 'Com as regiões que você escolheu', steps: shortSession(profile, sessionIndex) }
+    return { variant: 'curta', title: 'Sessão de 5 minutos', subtitle: 'Com as regiões dos seus objetivos', steps: shortSession(profile, sessionIndex) }
   }
-  const subtitle = week === 7 ? 'Qualidade acima de quantidade' : week >= 8 ? 'Fique com o que for confortável' : 'A sequência completa do FaceZen'
-  return { variant: 'completa', title: 'Rotina de 10 minutos', subtitle, steps: complete() }
+  return { variant: 'completa', title: 'Rotina completa', subtitle: 'O rosto inteiro, de cima para baixo', steps: ids(COMPLETE) }
 }
 
 const EYE_STEPS = new Set(['olhosCirculos', 'olhosRastreamento'])
-const JAW_LOADED = new Set(['bochechasAr', 'bochechasAr2', 'bochechasPausa', 'projecao'])
+const JAW_STEPS = new Set(['mandibula', 'bochechasAr', 'projecao'])
 
-/** Monta a sessão do dia a partir do perfil, da semana e do check-in de hoje. */
+/** Monta a sessão do dia a partir do perfil, da semana e de como a pele está hoje. */
 export function buildSession(profile: ProfileLike, ctx: PlanContext): SessionPlan {
   const flags = profile.safety
-  const adaptations: string[] = []
 
-  if (has(flags, 'procedimento') || ctx.procedureToday) {
-    const steps = [step('chegada'), step('posturaSemToque'), step('respiracaoFinal')]
-    adaptations.push('Procedimento recente: sessão sem toque no rosto até a liberação de quem realizou o procedimento.')
-    return finish({ variant: 'respiracao', title: 'Respiração e postura', subtitle: 'Sem toque no rosto', steps }, profile, adaptations)
+  if (has(flags, 'procedimento')) {
+    return finish(
+      { variant: 'pausa', title: 'Sessões em pausa', subtitle: 'Até a liberação do seu procedimento', steps: [] },
+      profile,
+      ['Depois de um procedimento, espere a liberação de quem o realizou. Quando for liberado, desmarque em Perfil.'],
+    )
   }
 
   if (has(flags, 'peleCrise') || ctx.skinIrritatedToday) {
-    const steps = [step('chegada'), step('toquesPescoco'), step('respiracaoFinal')]
-    adaptations.push(
-      ctx.skinIrritatedToday && !has(flags, 'peleCrise')
-        ? 'Sua pele não está íntegra hoje: só respiração e cinco toques leves no pescoço e clavículas.'
-        : 'Pele em crise: respiração e cinco toques leves no pescoço e clavículas; nada de massagem em área vermelha.',
+    return finish(
+      { variant: 'suave', title: 'Sessão suave', subtitle: 'Só toques leves no pescoço', steps: ids(['toquesPescoco', 'encerramento']) },
+      profile,
+      ['Com a pele irritada, nada de massagem no rosto hoje.'],
     )
-    return finish({ variant: 'suave', title: 'Sessão suave', subtitle: 'Respiração e toques mínimos', steps }, profile, adaptations)
   }
 
   const base = baseFor(profile, ctx)
   let steps = base.steps
+  const adaptations: string[] = []
 
   if (has(flags, 'olhos')) {
-    let replaced = false
-    steps = steps.flatMap((s) => {
-      if (!EYE_STEPS.has(s.id)) return [s]
-      if (replaced) return []
-      replaced = true
-      return [step('olhosDescanso')]
-    })
-    if (replaced) adaptations.push('Sintomas nos olhos: trocamos os toques e o rastreamento por descanso de olhos fechados.')
+    steps = steps.filter((s) => !EYE_STEPS.has(s.id))
+    adaptations.push('Sem exercícios nos olhos, por causa dos sintomas que você marcou.')
   }
-
   if (has(flags, 'atm')) {
-    const before = steps.length
-    steps = steps.filter((s) => !JAW_LOADED.has(s.id))
-    let swapped = false
-    steps = steps.map((s) => {
-      if (s.id !== 'mandibula') return s
-      swapped = true
-      return step('mandibulaSoltar')
-    })
-    steps = steps.map((s) => (s.id === 'sorriso' ? { ...s, note: 'Com ATM sensível, faça só os sorrisos e pule a etapa da mandíbula.' } : s))
-    // Evita dois "soltar mandíbula" seguidos.
-    steps = steps.filter((s, i) => !(s.id === 'mandibulaSoltar' && steps[i - 1]?.id === 'mandibulaSoltar'))
-    if (swapped || steps.length !== before) adaptations.push('Mandíbula (ATM): sem massagem na articulação nem transferência de ar; no lugar, soltar a mandíbula sem toque.')
+    steps = steps.filter((s) => !JAW_STEPS.has(s.id))
+    adaptations.push('Sem exercícios de mandíbula, por causa da ATM.')
   }
-
   if (has(flags, 'cervical')) {
-    const before = steps.length
     steps = steps.filter((s) => s.id !== 'projecao')
-    steps = steps.map((s) => {
-      if (s.id === 'queixo')
-        return {
-          ...s,
-          options: undefined,
-          instruction: 'Deixe o queixo repousar levemente sobre as pontas dos dedos por três respirações. Não incline o pescoço para trás.',
-        }
-      if (s.id === 'pescoco') return { ...s, note: 'Histórico cervical: cabeça neutra e pressão mínima.' }
-      return s
-    })
-    adaptations.push(
-      steps.length !== before
-        ? 'Pescoço: removemos a extensão da cabeça; no queixo, só o apoio dos dedos.'
-        : 'Pescoço: cabeça sempre neutra, sem inclinar para trás.',
-    )
+    adaptations.push('Pescoço sempre neutro, sem inclinar a cabeça para trás.')
   }
-
-  if (profile.sensitive) {
-    adaptations.push('Pele sensível: toques mínimos, mais produto tolerado e menos passagens.')
-  } else if (profile.skinBase === 'seca' || profile.mature) {
-    adaptations.push('Use mais produto para reduzir atrito e faça menos passagens; não massageie descamações.')
-  } else if (profile.skinBase === 'oleosa') {
-    adaptations.push('Pele oleosa: camada fina de produto tolerado; o brilho nunca é motivo para esfregar mais.')
-  }
+  if (profile.sensitive) adaptations.push('Pele sensível: toque mínimo e um pouco mais de hidratante para deslizar.')
 
   return finish(base, profile, adaptations, steps)
 }
@@ -277,7 +187,6 @@ function finish(base: Base, profile: ProfileLike, adaptations: string[], steps: 
     ...s,
     key: `${s.id}-${i}`,
     focus: !!s.region && profile.focus.includes(s.region),
-    note: s.note ?? (profile.sensitive && s.kind === 'move' ? 'Pele sensível: toque mínimo.' : undefined),
   }))
   return { variant: base.variant, title: base.title, subtitle: base.subtitle, steps: withKeys, totalSec: totalOf(withKeys), adaptations }
 }

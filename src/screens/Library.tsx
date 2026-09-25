@@ -3,7 +3,7 @@ import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import { EXERCISES, exerciseById, REGIONS, regionById } from '../content/exercises'
 import type { RegionId } from '../content/types'
 import { FaceMap } from '../components/FaceMap'
-import { BackLink, Button, Card, Chip, cx, Eyebrow, Note, PageHeader, Title } from '../components/ui'
+import { Accordion, BackLink, Button, Card, Chip, cx, Eyebrow, Note, PageHeader, Title } from '../components/ui'
 import { dayKey, formatDuration } from '../lib/dates'
 import { exerciseStatus, FLAG_REASON } from '../lib/plan'
 import { useStore } from '../lib/store'
@@ -32,13 +32,13 @@ export function Library() {
 
   return (
     <div className="px-5 pb-28">
-      <PageHeader eyebrow="14 fichas por região" title="Exercícios" subtitle="Doses conservadoras para começar. Objetivos cosméticos, nunca promessas anatômicas." />
+      <PageHeader eyebrow="14 exercícios" title="Exercícios" />
 
       <div className="grid grid-cols-[120px_1fr] items-center gap-4 rounded-3xl bg-surface p-4 shadow-soft">
         <FaceMap selected={region ? [region] : []} onToggle={(r) => setRegion(r)} />
         <div>
           <p className="font-display text-xl font-medium text-ink">{region ? regionById(region).label : 'Toque numa região'}</p>
-          <p className="mt-1 text-sm text-ink-soft">{region ? regionById(region).concern : 'Ou use os filtros abaixo. Suas regiões de foco têm estrela.'}</p>
+          <p className="mt-1 text-sm text-ink-soft">{region ? regionById(region).concern : 'As estrelas marcam os seus objetivos.'}</p>
           {region && (
             <button type="button" onClick={() => setRegion(null)} className="mt-2 text-sm font-semibold text-jade">
               Ver todas
@@ -64,7 +64,7 @@ export function Library() {
 
       {profile.safety.includes('procedimento') && (
         <Note tone="warn" className="mt-4" icon={<ShieldAlert className="size-4" />}>
-          Você indicou procedimento recente. Siga o prazo de quem realizou antes de tocar ou massagear o rosto.
+          Procedimento recente: espere a liberação antes de massagear o rosto.
         </Note>
       )}
 
@@ -137,17 +137,18 @@ export function ExerciseDetail() {
   const st = exerciseStatus(ex, profile, week)
   const fav = favorites.includes(ex.id)
   const done = practicedToday.includes(ex.id)
-  const rows: { label: string; text: string }[] = [
+  const details: { label: string; text: string }[] = [
+    { label: 'Para que serve', text: ex.goal },
     { label: 'Posição', text: ex.position },
-    { label: 'Execução', text: ex.execution },
+    { label: 'Execução completa', text: ex.execution },
     { label: 'Respiração', text: ex.breathing },
-    { label: 'Repetições e tempo', text: ex.reps },
     { label: 'Frequência', text: ex.frequency },
-    { label: 'Sensação esperada', text: ex.sensation },
+    { label: 'O que sentir', text: ex.sensation },
+    ...(ex.note ? [{ label: ex.note.title, text: ex.note.text }] : []),
   ]
 
   return (
-    <div className="px-5 pb-32">
+    <div className="px-5 pb-44">
       <div className="flex items-center justify-between pt-4">
         <BackLink to="/exercicios" label="Exercícios" />
         <button
@@ -186,52 +187,49 @@ export function ExerciseDetail() {
 
       {st.blocked && (
         <Note tone="danger" className="mt-4" icon={<ShieldAlert className="size-4" />}>
-          Pela sua resposta sobre {st.blockedBy.map((f) => FLAG_REASON[f]).join(' e ')}, o FaceZen não inclui este exercício nas suas sessões. Converse com o profissional que acompanha você antes de praticar.
+          Por causa de {st.blockedBy.map((f) => FLAG_REASON[f]).join(' e ')}, este exercício fica fora do seu plano. Converse com um profissional antes.
         </Note>
       )}
       {!st.blocked && st.caution.length > 0 && (
         <Note tone="warn" className="mt-4" icon={<AlertTriangle className="size-4" />}>
-          Atenção extra por {st.caution.map((f) => FLAG_REASON[f]).join(' e ')}: pressão mínima e pare ao primeiro desconforto.
-        </Note>
-      )}
-      {!st.blocked && st.early && (
-        <Note className="mt-4">
-          O calendário recomenda este exercício a partir da semana {ex.minWeek}; você está na semana {Math.min(week, 8)}. Pode ler e conhecer, mas não há pressa.
+          Cuidado extra ({st.caution.map((f) => FLAG_REASON[f]).join(', ')}): pressão mínima.
         </Note>
       )}
 
       <Card className="mt-5">
-        <p className="eyebrow">Objetivo cosmético</p>
-        <p className="mt-1.5 text-ink">{ex.goal}</p>
+        <p className="eyebrow">Como fazer</p>
+        <ol className="mt-3 grid gap-3">
+          {ex.cues.map((c, i) => (
+            <li key={c} className="flex gap-3 text-ink">
+              <span className="tnum grid size-7 shrink-0 place-items-center rounded-full bg-jade-soft text-sm font-bold text-jade">{i + 1}</span>
+              <span className="pt-0.5">{c}</span>
+            </li>
+          ))}
+        </ol>
       </Card>
 
-      <dl className="mt-4 grid gap-0 rounded-3xl bg-surface px-5 shadow-soft">
-        {rows.map((r) => (
-          <div key={r.label} className="border-b border-line py-4 last:border-b-0">
-            <dt className="eyebrow">{r.label}</dt>
-            <dd className="mt-1.5 text-ink">{r.text}</dd>
-          </div>
-        ))}
-      </dl>
-
-      <div className="mt-4 rounded-3xl bg-danger-soft p-5">
-        <p className="eyebrow !text-danger">Sinais para parar</p>
-        <p className="mt-1.5 text-ink">{ex.stopSigns}</p>
+      <div className="mt-3 rounded-3xl bg-danger-soft p-4">
+        <p className="eyebrow !text-danger">Pare se sentir</p>
+        <p className="mt-1 text-sm text-ink">{ex.stopSigns.split('.')[0]}.</p>
       </div>
 
-      {ex.note && (
-        <Card className="mt-4">
-          <h2 className="font-display text-xl font-medium text-ink">{ex.note.title}</h2>
-          <p className="mt-1.5 text-ink-soft">{ex.note.text}</p>
-        </Card>
-      )}
-
-      <p className="mt-4 text-xs text-ink-faint">Fontes citadas no guia: {ex.sources.map((n) => `[${n}]`).join(' ')}. Veja em Guia → Referências.</p>
+      <div className="mt-3 rounded-3xl bg-surface px-5 shadow-soft">
+        <Accordion title="Mais detalhes">
+          <dl className="grid gap-4">
+            {details.map((r) => (
+              <div key={r.label}>
+                <dt className="eyebrow">{r.label}</dt>
+                <dd className="mt-1 text-ink">{r.text}</dd>
+              </div>
+            ))}
+          </dl>
+        </Accordion>
+      </div>
 
       {!st.blocked && (
         <div className="fixed inset-x-0 bottom-[calc(4rem+env(safe-area-inset-bottom,0px))] z-30 mx-auto max-w-[480px] bg-gradient-to-t from-bg via-bg/95 to-transparent px-5 pt-6 pb-3">
           <Button size="lg" block onClick={() => navigate(`/sessao?exercicio=${ex.id}`)}>
-            <Play className="size-5 fill-current" /> Praticar com cronômetro · {formatDuration(ex.practiceSec)}
+            <Play className="size-5 fill-current" /> Praticar agora · {formatDuration(ex.practiceSec)}
           </Button>
         </div>
       )}

@@ -8,7 +8,7 @@ import { defaultPrefsFor, type Profile, type SessionLog } from './store'
 
 const profile = (patch: Partial<Profile> = {}): Profile => ({
   name: 'Ana',
-  intentions: [],
+  goals: [],
   focus: [],
   skinBase: 'normal',
   sensitive: false,
@@ -26,11 +26,11 @@ const profile = (patch: Partial<Profile> = {}): Profile => ({
 const ids = (p: Profile, ctx: Partial<PlanContext> = {}) => buildSession(p, { week: 1, sessionIndex: 0, ...ctx }).steps.map((s) => s.id)
 
 describe('buildSession — calendário de 8 semanas', () => {
-  it('semana 1: só respiração, testa, olhos com toque leve, mandíbula manual e pescoço, em ~5 min', () => {
+  it('semana 1: só testa, olhos com toque leve, mandíbula manual e pescoço, em até 5 min', () => {
     const plan = buildSession(profile(), { week: 1, sessionIndex: 0 })
-    expect(plan.steps.map((s) => s.id)).toEqual(['chegada', 'aquecimento', 'testa', 'olhosCirculos', 'mandibula', 'pescoco', 'encerramento'])
-    expect(plan.totalSec).toBeGreaterThanOrEqual(4.5 * 60)
-    expect(plan.totalSec).toBeLessThanOrEqual(5.5 * 60)
+    expect(plan.steps.map((s) => s.id)).toEqual(['aquecimento', 'testa', 'olhosCirculos', 'mandibula', 'pescoco', 'encerramento'])
+    expect(plan.totalSec).toBeGreaterThanOrEqual(3.5 * 60)
+    expect(plan.totalSec).toBeLessThanOrEqual(5 * 60)
   })
 
   it('semana 2: transferência de ar em apenas duas sessões', () => {
@@ -47,11 +47,12 @@ describe('buildSession — calendário de 8 semanas', () => {
     expect(b).not.toContain('sorriso')
   })
 
-  it('semana 4: a rotina completa tem cerca de 10 minutos', () => {
+  it('semana 4: rotina completa, sem nenhum passo de respiração', () => {
     const plan = buildSession(profile(), { week: 4, sessionIndex: 0 })
     expect(plan.variant).toBe('completa')
-    expect(plan.totalSec).toBeGreaterThanOrEqual(9 * 60)
-    expect(plan.totalSec).toBeLessThanOrEqual(11 * 60)
+    expect(plan.totalSec).toBeGreaterThanOrEqual(7 * 60)
+    expect(plan.totalSec).toBeLessThanOrEqual(10 * 60)
+    expect(plan.steps.every((s) => s.kind === 'move' || s.id === 'encerramento')).toBe(true)
   })
 
   it('semana 5: foco alternado (2 testa/mandíbula, 2 bochechas/bigode, 1 pescoço/papada)', () => {
@@ -75,10 +76,10 @@ describe('buildSession — calendário de 8 semanas', () => {
 describe('buildSession — segurança', () => {
   const withFlags = (...safety: SafetyFlag[]) => profile({ safety })
 
-  it('procedimento recente: só respiração, sem toque', () => {
+  it('procedimento recente: sessões em pausa, sem toque', () => {
     const plan = buildSession(withFlags('procedimento'), { week: 4, sessionIndex: 0 })
-    expect(plan.variant).toBe('respiracao')
-    expect(plan.steps.every((s) => s.kind !== 'move')).toBe(true)
+    expect(plan.variant).toBe('pausa')
+    expect(plan.steps).toHaveLength(0)
   })
 
   it('pele em crise ou irritada hoje: sessão suave', () => {
@@ -90,15 +91,13 @@ describe('buildSession — segurança', () => {
     const s = ids(withFlags('atm'), { week: 4 })
     expect(s).not.toContain('mandibula')
     expect(s).not.toContain('bochechasAr')
-    expect(s).not.toContain('bochechasAr2')
-    expect(s).toContain('mandibulaSoltar')
+    expect(s).not.toContain('projecao')
   })
 
-  it('sintomas nos olhos: troca toques e rastreamento por um descanso sem toque', () => {
+  it('sintomas nos olhos: sem toques nem rastreamento', () => {
     const s = ids(withFlags('olhos'), { week: 4 })
     expect(s).not.toContain('olhosCirculos')
     expect(s).not.toContain('olhosRastreamento')
-    expect(s.filter((x) => x === 'olhosDescanso')).toHaveLength(1)
   })
 
   it('cervical: sem projeção da mandíbula no foco de pescoço', () => {
@@ -169,5 +168,18 @@ describe('manutenção', () => {
     expect(start.getDay()).toBe(1)
     expect(start.getDate()).toBe(12)
     expect(weekStart({ week: 4, weekStartedAt: '2026-01-01T00:00:00.000Z' }, wed)).toBe('2026-01-01T00:00:00.000Z')
+  })
+})
+
+describe('objetivos', () => {
+  it('cada objetivo acende as regiões certas', async () => {
+    const { regionsForGoals } = await import('../content/profileOptions')
+    expect(regionsForGoals(['papada'])).toEqual(['papada', 'pescoco'])
+    expect(regionsForGoals(['linhas', 'olheiras'])).toEqual(['testa', 'olhos'])
+  })
+
+  it('5 minutos com objetivo de papada inclui o queixo', () => {
+    const plan = buildSession(profile({ minutes: 5, focus: ['papada', 'pescoco'] }), { week: 4, sessionIndex: 0 })
+    expect(plan.steps.map((s) => s.id)).toContain('queixo')
   })
 })

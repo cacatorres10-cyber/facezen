@@ -1,12 +1,17 @@
-import type { Experience, IntentionId, SafetyFlag, SkinBase } from './types'
+import type { GoalId, RegionId, SafetyFlag, SkinBase } from './types'
 
-export const INTENTIONS: { id: IntentionId; label: string; hint: string }[] = [
-  { id: 'relaxar', label: 'Desacelerar e respirar', hint: 'Um momento de pausa no dia' },
-  { id: 'tensao', label: 'Aliviar tensão', hint: 'Testa franzida, dentes apertados' },
-  { id: 'ritual', label: 'Criar um ritual de autocuidado', hint: 'Constância sem exagero' },
-  { id: 'aparencia', label: 'Cuidar da aparência da pele', hint: 'Com expectativas realistas' },
-  { id: 'skincare', label: 'Aprender skincare', hint: 'Ordem, ingredientes, tipo de pele' },
+/** Objetivos do quiz. Cada um acende as regiões do rosto que entram nas sessões. */
+export const GOALS: { id: GoalId; label: string; hint: string; regions: RegionId[] }[] = [
+  { id: 'pele', label: 'Pele mais bonita e viçosa', hint: 'Rotina de cuidados e toque que não agride', regions: ['bochechas', 'testa'] },
+  { id: 'papada', label: 'Cuidar da papada', hint: 'Queixo e pescoço', regions: ['papada', 'pescoco'] },
+  { id: 'linhas', label: 'Suavizar linhas de expressão', hint: 'Testa e ao redor dos olhos', regions: ['testa', 'olhos'] },
+  { id: 'contorno', label: 'Rosto mais definido', hint: 'Mandíbula e bochechas', regions: ['mandibula', 'bochechas'] },
+  { id: 'olheiras', label: 'Olheiras e inchaço', hint: 'Toque leve na região dos olhos', regions: ['olhos'] },
+  { id: 'bigode', label: 'Bigode chinês', hint: 'Entre o nariz e a boca', regions: ['bigode'] },
+  { id: 'tensao', label: 'Aliviar a tensão do rosto', hint: 'Testa franzida, dentes apertados', regions: ['testa', 'mandibula'] },
 ]
+
+export const regionsForGoals = (goals: GoalId[]): RegionId[] => [...new Set(GOALS.filter((g) => goals.includes(g.id)).flatMap((g) => g.regions))]
 
 export const SKIN_BASES: { id: SkinBase; label: string; hint: string }[] = [
   { id: 'seca', label: 'Seca', hint: 'Repuxa depois de lavar' },
@@ -15,17 +20,11 @@ export const SKIN_BASES: { id: SkinBase; label: string; hint: string }[] = [
   { id: 'normal', label: 'Normal', hint: 'Confortável quase sempre' },
 ]
 
-export const EXPERIENCES: { id: Experience; label: string; hint: string }[] = [
-  { id: 'nunca', label: 'Nunca fiz', hint: 'Vamos começar do zero, com calma' },
-  { id: 'algumas', label: 'Já experimentei', hint: 'Fiz alguns vídeos ou rotinas' },
-  { id: 'pratico', label: 'Pratico com frequência', hint: 'Mesmo assim, a semana 1 ajusta a dose' },
-]
-
 export const SAFETY_OPTIONS: { id: SafetyFlag; label: string; hint: string }[] = [
   { id: 'cervical', label: 'Dor ou histórico cervical', hint: 'Sem extensões de pescoço' },
   { id: 'atm', label: 'Dor ou disfunção na mandíbula (ATM)', hint: 'Sem massagem na articulação' },
   { id: 'olhos', label: 'Sintomas nos olhos', hint: 'Sem toques na região dos olhos' },
-  { id: 'procedimento', label: 'Procedimento estético recente', hint: 'Botox, preenchimento, peeling, laser, microagulhamento ou cirurgia' },
+  { id: 'procedimento', label: 'Procedimento estético recente', hint: 'Botox, preenchimento, peeling, laser ou cirurgia' },
   { id: 'gestante', label: 'Gravidez ou amamentação', hint: 'Cautela com ativos e cosméticos' },
   { id: 'peleCrise', label: 'Pele em crise', hint: 'Rosácea, eczema, acne inflamada ou feridas' },
 ]

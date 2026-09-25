@@ -13,29 +13,25 @@ export interface RoutineStep {
 type SkinProfile = Pick<Profile, 'skinBase' | 'sensitive' | 'mature' | 'concerns' | 'safety'>
 
 const CLEANSER: Record<SkinBase, string> = {
-  seca: 'Limpador cremoso, leite, bálsamo ou gel suave que não deixe repuxamento. Se a tolerância indicar, só enxágue pela manhã.',
-  oleosa: 'Gel de limpeza suave. Se houver suor, limpe sem fricção quando possível.',
-  mista: 'Limpe a zona T sem prolongar a fricção nas bochechas.',
-  normal: 'Limpador suave. Não procure a sensação de “rangido”; conforto é o melhor critério.',
+  seca: 'Limpador cremoso ou só água morna.',
+  oleosa: 'Gel de limpeza suave.',
+  mista: 'Limpador suave, sem esfregar as bochechas.',
+  normal: 'Limpador suave.',
 }
 
 const MOISTURIZER: Record<SkinBase, string> = {
-  seca: 'Loção ou creme; reforce somente as áreas ásperas. Glicerina, ceramidas, pantenol ou esqualano, conforme tolerância.',
-  oleosa: 'Gel-creme ou loção leve, não comedogênica conforme o rótulo. Hidrate mesmo com brilho.',
-  mista: 'Textura leve no rosto todo e creme somente nas áreas secas, se necessário.',
-  normal: 'Gel-creme, loção ou creme leve de acordo com o clima.',
+  seca: 'Creme ou loção mais nutritiva.',
+  oleosa: 'Gel-creme leve. Hidrate mesmo com brilho.',
+  mista: 'Textura leve; creme só onde resseca.',
+  normal: 'Gel-creme ou loção leve.',
 }
 
 function cleanserTip(p: SkinProfile) {
-  if (p.sensitive) return 'Enxágue ou limpador sem sabão e sem fragrância. Água morna, nunca quente.'
-  if (p.mature) return 'Limpeza em leite, balm ou creme. ' + CLEANSER[p.skinBase]
-  return CLEANSER[p.skinBase]
+  return p.sensitive ? 'Limpador suave, sem fragrância.' : CLEANSER[p.skinBase]
 }
 
 function moisturizerTip(p: SkinProfile) {
-  if (p.sensitive) return 'Hidratante simples, sem fragrância, que você já tolera.'
-  if (p.mature) return 'Textura que ofereça conforto no rosto e no pescoço. ' + MOISTURIZER[p.skinBase]
-  return MOISTURIZER[p.skinBase]
+  return p.sensitive ? 'Hidratante simples, sem fragrância.' : MOISTURIZER[p.skinBase]
 }
 
 export function morningRoutine(p: SkinProfile, prefs: SkincarePrefs): RoutineStep[] {
@@ -45,7 +41,7 @@ export function morningRoutine(p: SkinProfile, prefs: SkincarePrefs): RoutineSte
       id: 'm-vitc',
       title: 'Vitamina C',
       optional: true,
-      detail: 'Depois da limpeza e antes de produtos mais espessos, se a fórmula for tolerada. Não substitui o filtro solar e pode arder em algumas peles.',
+      detail: 'Depois da limpeza. Não substitui o protetor.',
     })
   }
   if (prefs.serum !== 'nenhum') {
@@ -55,8 +51,8 @@ export function morningRoutine(p: SkinProfile, prefs: SkincarePrefs): RoutineSte
       optional: true,
       detail:
         prefs.serum === 'hialuronico'
-          ? 'Sobre a pele limpa, antes do creme. Se repuxar, use menos sérum e finalize com creme.'
-          : 'Concentração e frequência moderadas. Não combine com uma coleção de ativos fortes no mesmo dia.',
+          ? 'Antes do hidratante.'
+          : 'Antes do hidratante.',
     })
   }
   if (prefs.eye) {
@@ -64,14 +60,14 @@ export function morningRoutine(p: SkinProfile, prefs: SkincarePrefs): RoutineSte
       id: 'm-olhos',
       title: 'Produto para olhos',
       optional: true,
-      detail: 'Pequena quantidade no osso orbital, longe da linha dos cílios. Nada de ácido ou retinoide facial no contorno sem orientação do rótulo.',
+      detail: 'Pouquinho, no osso ao redor dos olhos.',
     })
   }
   steps.push({ id: 'm-hidratante', title: 'Hidratante', detail: moisturizerTip(p) })
   steps.push({
     id: 'm-protetor',
     title: 'Protetor solar',
-    detail: 'Último passo do skincare da manhã. FPS e modo de uso conforme o rótulo; as fontes citam FPS mínimo 30. Aplique também no pescoço e áreas expostas. Maquiagem vem depois.',
+    detail: 'FPS 30 ou mais, também no pescoço. Sempre o último passo.',
   })
   return steps
 }
@@ -97,50 +93,49 @@ export function nightRoutine(p: SkinProfile, prefs: SkincarePrefs, weekday: numb
     {
       id: 'n-remocao',
       title: prefs.makeup ? 'Remova maquiagem e protetor' : 'Remova o protetor solar',
-      detail: 'Água micelar, óleo de limpeza ou removedor conforme a embalagem. Não esfregue a área dos olhos.',
+      detail: 'Água micelar ou óleo de limpeza, sem esfregar os olhos.',
     },
     {
       id: 'n-limpeza',
       title: 'Limpeza facial',
       detail:
-        (prefs.makeup ? 'Uma segunda limpeza pode fazer sentido para produto resistente ou maquiagem. ' : '') +
-        'Se a pele repuxar, não transforme a dupla limpeza em regra rígida.',
+        'Água morna e o seu limpador. Seque sem esfregar.',
     },
   ]
   if (prefs.toner) {
-    steps.push({ id: 'n-tonico', title: 'Tônico', optional: true, detail: 'Somente se desejar. Evite adstringentes muito alcoólicos se ressecarem ou arderem.' })
+    steps.push({ id: 'n-tonico', title: 'Tônico', optional: true, detail: 'Opcional, sem álcool.' })
   }
   if (kind === 'retinoide') {
     if (prefs.serum === 'hialuronico') {
-      steps.push({ id: 'n-serum', title: 'Sérum hidratante aquoso', optional: true, detail: 'Se o rótulo permitir, antes do retinoide.' })
+      steps.push({ id: 'n-serum', title: 'Sérum hidratante aquoso', optional: true, detail: 'Antes do retinoide.' })
     }
     steps.push({
       id: 'n-tratamento',
       title: 'Retinoide cosmético',
-      detail: 'Pouca quantidade, sobre a pele seca, na menor frequência do rótulo. Não combine com ácido, vitamina C direta ou outro retinoide na mesma noite.',
-      warn: p.sensitive ? 'Pele sensível: só depois de teste de contato e, idealmente, orientação profissional.' : undefined,
+      detail: 'Uma gota do tamanho de uma ervilha, na pele seca.',
+      warn: p.sensitive ? 'Pele sensível: teste antes numa área pequena.' : undefined,
     })
   } else if (kind === 'acido') {
     steps.push({
       id: 'n-tratamento',
       title: 'Esfoliante (AHA ou BHA)',
-      detail: 'Um só, em baixa frequência, nunca sobre pele ferida. Protetor solar no dia seguinte.',
-      warn: p.sensitive ? 'Pele sensível: evite esfoliação durante ardor, rubor ou coceira.' : undefined,
+      detail: 'Um só, nunca em pele ferida. Protetor no dia seguinte.',
+      warn: p.sensitive ? 'Pule se a pele estiver ardendo.' : undefined,
     })
   } else if (prefs.serum !== 'nenhum' && !p.sensitive) {
     steps.push({
       id: 'n-serum',
       title: prefs.serum === 'hialuronico' ? 'Sérum hidratante' : 'Niacinamida ou peptídeos',
       optional: true,
-      detail: 'Um tratamento de cada vez. Nenhum precisa aparecer todas as noites.',
+      detail: 'Antes do hidratante.',
     })
   }
   if (prefs.eye) {
-    steps.push({ id: 'n-olhos', title: 'Produto para olhos', optional: true, detail: 'Pouco, sem esfregar e afastado da linha dos cílios.' })
+    steps.push({ id: 'n-olhos', title: 'Produto para olhos', optional: true, detail: 'Pouquinho, sem esfregar.' })
   }
   steps.push({ id: 'n-hidratante', title: 'Hidratante', detail: moisturizerTip(p) })
   if (prefs.oil) {
-    steps.push({ id: 'n-oleo', title: 'Óleo facial', optional: true, detail: 'Algumas gotas como etapa final, se a pele tolera.' })
+    steps.push({ id: 'n-oleo', title: 'Óleo facial', optional: true, detail: 'Duas ou três gotas, por último.' })
   }
   return { kind, steps }
 }

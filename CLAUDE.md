@@ -13,7 +13,7 @@ Rode `typecheck` e `test` antes de cada commit.
 
 ## Stack
 
-Vite + React 19 + TypeScript, Tailwind CSS v4 (tokens em `src/index.css`), React Router (HashRouter, para funcionar no GitHub Pages), Zustand com `persist` em `localStorage` (chave `facezen:v1`), `vite-plugin-pwa`, ícones `lucide-react`, fontes Newsreader (títulos) e Manrope (texto) via Fontsource.
+Vite + React 19 + TypeScript, Tailwind CSS v4 (tokens em `src/index.css`), React Router (HashRouter; MemoryRouter com VITE_MEMORY_ROUTER), Zustand com `persist` em `localStorage` (chave `facezen:v1`), `vite-plugin-pwa`, ícones `lucide-react`, fontes Newsreader (títulos) e Manrope (texto) via Fontsource.
 
 ## Onde fica cada coisa
 
@@ -26,5 +26,6 @@ Vite + React 19 + TypeScript, Tailwind CSS v4 (tokens em `src/index.css`), React
 
 - Nunca prometer lifting, fim de rugas, olheiras, papada ou rejuvenescimento. Benefícios são "alegações editoriais"; o foco é conforto, relaxamento e ritual.
 - Segurança primeiro: respeitar as flags de `SafetyFlag` e os sinais para parar.
+- Simplicidade: textos curtos e sem respiração guiada; o texto completo do ebook fica em "Mais detalhes".
 - Linguagem neutra em gênero ("Que bom que você…", não "Obrigada"/"Pronta").
 - Cores sempre por tokens (`bg-surface`, `text-ink`, `bg-jade`…), que já têm versão clara e escura.

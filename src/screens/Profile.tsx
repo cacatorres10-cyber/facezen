@@ -1,9 +1,7 @@
-import { CalendarPlus, Download, Info, RefreshCw, Smartphone, Trash2, Upload } from 'lucide-react'
+import { CalendarPlus, ChevronRight, CircleHelp, Download, Info, RefreshCw, Smartphone, Trash2, Upload } from 'lucide-react'
 import { useRef, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { REGIONS } from '../content/exercises'
-import { DISCLAIMER } from '../content/guide'
-import { SAFETY_OPTIONS } from '../content/profileOptions'
+import { Link, useNavigate } from 'react-router-dom'
+import { GOALS, SAFETY_OPTIONS } from '../content/profileOptions'
 import { LogoMark } from '../components/Logo'
 import { BackLink, Button, Card, Note, Segmented, Title, Toggle } from '../components/ui'
 import { canSpeak } from '../lib/audio'
@@ -23,7 +21,7 @@ export function Profile() {
   const [installable, setInstallable] = useState(canInstall())
 
   if (!profile) return null
-  const focus = REGIONS.filter((r) => profile.focus.includes(r.id)).map((r) => r.short)
+  const goals = GOALS.filter((g) => profile.goals.includes(g.id)).map((g) => g.label)
   const appUrl = window.location.href.split('#')[0]
 
   return (
@@ -48,14 +46,14 @@ export function Profile() {
         </div>
         <dl className="mt-3 grid gap-3 text-sm">
           <Item label="Pele" value={skinLabel(profile)} />
-          <Item label="Regiões em destaque" value={focus.length ? focus.join(', ') : 'Todas'} />
+          <Item label="Objetivos" value={goals.length ? goals.join(', ') : '—'} />
           <Item label="Sessões" value={`${profile.minutes} minutos · ${daysLabel(profile.days)} às ${profile.time}`} />
         </dl>
       </Card>
 
       <Card className="mt-4">
         <h2 className="font-display text-xl font-medium text-ink">Seu cuidado</h2>
-        <p className="mt-1 text-sm text-ink-soft">Atualize quando algo mudar, por exemplo depois da liberação de um procedimento.</p>
+        <p className="mt-1 text-sm text-ink-soft">Atualize quando algo mudar.</p>
         <div className="mt-1 divide-y divide-line">
           {SAFETY_OPTIONS.map((o) => (
             <Toggle
@@ -70,13 +68,21 @@ export function Profile() {
         </div>
       </Card>
 
+      <Link to="/guia" className="mt-4 flex items-center gap-4 rounded-3xl bg-surface p-4 shadow-soft">
+        <span className="grid size-11 shrink-0 place-items-center rounded-2xl bg-jade-soft text-jade">
+          <CircleHelp className="size-5" />
+        </span>
+        <span className="min-w-0 flex-1 font-semibold text-ink">Dúvidas e cuidados</span>
+        <ChevronRight className="size-5 text-ink-faint" />
+      </Link>
+
       <Card className="mt-4">
         <h2 className="font-display text-xl font-medium text-ink">Durante a sessão</h2>
         <div className="mt-1 divide-y divide-line">
           <Toggle id="set-voice" checked={settings.voice} onChange={(v) => updateSettings({ voice: v })} label="Voz guiada" hint={canSpeak() ? 'Lê cada passo em voz alta' : 'Este navegador não oferece voz'} />
           <Toggle id="set-sound" checked={settings.sound} onChange={(v) => updateSettings({ sound: v })} label="Sino suave" hint="Ao trocar de passo e de lado" />
           <Toggle id="set-vibrate" checked={settings.vibrate} onChange={(v) => updateSettings({ vibrate: v })} label="Vibração" hint="Em celulares compatíveis" />
-          <Toggle id="set-mirror" checked={settings.mirror} onChange={(v) => updateSettings({ mirror: v })} label="Modo espelho" hint="Câmera frontal ao fundo. Nada é gravado." />
+          <Toggle id="set-mirror" checked={settings.mirror} onChange={(v) => updateSettings({ mirror: v })} label="Modo espelho" hint="Câmera frontal. Nada é gravado." />
         </div>
       </Card>
 
@@ -96,7 +102,7 @@ export function Profile() {
 
       <Card className="mt-4">
         <h2 className="font-display text-xl font-medium text-ink">Lembretes e app</h2>
-        <p className="mt-1 text-sm text-ink-soft">Adicione suas sessões ao calendário do celular, com aviso no horário escolhido.</p>
+        
         <div className="mt-3 grid gap-2">
           <Button variant="soft" block onClick={() => downloadFile('facezen-lembretes.ics', practiceCalendar(profile, appUrl), 'text/calendar')}>
             <CalendarPlus className="size-4" /> Adicionar ao calendário
@@ -115,7 +121,7 @@ export function Profile() {
               </Button>
             ) : (
               <Note icon={<Smartphone className="size-4" />}>
-                Para usar como app: no iPhone, toque em Compartilhar e depois em “Adicionar à Tela de Início”. No Android, abra o menu do navegador e toque em “Instalar app”.
+                iPhone: Compartilhar → “Adicionar à Tela de Início”. Android: menu → “Instalar app”.
               </Note>
             ))}
         </div>
@@ -124,7 +130,7 @@ export function Profile() {
       <Card className="mt-4">
         <h2 className="font-display text-xl font-medium text-ink">Seus dados</h2>
         <p className="mt-1 text-sm text-ink-soft">
-          Tudo o que você marca fica salvo só neste aparelho, sem cadastro. Para levar para outro aparelho, exporte um backup e importe lá.
+          Fica tudo salvo neste celular. Para trocar de aparelho, exporte e importe.
         </p>
         <p className="tnum mt-2 text-xs text-ink-faint">Aparelho {device.id.slice(0, 8)}</p>
         <div className="mt-3 grid grid-cols-2 gap-2">
@@ -191,7 +197,7 @@ export function Profile() {
           <p className="font-semibold text-ink">FaceZen · versão {__APP_VERSION__}</p>
           <p className="mt-1 flex gap-1.5">
             <Info className="mt-0.5 size-4 shrink-0" />
-            <span>{DISCLAIMER}</span>
+            <span>Autocuidado, não tratamento. Não substitui um profissional de saúde.</span>
           </p>
         </div>
       </section>

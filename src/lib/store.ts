@@ -1,13 +1,13 @@
 import { create } from 'zustand'
 import { createJSONStorage, persist, type StateStorage } from 'zustand/middleware'
-import type { Experience, IntentionId, RegionId, SafetyFlag, SkinBase } from '../content/types'
+import type { Experience, GoalId, RegionId, SafetyFlag, SkinBase } from '../content/types'
 import { dayKey } from './dates'
 
 export type SkinConcern = 'tom' | 'poros' | 'ressecamento' | 'sinais'
 
 export interface Profile {
   name: string
-  intentions: IntentionId[]
+  goals: GoalId[]
   focus: RegionId[]
   skinBase: SkinBase
   sensitive: boolean
@@ -43,9 +43,11 @@ export interface SessionLog {
   completed: boolean
   before?: Scores
   afterTension?: { testa: number; mandibula: number }
+  /** Como a pessoa se sentiu ao terminar. */
+  feeling?: 'bem' | 'desconforto' | 'dor'
   during?: {
-    respiracao: boolean | null
-    pressaoLeve: boolean | null
+    respiracao?: boolean | null
+    pressaoLeve?: boolean | null
     desconforto: string[]
     interrompido?: string
   }
@@ -340,8 +342,18 @@ export const useStore = create<FaceZenState>()(
     }),
     {
       name: STORAGE_KEY,
-      version: 1,
+      version: 2,
       storage: createJSONStorage(() => safeStorage),
+      // v1 → v2: "intenções" viraram "objetivos".
+      migrate: (persisted, version) => {
+        const state = persisted as FaceZenData & { profile: (Profile & { intentions?: unknown }) | null }
+        if (version < 2 && state.profile) {
+          const { intentions: _old, ...rest } = state.profile
+          void _old
+          state.profile = { ...rest, goals: rest.goals ?? [] }
+        }
+        return state
+      },
     },
   ),
 )

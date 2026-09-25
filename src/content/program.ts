@@ -19,7 +19,7 @@ export const PROGRAM: ProgramWeek[] = [
     sessions: { min: 3, max: 3 },
     minutes: { min: 5, max: 5 },
     spacing: true,
-    summary: 'Respiração, postura, aquecimento e deslizamento manual, cinco minutos, em três dias não consecutivos.',
+    summary: 'Cinco minutos, três vezes, com um dia de descanso entre as sessões.',
     rules: [
       'Faça a rotina de respiração, postura, aquecimento e deslizamento manual por cinco minutos, em três dias não consecutivos.',
       'Pratique somente testa, olhos com toque leve, mandíbula manual e pescoço com deslizamento.',
@@ -29,11 +29,11 @@ export const PROGRAM: ProgramWeek[] = [
   },
   {
     week: 2,
-    title: 'Uma região por vez',
+    title: 'Primeiros passos',
     sessions: { min: 4, max: 4 },
     minutes: { min: 5, max: 6 },
     spacing: true,
-    summary: 'Quatro sessões curtas; a transferência de ar nas bochechas entra em duas delas.',
+    summary: 'Quatro sessões curtas. As bochechas entram em duas delas.',
     rules: [
       'Faça quatro sessões de cinco a seis minutos, com um dia de descanso entre sessões sempre que possível.',
       'Acrescente transferência de ar nas bochechas por 30 segundos em apenas duas sessões.',
@@ -43,11 +43,11 @@ export const PROGRAM: ProgramWeek[] = [
   },
   {
     week: 3,
-    title: 'Dose curta e controlada',
+    title: 'Um pouco mais',
     sessions: { min: 4, max: 4 },
     minutes: { min: 6, max: 7 },
     spacing: false,
-    summary: 'Até sete minutos, alternando sorriso protegido e bigode chinês.',
+    summary: 'Sessões um pouco maiores, alternando sorriso e bigode chinês.',
     rules: [
       'Faça quatro sessões de até sete minutos.',
       'Inclua uma escolha entre sorriso protegido e exercício de bigode chinês; não faça ambos no mesmo dia se a boca ficar cansada.',
@@ -57,11 +57,11 @@ export const PROGRAM: ProgramWeek[] = [
   },
   {
     week: 4,
-    title: 'Primeira rotina de 10 minutos',
+    title: 'Rotina completa',
     sessions: { min: 5, max: 5 },
     minutes: { min: 10, max: 10 },
     spacing: false,
-    summary: 'A sequência completa de 10 minutos, cinco vezes, com pelo menos um dia de descanso.',
+    summary: 'A rotina completa, cinco vezes, com pelo menos um dia de descanso.',
     rules: [
       'Faça cinco sessões de até dez minutos, deixando pelo menos um dia de descanso.',
       'Siga a sequência de 10 minutos, sem repetir os blocos de olhos ou de pescoço.',
@@ -70,11 +70,11 @@ export const PROGRAM: ProgramWeek[] = [
   },
   {
     week: 5,
-    title: 'Seleção por objetivo de aparência',
+    title: 'Foco por região',
     sessions: { min: 5, max: 5 },
     minutes: { min: 7, max: 10 },
     spacing: false,
-    summary: 'Cinco sessões com foco alternado: testa e mandíbula, bochechas e bigode chinês, pescoço e papada.',
+    summary: 'Cada sessão foca uma parte: testa e mandíbula, bochechas e bigode, pescoço e papada.',
     rules: [
       'Faça cinco sessões, mas alterne o foco: duas para relaxamento de testa/mandíbula, duas para bochechas/bigode chinês, uma para pescoço/papada leve.',
       'Mantenha o toque ocular em no máximo 30 segundos.',
@@ -88,7 +88,7 @@ export const PROGRAM: ProgramWeek[] = [
     sessions: { min: 5, max: 6 },
     minutes: { min: 8, max: 10 },
     spacing: false,
-    summary: 'Cinco sessões de oito a dez minutos; uma sexta, opcional, de apenas cinco.',
+    summary: 'Cinco sessões completas e uma sexta curta, se quiser.',
     rules: [
       'Faça cinco sessões de oito a dez minutos.',
       'Se não houver qualquer reação, teste uma sexta sessão opcional de apenas cinco minutos; não pratique duas rotinas completas no mesmo dia.',
@@ -98,11 +98,11 @@ export const PROGRAM: ProgramWeek[] = [
   },
   {
     week: 7,
-    title: 'Observação de tensão e técnica',
+    title: 'Técnica',
     sessions: { min: 4, max: 5 },
     minutes: { min: 10, max: 10 },
     spacing: false,
-    summary: 'Qualidade acima de quantidade: mandíbula descruzada, testa sem franzir, ombros baixos.',
+    summary: 'Capriche na técnica: testa lisa, dentes soltos, ombros baixos.',
     rules: [
       'Faça quatro a cinco sessões de dez minutos.',
       'Priorize qualidade: mandíbula descruzada, testa sem franzir, ombros baixos e respiração livre.',
@@ -116,7 +116,7 @@ export const PROGRAM: ProgramWeek[] = [
     sessions: { min: 4, max: 6 },
     minutes: { min: 5, max: 10 },
     spacing: false,
-    summary: 'Escolha os movimentos mais confortáveis e decida uma manutenção realista.',
+    summary: 'Fique com os exercícios de que mais gostou e monte sua manutenção.',
     rules: [
       'Faça quatro a seis sessões de cinco a dez minutos, escolhendo os movimentos mais confortáveis.',
       'Avalie: a prática cabe na sua rotina? A pele permanece íntegra? Houve dor, irritação, cefaleia ou tensão articular? Se sim, não aumente a dose.',
@@ -133,7 +133,7 @@ export const MAINTENANCE: ProgramWeek = {
   sessions: { min: 3, max: 4 },
   minutes: { min: 5, max: 10 },
   spacing: false,
-  summary: 'Três ou quatro sessões semanais são suficientes como ritual de autocuidado; mais não significa melhor.',
+  summary: 'Três ou quatro sessões por semana mantêm o ritual.',
   rules: [
     'Três ou quatro sessões por semana, de cinco a dez minutos.',
     'Escolha os movimentos que trazem conforto e atenção útil.',
