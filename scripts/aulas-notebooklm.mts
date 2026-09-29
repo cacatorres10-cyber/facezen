@@ -2,6 +2,7 @@
 // (src/content/library.ts e src/content/course.ts): uma aula por exercício e por tema de skincare.
 // Uso: npm run aulas
 import fs from 'node:fs'
+import { exerciseSvg } from '../src/content/art.ts'
 import { COURSE, type Lesson } from '../src/content/course.ts'
 import { EXERCISES, FOCUS, groupById, LEVEL_LABEL, SERIES, type Exercise, type Level } from '../src/content/library.ts'
 
@@ -16,6 +17,10 @@ const FLAG_TEXT: Record<string, string> = {
 const LEVELS: Level[] = ['ini', 'int', 'ava']
 const byId = (id: string) => EXERCISES.find((e) => e.id === id)!
 const names = (ids: string[]) => ids.map((id) => `${id} ${byId(id).title}`).join(' → ')
+
+const DRAW_DIR = 'docs/guia/desenhos'
+fs.rmSync(DRAW_DIR, { recursive: true, force: true })
+fs.mkdirSync(DRAW_DIR, { recursive: true })
 
 const out: string[] = []
 const w = (...lines: string[]) => out.push(...lines)
@@ -59,18 +64,22 @@ function exerciseLesson(e: Exercise) {
   w(`- **Região:** ${g.title}`)
   w(`- **Dose:** ${LEVELS.map((l) => `${LEVEL_LABEL[l]} ${e.dose[l]}`).join(' · ')}`)
   if (e.sided) w('- **Lados:** faça de um lado e depois do outro.')
-  if (e.tool) w('- **Material:** usa um acessório (veja o passo a passo).')
   if (e.anywhere) w('- **Onde:** dá para fazer em qualquer lugar, sem as mãos no rosto.')
+  const svg = exerciseSvg(e.id, `Desenho: ${e.title}`)
+  if (svg) {
+    fs.writeFileSync(`${DRAW_DIR}/${e.id}.svg`, svg)
+    w('', `![Desenho do exercício ${e.id} ${e.title}: dedos em rosa, setas verdes mostram o movimento, pontos verdes são onde tocar](desenhos/${e.id}.svg)`)
+  }
   w('', '**Passo a passo**', '')
   e.steps.forEach((s, i) => w(`${i + 1}. ${s}`))
-  if (e.feel) w('', `**O que sentir:** ${e.feel}`)
-  if (e.mistakes) w('', `**Erros comuns:** ${e.mistakes.join('; ')}.`)
+  w('', `**Confira no espelho:** ${e.check}`)
   if (e.skip) w('', `**Pule se:** ${e.skip}`)
   if (e.avoidIf.length) w('', `**Fica fora do plano de quem tem:** ${e.avoidIf.map((f) => FLAG_TEXT[f]).join('; ')}.`)
   const adapt = Object.entries(e.adapt ?? {})
   if (adapt.length) w('', `**Adaptação:** ${adapt.map(([f, t]) => `com ${FLAG_TEXT[f]}: ${t}`).join(' ')}`)
-  videoPrompt(`${e.id} ${e.title}`, 'Mostre o exercício como um tutorial: para que serve, a posição das mãos, cada passo com calma, a dose de cada nível, o que sentir e os erros comuns.', [
-    'Descreva os gestos com detalhes visuais (onde ficam os dedos, a direção do movimento), porque a pessoa vai imitar.',
+  videoPrompt(`${e.id} ${e.title}`, 'Mostre o exercício como um tutorial: para que serve, os 3 passos com calma, a dose de cada nível e como conferir no espelho.', [
+    'Use o desenho da aula como imagem principal: explique onde ficam os dedos (em rosa) e o movimento das setas verdes.',
+    'Use comparações do dia a dia, como no texto. A pessoa vai imitar o que ouvir.',
   ])
 }
 
@@ -78,7 +87,7 @@ function exerciseLesson(e: Exercise) {
 w(
   '# FaceZen — Aulas para o NotebookLM',
   '',
-  '*Todo o conteúdo do FaceZen organizado em aulas curtas: uma para cada exercício e uma para cada tema de skincare.*',
+  '*Todo o conteúdo do FaceZen organizado em aulas curtas: uma para cada um dos 15 exercícios essenciais, com desenho, e uma para cada tema de skincare.*',
   '',
   '## Como usar este arquivo',
   '',

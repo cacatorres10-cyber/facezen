@@ -4,7 +4,7 @@ import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import { exerciseById } from '../content/library'
 import { regionById } from '../content/regions'
 import { STOP_SIGNALS } from '../content/guide'
-import { FaceMap } from '../components/FaceMap'
+import { ExerciseArt } from '../components/ExerciseArt'
 import { Button, Card, Chip, cx, Eyebrow, Note, ProgressRing, Sheet, Title, YesNo } from '../components/ui'
 import { canSpeak, chime, speak, stopSpeaking, unlockAudio, vibrate } from '../lib/audio'
 import { clock, dayKey, formatDuration } from '../lib/dates'
@@ -279,8 +279,8 @@ function Player({ plan, onFinish }: { plan: SessionPlan; onFinish: (practicedSec
 
       <div className="relative z-10 flex flex-1 flex-col items-center px-5 pt-6">
         <ProgressRing value={ring} size={220} stroke={5}>
-          <div className="w-[140px]">
-            <FaceMap highlight={step.region} />
+          <div className="w-[150px]">
+            <ExerciseArt id={step.id} title={`Desenho: ${step.title}`} />
           </div>
         </ProgressRing>
 

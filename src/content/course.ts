@@ -105,7 +105,6 @@ const COMECE: Lesson[] = [
       'Olhe a pele: se houver ferida ou espinha inflamada, pule os movimentos naquela área hoje.',
     ],
     details: [
-      'Opcionais: gua sha de bordas lisas, rolo, colher de bordas lisas, palito (hashi) para o exercício “Palito”.',
       'Lave as ferramentas antes e depois. Não use ferramenta lascada e não compartilhe.',
       'Manhã desincha e prepara o dia. Noite relaxa e solta a tensão. Em pausas curtas, só os exercícios sem as mãos.',
     ],
@@ -477,13 +476,10 @@ const ACOMPANHAR: Lesson[] = [
 
 export const COURSE: CourseModule[] = [
   { id: 'comece', kind: 'teoria', title: 'Comece aqui', intro: 'Como funciona, as regras de ouro e o seu programa.', lessons: COMECE },
-  { id: 'aquecer', kind: 'exercicios', title: 'Aquecimento', intro: 'Prepare pescoço e rosto antes de começar.', groups: ['aquecimento'] },
-  { id: 'testa', kind: 'exercicios', title: 'Testa', intro: 'Testa e a região entre as sobrancelhas.', groups: ['testa'] },
-  { id: 'olhos', kind: 'exercicios', title: 'Olhos', intro: 'A região mais delicada, com toque leve.', groups: ['olhos'] },
-  { id: 'bochechas', kind: 'exercicios', title: 'Bochechas', intro: 'Maçãs do rosto e terço médio.', groups: ['bochechas'] },
-  { id: 'boca', kind: 'exercicios', title: 'Boca, lábios e nariz', intro: 'Bigode chinês, contorno da boca e nariz.', groups: ['bigode', 'labios', 'nariz'] },
-  { id: 'mandibula', kind: 'exercicios', title: 'Mandíbula e pescoço', intro: 'Queixo, contorno, papada e pescoço.', groups: ['mandibula', 'pescoco'] },
-  { id: 'massagem', kind: 'exercicios', title: 'Massagem e relaxamento', intro: 'Massagem com as mãos, ferramentas e o relaxamento final.', groups: ['massagem', 'relaxamento'] },
+  { id: 'aquecer', kind: 'exercicios', title: 'Aquecer', intro: 'Três exercícios para preparar pescoço e rosto.', groups: ['aquecimento'] },
+  { id: 'testa-olhos', kind: 'exercicios', title: 'Testa e olhos', intro: 'Testa sem franzir e olhos com toque leve.', groups: ['testa', 'olhos'] },
+  { id: 'bochechas-boca', kind: 'exercicios', title: 'Bochechas e boca', intro: 'Maçãs do rosto, bigode chinês e contorno da boca.', groups: ['bochechas', 'bigode', 'labios'] },
+  { id: 'mandibula', kind: 'exercicios', title: 'Mandíbula, pescoço e relaxar', intro: 'Queixo, pescoço e o final da sessão.', groups: ['mandibula', 'pescoco', 'relaxamento'] },
   { id: 'skin-basico', kind: 'skincare', title: 'Skincare: o básico', intro: 'Limpar, hidratar e proteger bem feito.', lessons: SKIN_BASICO },
   { id: 'skin-ativos', kind: 'skincare', title: 'Skincare: os ativos', intro: 'O que é cada ativo e quando usar.', lessons: SKIN_ATIVOS },
   { id: 'skin-rotina', kind: 'skincare', title: 'Skincare: a sua rotina', intro: 'Rotinas por tipo de pele, manchas e hábitos.', lessons: SKIN_ROTINA },

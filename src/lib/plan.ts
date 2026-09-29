@@ -88,14 +88,10 @@ export function focusFor(goals: Profile['goals'], sessionIndex: number): FocusId
 }
 
 /** Exercícios sem toque no rosto, para dias de pele irritada. */
-const SUAVE = ['A7', 'A6', 'O5', 'B1', 'B3', 'L1', 'R3']
+const SUAVE = ['A6', 'O5', 'B1', 'B3', 'L1', 'R3']
 
-/** Com pele sensível, nada de ferramentas nem fricção nos lábios (guia 6.7). */
-const SENSITIVE_SKIP = ['L4', 'MF3', 'MF4']
-
-export function isAllowed(ex: Exercise, profile: Pick<Profile, 'safety' | 'sensitive'>): boolean {
-  if (ex.avoidIf.some((f) => profile.safety.includes(f))) return false
-  return !(profile.sensitive && SENSITIVE_SKIP.includes(ex.id))
+export function isAllowed(ex: Exercise, profile: Pick<Profile, 'safety'>): boolean {
+  return !ex.avoidIf.some((f) => profile.safety.includes(f))
 }
 
 /** Um exercício pronto para o cronômetro, no nível pedido. */
@@ -127,8 +123,8 @@ export function buildSession(profile: ProfileLike, ctx: PlanContext): SessionPla
   }
 
   const adaptations: string[] = []
-  if (flags.includes('atm')) adaptations.push('Sem Balão, Palito e Peixinho, por causa da mandíbula. Abra pouco a boca.')
-  if (flags.includes('cervical')) adaptations.push('Pescoço sempre neutro: sem aquecimento de pescoço e com a cabeça reta.')
+  if (flags.includes('atm')) adaptations.push('Sem Balão e Peixinho, por causa da mandíbula. Abra pouco a boca.')
+  if (flags.includes('cervical')) adaptations.push('Pescoço sempre neutro: sem a meia-lua e com a cabeça reta.')
   if (flags.includes('olhos')) adaptations.push('Olhos só com toque leve, por causa dos sintomas que você marcou.')
   if (profile.sensitive) adaptations.push('Pele sensível: pressão mínima e mais produto para deslizar.')
 

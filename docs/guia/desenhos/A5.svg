@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 270" role="img" aria-label="Desenho: Balão">
+<defs>
+<marker id="fz-seta" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="4.5" markerHeight="4.5" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="var(--jade, #1f5a4e)"/></marker>
+<marker id="fz-seta-i" viewBox="0 0 10 10" refX="3" refY="5" markerWidth="4.5" markerHeight="4.5" orient="auto"><path d="M10 0 L0 5 L10 10 Z" fill="var(--jade, #1f5a4e)"/></marker>
+</defs>
+<g fill="none" stroke="var(--ink, #15302b)" stroke-width="1.7" stroke-linecap="round" opacity="0.85"><path d="M80 194 L78 240 C66 246 44 250 22 260"/><path d="M120 194 L122 240 C134 246 156 250 178 260"/><path d="M70 254 C82 250 92 252 99 256" opacity="0.5"/><path d="M130 254 C118 250 108 252 101 256" opacity="0.5"/></g><g><g fill="none" stroke="var(--ink, #15302b)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+<path d="M100 28 C62 28 42 58 42 100 C42 122 45 140 52 156 C60 176 78 196 100 200 C122 196 140 176 148 156 C155 140 158 122 158 100 C158 58 138 28 100 28 Z"/>
+<path d="M43 104 C35 104 33 126 45 130"/><path d="M157 104 C165 104 167 126 155 130"/>
+<path d="M60 60 C74 44 96 40 112 44 C128 48 140 58 146 72" opacity="0.4"/>
+<path d="M100 100 C99 114 95 126 96 132 C98 136 104 136 106 133"/>
+<path d="M62 86 C70 80 82 80 88 84"/><path d="M112 84 C118 80 130 80 138 86"/><ellipse cx="76" cy="103" rx="11" ry="5.5"/><circle cx="76" cy="103" r="3.2" fill="var(--ink, #15302b)" stroke="none"/><ellipse cx="124" cy="103" rx="11" ry="5.5"/><circle cx="124" cy="103" r="3.2" fill="var(--ink, #15302b)" stroke="none"/><path d="M92 157 C96 155 104 155 108 157"/><path d="M47 128 C34 138 36 160 50 170" opacity="0.8"/><path d="M153 128 C166 138 164 160 150 170" opacity="0.8"/></g><path d="M58 150 Q100 182 142 150" fill="none" stroke="var(--jade, #1f5a4e)" stroke-width="2.4" stroke-linecap="round" marker-end="url(#fz-seta)" marker-start="url(#fz-seta-i)"/><path d="M100 142 L100 172" fill="none" stroke="var(--jade, #1f5a4e)" stroke-width="2.4" stroke-linecap="round" marker-end="url(#fz-seta)" marker-start="url(#fz-seta-i)"/></g></svg>

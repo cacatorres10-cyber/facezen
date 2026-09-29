@@ -1,4 +1,5 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest'
+import { exerciseSvg } from '../content/art'
 import { EXERCISES, FOCUS, SERIES } from '../content/library'
 import { weekInfo } from '../content/program'
 import type { SafetyFlag } from '../content/types'
@@ -29,7 +30,7 @@ const ids = (p: Profile, ctx: Partial<PlanContext> = {}) => buildSession(p, { we
 describe('sessões montadas com as séries e os módulos de foco', () => {
   it('semanas 1 e 2: Série A inteira, nível iniciante, sem foco', () => {
     const plan = buildSession(profile({ goals: ['papada'] }), { week: 1, sessionIndex: 0 })
-    expect(plan.steps.map((s) => s.id)).toEqual(['A3', 'A5', 'T1', 'O1', 'O4', 'B1', 'L1', 'M1', 'R1', 'R3'])
+    expect(plan.steps.map((s) => s.id)).toEqual(SERIES.A)
     expect(plan.level).toBe('ini')
     expect(plan.steps.some((s) => s.focus)).toBe(false)
   })
@@ -41,8 +42,8 @@ describe('sessões montadas com as séries e os módulos de foco', () => {
     expect(plan.level).toBe('int')
     const focus = plan.steps.filter((s) => s.focus).map((s) => s.id)
     expect(focus).toEqual(FOCUS.B.ids.filter((id) => focus.includes(id)))
-    expect(focus.length).toBeGreaterThanOrEqual(3)
-    expect(plan.steps.at(-1)?.id).toBe('R2')
+    expect(focus.length).toBeGreaterThanOrEqual(2)
+    expect(plan.steps.at(-1)?.id).toBe('R3')
   })
 
   it('objetivo secundário entra em dias alternados', () => {
@@ -83,29 +84,28 @@ describe('segurança', () => {
 
   it('pele irritada: só exercícios sem as mãos no rosto', () => {
     const s = ids(profile(), { week: 4, skinIrritatedToday: true })
-    expect(s).toEqual(['A7', 'A6', 'O5', 'B1', 'B3', 'L1', 'R3'])
+    expect(s).toEqual(['A6', 'O5', 'B1', 'B3', 'L1', 'R3'])
   })
 
-  it('ATM: sem Balão, Palito e Peixinho', () => {
+  it('ATM: sem Balão e Peixinho', () => {
     for (const week of [1, 3, 4]) {
       const s = ids(withFlags('atm'), { week, sessionIndex: week })
-      for (const id of ['A5', 'B2', 'B3']) expect(s).not.toContain(id)
+      for (const id of ['A5', 'B3']) expect(s).not.toContain(id)
     }
   })
 
-  it('pescoço: sem aquecimento de pescoço e com M1 de cabeça reta', () => {
+  it('pescoço: sem a meia-lua e com M1 de cabeça reta', () => {
     const plan = buildSession(withFlags('cervical'), { week: 1, sessionIndex: 0 })
-    for (const id of ['A1', 'A2', 'A3', 'A4', 'P1']) expect(plan.steps.map((s) => s.id)).not.toContain(id)
+    expect(plan.steps.map((s) => s.id)).not.toContain('A3')
     expect(plan.steps.find((s) => s.id === 'M1')?.note).toMatch(/cabeça reta/)
   })
 
-  it('olhos: sem O1, O2 e T5', () => {
-    const s = [...ids(withFlags('olhos'), { week: 1 }), ...ids(profile({ safety: ['olhos'], goals: ['olheiras'], minutes: 15 }), { week: 4 })]
-    for (const id of ['O1', 'O2', 'T5']) expect(s).not.toContain(id)
-  })
-
-  it('pele sensível: sem código de barras nem ferramentas', () => {
-    expect(ids(profile({ sensitive: true, goals: ['labios'], minutes: 15 }), { week: 4 })).not.toContain('L4')
+  it('todo exercício tem desenho e no máximo 3 passos', () => {
+    for (const e of EXERCISES) {
+      expect(exerciseSvg(e.id)).toContain('<svg')
+      expect(e.steps.length).toBeLessThanOrEqual(3)
+    }
+    expect(EXERCISES).toHaveLength(15)
   })
 })
 

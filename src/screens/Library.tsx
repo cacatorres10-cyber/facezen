@@ -1,7 +1,7 @@
-import { Check, ChevronRight, Heart, Play, ShieldAlert, Wrench } from 'lucide-react'
+import { Check, ChevronRight, Heart, Play, ShieldAlert } from 'lucide-react'
 import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import { EXERCISES, exerciseById, GROUPS, groupById, LEVEL_LABEL, type GroupId, type Level } from '../content/library'
-import { FaceMap } from '../components/FaceMap'
+import { ExerciseArt } from '../components/ExerciseArt'
 import { Photo } from '../components/Photo'
 import { Stepper } from '../components/Stepper'
 import { BackLink, Button, Card, Chip, cx, Eyebrow, Note, Title } from '../components/ui'
@@ -71,8 +71,8 @@ export function Library() {
                   return (
                     <li key={e.id}>
                       <Link to={`/exercicios/${e.id}`} className={cx('flex items-center gap-3 rounded-3xl bg-surface p-3 pr-4 shadow-soft', blocked && 'opacity-60')}>
-                        <span className="relative w-14 shrink-0 rounded-2xl bg-surface-2 p-1">
-                          <FaceMap highlight={e.region ?? g.region} />
+                        <span className="relative w-16 shrink-0 rounded-2xl bg-surface-2 p-1">
+                          <ExerciseArt id={e.id} />
                           <span className="absolute -top-1 -left-1 grid h-6 min-w-6 place-items-center rounded-full bg-jade px-1 text-[10px] font-bold text-on-jade">{e.id}</span>
                         </span>
                         <span className="min-w-0 flex-1">
@@ -123,7 +123,6 @@ export function ExerciseDetail() {
   const blocked = !isAllowed(e, profile)
   const adapt = profile.safety.map((f) => e.adapt?.[f]).filter(Boolean)
   const fav = favorites.includes(e.id)
-  const region = e.region ?? g.region
 
   return (
     <div className="px-5 pb-44">
@@ -148,11 +147,6 @@ export function ExerciseDetail() {
       <p className="mt-2 flex flex-wrap items-center gap-2 text-sm">
         <span className="rounded-full bg-jade-soft px-2.5 py-0.5 font-semibold text-jade">{e.dose[level]}</span>
         {e.sided && <span className="text-ink-faint">metade de cada lado</span>}
-        {e.tool && (
-          <span className="inline-flex items-center gap-1 text-ink-faint">
-            <Wrench className="size-3.5" /> usa um acessório
-          </span>
-        )}
         {e.anywhere && <span className="text-ink-faint">dá para fazer em qualquer lugar</span>}
       </p>
 
@@ -172,11 +166,15 @@ export function ExerciseDetail() {
         </Note>
       )}
 
-      <div className="mt-5">
+      <div className="mt-5 rounded-3xl bg-surface p-4 shadow-soft">
+        <ExerciseArt id={e.id} title={`Desenho: ${e.title}`} className="mx-auto max-w-[240px]" />
+        <p className="mt-2 text-center text-xs text-ink-faint">Dedos em rosa · setas mostram o movimento · pontos são onde tocar</p>
+      </div>
+
+      <div className="mt-4">
         <Stepper
           key={e.id}
           steps={e.steps}
-          visual={<FaceMap highlight={region} />}
           done={lessonsDone.includes(e.id)}
           finishLabel="Aprendi"
           onFinish={() => completeLesson(e.id)}
@@ -184,22 +182,10 @@ export function ExerciseDetail() {
       </div>
 
       <div className="mt-4 grid gap-3">
-        {e.feel && (
-          <Card className="!p-4">
-            <p className="eyebrow">O que sentir</p>
-            <p className="mt-1.5 text-ink">{e.feel}</p>
-          </Card>
-        )}
-        {e.mistakes && (
-          <Card className="!p-4">
-            <p className="eyebrow">Erros comuns</p>
-            <ul className="mt-1.5 grid gap-1 text-ink">
-              {e.mistakes.map((m) => (
-                <li key={m}>· {m}</li>
-              ))}
-            </ul>
-          </Card>
-        )}
+        <Card className="!p-4">
+          <p className="eyebrow">Confira no espelho</p>
+          <p className="mt-1.5 text-ink">{e.check}</p>
+        </Card>
         <Card className="!p-4">
           <p className="eyebrow">Dose por nível</p>
           <div className="mt-2 grid grid-cols-3 gap-2 text-center">

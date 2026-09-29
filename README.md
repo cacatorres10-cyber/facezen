@@ -8,7 +8,7 @@ Mini app (PWA) feito a partir do ebook *Yoga Facial e Skincare Consciente*: func
 - **Onboarding**: nome, objetivos (como um quiz), tipo de pele, tempo por dia (5, 10 ou 15 min), dias da semana e perguntas de segurança.
 - **Hoje**: a sessão do dia, a meta da semana, o skincare do dia e a próxima aula do curso.
 - **Curso**: 12 módulos com tutoriais passo a passo (um passo por tela): teoria, cada exercício e cada tema de skincare. O progresso fica salvo no aparelho.
-- **Exercícios**: 47 exercícios próprios (`src/content/library.ts`), cada um com tutorial, dose por nível, o que sentir, erros comuns e quando pular.
+- **Exercícios**: 15 essenciais (`src/content/library.ts`), cada um com desenho próprio (`art.ts`: dedos, setas e expressão), 3 passos simples, dose por nível e como conferir no espelho.
 - **Sessão guiada**: cronômetro por exercício, dose do dia, aviso de troca de lado, voz guiada, modo espelho e botão "Senti desconforto".
 - **Skincare**: o básico (limpar, hidratar, proteger) com os produtos que a pessoa já usa, recomendações e histórico.
 - **Progresso**: calendário de 8 semanas e histórico.
@@ -24,10 +24,8 @@ O motor em `src/lib/plan.ts` monta cada sessão com as séries A/B e os módulos
 | Semanas 6–8 (Intensificação) | Avançado; volta ao intermediário se houve incômodo nos últimos 7 dias |
 | Manutenção | Séries alternadas, intermediário |
 | 5 minutos | O rosto inteiro continua, com doses menores |
-| ATM | Sem Balão, Palito e Peixinho |
-| Cervical | Sem aquecimento de pescoço nem Língua ao canto; M1 e M2 com a cabeça reta |
-| Sintomas nos olhos | Sem O1, O2 e T5 |
-| Pele sensível | Sem ferramentas nem Código de barras |
+| ATM | Sem Balão e Peixinho |
+| Cervical | Sem a meia-lua; M1 com a cabeça reta |
 | Pele em crise ou irritada hoje | Sessão suave, sem as mãos no rosto |
 | Procedimento recente | Sessões em pausa até a liberação |
 | Gravidez/amamentação | Retinoide fica fora da rotina de skincare |

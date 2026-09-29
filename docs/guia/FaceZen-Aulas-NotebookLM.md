@@ -1,6 +1,6 @@
 # FaceZen — Aulas para o NotebookLM
 
-*Todo o conteúdo do FaceZen organizado em aulas curtas: uma para cada exercício e uma para cada tema de skincare.*
+*Todo o conteúdo do FaceZen organizado em aulas curtas: uma para cada um dos 15 exercícios essenciais, com desenho, e uma para cada tema de skincare.*
 
 ## Como usar este arquivo
 
@@ -104,7 +104,6 @@ Como funciona, as regras de ouro e o seu programa.
 
 **Mais detalhes**
 
-- Opcionais: gua sha de bordas lisas, rolo, colher de bordas lisas, palito (hashi) para o exercício “Palito”.
 - Lave as ferramentas antes e depois. Não use ferramenta lascada e não compartilhe.
 - Manhã desincha e prepara o dia. Noite relaxa e solta a tensão. Em pausas curtas, só os exercícios sem as mãos.
 
@@ -139,18 +138,18 @@ Como funciona, as regras de ouro e o seu programa.
 
 *O que entra em cada sessão.*
 
-- **Série A:** A3 Meia-lua do pescoço → A5 Balão → T1 Testa lisa → O1 Pálpebra inferior firme → O4 Toque de pena → B1 Zigomático → L1 AO → M1 Infralabial → R1 Palmas nos olhos → R3 Soltar a mandíbula
-- **Série B:** A2 Barco → A6 Língua em arco → T2 Testa lateral → T4 Yin-Yang → O2 V nos olhos → B3 Peixinho → L2 Labial → M2 Beijo ao céu → R2 Pontos de pressão
+- **Série A:** A3 Meia-lua do pescoço → A5 Balão → T1 Testa lisa → O4 Toque de pena → B1 Do “O” ao sorriso → L1 “O” e “A” → M1 Lábio para cima → R3 Mandíbula solta
+- **Série B:** A6 Língua em ponte → T6 Alisar a testa → O5 Olhar em cruz → B3 Peixinho → N1 Sorriso escondido → M4 Soltar o masseter → P2 Pescoço para baixo → R3 Mandíbula solta
 
 **Módulos de foco** (entram a partir da semana 3, antes do relaxamento)
 
-- **A · Bigode chinês:** N1 Sorriso com mãos nas orelhas → N2 V nos lábios → N4 Deslize do sulco
-- **B · Papada e pescoço:** P1 Língua ao canto → M3 Queixo definido → M1 Infralabial → P2 Deslizamento até a clavícula
-- **C · Testa:** T4 Yin-Yang → T5 Binóculo → T6 Alisamento para as têmporas
-- **D · Olhos:** O2 V nos olhos → O3 Olhos perfeitos → O5 Olhar em cruz → O4 Toque de pena
-- **E · Lábios:** L3 Arco do cupido → L4 Código de barras → L2 Labial
-- **F · Bochechas e contorno:** B2 Palito → B1 Zigomático → M5 Contorno em pinça → B4 Três alturas
-- **G · Tensão:** M4 Masseter → A4 Alongamento lateral → MF2 Ciclo com as mãos → R3 Soltar a mandíbula
+- **A · Bigode chinês:** N1 Sorriso escondido → B1 Do “O” ao sorriso
+- **B · Papada e pescoço:** A6 Língua em ponte → M1 Lábio para cima → P2 Pescoço para baixo
+- **C · Testa:** T1 Testa lisa → T6 Alisar a testa
+- **D · Olhos:** O4 Toque de pena → O5 Olhar em cruz
+- **E · Lábios:** L1 “O” e “A” → N1 Sorriso escondido
+- **F · Bochechas e contorno:** B1 Do “O” ao sorriso → B3 Peixinho → M4 Soltar o masseter
+- **G · Tensão:** M4 Soltar o masseter → T6 Alisar a testa → R3 Mandíbula solta
 
 Com 5 minutos por dia, as doses ficam no nível iniciante para caber o rosto inteiro. Com 10 ou 15 minutos, seguem a fase do programa.
 
@@ -175,119 +174,41 @@ Com 5 minutos por dia, as doses ficam no nível iniciante para caber o rosto int
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Quando parar e quando procurar ajuda” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-# Módulo 2 · Aquecimento
+# Módulo 2 · Aquecer
 
-Prepare pescoço e rosto antes de começar.
+Três exercícios para preparar pescoço e rosto.
 
 *Um a dois minutos que preparam pescoço e rosto, como o alongamento de um atleta antes do jogo.*
 
-## Aula 8 · A1 Oito no ar
+## Aula 8 · A3 Meia-lua do pescoço
 
-*Soltar ombros, costas e pescoço antes do rosto.*
-
-- **Região:** Aquecimento
-- **Dose:** Iniciante 5 repetições · Intermediário 5 repetições · Avançado 5 repetições
-
-**Passo a passo**
-
-1. Em pé, junte as palmas na frente do peito
-2. Imagine um lápis na ponta dos dedos
-3. Desenhe no ar um “8” deitado, movendo o tronco junto
-4. Relaxe pescoço, ombros e quadril
-5. Faça 5 vezes, devagar
-
-**O que sentir:** O tronco e os ombros soltando.
-
-**Pule se:** Tontura ou dor lombar.
-
-**Fica fora do plano de quem tem:** dor ou histórico no pescoço (cervical).
-
-> **Para o NotebookLM (Visão geral em vídeo → Personalizar):**
-> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “A1 Oito no ar” do FaceZen. Mostre o exercício como um tutorial: para que serve, a posição das mãos, cada passo com calma, a dose de cada nível, o que sentir e os erros comuns.
-> Descreva os gestos com detalhes visuais (onde ficam os dedos, a direção do movimento), porque a pessoa vai imitar.
-> Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
-
-## Aula 9 · A2 Barco
-
-*Soltar a nuca.*
-
-- **Região:** Aquecimento
-- **Dose:** Iniciante 5 repetições · Intermediário 5 repetições · Avançado 5 repetições
-
-**Passo a passo**
-
-1. Leve o queixo em direção ao peito
-2. Inspire
-3. Balance a cabeça devagar para a direita
-4. Passe pelo centro e vá para a esquerda
-5. Repita 5 vezes, sem pressa
-
-**O que sentir:** Alongamento suave atrás do pescoço.
-
-**Erros comuns:** Fazer rápido; Levar a cabeça para trás.
-
-**Pule se:** Dor cervical, hérnia ou tontura.
-
-**Fica fora do plano de quem tem:** dor ou histórico no pescoço (cervical).
-
-> **Para o NotebookLM (Visão geral em vídeo → Personalizar):**
-> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “A2 Barco” do FaceZen. Mostre o exercício como um tutorial: para que serve, a posição das mãos, cada passo com calma, a dose de cada nível, o que sentir e os erros comuns.
-> Descreva os gestos com detalhes visuais (onde ficam os dedos, a direção do movimento), porque a pessoa vai imitar.
-> Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
-
-## Aula 10 · A3 Meia-lua do pescoço
-
-*Mobilidade do pescoço com a respiração.*
+*Soltar o pescoço antes de começar.*
 
 - **Região:** Aquecimento
 - **Dose:** Iniciante 5 de cada lado · Intermediário 5 de cada lado · Avançado 5 de cada lado
 - **Lados:** faça de um lado e depois do outro.
 
+![Desenho do exercício A3 Meia-lua do pescoço: dedos em rosa, setas verdes mostram o movimento, pontos verdes são onde tocar](desenhos/A3.svg)
+
 **Passo a passo**
 
-1. Inspire e desça o queixo em direção ao peito
-2. Solte o ar girando a cabeça para a direita, orelha em direção ao ombro
-3. Inspire e volte pelo centro
-4. Solte o ar e gire para a esquerda
-5. Só a metade da frente: nunca o círculo completo para trás
+1. Desça o queixo em direção ao peito, devagar.
+2. Role a cabeça até a orelha chegar perto do ombro direito.
+3. Volte pelo meio e vá para o lado esquerdo.
 
-**Pule se:** Dor cervical ou tontura.
+**Confira no espelho:** Só a metade da frente: a cabeça nunca vai para trás.
+
+**Pule se:** Dor no pescoço ou tontura.
 
 **Fica fora do plano de quem tem:** dor ou histórico no pescoço (cervical).
 
 > **Para o NotebookLM (Visão geral em vídeo → Personalizar):**
-> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “A3 Meia-lua do pescoço” do FaceZen. Mostre o exercício como um tutorial: para que serve, a posição das mãos, cada passo com calma, a dose de cada nível, o que sentir e os erros comuns.
-> Descreva os gestos com detalhes visuais (onde ficam os dedos, a direção do movimento), porque a pessoa vai imitar.
+> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “A3 Meia-lua do pescoço” do FaceZen. Mostre o exercício como um tutorial: para que serve, os 3 passos com calma, a dose de cada nível e como conferir no espelho.
+> Use o desenho da aula como imagem principal: explique onde ficam os dedos (em rosa) e o movimento das setas verdes.
+> Use comparações do dia a dia, como no texto. A pessoa vai imitar o que ouvir.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 11 · A4 Alongamento lateral
-
-*Alongar as laterais do pescoço.*
-
-- **Região:** Aquecimento
-- **Dose:** Iniciante 3 de cada lado · Intermediário 3 de cada lado · Avançado 3 de cada lado
-- **Lados:** faça de um lado e depois do outro.
-
-**Passo a passo**
-
-1. Apoie a mão direita na lateral esquerda da cabeça
-2. Incline a cabeça para a direita, orelha em direção ao ombro
-3. Estenda o braço esquerdo para baixo, a uns 45°
-4. Deixe o peso da mão alongar, sem puxar
-5. Segure 3 respirações e troque de lado
-
-**O que sentir:** Alongamento da lateral do pescoço até o ombro.
-
-**Pule se:** Formigamento no braço ou dor cervical.
-
-**Fica fora do plano de quem tem:** dor ou histórico no pescoço (cervical).
-
-> **Para o NotebookLM (Visão geral em vídeo → Personalizar):**
-> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “A4 Alongamento lateral” do FaceZen. Mostre o exercício como um tutorial: para que serve, a posição das mãos, cada passo com calma, a dose de cada nível, o que sentir e os erros comuns.
-> Descreva os gestos com detalhes visuais (onde ficam os dedos, a direção do movimento), porque a pessoa vai imitar.
-> Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
-
-## Aula 12 · A5 Balão
+## Aula 9 · A5 Balão
 
 *Aquecer bochechas e boca.*
 
@@ -295,371 +216,188 @@ Prepare pescoço e rosto antes de começar.
 - **Dose:** Iniciante 5 voltas · Intermediário 5 voltas · Avançado 5 voltas
 - **Onde:** dá para fazer em qualquer lugar, sem as mãos no rosto.
 
+![Desenho do exercício A5 Balão: dedos em rosa, setas verdes mostram o movimento, pontos verdes são onde tocar](desenhos/A5.svg)
+
 **Passo a passo**
 
-1. Encha as bochechas de ar, lábios fechados
-2. Leve o ar para a bochecha direita e conte 3
-3. Leve para a esquerda e conte 3
-4. Leve para cima do lábio superior e conte 3
-5. Leve para baixo do lábio inferior, conte 3 e solte
+1. Encha as bochechas de ar, com a boca fechada.
+2. Passe o ar de uma bochecha para a outra, contando 3 em cada.
+3. Leve o ar para cima e para baixo dos lábios, e solte.
 
-**Erros comuns:** Estufar ao máximo; Prender a respiração até faltar ar.
+**Confira no espelho:** Sem estufar ao máximo e sem prender a respiração.
 
 **Pule se:** Dor na mandíbula ou no ouvido.
 
 **Fica fora do plano de quem tem:** dor, estalo ou disfunção na mandíbula (ATM).
 
 > **Para o NotebookLM (Visão geral em vídeo → Personalizar):**
-> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “A5 Balão” do FaceZen. Mostre o exercício como um tutorial: para que serve, a posição das mãos, cada passo com calma, a dose de cada nível, o que sentir e os erros comuns.
-> Descreva os gestos com detalhes visuais (onde ficam os dedos, a direção do movimento), porque a pessoa vai imitar.
+> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “A5 Balão” do FaceZen. Mostre o exercício como um tutorial: para que serve, os 3 passos com calma, a dose de cada nível e como conferir no espelho.
+> Use o desenho da aula como imagem principal: explique onde ficam os dedos (em rosa) e o movimento das setas verdes.
+> Use comparações do dia a dia, como no texto. A pessoa vai imitar o que ouvir.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 13 · A6 Língua em arco
+## Aula 10 · A6 Língua em ponte
 
-*Ativar a musculatura abaixo do queixo.*
+*Acordar a região embaixo do queixo.*
 
 - **Região:** Aquecimento
 - **Dose:** Iniciante 5 repetições · Intermediário 5 repetições · Avançado 5 repetições
 
-**Passo a passo**
-
-1. Boca levemente aberta
-2. Ponta da língua atrás dos dentes de baixo
-3. Empurre o meio da língua para fora, formando um arco
-4. Segure 3 segundos
-5. Relaxe
-
-**O que sentir:** Trabalho embaixo do queixo.
-
-> **Para o NotebookLM (Visão geral em vídeo → Personalizar):**
-> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “A6 Língua em arco” do FaceZen. Mostre o exercício como um tutorial: para que serve, a posição das mãos, cada passo com calma, a dose de cada nível, o que sentir e os erros comuns.
-> Descreva os gestos com detalhes visuais (onde ficam os dedos, a direção do movimento), porque a pessoa vai imitar.
-> Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
-
-## Aula 14 · A7 “UUU” de olhos abertos
-
-*Soltar a tensão do rosto inteiro.*
-
-- **Região:** Aquecimento
-- **Dose:** Iniciante 5 repetições · Intermediário 5 repetições · Avançado 5 repetições
+![Desenho do exercício A6 Língua em ponte: dedos em rosa, setas verdes mostram o movimento, pontos verdes são onde tocar](desenhos/A6.svg)
 
 **Passo a passo**
 
-1. Alongue o rosto como quem se espanta
-2. Projete a boca em “U”
-3. Abra bem os olhos, sem franzir a testa
-4. Diga “UUU” com exagero
-5. Relaxe e repita
+1. Abra um pouco a boca e encoste a ponta da língua atrás dos dentes de baixo.
+2. Empurre o meio da língua para fora, como uma ponte.
+3. Segure 3 segundos e relaxe.
 
-**Erros comuns:** Subir a testa junto (se acontecer, apoie os dedos na testa).
+**Confira no espelho:** Você sente o trabalho embaixo do queixo.
 
 > **Para o NotebookLM (Visão geral em vídeo → Personalizar):**
-> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “A7 “UUU” de olhos abertos” do FaceZen. Mostre o exercício como um tutorial: para que serve, a posição das mãos, cada passo com calma, a dose de cada nível, o que sentir e os erros comuns.
-> Descreva os gestos com detalhes visuais (onde ficam os dedos, a direção do movimento), porque a pessoa vai imitar.
+> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “A6 Língua em ponte” do FaceZen. Mostre o exercício como um tutorial: para que serve, os 3 passos com calma, a dose de cada nível e como conferir no espelho.
+> Use o desenho da aula como imagem principal: explique onde ficam os dedos (em rosa) e o movimento das setas verdes.
+> Use comparações do dia a dia, como no texto. A pessoa vai imitar o que ouvir.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-# Módulo 3 · Testa
+# Módulo 3 · Testa e olhos
 
-Testa e a região entre as sobrancelhas.
+Testa sem franzir e olhos com toque leve.
+
+### Testa e entre as sobrancelhas
 
 *Fortalecer a testa e ensinar o rosto a não franzir sem necessidade.*
 
-## Aula 15 · T1 Testa lisa
+## Aula 11 · T1 Testa lisa
 
-*Fortalecer a testa e treiná-la a não enrugar.*
-
-- **Região:** Testa e entre as sobrancelhas
-- **Dose:** Iniciante 1 × 10 · Intermediário 2 × 15 · Avançado 3 × 15
-
-**Passo a passo**
-
-1. Pontas dos dedos na linha do cabelo, palmas nas laterais da testa
-2. “Segure” a testa com leve pressão para cima
-3. Feche os olhos
-4. Tente descer as sobrancelhas, reto, contra os dedos
-5. Movimentos curtos, com os dedos segurando
-
-**O que sentir:** Esforço na testa, sem dor.
-
-**Erros comuns:** Franzir entre as sobrancelhas; Puxar a pele com força.
-
-> **Para o NotebookLM (Visão geral em vídeo → Personalizar):**
-> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “T1 Testa lisa” do FaceZen. Mostre o exercício como um tutorial: para que serve, a posição das mãos, cada passo com calma, a dose de cada nível, o que sentir e os erros comuns.
-> Descreva os gestos com detalhes visuais (onde ficam os dedos, a direção do movimento), porque a pessoa vai imitar.
-> Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
-
-## Aula 16 · T2 Testa lateral
-
-*Evitar que a testa se junte no centro.*
+*Treinar a testa a não enrugar.*
 
 - **Região:** Testa e entre as sobrancelhas
 - **Dose:** Iniciante 1 × 10 · Intermediário 2 × 15 · Avançado 3 × 15
 
-**Passo a passo**
-
-1. Dedos nas laterais da testa, mínimo na têmpora
-2. Leve pressão dos dedos para fora
-3. Tente franzir, juntando a testa no centro
-4. Os dedos não deixam a testa se juntar
-5. Solte e repita
-
-> **Para o NotebookLM (Visão geral em vídeo → Personalizar):**
-> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “T2 Testa lateral” do FaceZen. Mostre o exercício como um tutorial: para que serve, a posição das mãos, cada passo com calma, a dose de cada nível, o que sentir e os erros comuns.
-> Descreva os gestos com detalhes visuais (onde ficam os dedos, a direção do movimento), porque a pessoa vai imitar.
-> Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
-
-## Aula 17 · T3 Borracha
-
-*Soltar a tensão das linhas horizontais.*
-
-- **Região:** Testa e entre as sobrancelhas
-- **Dose:** Iniciante 5 repetições · Intermediário 5 repetições · Avançado 5 repetições
+![Desenho do exercício T1 Testa lisa: dedos em rosa, setas verdes mostram o movimento, pontos verdes são onde tocar](desenhos/T1.svg)
 
 **Passo a passo**
 
-1. Indicadores um de frente para o outro, na linha do cabelo
-2. Dedos firmes
-3. Deslize devagar até as sobrancelhas
-4. Volte até a linha do cabelo
-5. Pressão confortável, pele lubrificada
+1. Apoie as mãos na testa, como quem afasta a franja, e segure a pele firme.
+2. Feche os olhos e tente descer as sobrancelhas, como quando bate o sono.
+3. As mãos não deixam descer: sinta a força e solte.
 
-**Fica fora do plano de quem tem:** pele em crise (acne inflamada, rosácea, eczema, feridas).
+**Confira no espelho:** A testa não enruga e nada de franzir entre as sobrancelhas.
 
 > **Para o NotebookLM (Visão geral em vídeo → Personalizar):**
-> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “T3 Borracha” do FaceZen. Mostre o exercício como um tutorial: para que serve, a posição das mãos, cada passo com calma, a dose de cada nível, o que sentir e os erros comuns.
-> Descreva os gestos com detalhes visuais (onde ficam os dedos, a direção do movimento), porque a pessoa vai imitar.
+> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “T1 Testa lisa” do FaceZen. Mostre o exercício como um tutorial: para que serve, os 3 passos com calma, a dose de cada nível e como conferir no espelho.
+> Use o desenho da aula como imagem principal: explique onde ficam os dedos (em rosa) e o movimento das setas verdes.
+> Use comparações do dia a dia, como no texto. A pessoa vai imitar o que ouvir.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 18 · T4 Yin-Yang
+## Aula 12 · T6 Alisar a testa
 
-*Fortalecer e soltar a região da “ruga do leão”.*
-
-- **Região:** Testa e entre as sobrancelhas
-- **Dose:** Iniciante 1 × 10 em cada ponto · Intermediário 2 × 15 em cada ponto · Avançado 3 × 15 em cada ponto
-
-**Passo a passo**
-
-1. Pegue o início da sobrancelha com indicador e polegar
-2. Puxe levemente para fora e tente franzir contra os dedos
-3. Repita no meio da sobrancelha
-4. Repita no final, só com o indicador
-
-**Erros comuns:** Beliscar forte; Puxar a pele.
-
-> **Para o NotebookLM (Visão geral em vídeo → Personalizar):**
-> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “T4 Yin-Yang” do FaceZen. Mostre o exercício como um tutorial: para que serve, a posição das mãos, cada passo com calma, a dose de cada nível, o que sentir e os erros comuns.
-> Descreva os gestos com detalhes visuais (onde ficam os dedos, a direção do movimento), porque a pessoa vai imitar.
-> Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
-
-## Aula 19 · T5 Binóculo
-
-*Treinar os olhos a trabalhar sem mexer a testa.*
-
-- **Região:** Testa e entre as sobrancelhas
-- **Dose:** Iniciante 1 série · Intermediário 1 série · Avançado 1 série
-
-**Passo a passo**
-
-1. Polegares ao lado do nariz, indicadores sobre as sobrancelhas
-2. Abra o peito e desça os ombros
-3. Olhe para longe e contraia os olhos por 10 segundos, sem franzir
-4. Feche e relaxe por 3 segundos
-5. Abra bem os olhos por 10 segundos, sobrancelhas paradas
-6. Feche e relaxe por 3 segundos
-
-**Pule se:** Olhos irritados ou lentes incomodando.
-
-**Fica fora do plano de quem tem:** olho seco, olhos sensíveis ou lentes de contato.
-
-> **Para o NotebookLM (Visão geral em vídeo → Personalizar):**
-> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “T5 Binóculo” do FaceZen. Mostre o exercício como um tutorial: para que serve, a posição das mãos, cada passo com calma, a dose de cada nível, o que sentir e os erros comuns.
-> Descreva os gestos com detalhes visuais (onde ficam os dedos, a direção do movimento), porque a pessoa vai imitar.
-> Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
-
-## Aula 20 · T6 Alisamento para as têmporas
-
-*Relaxar a testa e finalizar a região.*
+*Relaxar a testa.*
 
 - **Região:** Testa e entre as sobrancelhas
 - **Dose:** Iniciante 30 segundos · Intermediário 30 segundos · Avançado 30 segundos
 
+![Desenho do exercício T6 Alisar a testa: dedos em rosa, setas verdes mostram o movimento, pontos verdes são onde tocar](desenhos/T6.svg)
+
 **Passo a passo**
 
-1. Pontas dos dedos no centro da testa
-2. Deslize devagar até as têmporas
-3. Pressione as têmporas por 2 segundos
-4. Levante os dedos e recomece do centro
+1. Coloque as pontas dos dedos no meio da testa.
+2. Deslize devagar até as têmporas, como quem alisa um lençol.
+3. Aperte de leve as têmporas por 2 segundos e recomece do meio.
+
+**Confira no espelho:** Pele com um pouco de creme, para deslizar sem repuxar.
 
 > **Para o NotebookLM (Visão geral em vídeo → Personalizar):**
-> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “T6 Alisamento para as têmporas” do FaceZen. Mostre o exercício como um tutorial: para que serve, a posição das mãos, cada passo com calma, a dose de cada nível, o que sentir e os erros comuns.
-> Descreva os gestos com detalhes visuais (onde ficam os dedos, a direção do movimento), porque a pessoa vai imitar.
+> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “T6 Alisar a testa” do FaceZen. Mostre o exercício como um tutorial: para que serve, os 3 passos com calma, a dose de cada nível e como conferir no espelho.
+> Use o desenho da aula como imagem principal: explique onde ficam os dedos (em rosa) e o movimento das setas verdes.
+> Use comparações do dia a dia, como no texto. A pessoa vai imitar o que ouvir.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-# Módulo 4 · Olhos
-
-A região mais delicada, com toque leve.
+### Olhos e pálpebras
 
 *A região mais delicada: dedos anelares, toque leve e nunca no globo ocular.*
 
-## Aula 21 · O1 Pálpebra inferior firme
+## Aula 13 · O4 Toque de pena
 
-*Tonificar a pálpebra de baixo.*
-
-- **Região:** Olhos e pálpebras
-- **Dose:** Iniciante 1 × 5 · Intermediário 2 × 10 · Avançado 3 × 10
-
-**Passo a passo**
-
-1. Indicadores no canto externo dos olhos
-2. Estique a pele muito de leve para fora
-3. Sem piscar, suba só a pálpebra de baixo
-4. Não feche o olho por completo
-5. No fim, feche 3 segundos e abra bem, sem franzir
-
-**Pule se:** Olho seco, irritação ou conjuntivite.
-
-**Fica fora do plano de quem tem:** olho seco, olhos sensíveis ou lentes de contato.
-
-> **Para o NotebookLM (Visão geral em vídeo → Personalizar):**
-> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “O1 Pálpebra inferior firme” do FaceZen. Mostre o exercício como um tutorial: para que serve, a posição das mãos, cada passo com calma, a dose de cada nível, o que sentir e os erros comuns.
-> Descreva os gestos com detalhes visuais (onde ficam os dedos, a direção do movimento), porque a pessoa vai imitar.
-> Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
-
-## Aula 22 · O2 V nos olhos
-
-*Fortalecer a pálpebra de cima.*
-
-- **Região:** Olhos e pálpebras
-- **Dose:** Iniciante 1 × 10 · Intermediário 2 × 15 · Avançado 3 × 15
-
-**Passo a passo**
-
-1. Faça um “V” com indicador e médio
-2. Posicione logo abaixo das pontas das sobrancelhas
-3. Feche os olhos
-4. Pressione levemente para baixo
-5. Tente subir as sobrancelhas contra os dedos, devagar
-
-**Fica fora do plano de quem tem:** olho seco, olhos sensíveis ou lentes de contato.
-
-> **Para o NotebookLM (Visão geral em vídeo → Personalizar):**
-> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “O2 V nos olhos” do FaceZen. Mostre o exercício como um tutorial: para que serve, a posição das mãos, cada passo com calma, a dose de cada nível, o que sentir e os erros comuns.
-> Descreva os gestos com detalhes visuais (onde ficam os dedos, a direção do movimento), porque a pessoa vai imitar.
-> Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
-
-## Aula 23 · O3 Olhos perfeitos
-
-*Relaxar e alongar o contorno dos olhos.*
-
-- **Região:** Olhos e pálpebras
-- **Dose:** Iniciante 1 × 5 · Intermediário 2 × 5 · Avançado 3 × 5
-
-**Passo a passo**
-
-1. Junte indicador e médio
-2. Apoie as pontas no canto externo do olho
-3. Deslize subindo em direção à testa
-4. Abra os dedos em “V” até a raiz do cabelo
-
-> **Para o NotebookLM (Visão geral em vídeo → Personalizar):**
-> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “O3 Olhos perfeitos” do FaceZen. Mostre o exercício como um tutorial: para que serve, a posição das mãos, cada passo com calma, a dose de cada nível, o que sentir e os erros comuns.
-> Descreva os gestos com detalhes visuais (onde ficam os dedos, a direção do movimento), porque a pessoa vai imitar.
-> Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
-
-## Aula 24 · O4 Toque de pena
-
-*Desinchar e relaxar; ótimo de manhã.*
+*Relaxar em volta dos olhos. Ótimo de manhã.*
 
 - **Região:** Olhos e pálpebras
 - **Dose:** Iniciante 30 segundos · Intermediário 30 segundos · Avançado 30 segundos
 
+![Desenho do exercício O4 Toque de pena: dedos em rosa, setas verdes mostram o movimento, pontos verdes são onde tocar](desenhos/O4.svg)
+
 **Passo a passo**
 
-1. Use os dedos anelares
-2. Batidinhas leves sob a sobrancelha, do canto interno para fora
-3. Desça pelo osso da maçã do rosto
-4. Volte ao canto interno
-5. Termine pressionando as têmporas
+1. Use o dedo anelar, que é o mais leve.
+2. Dê batidinhas em volta do olho, sobre o osso: embaixo da sobrancelha e em cima da maçã do rosto.
+3. Como gotas de chuva, sem nunca tocar no olho.
+
+**Confira no espelho:** O toque é tão leve que a pele nem se mexe.
 
 > **Para o NotebookLM (Visão geral em vídeo → Personalizar):**
-> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “O4 Toque de pena” do FaceZen. Mostre o exercício como um tutorial: para que serve, a posição das mãos, cada passo com calma, a dose de cada nível, o que sentir e os erros comuns.
-> Descreva os gestos com detalhes visuais (onde ficam os dedos, a direção do movimento), porque a pessoa vai imitar.
+> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “O4 Toque de pena” do FaceZen. Mostre o exercício como um tutorial: para que serve, os 3 passos com calma, a dose de cada nível e como conferir no espelho.
+> Use o desenho da aula como imagem principal: explique onde ficam os dedos (em rosa) e o movimento das setas verdes.
+> Use comparações do dia a dia, como no texto. A pessoa vai imitar o que ouvir.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 25 · O5 Olhar em cruz
+## Aula 14 · O5 Olhar em cruz
 
-*Mobilidade e descanso dos olhos.*
+*Descansar os olhos.*
 
 - **Região:** Olhos e pálpebras
 - **Dose:** Iniciante 2 voltas · Intermediário 2 voltas · Avançado 2 voltas
 - **Onde:** dá para fazer em qualquer lugar, sem as mãos no rosto.
 
+![Desenho do exercício O5 Olhar em cruz: dedos em rosa, setas verdes mostram o movimento, pontos verdes são onde tocar](desenhos/O5.svg)
+
 **Passo a passo**
 
-1. Cabeça parada
-2. Olhe para a direita e volte ao centro
-3. Olhe para a esquerda e volte
-4. Olhe para cima e volte
-5. Olhe para baixo e volte
-6. Feche os olhos por 5 segundos
+1. Com a cabeça parada, olhe para a direita e depois para a esquerda.
+2. Olhe para cima e depois para baixo.
+3. Feche os olhos por 5 segundos.
+
+**Confira no espelho:** Só os olhos se mexem; a cabeça fica parada.
 
 **Pule se:** Tontura ou visão dupla.
 
 > **Para o NotebookLM (Visão geral em vídeo → Personalizar):**
-> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “O5 Olhar em cruz” do FaceZen. Mostre o exercício como um tutorial: para que serve, a posição das mãos, cada passo com calma, a dose de cada nível, o que sentir e os erros comuns.
-> Descreva os gestos com detalhes visuais (onde ficam os dedos, a direção do movimento), porque a pessoa vai imitar.
+> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “O5 Olhar em cruz” do FaceZen. Mostre o exercício como um tutorial: para que serve, os 3 passos com calma, a dose de cada nível e como conferir no espelho.
+> Use o desenho da aula como imagem principal: explique onde ficam os dedos (em rosa) e o movimento das setas verdes.
+> Use comparações do dia a dia, como no texto. A pessoa vai imitar o que ouvir.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-# Módulo 5 · Bochechas
+# Módulo 4 · Bochechas e boca
 
-Maçãs do rosto e terço médio.
+Maçãs do rosto, bigode chinês e contorno da boca.
+
+### Bochechas e maçãs do rosto
 
 *Os músculos que levantam o sorriso e dão contorno ao terço médio do rosto.*
 
-## Aula 26 · B1 Zigomático
+## Aula 15 · B1 Do “O” ao sorriso
 
-*Trabalhar os músculos que levantam as maçãs do rosto.*
-
-- **Região:** Bochechas e maçãs do rosto
-- **Dose:** Iniciante 1 × 10 · Intermediário 2 × 15 · Avançado 3 × 15
-
-**Passo a passo**
-
-1. Faça um “O” alongado com a boca
-2. Sorria bem aberto, subindo as maçãs do rosto
-3. Desça devagar
-4. Volte ao “O” e repita
-
-**Erros comuns:** Apertar os olhos no sorriso.
-
-> **Para o NotebookLM (Visão geral em vídeo → Personalizar):**
-> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “B1 Zigomático” do FaceZen. Mostre o exercício como um tutorial: para que serve, a posição das mãos, cada passo com calma, a dose de cada nível, o que sentir e os erros comuns.
-> Descreva os gestos com detalhes visuais (onde ficam os dedos, a direção do movimento), porque a pessoa vai imitar.
-> Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
-
-## Aula 27 · B2 Palito
-
-*Fortalecer o terço médio do rosto.*
+*Trabalhar as maçãs do rosto.*
 
 - **Região:** Bochechas e maçãs do rosto
 - **Dose:** Iniciante 1 × 10 · Intermediário 2 × 15 · Avançado 3 × 15
-- **Material:** usa um acessório (veja o passo a passo).
+
+![Desenho do exercício B1 Do “O” ao sorriso: dedos em rosa, setas verdes mostram o movimento, pontos verdes são onde tocar](desenhos/B1.svg)
 
 **Passo a passo**
 
-1. Segure um palito (hashi) entre os lábios, sem morder forte
-2. Inspire pelo nariz
-3. Force o sorriso, subindo as maçãs do rosto
-4. Relaxe e repita
+1. Faça um “O” com a boca, como quem diz “Oh!”.
+2. Abra um sorriso bem grande, subindo as bochechas.
+3. Volte devagar para o “O” e repita.
 
-**Fica fora do plano de quem tem:** dor, estalo ou disfunção na mandíbula (ATM).
+**Confira no espelho:** Sorria sem apertar os olhos.
 
 > **Para o NotebookLM (Visão geral em vídeo → Personalizar):**
-> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “B2 Palito” do FaceZen. Mostre o exercício como um tutorial: para que serve, a posição das mãos, cada passo com calma, a dose de cada nível, o que sentir e os erros comuns.
-> Descreva os gestos com detalhes visuais (onde ficam os dedos, a direção do movimento), porque a pessoa vai imitar.
+> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “B1 Do “O” ao sorriso” do FaceZen. Mostre o exercício como um tutorial: para que serve, os 3 passos com calma, a dose de cada nível e como conferir no espelho.
+> Use o desenho da aula como imagem principal: explique onde ficam os dedos (em rosa) e o movimento das setas verdes.
+> Use comparações do dia a dia, como no texto. A pessoa vai imitar o que ouvir.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 28 · B3 Peixinho
+## Aula 16 · B3 Peixinho
 
 *Bochechas e cantos da boca.*
 
@@ -667,591 +405,200 @@ Maçãs do rosto e terço médio.
 - **Dose:** Iniciante 1 × 10 · Intermediário 2 × 15 · Avançado 3 × 15
 - **Onde:** dá para fazer em qualquer lugar, sem as mãos no rosto.
 
+![Desenho do exercício B3 Peixinho: dedos em rosa, setas verdes mostram o movimento, pontos verdes são onde tocar](desenhos/B3.svg)
+
 **Passo a passo**
 
-1. Sugue as bochechas, como boca de peixe
-2. Nessa posição, tente sorrir
-3. Segure 3 segundos
-4. Solte e repita
+1. Chupe as bochechas para dentro, fazendo boca de peixe.
+2. Nessa posição, tente sorrir.
+3. Segure 3 segundos e solte.
+
+**Confira no espelho:** Você sente as bochechas trabalhando, sem dor.
 
 **Fica fora do plano de quem tem:** dor, estalo ou disfunção na mandíbula (ATM).
 
 > **Para o NotebookLM (Visão geral em vídeo → Personalizar):**
-> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “B3 Peixinho” do FaceZen. Mostre o exercício como um tutorial: para que serve, a posição das mãos, cada passo com calma, a dose de cada nível, o que sentir e os erros comuns.
-> Descreva os gestos com detalhes visuais (onde ficam os dedos, a direção do movimento), porque a pessoa vai imitar.
+> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “B3 Peixinho” do FaceZen. Mostre o exercício como um tutorial: para que serve, os 3 passos com calma, a dose de cada nível e como conferir no espelho.
+> Use o desenho da aula como imagem principal: explique onde ficam os dedos (em rosa) e o movimento das setas verdes.
+> Use comparações do dia a dia, como no texto. A pessoa vai imitar o que ouvir.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
-
-## Aula 29 · B4 Três alturas
-
-*Massagem para finalizar bochechas e contorno.*
-
-- **Região:** Bochechas e maçãs do rosto
-- **Dose:** Iniciante 3 vezes em cada altura · Intermediário 3 vezes em cada altura · Avançado 3 vezes em cada altura
-
-**Passo a passo**
-
-1. Mãos espalmadas, pele lubrificada
-2. Deslize do nariz às orelhas logo abaixo dos olhos, bem leve
-3. Repita no meio das bochechas
-4. Repita na linha da mandíbula
-
-**Fica fora do plano de quem tem:** pele em crise (acne inflamada, rosácea, eczema, feridas).
-
-> **Para o NotebookLM (Visão geral em vídeo → Personalizar):**
-> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “B4 Três alturas” do FaceZen. Mostre o exercício como um tutorial: para que serve, a posição das mãos, cada passo com calma, a dose de cada nível, o que sentir e os erros comuns.
-> Descreva os gestos com detalhes visuais (onde ficam os dedos, a direção do movimento), porque a pessoa vai imitar.
-> Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
-
-# Módulo 6 · Boca, lábios e nariz
-
-Bigode chinês, contorno da boca e nariz.
 
 ### Bigode chinês
 
 *Elevar bochechas e cantos da boca para suavizar a linha entre o nariz e a boca.*
 
-## Aula 30 · N1 Sorriso com mãos nas orelhas
+## Aula 17 · N1 Sorriso escondido
 
-*Elevar bochechas e cantos da boca.*
+*Bochechas e a linha entre o nariz e a boca.*
 
 - **Região:** Bigode chinês
-- **Dose:** Iniciante 1 × 30 s · Intermediário 2 × 30 s · Avançado 3 × 30 s
+- **Dose:** Iniciante 1 × 20 s · Intermediário 2 × 30 s · Avançado 3 × 30 s
+
+![Desenho do exercício N1 Sorriso escondido: dedos em rosa, setas verdes mostram o movimento, pontos verdes são onde tocar](desenhos/N1.svg)
 
 **Passo a passo**
 
-1. Palmas sobre as orelhas
-2. Leve pressão, puxando a pele suavemente para trás
-3. Dobre os lábios sobre os dentes
-4. Levante os cantos da boca num sorriso exagerado
-5. Segure 30 segundos
+1. Cubra as orelhas com as mãos e puxe a pele de leve para trás.
+2. Esconda os lábios para dentro, cobrindo os dentes.
+3. Sorria o máximo que conseguir e segure.
 
-**O que sentir:** Trabalho nas bochechas e ao lado da boca.
+**Confira no espelho:** Trabalho nas bochechas e ao lado da boca, testa parada.
 
 > **Para o NotebookLM (Visão geral em vídeo → Personalizar):**
-> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “N1 Sorriso com mãos nas orelhas” do FaceZen. Mostre o exercício como um tutorial: para que serve, a posição das mãos, cada passo com calma, a dose de cada nível, o que sentir e os erros comuns.
-> Descreva os gestos com detalhes visuais (onde ficam os dedos, a direção do movimento), porque a pessoa vai imitar.
-> Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
-
-## Aula 31 · N2 V nos lábios
-
-*Suavizar o triângulo entre nariz e boca.*
-
-- **Região:** Bigode chinês
-- **Dose:** Iniciante 1 × 10 · Intermediário 2 × 15 · Avançado 3 × 15
-
-**Passo a passo**
-
-1. Dedos em triângulo sobre o sulco
-2. Puxe a pele levemente para trás
-3. Pronuncie “O”, projetando os lábios
-4. Relaxe e repita
-
-> **Para o NotebookLM (Visão geral em vídeo → Personalizar):**
-> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “N2 V nos lábios” do FaceZen. Mostre o exercício como um tutorial: para que serve, a posição das mãos, cada passo com calma, a dose de cada nível, o que sentir e os erros comuns.
-> Descreva os gestos com detalhes visuais (onde ficam os dedos, a direção do movimento), porque a pessoa vai imitar.
-> Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
-
-## Aula 32 · N3 Sopro da vela
-
-*Trabalhar a região ao redor da boca.*
-
-- **Região:** Bigode chinês
-- **Dose:** Iniciante 1 × 10 · Intermediário 2 × 15 · Avançado 3 × 15
-
-**Passo a passo**
-
-1. Palmas em “V” perto do queixo
-2. Abra e apoie nas laterais do rosto
-3. Estique a pele suavemente para trás e para cima
-4. Inspire pelo nariz
-5. Sopre com força, como quem apaga uma vela
-
-> **Para o NotebookLM (Visão geral em vídeo → Personalizar):**
-> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “N3 Sopro da vela” do FaceZen. Mostre o exercício como um tutorial: para que serve, a posição das mãos, cada passo com calma, a dose de cada nível, o que sentir e os erros comuns.
-> Descreva os gestos com detalhes visuais (onde ficam os dedos, a direção do movimento), porque a pessoa vai imitar.
-> Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
-
-## Aula 33 · N4 Deslize do sulco
-
-*Massagem do bigode chinês.*
-
-- **Região:** Bigode chinês
-- **Dose:** Iniciante 5 de cada lado · Intermediário 5 de cada lado · Avançado 5 de cada lado
-- **Lados:** faça de um lado e depois do outro.
-
-**Passo a passo**
-
-1. Uma mão estabiliza a têmpora
-2. A outra desliza da lateral do nariz para a orelha
-3. Faça com a boca em “O”
-4. Não puxe até repuxar
-5. Troque de lado
-
-**Fica fora do plano de quem tem:** pele em crise (acne inflamada, rosácea, eczema, feridas).
-
-> **Para o NotebookLM (Visão geral em vídeo → Personalizar):**
-> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “N4 Deslize do sulco” do FaceZen. Mostre o exercício como um tutorial: para que serve, a posição das mãos, cada passo com calma, a dose de cada nível, o que sentir e os erros comuns.
-> Descreva os gestos com detalhes visuais (onde ficam os dedos, a direção do movimento), porque a pessoa vai imitar.
+> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “N1 Sorriso escondido” do FaceZen. Mostre o exercício como um tutorial: para que serve, os 3 passos com calma, a dose de cada nível e como conferir no espelho.
+> Use o desenho da aula como imagem principal: explique onde ficam os dedos (em rosa) e o movimento das setas verdes.
+> Use comparações do dia a dia, como no texto. A pessoa vai imitar o que ouvir.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
 ### Lábios e “código de barras”
 
 *O contorno da boca e as linhas acima do lábio. Sempre com a pele lubrificada.*
 
-## Aula 34 · L1 AO
+## Aula 18 · L1 “O” e “A”
 
-*Fortalecer o músculo ao redor da boca.*
-
-- **Região:** Lábios e “código de barras”
-- **Dose:** Iniciante 1 × 10 · Intermediário 2 × 15 · Avançado 3 × 15
-
-**Passo a passo**
-
-1. Inspire e abra a boca
-2. Projete os lábios em “O”, descolando dos dentes
-3. Feche, colando os lábios nos dentes
-4. Abra dizendo “A” bem exagerado
-5. Volte ao “O”
-
-**Adaptação:** com dor, estalo ou disfunção na mandíbula (ATM): Abra pouco a boca.
-
-> **Para o NotebookLM (Visão geral em vídeo → Personalizar):**
-> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “L1 AO” do FaceZen. Mostre o exercício como um tutorial: para que serve, a posição das mãos, cada passo com calma, a dose de cada nível, o que sentir e os erros comuns.
-> Descreva os gestos com detalhes visuais (onde ficam os dedos, a direção do movimento), porque a pessoa vai imitar.
-> Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
-
-## Aula 35 · L2 Labial
-
-*Tonificar a boca e prevenir linhas.*
+*Contorno da boca.*
 
 - **Região:** Lábios e “código de barras”
 - **Dose:** Iniciante 1 × 10 · Intermediário 2 × 15 · Avançado 3 × 15
 
-**Passo a passo**
-
-1. Segure os cantos da boca com indicador e polegar
-2. Puxe suavemente para os lados
-3. Tente fechar os lábios no centro, como um beijo
-4. No fim da série, segure 5 segundos
-
-> **Para o NotebookLM (Visão geral em vídeo → Personalizar):**
-> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “L2 Labial” do FaceZen. Mostre o exercício como um tutorial: para que serve, a posição das mãos, cada passo com calma, a dose de cada nível, o que sentir e os erros comuns.
-> Descreva os gestos com detalhes visuais (onde ficam os dedos, a direção do movimento), porque a pessoa vai imitar.
-> Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
-
-## Aula 36 · L3 Arco do cupido
-
-*Lábio superior e linhas acima dele.*
-
-- **Região:** Lábios e “código de barras”
-- **Dose:** Iniciante 1 × 10 · Intermediário 2 × 15 · Avançado 3 × 15
+![Desenho do exercício L1 “O” e “A”: dedos em rosa, setas verdes mostram o movimento, pontos verdes são onde tocar](desenhos/L1.svg)
 
 **Passo a passo**
 
-1. Polegares sob as pontas do lábio superior, indicadores por cima
-2. Puxe suavemente para os lados
-3. Tente fechar o lábio no centro
-4. No fim da série, segure 5 segundos
+1. Faça um biquinho em “O”, com os lábios bem para frente.
+2. Abra a boca dizendo “A”, bem exagerado.
+3. Volte ao “O” e repita.
+
+**Confira no espelho:** A boca se mexe bastante e a testa fica parada.
+
+**Adaptação:** com dor, estalo ou disfunção na mandíbula (ATM): Abra pouco a boca no “A”.
 
 > **Para o NotebookLM (Visão geral em vídeo → Personalizar):**
-> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “L3 Arco do cupido” do FaceZen. Mostre o exercício como um tutorial: para que serve, a posição das mãos, cada passo com calma, a dose de cada nível, o que sentir e os erros comuns.
-> Descreva os gestos com detalhes visuais (onde ficam os dedos, a direção do movimento), porque a pessoa vai imitar.
+> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “L1 “O” e “A”” do FaceZen. Mostre o exercício como um tutorial: para que serve, os 3 passos com calma, a dose de cada nível e como conferir no espelho.
+> Use o desenho da aula como imagem principal: explique onde ficam os dedos (em rosa) e o movimento das setas verdes.
+> Use comparações do dia a dia, como no texto. A pessoa vai imitar o que ouvir.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 37 · L4 Código de barras
+# Módulo 5 · Mandíbula, pescoço e relaxar
 
-*Linhas verticais acima dos lábios.*
-
-- **Região:** Lábios e “código de barras”
-- **Dose:** Iniciante 10 repetições · Intermediário 20 repetições · Avançado 2 × 20
-
-**Passo a passo**
-
-1. Cubra os dentes com os lábios
-2. Dedos acima e abaixo da boca
-3. Abra e feche a boca devagar
-4. Os dedos fazem leve pressão de vai e volta
-
-**Pule se:** Lábios rachados ou com herpes.
-
-**Fica fora do plano de quem tem:** pele em crise (acne inflamada, rosácea, eczema, feridas).
-
-> **Para o NotebookLM (Visão geral em vídeo → Personalizar):**
-> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “L4 Código de barras” do FaceZen. Mostre o exercício como um tutorial: para que serve, a posição das mãos, cada passo com calma, a dose de cada nível, o que sentir e os erros comuns.
-> Descreva os gestos com detalhes visuais (onde ficam os dedos, a direção do movimento), porque a pessoa vai imitar.
-> Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
-
-### Nariz
-
-*Um pequeno músculo que também participa da expressão.*
-
-## Aula 38 · Z1 Nariz firme
-
-*Trabalhar o pequeno músculo do nariz.*
-
-- **Região:** Nariz
-- **Dose:** Iniciante 1 × 10 · Intermediário 2 × 15 · Avançado 3 × 15
-
-**Passo a passo**
-
-1. Ponta do indicador na ponta do nariz, empurrando para cima
-2. Tente puxar o nariz para baixo
-3. Movimentos curtos, com o dedo segurando
-
-> **Para o NotebookLM (Visão geral em vídeo → Personalizar):**
-> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Z1 Nariz firme” do FaceZen. Mostre o exercício como um tutorial: para que serve, a posição das mãos, cada passo com calma, a dose de cada nível, o que sentir e os erros comuns.
-> Descreva os gestos com detalhes visuais (onde ficam os dedos, a direção do movimento), porque a pessoa vai imitar.
-> Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
-
-# Módulo 7 · Mandíbula e pescoço
-
-Queixo, contorno, papada e pescoço.
+Queixo, pescoço e o final da sessão.
 
 ### Mandíbula, queixo e papada
 
 *Contorno do queixo, papada e a tensão de quem aperta os dentes.*
 
-## Aula 39 · M1 Infralabial
+## Aula 19 · M1 Lábio para cima
 
-*Pescoço e papada.*
-
-- **Região:** Mandíbula, queixo e papada
-- **Dose:** Iniciante 1 × 10 · Intermediário 2 × 15 · Avançado 3 × 15
-
-**Passo a passo**
-
-1. Palmas na base do pescoço, sobre o colo
-2. Incline a cabeça levemente para trás e olhe para o alto
-3. Projete um pouco o queixo
-4. Suba o lábio inferior por cima do superior
-5. Desça e suba o lábio
-
-**O que sentir:** Trabalho embaixo do queixo e na frente do pescoço.
-
-**Adaptação:** com dor ou histórico no pescoço (cervical): Faça com a cabeça reta.
-
-> **Para o NotebookLM (Visão geral em vídeo → Personalizar):**
-> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “M1 Infralabial” do FaceZen. Mostre o exercício como um tutorial: para que serve, a posição das mãos, cada passo com calma, a dose de cada nível, o que sentir e os erros comuns.
-> Descreva os gestos com detalhes visuais (onde ficam os dedos, a direção do movimento), porque a pessoa vai imitar.
-> Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
-
-## Aula 40 · M2 Beijo ao céu
-
-*Pescoço, queixo e bigode chinês.*
+*Queixo e frente do pescoço.*
 
 - **Região:** Mandíbula, queixo e papada
 - **Dose:** Iniciante 1 × 10 · Intermediário 2 × 15 · Avançado 3 × 15
 
-**Passo a passo**
-
-1. Incline a cabeça levemente para trás
-2. Faça biquinho para o teto
-3. Mande beijos exagerados para o alto
-
-**Adaptação:** com dor ou histórico no pescoço (cervical): Faça com a cabeça reta.
-
-> **Para o NotebookLM (Visão geral em vídeo → Personalizar):**
-> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “M2 Beijo ao céu” do FaceZen. Mostre o exercício como um tutorial: para que serve, a posição das mãos, cada passo com calma, a dose de cada nível, o que sentir e os erros comuns.
-> Descreva os gestos com detalhes visuais (onde ficam os dedos, a direção do movimento), porque a pessoa vai imitar.
-> Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
-
-## Aula 41 · M3 Queixo definido
-
-*Contorno do queixo.*
-
-- **Região:** Mandíbula, queixo e papada
-- **Dose:** Iniciante 5 repetições · Intermediário 5 repetições · Avançado 5 repetições
+![Desenho do exercício M1 Lábio para cima: dedos em rosa, setas verdes mostram o movimento, pontos verdes são onde tocar](desenhos/M1.svg)
 
 **Passo a passo**
 
-1. Três dedos de cada mão no final da mandíbula
-2. Puxe a pele suavemente para trás e para cima
-3. Inspire pelo nariz
-4. Sopre com força pela boca
+1. Olhe para o teto e empurre o queixo um pouco para frente.
+2. Suba o lábio de baixo por cima do de cima.
+3. Desça e suba o lábio, devagar.
+
+**Confira no espelho:** Você sente a frente do pescoço trabalhando.
+
+**Adaptação:** com dor ou histórico no pescoço (cervical): Faça olhando para frente, com a cabeça reta.
 
 > **Para o NotebookLM (Visão geral em vídeo → Personalizar):**
-> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “M3 Queixo definido” do FaceZen. Mostre o exercício como um tutorial: para que serve, a posição das mãos, cada passo com calma, a dose de cada nível, o que sentir e os erros comuns.
-> Descreva os gestos com detalhes visuais (onde ficam os dedos, a direção do movimento), porque a pessoa vai imitar.
+> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “M1 Lábio para cima” do FaceZen. Mostre o exercício como um tutorial: para que serve, os 3 passos com calma, a dose de cada nível e como conferir no espelho.
+> Use o desenho da aula como imagem principal: explique onde ficam os dedos (em rosa) e o movimento das setas verdes.
+> Use comparações do dia a dia, como no texto. A pessoa vai imitar o que ouvir.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 42 · M4 Masseter
+## Aula 20 · M4 Soltar o masseter
 
-*Soltar a tensão de quem aperta os dentes.*
+*Aliviar quem aperta os dentes.*
 
 - **Região:** Mandíbula, queixo e papada
 - **Dose:** Iniciante 30 segundos · Intermediário 30 segundos · Avançado 30 segundos
 
+![Desenho do exercício M4 Soltar o masseter: dedos em rosa, setas verdes mostram o movimento, pontos verdes são onde tocar](desenhos/M4.svg)
+
 **Passo a passo**
 
-1. Boca levemente aberta, dentes sem encostar
-2. Dois dedos na lateral da mandíbula
-3. Círculos lentos, pressão média
-4. Nunca dentro da articulação, na frente da orelha
+1. Deixe os dentes separados, com a boca levemente aberta.
+2. Coloque dois dedos na bochecha, onde a mandíbula faz força ao morder.
+3. Faça círculos lentos, com pressão média.
 
-**Pule se:** Estalo doloroso ou travamento.
+**Confira no espelho:** Nunca em cima da articulação, na frente da orelha.
+
+**Pule se:** Estalo com dor ou travamento.
 
 **Adaptação:** com dor, estalo ou disfunção na mandíbula (ATM): Toque bem leve; pare ao primeiro estalo.
 
 > **Para o NotebookLM (Visão geral em vídeo → Personalizar):**
-> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “M4 Masseter” do FaceZen. Mostre o exercício como um tutorial: para que serve, a posição das mãos, cada passo com calma, a dose de cada nível, o que sentir e os erros comuns.
-> Descreva os gestos com detalhes visuais (onde ficam os dedos, a direção do movimento), porque a pessoa vai imitar.
-> Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
-
-## Aula 43 · M5 Contorno em pinça
-
-*Definir e soltar a linha da mandíbula.*
-
-- **Região:** Mandíbula, queixo e papada
-- **Dose:** Iniciante 3 de cada lado · Intermediário 3 de cada lado · Avançado 3 de cada lado
-- **Lados:** faça de um lado e depois do outro.
-
-**Passo a passo**
-
-1. Pinça suave com polegar e indicador sobre o osso, no queixo
-2. Deslize pela linha do osso até a orelha
-3. Troque de lado
-
-**Fica fora do plano de quem tem:** pele em crise (acne inflamada, rosácea, eczema, feridas).
-
-> **Para o NotebookLM (Visão geral em vídeo → Personalizar):**
-> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “M5 Contorno em pinça” do FaceZen. Mostre o exercício como um tutorial: para que serve, a posição das mãos, cada passo com calma, a dose de cada nível, o que sentir e os erros comuns.
-> Descreva os gestos com detalhes visuais (onde ficam os dedos, a direção do movimento), porque a pessoa vai imitar.
+> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “M4 Soltar o masseter” do FaceZen. Mostre o exercício como um tutorial: para que serve, os 3 passos com calma, a dose de cada nível e como conferir no espelho.
+> Use o desenho da aula como imagem principal: explique onde ficam os dedos (em rosa) e o movimento das setas verdes.
+> Use comparações do dia a dia, como no texto. A pessoa vai imitar o que ouvir.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
 ### Pescoço e colo
 
 *Postura e tônus do pescoço. No pescoço, a massagem vai sempre de cima para baixo.*
 
-## Aula 44 · P1 Língua ao canto
+## Aula 21 · P2 Pescoço para baixo
 
-*Pescoço e postura.*
-
-- **Região:** Pescoço e colo
-- **Dose:** Iniciante 10 s de cada lado · Intermediário 10 s de cada lado · Avançado 10 s de cada lado
-- **Lados:** faça de um lado e depois do outro.
-
-**Passo a passo**
-
-1. Mãos cruzadas no peito, logo abaixo do pescoço
-2. Vire a cabeça para a direita
-3. Estique a língua para o canto de cima
-4. Segure 10 segundos
-5. Repita para a esquerda
-
-**Pule se:** Dor cervical ou tontura.
-
-**Fica fora do plano de quem tem:** dor ou histórico no pescoço (cervical).
-
-> **Para o NotebookLM (Visão geral em vídeo → Personalizar):**
-> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “P1 Língua ao canto” do FaceZen. Mostre o exercício como um tutorial: para que serve, a posição das mãos, cada passo com calma, a dose de cada nível, o que sentir e os erros comuns.
-> Descreva os gestos com detalhes visuais (onde ficam os dedos, a direção do movimento), porque a pessoa vai imitar.
-> Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
-
-## Aula 45 · P2 Deslizamento até a clavícula
-
-*Relaxar e aplicar o creme do pescoço.*
+*Relaxar o pescoço.*
 
 - **Região:** Pescoço e colo
 - **Dose:** Iniciante 30 segundos · Intermediário 30 segundos · Avançado 30 segundos
 
-**Passo a passo**
-
-1. Mãos espalmadas, bastante produto
-2. Deslize do alto do pescoço até as clavículas
-3. Leve pressão na clavícula no fim
-4. Sempre de cima para baixo
-
-> **Para o NotebookLM (Visão geral em vídeo → Personalizar):**
-> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “P2 Deslizamento até a clavícula” do FaceZen. Mostre o exercício como um tutorial: para que serve, a posição das mãos, cada passo com calma, a dose de cada nível, o que sentir e os erros comuns.
-> Descreva os gestos com detalhes visuais (onde ficam os dedos, a direção do movimento), porque a pessoa vai imitar.
-> Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
-
-## Aula 46 · P3 Alisamento do colo
-
-*Pescoço e colo.*
-
-- **Região:** Pescoço e colo
-- **Dose:** Iniciante 5 repetições · Intermediário 5 repetições · Avançado 5 repetições
+![Desenho do exercício P2 Pescoço para baixo: dedos em rosa, setas verdes mostram o movimento, pontos verdes são onde tocar](desenhos/P2.svg)
 
 **Passo a passo**
 
-1. Mais produto nas mãos
-2. Deslize as palmas do centro do colo para os ombros
-3. Repita com os punhos fechados, bem suave
+1. Espalhe um pouco de creme no pescoço.
+2. Deslize as mãos do alto do pescoço até a clavícula.
+3. Sempre de cima para baixo, devagar.
+
+**Confira no espelho:** Sem apertar a garganta.
 
 > **Para o NotebookLM (Visão geral em vídeo → Personalizar):**
-> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “P3 Alisamento do colo” do FaceZen. Mostre o exercício como um tutorial: para que serve, a posição das mãos, cada passo com calma, a dose de cada nível, o que sentir e os erros comuns.
-> Descreva os gestos com detalhes visuais (onde ficam os dedos, a direção do movimento), porque a pessoa vai imitar.
-> Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
-
-# Módulo 8 · Massagem e relaxamento
-
-Massagem com as mãos, ferramentas e o relaxamento final.
-
-### Massagem e ferramentas
-
-*Movimentos lentos, com a pele lubrificada, do centro para fora e de baixo para cima.*
-
-## Aula 47 · MF1 Alongamento com o braço
-
-*Alongar rosto, pescoço e ombro de uma vez.*
-
-- **Região:** Massagem e ferramentas
-- **Dose:** Iniciante 3 de cada lado · Intermediário 3 de cada lado · Avançado 3 de cada lado
-- **Lados:** faça de um lado e depois do outro.
-
-**Passo a passo**
-
-1. Levante o braço esquerdo e apoie a mão na têmpora direita
-2. Com a mão direita, indicador acima do olho e médio abaixo, no osso
-3. Estique os dedos suavemente para cima
-4. Incline a cabeça para a esquerda
-5. Solte o ar com força, língua para o lado inclinado
-6. Relaxe e troque de lado
-
-**Fica fora do plano de quem tem:** dor ou histórico no pescoço (cervical).
-
-> **Para o NotebookLM (Visão geral em vídeo → Personalizar):**
-> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “MF1 Alongamento com o braço” do FaceZen. Mostre o exercício como um tutorial: para que serve, a posição das mãos, cada passo com calma, a dose de cada nível, o que sentir e os erros comuns.
-> Descreva os gestos com detalhes visuais (onde ficam os dedos, a direção do movimento), porque a pessoa vai imitar.
-> Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
-
-## Aula 48 · MF2 Ciclo com as mãos
-
-*Massagem completa, só com as mãos.*
-
-- **Região:** Massagem e ferramentas
-- **Dose:** Iniciante 2 minutos · Intermediário 2 minutos · Avançado 2 minutos
-
-**Passo a passo**
-
-1. Aqueça óleo ou creme nas palmas
-2. Pressione as palmas no rosto, sem esfregar
-3. Cubra os olhos e respire 3 vezes
-4. Batidinhas de baixo para cima: queixo, bochechas, têmporas
-5. Alise a testa do centro às têmporas
-6. Dedos em “V”: alise entre as sobrancelhas até o cabelo
-7. Palmas sobre o nariz: abra subindo até as têmporas
-
-> **Para o NotebookLM (Visão geral em vídeo → Personalizar):**
-> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “MF2 Ciclo com as mãos” do FaceZen. Mostre o exercício como um tutorial: para que serve, a posição das mãos, cada passo com calma, a dose de cada nível, o que sentir e os erros comuns.
-> Descreva os gestos com detalhes visuais (onde ficam os dedos, a direção do movimento), porque a pessoa vai imitar.
-> Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
-
-## Aula 49 · MF3 Gua sha
-
-*Massagem com a pedra.*
-
-- **Região:** Massagem e ferramentas
-- **Dose:** Iniciante 5 vezes por área · Intermediário 5 vezes por área · Avançado 5 vezes por área
-- **Material:** usa um acessório (veja o passo a passo).
-
-**Passo a passo**
-
-1. Pele bem lubrificada
-2. Pedra quase deitada, a 45°
-3. Pressão leve
-4. Do centro para fora; no pescoço, de cima para baixo
-5. No sulco, boca em “O”
-
-**Pule se:** Acne inflamada, rosácea ou procedimento recente.
-
-**Fica fora do plano de quem tem:** pele em crise (acne inflamada, rosácea, eczema, feridas).
-
-> **Para o NotebookLM (Visão geral em vídeo → Personalizar):**
-> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “MF3 Gua sha” do FaceZen. Mostre o exercício como um tutorial: para que serve, a posição das mãos, cada passo com calma, a dose de cada nível, o que sentir e os erros comuns.
-> Descreva os gestos com detalhes visuais (onde ficam os dedos, a direção do movimento), porque a pessoa vai imitar.
-> Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
-
-## Aula 50 · MF4 Rolo ou colher gelada
-
-*Desinchar, principalmente de manhã.*
-
-- **Região:** Massagem e ferramentas
-- **Dose:** Iniciante 1 minuto · Intermediário 1 minuto · Avançado 1 minuto
-- **Material:** usa um acessório (veja o passo a passo).
-
-**Passo a passo**
-
-1. Rolo ou colher guardados na geladeira
-2. Role ou deslize do centro para fora
-3. Sem pressionar
-4. Nos olhos, só sobre o osso
-
-**Fica fora do plano de quem tem:** pele em crise (acne inflamada, rosácea, eczema, feridas).
-
-> **Para o NotebookLM (Visão geral em vídeo → Personalizar):**
-> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “MF4 Rolo ou colher gelada” do FaceZen. Mostre o exercício como um tutorial: para que serve, a posição das mãos, cada passo com calma, a dose de cada nível, o que sentir e os erros comuns.
-> Descreva os gestos com detalhes visuais (onde ficam os dedos, a direção do movimento), porque a pessoa vai imitar.
+> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “P2 Pescoço para baixo” do FaceZen. Mostre o exercício como um tutorial: para que serve, os 3 passos com calma, a dose de cada nível e como conferir no espelho.
+> Use o desenho da aula como imagem principal: explique onde ficam os dedos (em rosa) e o movimento das setas verdes.
+> Use comparações do dia a dia, como no texto. A pessoa vai imitar o que ouvir.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
 ### Relaxamento final
 
 *Um minuto para soltar o rosto e terminar a sessão.*
 
-## Aula 51 · R1 Palmas nos olhos
+## Aula 22 · R3 Mandíbula solta
 
-*Descansar os olhos e o rosto.*
-
-- **Região:** Relaxamento final
-- **Dose:** Iniciante 3 a 5 respirações · Intermediário 3 a 5 respirações · Avançado 3 a 5 respirações
-
-**Passo a passo**
-
-1. Esfregue as mãos para aquecer
-2. Cubra os olhos fechados, sem pressionar
-3. Respire devagar
-
-> **Para o NotebookLM (Visão geral em vídeo → Personalizar):**
-> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “R1 Palmas nos olhos” do FaceZen. Mostre o exercício como um tutorial: para que serve, a posição das mãos, cada passo com calma, a dose de cada nível, o que sentir e os erros comuns.
-> Descreva os gestos com detalhes visuais (onde ficam os dedos, a direção do movimento), porque a pessoa vai imitar.
-> Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
-
-## Aula 52 · R2 Pontos de pressão
-
-*Relaxar com acupressão básica.*
-
-- **Região:** Relaxamento final
-- **Dose:** Iniciante 1 volta · Intermediário 1 volta · Avançado 1 volta
-
-**Passo a passo**
-
-1. Entre as sobrancelhas
-2. Início das sobrancelhas
-3. Têmporas
-4. Abaixo do centro dos olhos, no osso
-5. Ao lado das narinas
-6. Centro do queixo: 5 pequenos círculos em cada ponto
-
-> **Para o NotebookLM (Visão geral em vídeo → Personalizar):**
-> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “R2 Pontos de pressão” do FaceZen. Mostre o exercício como um tutorial: para que serve, a posição das mãos, cada passo com calma, a dose de cada nível, o que sentir e os erros comuns.
-> Descreva os gestos com detalhes visuais (onde ficam os dedos, a direção do movimento), porque a pessoa vai imitar.
-> Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
-
-## Aula 53 · R3 Soltar a mandíbula
-
-*Tirar a tensão dos dentes apertados.*
+*Terminar soltando os dentes apertados.*
 
 - **Região:** Relaxamento final
 - **Dose:** Iniciante 3 respirações · Intermediário 3 respirações · Avançado 3 respirações
 - **Onde:** dá para fazer em qualquer lugar, sem as mãos no rosto.
 
+![Desenho do exercício R3 Mandíbula solta: dedos em rosa, setas verdes mostram o movimento, pontos verdes são onde tocar](desenhos/R3.svg)
+
 **Passo a passo**
 
-1. Lábios fechados, dentes separados
-2. Língua repousando no céu da boca
-3. Respire 3 vezes e perceba a mandíbula pesada
+1. Feche os lábios, mas deixe os dentes separados.
+2. Deixe a língua descansar no céu da boca.
+3. Fique assim por 3 respirações, com a mandíbula pesada.
+
+**Confira no espelho:** Vale fazer também durante o dia, sempre que lembrar.
 
 > **Para o NotebookLM (Visão geral em vídeo → Personalizar):**
-> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “R3 Soltar a mandíbula” do FaceZen. Mostre o exercício como um tutorial: para que serve, a posição das mãos, cada passo com calma, a dose de cada nível, o que sentir e os erros comuns.
-> Descreva os gestos com detalhes visuais (onde ficam os dedos, a direção do movimento), porque a pessoa vai imitar.
+> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “R3 Mandíbula solta” do FaceZen. Mostre o exercício como um tutorial: para que serve, os 3 passos com calma, a dose de cada nível e como conferir no espelho.
+> Use o desenho da aula como imagem principal: explique onde ficam os dedos (em rosa) e o movimento das setas verdes.
+> Use comparações do dia a dia, como no texto. A pessoa vai imitar o que ouvir.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-# Módulo 9 · Skincare: o básico
+# Módulo 6 · Skincare: o básico
 
 Limpar, hidratar e proteger bem feito.
 
-## Aula 54 · Limpar do jeito certo
+## Aula 23 · Limpar do jeito certo
 
 *Limpeza suave de manhã e completa à noite.*
 
@@ -1268,7 +615,7 @@ Limpar, hidratar e proteger bem feito.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Limpar do jeito certo” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 55 · Hidratar (inclusive pele oleosa)
+## Aula 24 · Hidratar (inclusive pele oleosa)
 
 *Hidratar fortalece a barreira que protege a pele.*
 
@@ -1283,7 +630,7 @@ Limpar, hidratar e proteger bem feito.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Hidratar (inclusive pele oleosa)” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 56 · Protetor solar: o passo mais importante
+## Aula 25 · Protetor solar: o passo mais importante
 
 *FPS 30 ou mais, na quantidade certa, todos os dias.*
 
@@ -1304,7 +651,7 @@ Limpar, hidratar e proteger bem feito.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Protetor solar: o passo mais importante” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 57 · A ordem certa dos produtos
+## Aula 26 · A ordem certa dos produtos
 
 *Do mais líquido para o mais denso; protetor por último de manhã.*
 
@@ -1319,7 +666,7 @@ Limpar, hidratar e proteger bem feito.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “A ordem certa dos produtos” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 58 · Quanto usar de cada produto
+## Aula 27 · Quanto usar de cada produto
 
 *A cola para deixar no espelho.*
 
@@ -1336,11 +683,11 @@ Limpar, hidratar e proteger bem feito.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Quanto usar de cada produto” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-# Módulo 10 · Skincare: os ativos
+# Módulo 7 · Skincare: os ativos
 
 O que é cada ativo e quando usar.
 
-## Aula 59 · Ácido hialurônico e niacinamida
+## Aula 28 · Ácido hialurônico e niacinamida
 
 *Dois ativos gentis, que quase todo mundo tolera.*
 
@@ -1355,7 +702,7 @@ O que é cada ativo e quando usar.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Ácido hialurônico e niacinamida” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 60 · Vitamina C
+## Aula 29 · Vitamina C
 
 *Antioxidante da manhã, parceira do protetor.*
 
@@ -1370,7 +717,7 @@ O que é cada ativo e quando usar.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Vitamina C” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 61 · Ácidos esfoliantes
+## Aula 30 · Ácidos esfoliantes
 
 *Salicílico, glicólico, lático e mandélico: para que serve cada um.*
 
@@ -1391,7 +738,7 @@ O que é cada ativo e quando usar.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Ácidos esfoliantes” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 62 · Retinol
+## Aula 31 · Retinol
 
 *O ativo mais estudado para linhas e textura. Só à noite.*
 
@@ -1412,7 +759,7 @@ O que é cada ativo e quando usar.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Retinol” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 63 · Clareadores
+## Aula 32 · Clareadores
 
 *Para manchas e melasma, sempre com protetor com cor.*
 
@@ -1426,7 +773,7 @@ O que é cada ativo e quando usar.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Clareadores” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 64 · Fotossensível ou fotossensibilizante?
+## Aula 33 · Fotossensível ou fotossensibilizante?
 
 *Duas palavras parecidas, dois cuidados diferentes.*
 
@@ -1439,7 +786,7 @@ O que é cada ativo e quando usar.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Fotossensível ou fotossensibilizante?” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 65 · Pode misturar ativos?
+## Aula 34 · Pode misturar ativos?
 
 *As quatro regras para combinar sem irritar.*
 
@@ -1454,11 +801,11 @@ O que é cada ativo e quando usar.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Pode misturar ativos?” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-# Módulo 11 · Skincare: a sua rotina
+# Módulo 8 · Skincare: a sua rotina
 
 Rotinas por tipo de pele, manchas e hábitos.
 
-## Aula 66 · Texturas: qual escolher
+## Aula 35 · Texturas: qual escolher
 
 *A textura certa para a sua pele e o seu clima.*
 
@@ -1475,7 +822,7 @@ Rotinas por tipo de pele, manchas e hábitos.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Texturas: qual escolher” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 67 · Rotina fixa e reserva
+## Aula 36 · Rotina fixa e reserva
 
 *O que é todo dia e o que entra só quando a pele pede.*
 
@@ -1490,7 +837,7 @@ Rotinas por tipo de pele, manchas e hábitos.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Rotina fixa e reserva” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 68 · Rotina para pele seca
+## Aula 37 · Rotina para pele seca
 
 *Conforto e água morna.*
 
@@ -1511,7 +858,7 @@ Rotinas por tipo de pele, manchas e hábitos.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Rotina para pele seca” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 69 · Rotina para pele oleosa
+## Aula 38 · Rotina para pele oleosa
 
 *Leveza, sem pular o hidratante.*
 
@@ -1531,7 +878,7 @@ Rotinas por tipo de pele, manchas e hábitos.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Rotina para pele oleosa” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 70 · Rotina para pele mista
+## Aula 39 · Rotina para pele mista
 
 *Equilibrar a zona T sem ressecar as bochechas.*
 
@@ -1546,7 +893,7 @@ Rotinas por tipo de pele, manchas e hábitos.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Rotina para pele mista” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 71 · Rotina para pele normal
+## Aula 40 · Rotina para pele normal
 
 *Manter o que já está bom.*
 
@@ -1560,7 +907,7 @@ Rotinas por tipo de pele, manchas e hábitos.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Rotina para pele normal” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 72 · Rotina para pele sensível
+## Aula 41 · Rotina para pele sensível
 
 *Menos produtos, sem fragrância, sempre testando antes.*
 
@@ -1575,7 +922,7 @@ Rotinas por tipo de pele, manchas e hábitos.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Rotina para pele sensível” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 73 · Complementos por objetivo
+## Aula 42 · Complementos por objetivo
 
 *O que acrescentar ao básico, conforme o que te incomoda.*
 
@@ -1591,7 +938,7 @@ Rotinas por tipo de pele, manchas e hábitos.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Complementos por objetivo” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 74 · Manchas: o combo que funciona
+## Aula 43 · Manchas: o combo que funciona
 
 *Protetor, luz visível, clareador e zero atrito.*
 
@@ -1611,7 +958,7 @@ Rotinas por tipo de pele, manchas e hábitos.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Manchas: o combo que funciona” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 75 · Hábitos que mudam a pele
+## Aula 44 · Hábitos que mudam a pele
 
 *Pequenas escolhas diárias que somam.*
 
@@ -1628,7 +975,7 @@ Rotinas por tipo de pele, manchas e hábitos.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Hábitos que mudam a pele” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 76 · Mimo de fim de semana
+## Aula 45 · Mimo de fim de semana
 
 *Uma máscara calmante simples, opcional.*
 
@@ -1647,11 +994,11 @@ Rotinas por tipo de pele, manchas e hábitos.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Mimo de fim de semana” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-# Módulo 12 · Acompanhe a evolução
+# Módulo 9 · Acompanhe a evolução
 
 Fotos, expectativas realistas e dúvidas.
 
-## Aula 77 · Foto de acompanhamento
+## Aula 46 · Foto de acompanhamento
 
 *Uma vez por semana, sempre do mesmo jeito.*
 
@@ -1667,7 +1014,7 @@ Fotos, expectativas realistas e dúvidas.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Foto de acompanhamento” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 78 · O que é realista esperar
+## Aula 47 · O que é realista esperar
 
 *Sem promessas: o que muitas pessoas relatam.*
 
@@ -1682,7 +1029,7 @@ Fotos, expectativas realistas e dúvidas.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “O que é realista esperar” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 79 · Os erros mais comuns
+## Aula 48 · Os erros mais comuns
 
 *O que atrapalha, para você não repetir.*
 
@@ -1702,7 +1049,7 @@ Fotos, expectativas realistas e dúvidas.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Os erros mais comuns” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 80 · Perguntas frequentes
+## Aula 49 · Perguntas frequentes
 
 *As dúvidas que mais aparecem, em uma frase cada.*
 
@@ -1722,4 +1069,4 @@ Fotos, expectativas realistas e dúvidas.
 
 ---
 
-*Total: 80 aulas. Conteúdo próprio do FaceZen, gerado a partir do app. Não substitui avaliação médica, dermatológica ou fisioterapêutica.*
+*Total: 49 aulas. Conteúdo próprio do FaceZen, gerado a partir do app. Não substitui avaliação médica, dermatológica ou fisioterapêutica.*

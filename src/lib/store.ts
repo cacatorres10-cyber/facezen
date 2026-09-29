@@ -364,7 +364,7 @@ export const useStore = create<FaceZenState>()(
     }),
     {
       name: STORAGE_KEY,
-      version: 5,
+      version: 6,
       storage: createJSONStorage(() => safeStorage),
       // v1 → v2: "intenções" viraram "objetivos".
       migrate: (persisted, version) => {
@@ -382,8 +382,8 @@ export const useStore = create<FaceZenState>()(
           }
         }
         if (version < 4) state.products = state.products ?? null
-        if (version < 5) {
-          // v5: exercícios da biblioteca própria (sem os movimentos do vídeo) e curso.
+        if (version < 6) {
+          // v5: biblioteca própria e curso; v6: só os 15 exercícios essenciais.
           state.lessonsDone = state.lessonsDone ?? []
           state.favorites = (state.favorites ?? []).filter((id) => !!exerciseById(id))
         }
