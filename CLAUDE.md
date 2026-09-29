@@ -20,7 +20,8 @@ Vite + React 19 + TypeScript, Tailwind CSS v4 (tokens em `src/index.css`), React
 - Conteúdo: `src/content/` — `moves.ts` (os 12 movimentos da aula guiada = exercícios e sessões), `aulas.json`/`aulas.ts` (vídeo-aulas), `photos.ts` (fotos do Pexels em `src/assets/fotos`).
 - Aulas e fotos são baixadas pelo workflow "Atualizar aulas e fotos" (`scripts/baixar_midia.py`), que roda no GitHub.
 - Montagem das sessões e regras do calendário: `src/lib/plan.ts` (+ testes em `plan.test.ts`).
-- Skincare: o básico (limpar, hidratar, proteger), salvo por dia em `skincare[AAAA-MM-DD]`; histórico em `SkincareHistory`.
+- Skincare: rotina montada com os produtos que a pessoa marca (`products`), lógica dermatológica em `src/lib/skincare.ts` (base primeiro, um ativo por vez, sem conflitos); salvo por dia em `skincare[AAAA-MM-DD]`; histórico em `SkincareHistory`.
+- Sem servidor nem banco de dados: tudo fica no aparelho (infoproduto).
 - Estado salvo por aparelho: `src/lib/store.ts`. Ao mudar o formato, suba `version` no `persist` e escreva `migrate`.
 
 ## Regras de conteúdo e tom

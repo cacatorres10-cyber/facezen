@@ -2,6 +2,7 @@ import { create } from 'zustand'
 import { createJSONStorage, persist, type StateStorage } from 'zustand/middleware'
 import type { Experience, GoalId, RegionId, SafetyFlag, SkinBase } from '../content/types'
 import { dayKey } from './dates'
+import type { ProductId } from './skincare'
 
 export type SkinConcern = 'tom' | 'poros' | 'ressecamento' | 'sinais'
 
@@ -124,6 +125,8 @@ export interface FaceZenData {
   practiced: Record<string, string[]>
   skincare: Record<string, SkincareDay>
   skincarePrefs: SkincarePrefs
+  /** Produtos que a pessoa já usa (null = ainda não respondeu). */
+  products: ProductId[] | null
   patchTests: PatchTest[]
   reviews: Record<number, WeeklyReview>
   settings: Settings
@@ -143,6 +146,7 @@ interface Actions {
   toggleSkincareStep: (date: string, period: 'manha' | 'noite', stepId: string) => void
   setReapplications: (date: string, n: number) => void
   updateSkincarePrefs: (patch: Partial<SkincarePrefs>) => void
+  setProducts: (products: ProductId[]) => void
   addPatchTest: (product: string, area: string) => void
   checkPatchTest: (id: string, date: string, value: 'ok' | 'reacao' | null) => void
   setPatchStatus: (id: string, status: PatchTest['status']) => void
@@ -231,6 +235,7 @@ const initialData = (): FaceZenData => ({
   practiced: {},
   skincare: {},
   skincarePrefs: defaultPrefsFor(),
+  products: null,
   patchTests: [],
   reviews: {},
   settings: { voice: false, sound: true, vibrate: true, mirror: false, theme: 'system' },
@@ -313,6 +318,8 @@ export const useStore = create<FaceZenState>()(
           return { skincare: { ...s.skincare, [date]: { ...day, reaplicacoes: Math.max(0, n) } } }
         }),
 
+      setProducts: (products) => set(() => ({ products })),
+
       updateSkincarePrefs: (patch) => set((s) => ({ skincarePrefs: { ...s.skincarePrefs, ...patch } })),
 
       addPatchTest: (product, area) =>
@@ -350,7 +357,7 @@ export const useStore = create<FaceZenState>()(
     }),
     {
       name: STORAGE_KEY,
-      version: 3,
+      version: 4,
       storage: createJSONStorage(() => safeStorage),
       // v1 → v2: "intenções" viraram "objetivos".
       migrate: (persisted, version) => {
@@ -367,6 +374,7 @@ export const useStore = create<FaceZenState>()(
             day.noite = day.noite.filter((x) => x !== 'n-remocao')
           }
         }
+        if (version < 4) state.products = state.products ?? null
         return state
       },
     },
@@ -375,6 +383,6 @@ export const useStore = create<FaceZenState>()(
 
 /** Extrai somente os dados (sem funções) para backup. */
 export function snapshot(state: FaceZenState): FaceZenData {
-  const { device, onboarded, profile, program, sessions, favorites, practiced, skincare, skincarePrefs, patchTests, reviews, settings } = state
-  return { device, onboarded, profile, program, sessions, favorites, practiced, skincare, skincarePrefs, patchTests, reviews, settings }
+  const { device, onboarded, profile, program, sessions, favorites, practiced, skincare, skincarePrefs, products, patchTests, reviews, settings } = state
+  return { device, onboarded, profile, program, sessions, favorites, practiced, skincare, skincarePrefs, products, patchTests, reviews, settings }
 }

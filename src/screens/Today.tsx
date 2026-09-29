@@ -8,7 +8,9 @@ import { useToday } from '../lib/useToday'
 import { AULA_GUIADA } from '../content/aulas'
 import { Photo } from '../components/Photo'
 import { buildSession, sessionsThisWeek, todayInfo, weekStart } from '../lib/plan'
-import { morningRoutine, nightRoutine } from '../lib/skincare'
+import { morningRoutine, nightRoutine, type ProductId } from '../lib/skincare'
+
+const NO_PRODUCTS: ProductId[] = []
 import { storageIsPersistent, useStore } from '../lib/store'
 
 export function Today() {
@@ -17,7 +19,7 @@ export function Today() {
   const program = useStore((s) => s.program)
   const sessions = useStore((s) => s.sessions)
   const skincare = useStore((s) => s.skincare)
-  const prefs = useStore((s) => s.skincarePrefs)
+  const products = useStore((s) => s.products) ?? NO_PRODUCTS
   const advanceWeek = useStore((s) => s.advanceWeek)
   const repeatWeek = useStore((s) => s.repeatWeek)
 
@@ -28,8 +30,8 @@ export function Today() {
   const index = sessionsThisWeek(sessions, start).length
   const plan = useMemo(() => buildSession(profile, { week: program.week, sessionIndex: index }), [profile, program.week, index])
 
-  const morning = morningRoutine(profile, prefs)
-  const night = nightRoutine(profile, prefs, now.getDay())
+  const morning = morningRoutine(profile, products)
+  const night = nightRoutine(profile, products, now.getDay())
   const day = skincare[today]
   const mDone = morning.filter((s) => day?.manha.includes(s.id)).length
   const nDone = night.steps.filter((s) => day?.noite.includes(s.id)).length

@@ -4,8 +4,8 @@ import { weekInfo } from '../content/program'
 import type { SafetyFlag } from '../content/types'
 import { addDays, dayKey } from './dates'
 import { buildSession, todayInfo, weekStart, weekTarget, type PlanContext } from './plan'
-import { nightRoutine, periodStatus } from './skincare'
-import { defaultPrefsFor, type Profile, type SessionLog } from './store'
+import { morningRoutine, nightKind, nightRoutine, periodStatus, skincareAdvice } from './skincare'
+import type { Profile, SessionLog } from './store'
 
 const profile = (patch: Partial<Profile> = {}): Profile => ({
   name: 'Ana',
@@ -111,10 +111,43 @@ describe('skincare básico', () => {
     expect(periodStatus(undefined, 'noite')).toBe('nada')
   })
 
-  it('na gravidez, nenhuma noite de retinoide', () => {
+  it('na gravidez, nenhuma noite de retinol e aviso para pausar', () => {
     const p = profile({ safety: ['gestante'] })
-    const prefs = { ...defaultPrefsFor(), retinoid: true, retinoidNights: [0, 1, 2, 3, 4, 5, 6] }
-    for (let d = 0; d < 7; d++) expect(nightRoutine(p, prefs, d).kind).toBe('hidratacao')
+    for (let d = 0; d < 7; d++) expect(nightRoutine(p, ['retinol'], d).kind).toBe('hidratacao')
+    expect(skincareAdvice(p, ['retinol', 'protetor', 'hidratante-creme']).map((a) => a.id)).toContain('gestante-retinol')
+  })
+
+  it('retinol e ácido nunca na mesma noite', () => {
+    for (let d = 0; d < 7; d++) {
+      const kinds = [nightKind(['retinol', 'acido'], d, profile())]
+      expect(kinds.length).toBe(1)
+    }
+    const week = [0, 1, 2, 3, 4, 5, 6].map((d) => nightKind(['retinol', 'acido'], d, profile()))
+    expect(week.filter((k) => k === 'retinoide')).toHaveLength(2)
+    expect(week.filter((k) => k === 'acido')).toHaveLength(2)
+  })
+
+  it('sem protetor: a primeira recomendação é o protetor', () => {
+    expect(skincareAdvice(profile(), ['limpador-gel'])[0].id).toBe('protetor')
+  })
+
+  it('troca esfoliante com grãos e sabonete em barra', () => {
+    const ids = skincareAdvice(profile(), ['sabonete-barra', 'esfoliante-fisico', 'protetor', 'hidratante-gel']).map((a) => a.id)
+    expect(ids).toEqual(expect.arrayContaining(['sabonete', 'scrub']))
+  })
+
+  it('usa o produto da pessoa na rotina e marca o que falta', () => {
+    const m = morningRoutine(profile({ skinBase: 'oleosa' }), ['limpador-gel', 'vitc'])
+    expect(m.map((s) => s.id)).toEqual(['m-limpeza', 'm-vitc', 'm-hidratante', 'm-protetor'])
+    expect(m.find((s) => s.id === 'm-protetor')?.missing).toBe(true)
+  })
+
+  it('só sugere ativo novo quando a base está completa, no máximo 2', () => {
+    const p = profile({ goals: ['linhas', 'pele'], skinBase: 'oleosa' })
+    expect(skincareAdvice(p, ['limpador-gel']).some((a) => a.tone === 'tip')).toBe(false)
+    const tips = skincareAdvice(p, ['limpador-gel', 'protetor', 'hidratante-gel']).filter((a) => a.tone === 'tip')
+    expect(tips.length).toBeGreaterThan(0)
+    expect(tips.length).toBeLessThanOrEqual(2)
   })
 })
 

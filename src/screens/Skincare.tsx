@@ -1,60 +1,104 @@
-import { AlertTriangle, Check, Minus, Moon, Plus, Settings2, Sun } from 'lucide-react'
+import { AlertTriangle, Check, Lightbulb, Minus, Moon, Plus, ShoppingBag, Sun } from 'lucide-react'
 import { useState } from 'react'
 import { WEEKDAYS } from '../content/profileOptions'
 import { Photo } from '../components/Photo'
-import { Button, Card, cx, Eyebrow, Note, Segmented, Sheet, Title, Toggle } from '../components/ui'
-import { isMorning } from '../lib/dates'
-import { useToday } from '../lib/useToday'
 import { SkincareHistory } from '../components/SkincareHistory'
-import { morningRoutine, NIGHT_LABEL, nightKind, nightRoutine, skinLabel, type RoutineStep } from '../lib/skincare'
+import { Button, Card, Chip, cx, Eyebrow, Note, Segmented, Sheet, Title } from '../components/ui'
+import { isMorning } from '../lib/dates'
+import { morningRoutine, NIGHT_LABEL, nightKind, nightRoutine, PRODUCT_GROUPS, skinLabel, skincareAdvice, type ProductId, type RoutineStep } from '../lib/skincare'
 import { useStore } from '../lib/store'
+import { useToday } from '../lib/useToday'
+
+const NO_PRODUCTS: ProductId[] = []
 
 export function Skincare() {
   const profile = useStore((s) => s.profile)!
-  const prefs = useStore((s) => s.skincarePrefs)
+  const products = useStore((s) => s.products)
   const skincare = useStore((s) => s.skincare)
   const toggleStep = useStore((s) => s.toggleSkincareStep)
   const setReapplications = useStore((s) => s.setReapplications)
   const [period, setPeriod] = useState<'manha' | 'noite'>(isMorning() ? 'manha' : 'noite')
-  const [prefsOpen, setPrefsOpen] = useState(false)
+  const [productsOpen, setProductsOpen] = useState(false)
 
-  const now = new Date()
   const today = useToday()
+  const now = new Date()
+  const mine = products ?? NO_PRODUCTS
   const day = skincare[today] ?? { manha: [], noite: [], reaplicacoes: 0 }
-  const night = nightRoutine(profile, prefs, now.getDay())
-  const steps: RoutineStep[] = period === 'manha' ? morningRoutine(profile, prefs) : night.steps
+  const night = nightRoutine(profile, mine, now.getDay())
+  const steps: RoutineStep[] = period === 'manha' ? morningRoutine(profile, mine) : night.steps
   const doneList = day[period]
   const done = steps.filter((s) => doneList.includes(s.id)).length
+  const advice = products ? skincareAdvice(profile, mine) : []
+  const fixes = advice.filter((a) => a.tone === 'fix')
+  const tips = advice.filter((a) => a.tone === 'tip')
+  const hasActives = mine.includes('retinol') || mine.includes('acido')
 
   return (
     <div className="pb-28">
       <div className="relative">
-        <Photo k="creme" className="h-52 w-full" position="50% 30%" />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-bg" />
+        <Photo k="creme" className="h-48 w-full" position="50% 30%" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-bg" />
       </div>
       <div className="-mt-10 px-5">
-        <div className="relative flex items-end justify-between gap-3">
-          <div>
-            <Eyebrow>{skinLabel(profile)}</Eyebrow>
-            <Title className="mt-1">Skincare</Title>
+        <Eyebrow className="relative">{skinLabel(profile)}</Eyebrow>
+        <Title className="relative mt-1">Skincare</Title>
+
+        {products === null ? (
+          <Card className="mt-4 bg-hero text-on-hero">
+            <p className="font-display text-2xl leading-tight font-medium">Monte sua rotina com o que você já tem</p>
+            <p className="mt-2 text-sm text-on-hero/85">Marque os produtos que usa. Mostramos como usar cada um, na ordem certa, e o que vale ajustar.</p>
+            <Button variant="quartz" className="mt-4" onClick={() => setProductsOpen(true)}>
+              <ShoppingBag className="size-4" /> Contar meus produtos
+            </Button>
+          </Card>
+        ) : (
+          <div className="mt-2 flex items-center justify-between gap-3">
+            <p className="text-sm text-ink-soft">
+              Rotina feita com seus {mine.length} {mine.length === 1 ? 'produto' : 'produtos'}.
+            </p>
+            <button type="button" onClick={() => setProductsOpen(true)} className="shrink-0 text-sm font-semibold text-jade">
+              Editar produtos
+            </button>
           </div>
-          <Button size="sm" variant="soft" onClick={() => setPrefsOpen(true)}>
-            <Settings2 className="size-4" /> Ajustar
-          </Button>
-        </div>
+        )}
 
-        <Note className="mt-4" icon={<Check className="size-4" />}>
-          <b>Este é o básico:</b> limpar, hidratar e proteger. Use os produtos que você já tem e gosta. Se quiser, adicione extras em “Ajustar”.
-        </Note>
+        {fixes.length > 0 && (
+          <section className="mt-5" aria-label="O que ajustar">
+            <p className="eyebrow mb-2">O que ajustar</p>
+            <div className="grid gap-2">
+              {fixes.map((a) => (
+                <div key={a.id} className="flex gap-3 rounded-2xl bg-warn-soft p-4">
+                  <AlertTriangle className="mt-0.5 size-4 shrink-0 text-warn" />
+                  <div>
+                    <p className="font-semibold text-ink">{a.title}</p>
+                    <p className="mt-0.5 text-sm text-ink-soft">{a.text}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
 
-        {profile.safety.includes('gestante') && (
-          <Note tone="warn" className="mt-4" icon={<AlertTriangle className="size-4" />}>
-            Na gravidez ou amamentação, nada de ativo novo sem falar com seu médico.
-          </Note>
+        {tips.length > 0 && (
+          <section className="mt-4" aria-label="Pode valer a pena">
+            <p className="eyebrow mb-2">{fixes.length ? 'Depois' : 'Seu próximo passo'}</p>
+            <div className="grid gap-2">
+              {tips.map((a) => (
+                <div key={a.id} className="flex gap-3 rounded-2xl bg-jade-soft p-4">
+                  <Lightbulb className="mt-0.5 size-4 shrink-0 text-jade" />
+                  <div>
+                    <p className="font-semibold text-ink">{a.title}</p>
+                    <p className="mt-0.5 text-sm text-ink-soft">{a.text}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <p className="mt-2 text-xs text-ink-faint">Um produto novo de cada vez. Teste antes numa área pequena, como atrás da orelha.</p>
+          </section>
         )}
 
         <Segmented
-          className="mt-5"
+          className="mt-6"
           value={period}
           onChange={setPeriod}
           options={[
@@ -91,12 +135,12 @@ export function Skincare() {
                       {on ? <Check className="size-4" strokeWidth={3} /> : i + 1}
                     </span>
                     <span className="min-w-0 flex-1">
-                      <span className={cx('block font-semibold', on ? 'text-ink-soft line-through decoration-ink-faint' : 'text-ink')}>
+                      <span className={cx('flex flex-wrap items-center gap-x-2 font-semibold', on ? 'text-ink-soft line-through decoration-ink-faint' : 'text-ink')}>
                         {s.title}
-                        {s.optional && <span className="ml-2 text-xs font-medium text-ink-faint no-underline">opcional</span>}
+                        {s.missing && products !== null && <span className="rounded-full bg-warn-soft px-2 py-0.5 text-[11px] font-bold text-warn no-underline">falta</span>}
+                        {s.optional && <span className="text-xs font-medium text-ink-faint">opcional</span>}
                       </span>
                       <span className="mt-0.5 block text-sm text-ink-soft">{s.detail}</span>
-                      {s.warn && <span className="mt-1 block text-sm text-warn">{s.warn}</span>}
                     </span>
                   </button>
                 </li>
@@ -104,16 +148,16 @@ export function Skincare() {
             })}
           </ol>
 
-          {period === 'noite' && (
+          {period === 'noite' && hasActives && (
             <div className="mt-2 border-t border-line pt-4">
               <p className="eyebrow mb-2">Suas noites</p>
               <div className="grid grid-cols-7 gap-1 text-center">
                 {WEEKDAYS.map((d) => {
-                  const k = nightKind(prefs, d.id, profile)
+                  const k = nightKind(mine, d.id, profile)
                   return (
                     <div key={d.id} className={cx('rounded-xl py-2', d.id === now.getDay() ? 'bg-jade-soft' : 'bg-surface-2/60')}>
                       <p className="text-[11px] font-bold text-ink-soft">{d.label}</p>
-                      <p className="mt-0.5 text-[10px] font-semibold text-ink-faint">{k === 'retinoide' ? 'Retin.' : k === 'acido' ? 'Esfol.' : 'Hidrat.'}</p>
+                      <p className="mt-0.5 text-[10px] font-semibold text-ink-faint">{k === 'retinoide' ? 'Retinol' : k === 'acido' ? 'Ácido' : 'Hidrat.'}</p>
                     </div>
                   )
                 })}
@@ -126,7 +170,7 @@ export function Skincare() {
           <Card className="mt-4">
             <div className="flex items-center justify-between gap-3">
               <div>
-                <p className="font-display text-xl font-medium text-ink">Reaplicação do protetor</p>
+                <p className="font-display text-xl font-medium text-ink">Reaplicou o protetor?</p>
                 <p className="text-sm text-ink-soft">A cada 2 horas no sol, ou depois de suar.</p>
               </div>
               <div className="flex items-center gap-2">
@@ -147,78 +191,55 @@ export function Skincare() {
         <Card className="mt-4">
           <SkincareHistory skincare={skincare} today={today} />
         </Card>
+
+        {profile.safety.includes('gestante') && (
+          <Note tone="warn" className="mt-4">
+            Na gravidez ou amamentação, confirme qualquer ativo com seu médico.
+          </Note>
+        )}
+        <p className="mt-4 text-xs text-ink-faint">Orientações gerais de cuidado com a pele. Para manchas, acne ou irritação que não passa, procure um dermatologista.</p>
       </div>
 
-      <PrefsSheet open={prefsOpen} onClose={() => setPrefsOpen(false)} />
+      <ProductsSheet open={productsOpen} onClose={() => setProductsOpen(false)} />
     </div>
   )
 }
 
-function PrefsSheet({ open, onClose }: { open: boolean; onClose: () => void }) {
-  const prefs = useStore((s) => s.skincarePrefs)
-  const update = useStore((s) => s.updateSkincarePrefs)
-  const profile = useStore((s) => s.profile)!
-  const pregnant = profile.safety.includes('gestante')
-
-  const setNight = (kind: 'retinoidNights' | 'acidNights', d: number) => {
-    const other = kind === 'retinoidNights' ? 'acidNights' : 'retinoidNights'
-    const list = prefs[kind].includes(d) ? prefs[kind].filter((x) => x !== d) : [...prefs[kind], d]
-    update({ [kind]: list, [other]: prefs[other].filter((x) => x !== d) })
-  }
+function ProductsSheet({ open, onClose }: { open: boolean; onClose: () => void }) {
+  const saved = useStore((s) => s.products)
+  const setProducts = useStore((s) => s.setProducts)
+  const [picked, setPicked] = useState<ProductId[]>(saved ?? [])
+  const toggle = (id: ProductId) => setPicked((l) => (l.includes(id) ? l.filter((x) => x !== id) : [...l, id]))
 
   return (
-    <Sheet open={open} onClose={onClose} title="Minha rotina">
-      <p className="text-sm text-ink-soft">Marque o que você usa.</p>
-      <div className="mt-2 divide-y divide-line">
-        <Toggle id="p-makeup" checked={prefs.makeup} onChange={(v) => update({ makeup: v })} label="Uso maquiagem" hint="Inclui a remoção e a limpeza dupla à noite" />
-        <Toggle id="p-vitc" checked={prefs.vitC} onChange={(v) => update({ vitC: v })} label="Vitamina C pela manhã" hint="Opcional; não substitui o protetor" />
-        <div className="py-3">
-          <p className="font-medium text-ink">Sérum hidratante</p>
-          <Segmented
-            className="mt-2"
-            value={prefs.serum}
-            onChange={(v) => update({ serum: v })}
-            options={[
-              { value: 'nenhum', label: 'Nenhum' },
-              { value: 'hialuronico', label: 'Hialurônico' },
-              { value: 'niacinamida', label: 'Niacinamida' },
-            ]}
-          />
-        </div>
-        <Toggle id="p-eye" checked={prefs.eye} onChange={(v) => update({ eye: v })} label="Produto para olhos" />
-        <Toggle id="p-toner" checked={prefs.toner} onChange={(v) => update({ toner: v })} label="Tônico à noite" />
-        <Toggle id="p-oil" checked={prefs.oil} onChange={(v) => update({ oil: v })} label="Óleo facial à noite" hint="Poucas gotas, se a pele tolera" />
-        <div className="py-1">
-          <Toggle id="p-retinoid" checked={prefs.retinoid && !pregnant} onChange={(v) => update({ retinoid: v })} label="Retinoide cosmético" hint={pregnant ? 'Indisponível na gravidez ou amamentação sem orientação médica' : 'Comece uma noite por semana'} />
-          {prefs.retinoid && !pregnant && <NightPicker selected={prefs.retinoidNights} onToggle={(d) => setNight('retinoidNights', d)} />}
-        </div>
-        <div className="py-1">
-          <Toggle id="p-acid" checked={prefs.acid && !pregnant} onChange={(v) => update({ acid: v })} label="Esfoliante (AHA ou BHA)" hint={pregnant ? 'Confirme com obstetra ou dermatologista antes' : 'Em noites diferentes do retinoide'} />
-          {prefs.acid && !pregnant && <NightPicker selected={prefs.acidNights} onToggle={(d) => setNight('acidNights', d)} />}
-        </div>
+    <Sheet open={open} onClose={onClose} title="Seus produtos">
+      <p className="text-sm text-ink-soft">Marque o que você tem em casa e usa. Não precisa ter tudo.</p>
+      <div className="mt-4 grid gap-5">
+        {PRODUCT_GROUPS.map((g) => (
+          <div key={g.title}>
+            <p className="mb-2 text-sm font-semibold text-ink">{g.title}</p>
+            <div className="flex flex-wrap gap-2">
+              {g.items.map((p) => (
+                <Chip key={p.id} selected={picked.includes(p.id)} onClick={() => toggle(p.id)}>
+                  {p.label}
+                  {p.hint && <span className="text-xs opacity-70">({p.hint})</span>}
+                </Chip>
+              ))}
+            </div>
+          </div>
+        ))}
       </div>
-      <Note className="mt-4">Um produto novo de cada vez.</Note>
-      <Button block className="mt-4" onClick={onClose}>
-        Pronto
+      <Button
+        block
+        size="lg"
+        className="mt-6"
+        onClick={() => {
+          setProducts(picked)
+          onClose()
+        }}
+      >
+        Montar minha rotina
       </Button>
     </Sheet>
-  )
-}
-
-function NightPicker({ selected, onToggle }: { selected: number[]; onToggle: (d: number) => void }) {
-  return (
-    <div className="grid grid-cols-7 gap-1 pb-3">
-      {WEEKDAYS.map((d) => (
-        <button
-          key={d.id}
-          type="button"
-          aria-pressed={selected.includes(d.id)}
-          onClick={() => onToggle(d.id)}
-          className={cx('h-9 rounded-xl text-xs font-bold', selected.includes(d.id) ? 'bg-jade text-on-jade' : 'bg-surface-2 text-ink-soft')}
-        >
-          {d.label}
-        </button>
-      ))}
-    </div>
   )
 }
