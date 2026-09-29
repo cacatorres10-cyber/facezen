@@ -4,7 +4,7 @@ import { TabBar } from './components/TabBar'
 import { useStore } from './lib/store'
 import { Guide, GuideSection } from './screens/Guide'
 import { Journey } from './screens/Journey'
-import { Lessons } from './screens/Lessons'
+import { Course, CourseModulePage, LessonPage } from './screens/Course'
 import { ExerciseDetail, Library } from './screens/Library'
 import { Onboarding } from './screens/Onboarding'
 import { Profile } from './screens/Profile'
@@ -53,7 +53,9 @@ function AppRoutes() {
     <Routes>
       <Route path="/" element={<WithTabs><Today /></WithTabs>} />
       <Route path="/sessao" element={<Session />} />
-      <Route path="/aulas" element={<WithTabs><Lessons /></WithTabs>} />
+      <Route path="/curso" element={<WithTabs><Course /></WithTabs>} />
+      <Route path="/curso/aula/:id" element={<WithTabs><LessonPage /></WithTabs>} />
+      <Route path="/curso/:modulo" element={<WithTabs><CourseModulePage /></WithTabs>} />
       <Route path="/jornada" element={<WithTabs><Journey /></WithTabs>} />
       <Route path="/exercicios" element={<WithTabs><Library /></WithTabs>} />
       <Route path="/exercicios/:id" element={<WithTabs><ExerciseDetail /></WithTabs>} />

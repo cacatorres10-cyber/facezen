@@ -1,14 +1,16 @@
+import type { FocusId } from './library'
 import type { GoalId, RegionId, SafetyFlag, SkinBase } from './types'
 
-/** Objetivos do quiz. Cada um acende as regiões do rosto que entram nas sessões. */
-export const GOALS: { id: GoalId; label: string; hint: string; regions: RegionId[] }[] = [
-  { id: 'pele', label: 'Pele mais bonita e viçosa', hint: 'Rotina de cuidados e toque que não agride', regions: ['bochechas', 'testa'] },
-  { id: 'papada', label: 'Cuidar da papada', hint: 'Queixo e pescoço', regions: ['papada', 'pescoco'] },
-  { id: 'linhas', label: 'Suavizar linhas de expressão', hint: 'Testa e ao redor dos olhos', regions: ['testa', 'olhos'] },
-  { id: 'contorno', label: 'Rosto mais definido', hint: 'Mandíbula e bochechas', regions: ['mandibula', 'bochechas'] },
-  { id: 'olheiras', label: 'Olheiras e inchaço', hint: 'Toque leve na região dos olhos', regions: ['olhos'] },
-  { id: 'bigode', label: 'Bigode chinês', hint: 'Entre o nariz e a boca', regions: ['bigode'] },
-  { id: 'tensao', label: 'Aliviar a tensão do rosto', hint: 'Testa franzida, dentes apertados', regions: ['testa', 'mandibula'] },
+/** Objetivos do quiz. Cada um acende regiões do rosto e escolhe o módulo de foco das sessões. */
+export const GOALS: { id: GoalId; label: string; hint: string; regions: RegionId[]; focus: FocusId }[] = [
+  { id: 'pele', label: 'Pele mais bonita e viçosa', hint: 'Rotina de cuidados e toque que não agride', regions: ['bochechas', 'testa'], focus: 'F' },
+  { id: 'papada', label: 'Cuidar da papada', hint: 'Queixo e pescoço', regions: ['papada', 'pescoco'], focus: 'B' },
+  { id: 'linhas', label: 'Suavizar linhas de expressão', hint: 'Testa e ao redor dos olhos', regions: ['testa', 'olhos'], focus: 'C' },
+  { id: 'contorno', label: 'Rosto mais definido', hint: 'Mandíbula e bochechas', regions: ['mandibula', 'bochechas'], focus: 'F' },
+  { id: 'olheiras', label: 'Olheiras e inchaço', hint: 'Toque leve na região dos olhos', regions: ['olhos'], focus: 'D' },
+  { id: 'bigode', label: 'Bigode chinês', hint: 'Entre o nariz e a boca', regions: ['bigode'], focus: 'A' },
+  { id: 'labios', label: 'Lábios e linhas acima da boca', hint: 'Contorno da boca', regions: ['bigode'], focus: 'E' },
+  { id: 'tensao', label: 'Aliviar a tensão do rosto', hint: 'Testa franzida, dentes apertados', regions: ['testa', 'mandibula'], focus: 'G' },
 ]
 
 export const regionsForGoals = (goals: GoalId[]): RegionId[] => [...new Set(GOALS.filter((g) => goals.includes(g.id)).flatMap((g) => g.regions))]

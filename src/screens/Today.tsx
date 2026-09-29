@@ -1,13 +1,13 @@
-import { ArrowRight, Check, Moon, Play, PlayCircle, RotateCcw, Sun } from 'lucide-react'
+import { ArrowRight, Check, GraduationCap, Moon, Play, RotateCcw, Sun } from 'lucide-react'
 import { useMemo } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { FaceMap } from '../components/FaceMap'
 import { Button, Card, cx, Eyebrow, ProgressRing, Title } from '../components/ui'
 import { formatDuration, formatLong, greeting, isMorning } from '../lib/dates'
 import { useToday } from '../lib/useToday'
-import { AULA_GUIADA } from '../content/aulas'
+import { COURSE_ITEMS, nextItem } from '../lib/course'
 import { Photo } from '../components/Photo'
-import { buildSession, sessionsThisWeek, todayInfo, weekStart } from '../lib/plan'
+import { buildSession, hadRecentDiscomfort, PHASE_LABEL, phaseOf, sessionsThisWeek, todayInfo, weekStart } from '../lib/plan'
 import { morningRoutine, nightRoutine, type ProductId } from '../lib/skincare'
 
 const NO_PRODUCTS: ProductId[] = []
@@ -28,7 +28,11 @@ export function Today() {
   const start = weekStart(program, now)
   const info = todayInfo({ sessions, week: program.week, weekStartedAt: start, profile, now })
   const index = sessionsThisWeek(sessions, start).length
-  const plan = useMemo(() => buildSession(profile, { week: program.week, sessionIndex: index }), [profile, program.week, index])
+  const recentDiscomfort = hadRecentDiscomfort(sessions, now)
+  const plan = useMemo(() => buildSession(profile, { week: program.week, sessionIndex: index, recentDiscomfort }), [profile, program.week, index, recentDiscomfort])
+  const lessonsDone = useStore((s) => s.lessonsDone)
+  const nextLesson = nextItem(lessonsDone)
+  const lessonsCount = COURSE_ITEMS.filter((i) => lessonsDone.includes(i.id)).length
 
   const morning = morningRoutine(profile, products)
   const night = nightRoutine(profile, products, now.getDay())
@@ -37,7 +41,7 @@ export function Today() {
   const nDone = night.steps.filter((s) => day?.noite.includes(s.id)).length
   const paused = plan.steps.length === 0
   const canPractice = !paused && (info.state === 'praticar' || info.state === 'livre')
-  const weekLabel = program.week > 8 ? 'Manutenção' : `Semana ${program.week} de 8`
+  const weekLabel = program.week > 8 ? 'Manutenção' : `Semana ${program.week} de 8 · ${PHASE_LABEL[phaseOf(program.week)]}`
 
   return (
     <div className="px-5 pb-28">
@@ -114,19 +118,19 @@ export function Today() {
         <SkincareTile icon={<Moon className="size-5" />} label="Skincare noite" done={nDone} total={night.steps.length} highlight={!isMorning(now)} />
       </div>
 
-      {/* Aulas */}
-      <Link to={`/aulas#${AULA_GUIADA.id}`} className="mt-4 block overflow-hidden rounded-3xl bg-surface shadow-soft">
-        <span className="relative block aspect-video w-full bg-hero">
-          {AULA_GUIADA.thumb && <img src={AULA_GUIADA.thumb} alt="" className="size-full object-cover" />}
-          <PlayCircle className="absolute inset-0 m-auto size-14 text-white drop-shadow-lg" />
+      {/* Curso */}
+      <Link to={nextLesson?.to ?? '/curso'} className="mt-4 flex items-center gap-4 rounded-3xl bg-surface p-4 shadow-soft">
+        <span className="grid size-12 shrink-0 place-items-center rounded-2xl bg-quartz-soft text-rose-ink">
+          <GraduationCap className="size-6" />
         </span>
-        <span className="flex items-center gap-3 p-4">
-          <span className="min-w-0 flex-1">
-            <span className="block text-xs font-bold tracking-wider text-rose-ink uppercase">Aula guiada</span>
-            <span className="block font-semibold text-ink">{AULA_GUIADA.title}</span>
+        <span className="min-w-0 flex-1">
+          <span className="block text-xs font-bold tracking-wider text-rose-ink uppercase">
+            Curso · {lessonsCount}/{COURSE_ITEMS.length}
           </span>
-          <ArrowRight className="size-5 text-ink-faint" />
+          <span className="block truncate font-semibold text-ink">{nextLesson ? (lessonsCount === 0 ? 'Comece pelo passo a passo' : nextLesson.title) : 'Curso concluído'}</span>
+          {nextLesson && lessonsCount === 0 && <span className="block truncate text-sm text-ink-soft">{nextLesson.title}</span>}
         </span>
+        <ArrowRight className="size-5 shrink-0 text-ink-faint" />
       </Link>
 
       <div className="mt-4 grid grid-cols-2 gap-3">

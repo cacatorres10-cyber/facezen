@@ -5,29 +5,32 @@ Mini app (PWA) feito a partir do ebook *Yoga Facial e Skincare Consciente*: func
 
 ## O que o app faz
 
-- **Onboarding personalizado**: nome, intenção, mapa do rosto interativo (regiões de foco), tipo de pele, experiência, dias e horário da prática e perguntas de segurança (cervical, ATM, olhos, procedimento recente, gravidez/amamentação, pele em crise).
-- **Hoje**: a sessão do dia montada automaticamente para a semana do programa, o check-in de "uma hora depois", a meta semanal, o skincare do dia e um lembrete.
-- **Sessão guiada**: checklist "antes", escala de conforto e tensão, sequência editável, cronômetro por passo com preparação de 5 s, orbe de respiração 4–6, aviso de troca de lado, voz guiada (pt-BR), sino suave, vibração, **modo espelho** com a câmera frontal (nada é gravado) e botão "Senti desconforto".
-- **Jornada**: calendário de 8 semanas (regras de cada semana, avançar ou repetir), gráfico de tensão antes × depois, marcos, revisão semanal e diário completo de cada sessão.
-- **Exercícios**: as 14 fichas por região, com objetivo, posição, execução, respiração, repetições, frequência, sensação esperada e sinais para parar. Favoritos, prática avulsa com cronômetro e avisos quando uma ficha pede liberação profissional.
-- **Skincare**: rotina da manhã e da noite ajustada ao tipo de pele e aos produtos escolhidos (noites de retinoide ou esfoliante), reaplicação do protetor, receitas do capítulo 8 e **teste de contato** de 10 dias.
-- **Guia**: aviso de responsabilidade, princípios, preparação, rotina minuto a minuto, tipos de pele, ingredientes, ordem de aplicação, erros e irritação, checklist, perguntas frequentes com busca, vídeos recomendados e as 52 referências.
+- **Onboarding**: nome, objetivos (como um quiz), tipo de pele, tempo por dia (5, 10 ou 15 min), dias da semana e perguntas de segurança.
+- **Hoje**: a sessão do dia, a meta da semana, o skincare do dia e a próxima aula do curso.
+- **Curso**: 12 módulos com tutoriais passo a passo (um passo por tela): teoria, cada exercício e cada tema de skincare. O progresso fica salvo no aparelho.
+- **Exercícios**: 47 exercícios próprios (`src/content/library.ts`), cada um com tutorial, dose por nível, o que sentir, erros comuns e quando pular.
+- **Sessão guiada**: cronômetro por exercício, dose do dia, aviso de troca de lado, voz guiada, modo espelho e botão "Senti desconforto".
+- **Skincare**: o básico (limpar, hidratar, proteger) com os produtos que a pessoa já usa, recomendações e histórico.
+- **Progresso**: calendário de 8 semanas e histórico.
 
 ### Personalização e segurança
 
-O motor em `src/lib/plan.ts` monta cada sessão a partir de: semana do programa, quantas sessões já foram feitas na semana, regiões de foco, tempo preferido (5 ou 10 min) e as respostas de segurança. Exemplos:
+O motor em `src/lib/plan.ts` monta cada sessão com as séries A/B e os módulos de foco do Guia Prático:
 
 | Situação | O que muda |
 | --- | --- |
-| Semana 1 | 5 min, só testa, olhos com toque leve, mandíbula manual e pescoço; dias não consecutivos |
-| Semana 2 | Transferência de ar nas bochechas em apenas 2 das 4 sessões |
-| Semana 5 | Foco alternado: testa/mandíbula, bochechas/bigode chinês, pescoço/papada |
-| ATM | Sem massagem na articulação nem transferência de ar; entra "soltar a mandíbula" sem toque |
-| Sintomas nos olhos | Toques e rastreamento viram descanso de olhos fechados |
-| Cervical | Sem extensão da cabeça; queixo só com apoio dos dedos |
-| Procedimento recente | Só respiração e postura, sem tocar o rosto |
-| Pele em crise ou irritada hoje | Respiração e cinco toques leves no pescoço |
-| Gravidez/amamentação | Retinoide e esfoliantes ficam indisponíveis na rotina |
+| Semanas 1–2 (Adaptação) | Série A inteira, nível iniciante, sem foco |
+| Semanas 3–5 (Construção) | Séries B/A alternadas, intermediário, + módulo do objetivo (o secundário alterna) |
+| Semanas 6–8 (Intensificação) | Avançado; volta ao intermediário se houve incômodo nos últimos 7 dias |
+| Manutenção | Séries alternadas, intermediário |
+| 5 minutos | O rosto inteiro continua, com doses menores |
+| ATM | Sem Balão, Palito e Peixinho |
+| Cervical | Sem aquecimento de pescoço nem Língua ao canto; M1 e M2 com a cabeça reta |
+| Sintomas nos olhos | Sem O1, O2 e T5 |
+| Pele sensível | Sem ferramentas nem Código de barras |
+| Pele em crise ou irritada hoje | Sessão suave, sem as mãos no rosto |
+| Procedimento recente | Sessões em pausa até a liberação |
+| Gravidez/amamentação | Retinoide fica fora da rotina de skincare |
 
 ## Dados de cada aparelho
 
@@ -56,14 +59,14 @@ O workflow `.github/workflows/deploy.yml` testa e gera o build em todo push. Ele
 src/
   content/     conteúdo do ebook em dados (exercícios, rotina, programa, skincare, guia, fotos)
   lib/         lógica: plano/sessões, skincare, store (persistência), áudio, arquivos
-  components/  UI: mapa do rosto, orbe de respiração, gráfico, componentes base
+  components/  UI: mapa do rosto, tutorial passo a passo, componentes base
   screens/     telas: Onboarding, Hoje, Sessão, Jornada, Exercícios, Skincare, Guia, Perfil
 ```
 
 ## Créditos
 
 - Conteúdo: ebook *Yoga Facial e Skincare Consciente*, com as referências listadas no app (Guia → Referências).
-- Fotos: [Unsplash](https://unsplash.com) (créditos no app). Se uma foto não carregar, o app mostra um degradê no lugar.
-- Vídeos recomendados: canais Longevidade Yoga e Face Yoga Paula Sá (apenas links e resumo editorial).
+- Fotos: [Pexels](https://www.pexels.com) (licença Pexels), salvas em `src/assets/fotos`.
+- Exercícios e aulas: texto próprio do FaceZen. O app não usa vídeos de terceiros.
 
 > O FaceZen é material de autocuidado e educação cosmética. Não substitui consulta com dermatologista, oftalmologista, dentista, fisioterapeuta, obstetra ou outro profissional habilitado.

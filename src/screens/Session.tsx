@@ -1,13 +1,14 @@
 import { AlertTriangle, Camera, CameraOff, Check, ChevronLeft, ChevronRight, Frown, Meh, Pause, Play, Smile, Volume2, VolumeX, X } from 'lucide-react'
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Link, useNavigate, useSearchParams } from 'react-router-dom'
-import { moveById, regionById } from '../content/moves'
+import { exerciseById } from '../content/library'
+import { regionById } from '../content/regions'
 import { STOP_SIGNALS } from '../content/guide'
 import { FaceMap } from '../components/FaceMap'
 import { Button, Card, Chip, cx, Eyebrow, Note, ProgressRing, Sheet, Title, YesNo } from '../components/ui'
 import { canSpeak, chime, speak, stopSpeaking, unlockAudio, vibrate } from '../lib/audio'
 import { clock, dayKey, formatDuration } from '../lib/dates'
-import { buildSession, PREP_SEC, sessionsThisWeek, totalOf, weekStart, type SessionPlan, type SessionStep } from '../lib/plan'
+import { buildSession, hadRecentDiscomfort, levelFor, PREP_SEC, sessionsThisWeek, stepFrom, totalOf, weekStart, type SessionPlan, type SessionStep } from '../lib/plan'
 import { uid, useStore, type SessionLog } from '../lib/store'
 
 type Phase = 'check' | 'play' | 'done'
@@ -27,13 +28,15 @@ export function Session() {
   const [skinOk, setSkinOk] = useState(true)
 
   const plan: SessionPlan = useMemo(() => {
-    if (single) {
-      const m = moveById(exerciseId!)!
-      const steps: SessionStep[] = [{ ...m, key: m.id }]
-      return { variant: 'avulso', title: m.title, subtitle: 'Exercício avulso', steps, totalSec: totalOf(steps), adaptations: [] }
+    const recentDiscomfort = hadRecentDiscomfort(sessions)
+    const ex = single ? exerciseById(exerciseId!) : undefined
+    if (ex) {
+      const level = levelFor(program.week, recentDiscomfort)
+      const steps: SessionStep[] = [stepFrom(ex, level, profile)]
+      return { variant: 'avulso', title: ex.title, subtitle: 'Exercício avulso', level, steps, totalSec: totalOf(steps), adaptations: [] }
     }
-    return buildSession(profile, { week: program.week, sessionIndex, skinIrritatedToday: !skinOk })
-  }, [single, exerciseId, profile, program.week, sessionIndex, skinOk])
+    return buildSession(profile, { week: program.week, sessionIndex, skinIrritatedToday: !skinOk, recentDiscomfort })
+  }, [single, exerciseId, profile, program.week, sessionIndex, skinOk, sessions])
 
   const [phase, setPhase] = useState<Phase>(single ? 'play' : 'check')
   const [result, setResult] = useState<Result | null>(null)
@@ -103,7 +106,7 @@ function PreCheck({ plan, skinOk, setSkinOk, onStart }: { plan: SessionPlan; ski
               <span className="tnum w-5 text-sm font-bold text-ink-faint">{n + 1}</span>
               <span className="min-w-0 flex-1 font-semibold text-ink">{s.title}</span>
               {s.focus && <span className="rounded-full bg-quartz-soft px-2 py-0.5 text-[11px] font-bold text-rose-ink">seu objetivo</span>}
-              <span className="tnum text-sm text-ink-faint">{formatDuration(s.durationSec)}</span>
+              <span className="tnum text-sm text-ink-faint">{s.dose}</span>
             </li>
           ))}
         </ol>
@@ -153,7 +156,7 @@ function Player({ plan, onFinish }: { plan: SessionPlan; onFinish: (practicedSec
         if (settings.sound) chime('next')
         if (settings.vibrate) vibrate(60)
       }
-      if (settings.voice && kind === 'prep') speak(`${s.title}. ${s.steps.join('. ')}.`)
+      if (settings.voice && kind === 'prep') speak(`${s.title}. ${s.dose}. ${s.steps.join('. ')}.`)
     },
     [settings.sound, settings.vibrate, settings.voice],
   )
@@ -287,7 +290,9 @@ function Player({ plan, onFinish }: { plan: SessionPlan; onFinish: (practicedSec
           </p>
           <h1 className="mt-1.5 font-display text-[2rem] leading-tight font-medium text-ink">{step.title}</h1>
           <p className="tnum mt-1 font-display text-5xl font-medium text-jade">{clock(left)}</p>
+          <p className="mt-1 text-sm font-semibold text-ink-soft">{step.dose}</p>
         </div>
+        {step.note && <p className="mt-3 w-full max-w-sm rounded-2xl bg-jade-soft px-4 py-2.5 text-sm text-ink">{step.note}</p>}
 
         <ol className="mt-4 grid w-full max-w-sm gap-1.5 text-left">
           {step.steps.map((c, n) => (
@@ -297,11 +302,9 @@ function Player({ plan, onFinish }: { plan: SessionPlan; onFinish: (practicedSec
             </li>
           ))}
         </ol>
-        {step.region && (
-          <Link to={`/exercicios/${step.id}`} className="mt-2 text-sm font-semibold text-jade">
-            Ver o exercício
-          </Link>
-        )}
+        <Link to={`/exercicios/${step.id}`} className="mt-2 text-sm font-semibold text-jade">
+          Ver o tutorial
+        </Link>
       </div>
 
       <div className="sticky bottom-0 z-10 bg-gradient-to-t from-bg via-bg/90 to-transparent px-5 pt-4 pb-[calc(1.25rem+env(safe-area-inset-bottom,0px))]">

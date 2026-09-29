@@ -2,6 +2,7 @@ import { create } from 'zustand'
 import { createJSONStorage, persist, type StateStorage } from 'zustand/middleware'
 import type { Experience, GoalId, RegionId, SafetyFlag, SkinBase } from '../content/types'
 import { dayKey } from './dates'
+import { exerciseById } from '../content/library'
 import type { ProductId } from './skincare'
 
 export type SkinConcern = 'tom' | 'poros' | 'ressecamento' | 'sinais'
@@ -15,7 +16,7 @@ export interface Profile {
   mature: boolean
   concerns: SkinConcern[]
   experience: Experience
-  minutes: 5 | 10
+  minutes: 5 | 10 | 15
   /** Dias da semana planejados (0 = domingo). */
   days: number[]
   /** Horário preferido, "HH:MM". */
@@ -123,6 +124,8 @@ export interface FaceZenData {
   sessions: SessionLog[]
   favorites: string[]
   practiced: Record<string, string[]>
+  /** Aulas do curso concluídas (ids de aula ou de exercício). */
+  lessonsDone: string[]
   skincare: Record<string, SkincareDay>
   skincarePrefs: SkincarePrefs
   /** Produtos que a pessoa já usa (null = ainda não respondeu). */
@@ -141,6 +144,7 @@ interface Actions {
   advanceWeek: () => void
   repeatWeek: () => void
   setWeek: (week: number) => void
+  completeLesson: (id: string) => void
   toggleFavorite: (exerciseId: string) => void
   markPracticed: (exerciseId: string) => void
   toggleSkincareStep: (date: string, period: 'manha' | 'noite', stepId: string) => void
@@ -233,6 +237,7 @@ const initialData = (): FaceZenData => ({
   sessions: [],
   favorites: [],
   practiced: {},
+  lessonsDone: [],
   skincare: {},
   skincarePrefs: defaultPrefsFor(),
   products: null,
@@ -293,6 +298,8 @@ export const useStore = create<FaceZenState>()(
 
       setWeek: (week) =>
         set((s) => ({ program: { ...s.program, week: Math.max(1, Math.min(9, week)), weekStartedAt: new Date().toISOString() } })),
+
+      completeLesson: (id) => set((s) => (s.lessonsDone.includes(id) ? {} : { lessonsDone: [...s.lessonsDone, id] })),
 
       toggleFavorite: (id) =>
         set((s) => ({ favorites: s.favorites.includes(id) ? s.favorites.filter((f) => f !== id) : [...s.favorites, id] })),
@@ -357,7 +364,7 @@ export const useStore = create<FaceZenState>()(
     }),
     {
       name: STORAGE_KEY,
-      version: 4,
+      version: 5,
       storage: createJSONStorage(() => safeStorage),
       // v1 → v2: "intenções" viraram "objetivos".
       migrate: (persisted, version) => {
@@ -375,6 +382,11 @@ export const useStore = create<FaceZenState>()(
           }
         }
         if (version < 4) state.products = state.products ?? null
+        if (version < 5) {
+          // v5: exercícios da biblioteca própria (sem os movimentos do vídeo) e curso.
+          state.lessonsDone = state.lessonsDone ?? []
+          state.favorites = (state.favorites ?? []).filter((id) => !!exerciseById(id))
+        }
         return state
       },
     },
@@ -383,6 +395,6 @@ export const useStore = create<FaceZenState>()(
 
 /** Extrai somente os dados (sem funções) para backup. */
 export function snapshot(state: FaceZenState): FaceZenData {
-  const { device, onboarded, profile, program, sessions, favorites, practiced, skincare, skincarePrefs, products, patchTests, reviews, settings } = state
-  return { device, onboarded, profile, program, sessions, favorites, practiced, skincare, skincarePrefs, products, patchTests, reviews, settings }
+  const { device, onboarded, profile, program, sessions, favorites, practiced, lessonsDone, skincare, skincarePrefs, products, patchTests, reviews, settings } = state
+  return { device, onboarded, profile, program, sessions, favorites, practiced, lessonsDone, skincare, skincarePrefs, products, patchTests, reviews, settings }
 }

@@ -217,57 +217,6 @@ export const FAQ = [
   },
 ]
 
-export const VIDEO = {
-  title: 'Rotina guiada de yoga facial',
-  channel: 'Longevidade Yoga, com Vinícius Della Líbera',
-  duration: 'cerca de 12 minutos',
-  youtubeId: 'MPckU0F4Gig',
-  url: 'https://www.youtube.com/watch?v=MPckU0F4Gig&t=16s',
-  intro:
-    'Pode ser usado como apoio visual para compreender o ritmo e a direção dos movimentos. Abaixo está um resumo editorial da sequência observada, não uma transcrição do vídeo.',
-  sequence: [
-    { title: 'Pescoço', text: 'Deslizamentos suaves nas laterais, alternando os lados, e depois movimentos ascendentes na região central, sempre sem pressionar a garganta.' },
-    { title: 'Papada e mandíbula', text: 'Deslizamento do centro do queixo em direção às orelhas. Use contato leve; não tente “empurrar” a pele com força.' },
-    { title: 'Masseter', text: 'Círculos na região lateral da mandíbula com a boca levemente aberta. Se houver estalos dolorosos, dor na articulação, travamento ou tensão, pule esta etapa.' },
-    { title: 'Contorno da mandíbula', text: 'Movimento de pinça suave acompanhando a linha óssea até a orelha, primeiro de um lado e depois do outro.' },
-    { title: 'Sulco nasogeniano e maçãs do rosto', text: 'Uma mão estabiliza suavemente a têmpora enquanto os dedos da outra deslizam da lateral do nariz para fora. Não estique a pele até sentir tração.' },
-    { title: 'Olhos e sobrancelhas', text: 'Deslizamentos ascendentes e laterais na região externa dos olhos e sobrancelhas, com a pressão mínima da rotina e nunca pressionando o globo ocular.' },
-    { title: 'Testa', text: 'Movimentos verticais e horizontais, seguidos de vibrações leves. Não franza a testa nem repita expressões fortes para “ativar” a região.' },
-    { title: 'Três camadas do rosto', text: 'Deslizamentos laterais em três alturas: abaixo dos olhos, no meio das bochechas e na linha da mandíbula. Abaixo dos olhos, reduza ainda mais a pressão.' },
-    { title: 'Lábios', text: 'Formação de um “U” com a boca e manipulação delicada dos lábios. Não force a abertura nem cause fissuras ou ressecamento.' },
-    { title: 'Bochechas', text: 'Encher as bochechas de ar e sustentar por pouco tempo. Interrompa se gerar dor, tontura ou pressão desagradável.' },
-    { title: 'Pinçamento geral', text: 'Pequenos pinçamentos muito leves. Em pele sensível, com rosácea, acne inflamada, eczema, irritação ou tendência a hematomas, substitua por simples contato das mãos ou pule a etapa.' },
-    { title: 'Acalmar e finalizar', text: 'Deslizamentos amplos e leves, círculos ao redor da órbita sem tocar o olho e abertura suave do rosto com respiração confortável.' },
-  ],
-  safety: [
-    'Na primeira semana, não tente reproduzir a pressão máxima ou somar essa sequência às 14 fichas de exercícios. Assista uma vez e pratique em ritmo mais lento; você pode reduzir o tempo de cada bloco ou parar antes do fim.',
-    'O instrutor menciona que uma gota de creme ou óleo pode ajudar quando a pele está seca. Use somente um produto compatível com você, evite testar um cosmético novo durante a sessão e não aplique produto dentro dos olhos ou sobre pele lesionada.',
-    'Vermelhidão não é meta, não comprova circulação benéfica e não significa que o exercício está funcionando. Pare se vier com ardor, coceira, dor, calor persistente, inchaço, marcas roxas ou piora da pele.',
-  ],
-}
-
-export const PLAYLIST = {
-  title: 'Massagens e Rotinas de Yoga Facial',
-  channel: 'Face Yoga Paula Sá',
-  url: 'https://www.youtube.com/playlist?list=PLpaATTHUE-tQ_7z1lGp5rbDOKb1lrM1Wq',
-  count: 14,
-  topics: [
-    'Rotina de quatro minutos com cogumelos',
-    'Massagem lifting e yoga facial',
-    'Rotina de quatro minutos para pescoço',
-    'Prática dedicada ao bigode chinês',
-    'Massagem com rolo',
-    'Rotina de 13 minutos',
-    'Exercício para a chamada “ruga do leão”',
-    'Rotina de 11 minutos',
-    'Exercício para duplo queixo',
-  ],
-  note: 'Os títulos são úteis para localizar temas, mas não devem ser lidos como promessa de que um vídeo reduz, elimina ou previne definitivamente flacidez, rugas, sulcos ou papada. Não é necessário fazer todas as práticas da playlist, nem repetir várias rotinas no mesmo dia.',
-}
-
-export const COPYRIGHT_NOTE =
-  'O FaceZen não reproduz falas, roteiro integral, imagens ou demonstrações dos vídeos. Ele faz referência e resume, em linguagem própria, os temas observados. Para aprender a execução visual, consulte os vídeos originais e dê crédito aos respectivos canais.'
-
 /** Dicas curtas que giram na tela inicial, uma por dia. */
 export const DAILY_TIPS = [
   'Conforto antes de intensidade: forçar não torna a prática mais eficaz.',
@@ -337,6 +286,4 @@ export const REFERENCES: { n: number; title: string; url: string }[] = [
   { n: 48, title: 'AAD — Chemical peels: FAQs', url: 'https://www.aad.org/public/cosmetic/younger-looking/chemical-peels-faqs' },
   { n: 49, title: 'AAD — Dermatologist-approved pregnancy skin care', url: 'https://www.aad.org/public/everyday-care/skin-care-secrets/routine/pregnancy-skin-care' },
   { n: 50, title: 'Nebraska Medicine — Skin care dos and don’ts when pregnant or breastfeeding', url: 'https://www.nebraskamed.com/health/healthy-lifestyle/dermatology/skin-care-dos-and-donts-when-pregnant-or-breastfeeding' },
-  { n: 51, title: 'Longevidade Yoga — Rotina guiada de yoga facial', url: 'https://www.youtube.com/watch?v=MPckU0F4Gig&t=16s' },
-  { n: 52, title: 'Face Yoga Paula Sá — Massagens e Rotinas de Yoga Facial', url: 'https://www.youtube.com/playlist?list=PLpaATTHUE-tQ_7z1lGp5rbDOKb1lrM1Wq' },
 ]

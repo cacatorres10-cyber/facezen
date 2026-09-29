@@ -12,7 +12,7 @@ export type SafetyFlag =
 export type SkinBase = 'seca' | 'oleosa' | 'mista' | 'normal'
 
 /** Objetivos escolhidos no quiz inicial. */
-export type GoalId = 'pele' | 'papada' | 'linhas' | 'contorno' | 'olheiras' | 'bigode' | 'tensao'
+export type GoalId = 'pele' | 'papada' | 'linhas' | 'contorno' | 'olheiras' | 'bigode' | 'labios' | 'tensao'
 
 export type Experience = 'nunca' | 'algumas' | 'pratico'
 

@@ -1,16 +1,30 @@
+import { exerciseById, FOCUS, LEVEL_LABEL, SERIES, type Exercise, type FocusId, type Level } from '../content/library'
+import { GOALS } from '../content/profileOptions'
 import { weekInfo, type ProgramWeek } from '../content/program'
-import { MOVES, type Move } from '../content/moves'
 import type { RegionId, SafetyFlag } from '../content/types'
 import { addDays, dayKey } from './dates'
 import type { Profile, SessionLog } from './store'
 
-/** Segundos de preparação antes de cada movimento. */
+/** Segundos de preparação antes de cada exercício. */
 export const PREP_SEC = 5
 
-export type VariantId = 'essencial' | 'completa' | 'curta' | 'suave' | 'pausa' | 'avulso'
+export type VariantId = 'serie-a' | 'serie-b' | 'suave' | 'pausa' | 'avulso'
 
-export interface SessionStep extends Move {
+export interface SessionStep {
   key: string
+  id: string
+  title: string
+  region?: RegionId
+  durationSec: number
+  sided?: boolean
+  steps: string[]
+  /** Dose no nível da sessão (ex.: "2 × 15"). */
+  dose: string
+  /** Quando pular. */
+  stop?: string
+  /** Ajuste para esta pessoa (ex.: "Faça com a cabeça reta."). */
+  note?: string
+  /** Faz parte do módulo do objetivo. */
   focus?: boolean
 }
 
@@ -18,6 +32,7 @@ export interface SessionPlan {
   variant: VariantId
   title: string
   subtitle: string
+  level?: Level
   steps: SessionStep[]
   totalSec: number
   /** O ajuste feito para esta pessoa, em uma frase (ou vazio). */
@@ -29,74 +44,172 @@ export interface PlanContext {
   sessionIndex: number
   /** A pessoa disse que a pele não está bem hoje. */
   skinIrritatedToday?: boolean
+  /** Houve incômodo numa sessão recente: não sobe para o avançado. */
+  recentDiscomfort?: boolean
 }
 
-type ProfileLike = Pick<Profile, 'focus' | 'minutes' | 'safety' | 'sensitive'>
+type ProfileLike = Pick<Profile, 'goals' | 'minutes' | 'safety' | 'sensitive'>
 
-const byId = (id: string) => MOVES.find((m) => m.id === id)!
+/** Tempo máximo de cada sessão, em segundos, pelo tempo escolhido. */
+export const BUDGET: Record<Profile['minutes'], number> = { 5: 7 * 60, 10: 12 * 60, 15: 16 * 60 }
 
-/** Monta a sessão do dia: os movimentos da aula guiada liberados até a semana atual. */
+/** Fase do programa (Parte 6 do guia). */
+export function phaseOf(week: number): 1 | 2 | 3 | 4 {
+  if (week <= 2) return 1
+  if (week <= 5) return 2
+  if (week <= 8) return 3
+  return 4
+}
+
+export const PHASE_LABEL = { 1: 'Adaptação', 2: 'Construção', 3: 'Intensificação', 4: 'Manutenção' } as const
+
+/** Nível das doses nesta semana. */
+export function levelFor(week: number, recentDiscomfort = false): Level {
+  const phase = phaseOf(week)
+  if (phase === 1) return 'ini'
+  if (phase === 3 && !recentDiscomfort) return 'ava'
+  return 'int'
+}
+
+/** Série do dia: A nas semanas 1–2; depois alterna, começando pela B (fase 2) ou pela A (fase 3). */
+export function seriesFor(week: number, sessionIndex: number): 'A' | 'B' {
+  const phase = phaseOf(week)
+  if (phase === 1) return 'A'
+  const first = phase === 2 ? 'B' : 'A'
+  const other = first === 'A' ? 'B' : 'A'
+  return sessionIndex % 2 === 0 ? first : other
+}
+
+/** Módulo de foco do dia: o objetivo principal, alternando com o secundário. */
+export function focusFor(goals: Profile['goals'], sessionIndex: number): FocusId | undefined {
+  const modules = [...new Set(goals.map((g) => GOALS.find((x) => x.id === g)?.focus).filter((f): f is FocusId => !!f))]
+  if (modules.length === 0) return undefined
+  return modules[modules.length > 1 && sessionIndex % 2 === 1 ? 1 : 0]
+}
+
+/** Exercícios sem toque no rosto, para dias de pele irritada. */
+const SUAVE = ['A7', 'A6', 'O5', 'B1', 'B3', 'L1', 'R3']
+
+/** Com pele sensível, nada de ferramentas nem fricção nos lábios (guia 6.7). */
+const SENSITIVE_SKIP = ['L4', 'MF3', 'MF4']
+
+export function isAllowed(ex: Exercise, profile: Pick<Profile, 'safety' | 'sensitive'>): boolean {
+  if (ex.avoidIf.some((f) => profile.safety.includes(f))) return false
+  return !(profile.sensitive && SENSITIVE_SKIP.includes(ex.id))
+}
+
+/** Um exercício pronto para o cronômetro, no nível pedido. */
+export function stepFrom(ex: Exercise, level: Level, profile: Pick<Profile, 'safety'>, key = ex.id, focus = false): SessionStep {
+  const note = profile.safety.map((f) => ex.adapt?.[f]).find(Boolean)
+  return {
+    key,
+    id: ex.id,
+    title: ex.title,
+    region: ex.region,
+    durationSec: ex.seconds[level],
+    sided: ex.sided,
+    steps: ex.steps,
+    dose: ex.dose[level],
+    stop: ex.skip,
+    note,
+    focus,
+  }
+}
+
+/** Monta a sessão do dia: série A ou B + módulo do objetivo, no nível da fase. */
 export function buildSession(profile: ProfileLike, ctx: PlanContext): SessionPlan {
   const flags = profile.safety
 
   if (flags.includes('procedimento')) {
-    return finish('pausa', 'Sessões em pausa', 'Até a liberação do seu procedimento', [], profile, [
+    return plan('pausa', 'Sessões em pausa', 'Até a liberação do seu procedimento', undefined, [], [
       'Depois de um procedimento, espere a liberação de quem o realizou. Quando for liberado, desmarque em Perfil.',
     ])
   }
+
+  const adaptations: string[] = []
+  if (flags.includes('atm')) adaptations.push('Sem Balão, Palito e Peixinho, por causa da mandíbula. Abra pouco a boca.')
+  if (flags.includes('cervical')) adaptations.push('Pescoço sempre neutro: sem aquecimento de pescoço e com a cabeça reta.')
+  if (flags.includes('olhos')) adaptations.push('Olhos só com toque leve, por causa dos sintomas que você marcou.')
+  if (profile.sensitive) adaptations.push('Pele sensível: pressão mínima e mais produto para deslizar.')
+
   if (flags.includes('peleCrise') || ctx.skinIrritatedToday) {
-    return finish('suave', 'Sessão suave', 'Só pescoço e finalização', [byId('pescoco'), byId('finalizar')], profile, [
-      'Com a pele irritada, nada de massagem no rosto hoje.',
-    ])
+    const steps = SUAVE.map((id) => exerciseById(id)!)
+      .filter((e) => isAllowed(e, profile))
+      .map((e) => stepFrom(e, 'ini', profile))
+    return plan('suave', 'Sessão suave', 'Sem tocar o rosto hoje', 'ini', steps, ['Com a pele irritada, só exercícios sem as mãos no rosto.', ...adaptations])
   }
 
   const week = Math.max(1, ctx.week)
-  let moves = MOVES.filter((m) => m.week <= week && !m.avoidIf.some((f) => flags.includes(f)))
-  if (profile.sensitive) moves = moves.filter((m) => m.id !== 'pincamento')
+  const series = seriesFor(week, ctx.sessionIndex)
+  const focusId = phaseOf(week) >= 2 ? focusFor(profile.goals, ctx.sessionIndex) : undefined
+  const budget = BUDGET[profile.minutes] ?? BUDGET[10]
 
-  const adaptations: string[] = []
-  if (flags.includes('atm')) adaptations.push('Sem movimentos de mandíbula, por causa da ATM.')
-  if (flags.includes('olhos')) adaptations.push('Sem movimentos nos olhos, por causa dos sintomas que você marcou.')
-  if (flags.includes('cervical')) adaptations.push('Pescoço sempre neutro, sem inclinar a cabeça para trás.')
-  if (profile.sensitive) adaptations.push('Pele sensível: toque mínimo e um pouco mais de hidratante.')
+  const pick = (ids: string[]) => ids.map((id) => exerciseById(id)!).filter((e) => isAllowed(e, profile))
+  const base = pick(SERIES[series])
+  const focus = focusId ? pick(FOCUS[focusId].ids) : []
+  // O relaxamento fecha a sessão, depois do foco.
+  const relax = base.filter((e) => e.group === 'relaxamento')
+  const body = base.filter((e) => e.group !== 'relaxamento')
+  const items = [...body.map((e) => ({ e, focus: false })), ...focus.map((e) => ({ e, focus: true })), ...relax.map((e) => ({ e, focus: false }))]
 
-  const complete = moves.length === MOVES.filter((m) => !m.avoidIf.some((f) => flags.includes(f))).length
-  if (profile.minutes === 5 && week >= 2) {
-    const focus = new Set<RegionId>(profile.focus)
-    const picked = moves.filter((m) => m.id === 'finalizar' || (m.region && focus.has(m.region)))
-    const chosen = picked.length >= 3 ? fitTo(picked, 5 * 60) : fitTo(moves, 5 * 60)
-    return finish('curta', 'Sessão de 5 minutos', 'Com os movimentos dos seus objetivos', chosen, profile, adaptations)
+  const levels: Level[] = ['ava', 'int', 'ini']
+  const start = levels.indexOf(levelFor(week, ctx.recentDiscomfort))
+  let chosen: { steps: SessionStep[]; level: Level } | undefined
+  for (const level of levels.slice(start)) {
+    const steps = items.map(({ e, focus }, i) => stepFrom(e, level, profile, `${e.id}-${i}`, focus))
+    const trimmed = fitTo(steps, budget)
+    // Rosto inteiro: se precisar cortar mais de 3 exercícios, desce um nível.
+    if (totalOf(trimmed) <= budget && steps.length - trimmed.length <= 3) {
+      chosen = { steps: trimmed, level }
+      break
+    }
   }
-  if (complete && week >= 4) return finish('completa', 'Aula guiada completa', 'Os 12 movimentos, do pescoço à testa', moves, profile, adaptations)
-  return finish('essencial', week === 1 ? 'Primeiros movimentos' : 'Sessão do dia', `${moves.length} movimentos da aula guiada`, moves, profile, adaptations)
-}
-
-/** Mantém a ordem da aula, cortando até caber no tempo (sempre termina com "Finalizar"). */
-function fitTo(moves: Move[], seconds: number): Move[] {
-  const end = moves.find((m) => m.id === 'finalizar')
-  const out: Move[] = []
-  let total = end ? end.durationSec + PREP_SEC : 0
-  for (const m of moves) {
-    if (m.id === 'finalizar') continue
-    if (total + m.durationSec + PREP_SEC > seconds) break
-    out.push(m)
-    total += m.durationSec + PREP_SEC
+  if (!chosen) {
+    const steps = items.map(({ e, focus }, i) => stepFrom(e, 'ini', profile, `${e.id}-${i}`, focus))
+    chosen = { steps: fitTo(steps, budget, 0), level: 'ini' }
   }
-  return end ? [...out, end] : out
+
+  const title = focusId ? `Série ${series} + ${FOCUS[focusId].title}` : `Série ${series}`
+  const subtitle = `${chosen.steps.length} exercícios · ${LEVEL_LABEL[chosen.level].toLowerCase()}`
+  return plan(series === 'A' ? 'serie-a' : 'serie-b', title, subtitle, chosen.level, chosen.steps, adaptations)
 }
 
-function finish(variant: VariantId, title: string, subtitle: string, moves: Move[], profile: ProfileLike, adaptations: string[]): SessionPlan {
-  const steps: SessionStep[] = moves.map((m, i) => ({ ...m, key: `${m.id}-${i}`, focus: !!m.region && profile.focus.includes(m.region) }))
-  return { variant, title, subtitle, steps, totalSec: totalOf(steps), adaptations }
+/**
+ * Corta até caber no tempo: primeiro os exercícios da série (de trás para frente),
+ * mantendo o primeiro, o último e o foco; só depois o foco. Nunca fica abaixo de `minKeep`.
+ */
+export function fitTo(steps: SessionStep[], seconds: number, minKeep = 0): SessionStep[] {
+  const out = [...steps]
+  const removable = (focus: boolean) => {
+    for (let i = out.length - 2; i >= 1; i--) if (!!out[i].focus === focus) return i
+    return -1
+  }
+  while (totalOf(out) > seconds && out.length > Math.max(minKeep, 2)) {
+    let i = removable(false)
+    if (i < 0) i = removable(true)
+    if (i < 0) break
+    out.splice(i, 1)
+  }
+  return out
 }
 
-export function totalOf(steps: Pick<Move, 'durationSec'>[]): number {
+function plan(variant: VariantId, title: string, subtitle: string, level: Level | undefined, steps: SessionStep[], adaptations: string[]): SessionPlan {
+  return { variant, title, subtitle, level, steps, totalSec: totalOf(steps), adaptations }
+}
+
+export function totalOf(steps: Pick<SessionStep, 'durationSec'>[]): number {
   return steps.reduce((sum, s) => sum + s.durationSec + PREP_SEC, 0)
 }
 
-/** Motivo pelo qual um movimento fica fora do plano desta pessoa (ou nada). */
-export function moveBlockedBy(m: Move, profile: Pick<Profile, 'safety'>): SafetyFlag[] {
-  return m.avoidIf.filter((f) => profile.safety.includes(f))
+/** Motivo pelo qual um exercício fica fora do plano desta pessoa (ou nada). */
+export function exerciseBlockedBy(ex: Exercise, profile: Pick<Profile, 'safety'>): SafetyFlag[] {
+  return ex.avoidIf.filter((f) => profile.safety.includes(f))
+}
+
+/** Houve incômodo ou dor nos últimos 7 dias? */
+export function hadRecentDiscomfort(sessions: SessionLog[], now = new Date()): boolean {
+  const since = addDays(dayKey(now), -7)
+  return sessions.some((s) => s.date >= since && s.flagged)
 }
 
 // ————— Semana e hoje —————

@@ -193,6 +193,7 @@ export function Onboarding() {
               options={[
                 { value: 5, label: '5 min' },
                 { value: 10, label: '10 min' },
+                { value: 15, label: '15 min' },
               ]}
             />
             <p className="mt-6 mb-2 font-semibold text-ink">Dias da semana</p>

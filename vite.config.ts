@@ -41,18 +41,6 @@ export default defineConfig({
         // Só as fontes do alfabeto latino entram no cache offline.
         globIgnores: ['**/*cyrillic*', '**/*vietnamese*', '**/*greek*'],
         navigateFallback: 'index.html',
-        runtimeCaching: [
-          {
-            // Capas do YouTube carregadas pelo player ficam em cache.
-            urlPattern: ({ url }) => url.hostname.endsWith('ytimg.com'),
-            handler: 'CacheFirst',
-            options: {
-              cacheName: 'facezen-fotos',
-              expiration: { maxEntries: 40, maxAgeSeconds: 60 * 60 * 24 * 90 },
-              cacheableResponse: { statuses: [0, 200] },
-            },
-          },
-        ],
       },
     }),
   ],
