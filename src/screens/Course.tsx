@@ -1,4 +1,5 @@
-import { ArrowRight, BookOpen, Check, ChevronRight, Droplets, Hand, PlayCircle } from 'lucide-react'
+import { ArrowRight, BookOpen, Check, ChevronRight, Droplets, ExternalLink, Hand, Play, PlayCircle } from 'lucide-react'
+import { useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { lessonById, moduleOfLesson, type ModuleKind } from '../content/course'
 import { Photo } from '../components/Photo'
@@ -6,7 +7,7 @@ import { Stepper } from '../components/Stepper'
 import { Accordion, BackLink, Button, Card, cx, Eyebrow, Note, ProgressRing, Title } from '../components/ui'
 import { COURSE_ITEMS, COURSE_MODULES, itemAfter, moduleItems, nextItem } from '../lib/course'
 import { useStore } from '../lib/store'
-import { VIDEO_LESSONS, VIDEO_MODULES, videoLessonById, youtubeId } from '../content/videoLessons'
+import { VIDEO_LESSONS, VIDEO_MODULES, videoLessonById, videoThumb, youtubeId, youtubeWatchUrl } from '../content/videoLessons'
 
 const KIND_ICON: Record<ModuleKind, typeof BookOpen> = { teoria: BookOpen, exercicios: Hand, skincare: Droplets, video: PlayCircle }
 
@@ -109,9 +110,19 @@ export function CourseModulePage() {
           return (
             <li key={it.id}>
               <Link to={it.to} className="flex items-center gap-3 rounded-2xl bg-surface p-3 pr-4 shadow-soft">
-                <span className={cx('tnum grid size-9 shrink-0 place-items-center rounded-full text-sm font-bold', ok ? 'bg-ok-soft text-ok' : 'bg-surface-2 text-ink-soft')}>
-                  {ok ? <Check className="size-4" /> : it.kind === 'exercicio' ? it.id : n + 1}
-                </span>
+                {it.kind === 'video' ? (
+                  <span className="relative aspect-video w-28 shrink-0 overflow-hidden rounded-xl bg-hero">
+                    {it.thumb && <img src={it.thumb} alt="" loading="lazy" className="size-full object-cover" />}
+                    <span className="absolute inset-0 grid place-items-center">
+                      {ok ? <Check className="size-7 rounded-full bg-ok p-1 text-surface" /> : <PlayCircle className="size-8 text-white drop-shadow" />}
+                    </span>
+                    <span className="tnum absolute top-1 left-1 rounded-full bg-surface/90 px-1.5 text-[10px] font-bold text-ink">{n + 1}</span>
+                  </span>
+                ) : (
+                  <span className={cx('tnum grid size-9 shrink-0 place-items-center rounded-full text-sm font-bold', ok ? 'bg-ok-soft text-ok' : 'bg-surface-2 text-ink-soft')}>
+                    {ok ? <Check className="size-4" /> : it.kind === 'exercicio' ? it.id : n + 1}
+                  </span>
+                )}
                 <span className="min-w-0 flex-1">
                   <span className="block font-semibold text-ink">{it.title}</span>
                   <span className="block truncate text-sm text-ink-faint">{it.summary}</span>
@@ -246,16 +257,10 @@ export function VideoLessonPage() {
       <Title className="mt-1.5">{v.title}</Title>
       {v.summary && <p className="mt-1 text-ink-soft">{v.summary}</p>}
 
-      <div className="mt-5 aspect-video overflow-hidden rounded-3xl bg-hero shadow-soft">
-        <iframe
-          key={yt}
-          src={`https://www.youtube-nocookie.com/embed/${yt}?rel=0&playsinline=1&modestbranding=1`}
-          title={v.title}
-          allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen"
-          allowFullScreen
-          className="size-full"
-        />
-      </div>
+      <VideoPlayer key={yt} yt={yt} title={v.title} thumb={videoThumb(v.youtube)} />
+      <a href={youtubeWatchUrl(v.youtube)} target="_blank" rel="noreferrer" className="mt-3 flex items-center justify-center gap-2 text-sm font-semibold text-jade">
+        <ExternalLink className="size-4" /> Abrir no YouTube
+      </a>
 
       <div className="mt-5 flex items-center gap-3">
         <div className="h-2 flex-1 overflow-hidden rounded-full bg-surface-2">
@@ -278,6 +283,32 @@ export function VideoLessonPage() {
         {done.includes(key) ? <Check className="size-5" /> : null}
         {next ? 'Concluir e ir para a próxima' : 'Concluir'}
       </Button>
+    </div>
+  )
+}
+
+/** Capa com play; o vídeo do YouTube só carrega quando a pessoa toca. */
+function VideoPlayer({ yt, title, thumb }: { yt: string; title: string; thumb?: string }) {
+  const [playing, setPlaying] = useState(false)
+  return (
+    <div className="relative mt-5 aspect-video overflow-hidden rounded-3xl bg-hero shadow-soft">
+      {playing ? (
+        <iframe
+          src={`https://www.youtube-nocookie.com/embed/${yt}?rel=0&playsinline=1&modestbranding=1&autoplay=1`}
+          title={title}
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+          allowFullScreen
+          className="size-full"
+        />
+      ) : (
+        <button type="button" onClick={() => setPlaying(true)} aria-label={`Assistir: ${title}`} className="group absolute inset-0 grid place-items-center">
+          {thumb && <img src={thumb} alt="" className="absolute inset-0 size-full object-cover" />}
+          <span className="absolute inset-0 bg-gradient-to-t from-[rgb(8_20_17/0.55)] to-transparent" />
+          <span className="relative grid size-16 place-items-center rounded-full bg-surface/95 text-jade shadow-soft transition group-active:scale-95">
+            <Play className="ml-1 size-7 fill-current" />
+          </span>
+        </button>
+      )}
     </div>
   )
 }

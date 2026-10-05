@@ -41,3 +41,13 @@ export function youtubeId(url: string): string | undefined {
 }
 
 export const videoLessonById = (id: string) => VIDEO_LESSONS.find((v) => v.id === id)
+
+const thumbs = import.meta.glob('../assets/aulas-video/*.jpg', { eager: true, import: 'default' }) as Record<string, string>
+
+/** Capa do vídeo (baixada pelo workflow para dentro do app), se já existir. */
+export function videoThumb(url: string): string | undefined {
+  const id = youtubeId(url)
+  return id ? thumbs[`../assets/aulas-video/${id}.jpg`] : undefined
+}
+
+export const youtubeWatchUrl = (url: string) => `https://www.youtube.com/watch?v=${youtubeId(url)}`
