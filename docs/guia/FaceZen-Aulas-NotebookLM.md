@@ -808,15 +808,15 @@ O caminho da drenagem com as mãos e como usar a escova facial coreana.
 > Use comparações do dia a dia, como no texto. A pessoa vai imitar o que ouvir.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-### Escova facial coreana (opcional)
+### Exercícios com ferramentas
 
-*A escova segue o caminho da drenagem: abra a clavícula com as mãos, passe a escova no pescoço, no rosto e na testa, e feche da mandíbula à clavícula.*
+*Escova coreana e gua sha: veja os vídeos e depois pratique com a escova, sempre de leve, do centro do rosto para fora.*
 
 ## Aula 30 · E1 Escova no pescoço
 
 *Começar a massagem com a escova pelo pescoço.*
 
-- **Região:** Escova facial coreana (opcional)
+- **Região:** Exercícios com ferramentas
 - **Dose:** Iniciante 5 passadas de cada lado · Intermediário 5 passadas de cada lado · Avançado 5 passadas de cada lado
 - **Lados:** faça de um lado e depois do outro.
 - **Material:** escova facial de cerdas macias (opcional).
@@ -845,7 +845,7 @@ O caminho da drenagem com as mãos e como usar a escova facial coreana.
 
 *Do centro do rosto para as orelhas, em linhas.*
 
-- **Região:** Escova facial coreana (opcional)
+- **Região:** Exercícios com ferramentas
 - **Dose:** Iniciante 5 passadas por linha · Intermediário 5 passadas por linha · Avançado 5 passadas por linha
 - **Lados:** faça de um lado e depois do outro.
 - **Material:** escova facial de cerdas macias (opcional).
@@ -874,7 +874,7 @@ O caminho da drenagem com as mãos e como usar a escova facial coreana.
 
 *Uma passada bem leve sobre o osso, de dentro para fora.*
 
-- **Região:** Escova facial coreana (opcional)
+- **Região:** Exercícios com ferramentas
 - **Dose:** Iniciante 5 passadas de cada lado · Intermediário 5 passadas de cada lado · Avançado 5 passadas de cada lado
 - **Lados:** faça de um lado e depois do outro.
 - **Material:** escova facial de cerdas macias (opcional).
@@ -903,7 +903,7 @@ O caminho da drenagem com as mãos e como usar a escova facial coreana.
 
 *Da sobrancelha até o cabelo, em faixas.*
 
-- **Região:** Escova facial coreana (opcional)
+- **Região:** Exercícios com ferramentas
 - **Dose:** Iniciante 5 passadas por faixa · Intermediário 5 passadas por faixa · Avançado 5 passadas por faixa
 - **Lados:** faça de um lado e depois do outro.
 - **Material:** escova facial de cerdas macias (opcional).

@@ -17,7 +17,7 @@ Vite + React 19 + TypeScript, Tailwind CSS v4 (tokens em `src/index.css`), React
 
 ## Onde fica cada coisa
 
-- Conteúdo: `src/content/` — `library.ts` (20 exercícios essenciais, incluindo a drenagem com as mãos, + 4 com a escova coreana; `ROUTINE`: aquecimento curto, série A/B, foco e relaxar; a drenagem entra no bloco das ferramentas), `art.ts` (desenho de cada exercício), `course.ts` (aulas de teoria e skincare do Curso), `photos.ts` (fotos do Pexels em `src/assets/fotos`). Sem vídeos de terceiros.
+- Conteúdo: `src/content/` — `library.ts` (20 exercícios essenciais, incluindo a drenagem com as mãos, + 4 com a escova coreana; `ROUTINE`: aquecimento curto, série A/B, foco e relaxar; a drenagem entra no bloco das ferramentas), `art.ts` (desenho de cada exercício), `course.ts` (aulas de teoria e skincare do Curso), `photos.ts` (fotos do Pexels em `src/assets/fotos`). Vídeos: só os de "Exercícios com ferramentas" (`toolVideos.ts`, arquivos em `src/assets/videos`), sempre com crédito de quem criou; a autorização das criadoras fica por conta da dona do produto.
 - `npm run aulas` gera `docs/guia/FaceZen-Aulas-NotebookLM.md` a partir de `library.ts` e `course.ts` (o PDF é feito a partir desse arquivo).
 - Fotos são baixadas pelo workflow "Atualizar fotos" (`scripts/baixar_midia.py`), que roda no GitHub.
 - Acessórios: `profile.tools` (ex.: `'escova'`). O bloco da escova (abre a clavícula, escova, fecha da mandíbula à clavícula) entra a partir da semana 3, em sessões alternadas, e nunca com pele sensível ou em crise.

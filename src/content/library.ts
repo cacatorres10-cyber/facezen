@@ -42,7 +42,7 @@ export const GROUPS: Group[] = [
   { id: 'mandibula', title: 'Mandíbula, queixo e papada', intro: 'Contorno do queixo, papada e a tensão de quem aperta os dentes.', region: 'papada' },
   { id: 'pescoco', title: 'Pescoço e colo', intro: 'Postura e tônus do pescoço. No pescoço, a massagem vai sempre de cima para baixo.', region: 'pescoco' },
   { id: 'relaxamento', title: 'Relaxamento final', intro: 'Um minuto para soltar o rosto e terminar a sessão.' },
-  { id: 'escova', title: 'Escova facial coreana (opcional)', intro: 'A escova segue o caminho da drenagem: abra a clavícula com as mãos, passe a escova no pescoço, no rosto e na testa, e feche da mandíbula à clavícula.' },
+  { id: 'escova', title: 'Exercícios com ferramentas', intro: 'Escova coreana e gua sha: veja os vídeos e depois pratique com a escova, sempre de leve, do centro do rosto para fora.' },
 ]
 
 export const groupById = (id: GroupId) => GROUPS.find((g) => g.id === id)!

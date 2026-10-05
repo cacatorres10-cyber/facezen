@@ -65,6 +65,6 @@ src/
 
 - Conteúdo: ebook *Yoga Facial e Skincare Consciente*, com as referências listadas no app (Guia → Referências).
 - Fotos: [Pexels](https://www.pexels.com) (licença Pexels), salvas em `src/assets/fotos`.
-- Exercícios e aulas: texto próprio do FaceZen. O app não usa vídeos de terceiros.
+- Exercícios e aulas: texto próprio do FaceZen. Em "Exercícios com ferramentas" há dois vídeos com crédito: escova coreana ([@carolpetrelli](https://www.tiktok.com/@carolpetrelli)) e gua sha ([@camilavannii](https://www.tiktok.com/@camilavannii)).
 
 > O FaceZen é material de autocuidado e educação cosmética. Não substitui consulta com dermatologista, oftalmologista, dentista, fisioterapeuta, obstetra ou outro profissional habilitado.

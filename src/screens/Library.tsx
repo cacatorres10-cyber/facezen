@@ -7,6 +7,7 @@ import { Stepper } from '../components/Stepper'
 import { BackLink, Button, Card, Chip, Eyebrow, Note, Title, Toggle, cx } from '../components/ui'
 import { formatDuration } from '../lib/dates'
 import { exerciseBlockedBy, FLAG_REASON, hadRecentDiscomfort, isAllowed, levelFor } from '../lib/plan'
+import { TOOL_VIDEOS, type ToolVideo } from '../content/toolVideos'
 import { useStore } from '../lib/store'
 import { useToday } from '../lib/useToday'
 
@@ -63,6 +64,17 @@ export function Library() {
         {groups.map((g) => (
           <section key={g.id} className="mt-6">
             <h2 className="font-display text-xl font-medium text-ink">{g.title}</h2>
+            {g.id === 'escova' && (
+              <>
+                <p className="mt-1 text-sm text-ink-soft">{g.intro}</p>
+                <div className="mt-3 grid gap-3">
+                  {TOOL_VIDEOS.map((v) => (
+                    <ToolVideoCard key={v.id} v={v} />
+                  ))}
+                </div>
+                <p className="eyebrow mt-5">Pratique com a escova</p>
+              </>
+            )}
             <ol className="mt-2 grid gap-2">
               {list
                 .filter((e) => e.group === g.id)
@@ -223,5 +235,32 @@ export function ExerciseDetail() {
         </div>
       )}
     </div>
+  )
+}
+
+function ToolVideoCard({ v }: { v: ToolVideo }) {
+  return (
+    <article className="overflow-hidden rounded-3xl bg-surface shadow-soft">
+      <video src={v.src} poster={v.poster} controls playsInline preload="none" className="aspect-[9/16] max-h-[70vh] w-full bg-hero object-contain" aria-label={`Vídeo: ${v.title}`} />
+      <div className="p-4">
+        <p className="text-xs font-bold tracking-wider text-rose-ink uppercase">{v.tool}</p>
+        <h3 className="mt-0.5 font-semibold text-ink">{v.title}</h3>
+        <p className="mt-1 text-sm text-ink-soft">{v.summary}</p>
+        <ul className="mt-3 grid gap-1.5 text-sm text-ink">
+          {v.watch.map((w) => (
+            <li key={w} className="flex gap-2">
+              <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-jade" />
+              {w}
+            </li>
+          ))}
+        </ul>
+        <p className="mt-3 text-xs text-ink-faint">
+          Vídeo de{' '}
+          <a href={v.credit.url} target="_blank" rel="noreferrer" className="font-semibold text-jade underline">
+            {v.credit.name}
+          </a>
+        </p>
+      </div>
+    </article>
   )
 }
