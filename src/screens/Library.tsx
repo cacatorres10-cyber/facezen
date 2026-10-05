@@ -1,6 +1,7 @@
 import { Check, ChevronRight, Heart, Play, ShieldAlert } from 'lucide-react'
 import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom'
-import { EXERCISES, exerciseById, GROUPS, groupById, LEVEL_LABEL, type GroupId, type Level } from '../content/library'
+import { EXERCISES, exerciseById, GROUPS, groupById, LEVEL_LABEL, type Exercise, type Level } from '../content/library'
+import type { RegionId } from '../content/types'
 import { ExerciseArt } from '../components/ExerciseArt'
 import { ExerciseVideo } from '../components/ExerciseVideo'
 import { exerciseVideo } from '../content/exerciseVideos'
@@ -21,9 +22,27 @@ function useLevel(): Level {
   return levelFor(week, hadRecentDiscomfort(sessions))
 }
 
+/** Filtros por parte do rosto: cada um junta os exercícios daquela região, de qualquer grupo. */
+const AREAS: { id: string; label: string; regions?: RegionId[] }[] = [
+  { id: 'pescoco', label: 'Pescoço', regions: ['pescoco'] },
+  { id: 'mandibula', label: 'Mandíbula e papada', regions: ['mandibula', 'papada'] },
+  { id: 'boca', label: 'Boca e bigode chinês', regions: ['bigode'] },
+  { id: 'bochechas', label: 'Bochechas', regions: ['bochechas'] },
+  { id: 'olhos', label: 'Olhos', regions: ['olhos'] },
+  { id: 'testa', label: 'Testa', regions: ['testa'] },
+  { id: 'ferramentas', label: 'Com ferramentas' },
+]
+
+const inArea = (e: Exercise, areaId: string) => {
+  const area = AREAS.find((a) => a.id === areaId)
+  if (!area) return true
+  if (!area.regions) return e.group === 'escova'
+  return !!e.region && area.regions.includes(e.region)
+}
+
 export function Library() {
   const [params, setParams] = useSearchParams()
-  const group = params.get('grupo') as GroupId | null
+  const area = params.get('area')
   const favOnly = params.get('favoritos') === '1'
   const profile = useStore((s) => s.profile)!
   const favorites = useStore((s) => s.favorites)
@@ -32,7 +51,8 @@ export function Library() {
   const practicedToday = useStore((s) => s.practiced)[today] ?? NONE
   const level = useLevel()
 
-  const list = EXERCISES.filter((e) => (!group || e.group === group) && (!favOnly || favorites.includes(e.id)))
+  const list = EXERCISES.filter((e) => (!area || inArea(e, area)) && (!favOnly || favorites.includes(e.id)))
+  const showVideos = !favOnly && (!area || area === 'ferramentas')
   const groups = GROUPS.filter((g) => list.some((e) => e.group === g.id))
 
   return (
@@ -48,15 +68,15 @@ export function Library() {
         </p>
 
         <div className="no-scrollbar -mx-5 mt-4 flex gap-2 overflow-x-auto px-5 pb-1">
-          <Chip selected={!group && !favOnly} onClick={() => setParams({}, { replace: true })} className="shrink-0">
+          <Chip selected={!area && !favOnly} onClick={() => setParams({}, { replace: true })} className="shrink-0">
             Todos
           </Chip>
           <Chip selected={favOnly} onClick={() => setParams(favOnly ? {} : { favoritos: '1' }, { replace: true })} className="shrink-0">
             <Heart className="size-3.5" /> Favoritos
           </Chip>
-          {GROUPS.map((g) => (
-            <Chip key={g.id} selected={group === g.id} onClick={() => setParams(group === g.id ? {} : { grupo: g.id }, { replace: true })} className="shrink-0">
-              {g.title.split(/ e |,/)[0]}
+          {AREAS.map((a) => (
+            <Chip key={a.id} selected={area === a.id} onClick={() => setParams(area === a.id ? {} : { area: a.id }, { replace: true })} className="shrink-0">
+              {a.label}
             </Chip>
           ))}
         </div>
@@ -66,7 +86,7 @@ export function Library() {
         {groups.map((g) => (
           <section key={g.id} className="mt-6">
             <h2 className="font-display text-xl font-medium text-ink">{g.title}</h2>
-            {g.id === 'escova' && (
+            {g.id === 'escova' && showVideos && (
               <>
                 <p className="mt-1 text-sm text-ink-soft">{g.intro}</p>
                 <div className="mt-3 grid gap-3">
