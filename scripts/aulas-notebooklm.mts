@@ -103,7 +103,7 @@ w(
 )
 
 // ———————————————————————————————— Módulos
-COURSE.forEach((m, i) => {
+COURSE.filter((m) => !m.videos).forEach((m, i) => {
   w(`# Módulo ${i + 1} · ${m.title}`, '', m.intro, '')
   if (m.lessons) {
     for (const l of m.lessons) {

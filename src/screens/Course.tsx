@@ -1,13 +1,14 @@
-import { ArrowRight, BookOpen, Check, ChevronRight, Droplets, Hand } from 'lucide-react'
+import { ArrowRight, BookOpen, Check, ChevronRight, Droplets, Hand, PlayCircle } from 'lucide-react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { COURSE, lessonById, moduleOfLesson, type ModuleKind } from '../content/course'
 import { Photo } from '../components/Photo'
 import { Stepper } from '../components/Stepper'
-import { Accordion, BackLink, Card, cx, Eyebrow, Note, ProgressRing, Title } from '../components/ui'
+import { Accordion, BackLink, Button, Card, cx, Eyebrow, Note, ProgressRing, Title } from '../components/ui'
 import { COURSE_ITEMS, itemAfter, moduleItems, nextItem } from '../lib/course'
 import { useStore } from '../lib/store'
+import { VIDEO_LESSONS, videoLessonById, youtubeId } from '../content/videoLessons'
 
-const KIND_ICON: Record<ModuleKind, typeof BookOpen> = { teoria: BookOpen, exercicios: Hand, skincare: Droplets }
+const KIND_ICON: Record<ModuleKind, typeof BookOpen> = { teoria: BookOpen, exercicios: Hand, skincare: Droplets, video: PlayCircle }
 
 export function Course() {
   const done = useStore((s) => s.lessonsDone)
@@ -208,6 +209,75 @@ export function LessonPage() {
           </Accordion>
         </div>
       )}
+    </div>
+  )
+}
+
+export function VideoLessonPage() {
+  const { id } = useParams()
+  const navigate = useNavigate()
+  const done = useStore((s) => s.lessonsDone)
+  const completeLesson = useStore((s) => s.completeLesson)
+  const v = videoLessonById(id ?? '')
+  const yt = v && youtubeId(v.youtube)
+
+  if (!v || !yt) {
+    return (
+      <div className="px-5 pt-6">
+        <BackLink to="/curso" label="Curso" />
+        <p className="mt-6 text-ink-soft">Aula não encontrada.</p>
+      </div>
+    )
+  }
+
+  const index = VIDEO_LESSONS.indexOf(v)
+  const key = `v-${v.id}`
+  const count = VIDEO_LESSONS.filter((x) => done.includes(`v-${x.id}`)).length
+  const next = itemAfter(key)
+
+  return (
+    <div className="px-5 pb-28">
+      <div className="pt-4">
+        <BackLink to="/curso/aulas" label="Aulas em vídeo" />
+      </div>
+      <Eyebrow className="mt-3">
+        Aula {index + 1} de {VIDEO_LESSONS.length}
+      </Eyebrow>
+      <Title className="mt-1.5">{v.title}</Title>
+      {v.summary && <p className="mt-1 text-ink-soft">{v.summary}</p>}
+
+      <div className="mt-5 aspect-video overflow-hidden rounded-3xl bg-hero shadow-soft">
+        <iframe
+          key={yt}
+          src={`https://www.youtube-nocookie.com/embed/${yt}?rel=0&playsinline=1&modestbranding=1`}
+          title={v.title}
+          allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+          allowFullScreen
+          className="size-full"
+        />
+      </div>
+
+      <div className="mt-5 flex items-center gap-3">
+        <div className="h-2 flex-1 overflow-hidden rounded-full bg-surface-2">
+          <div className="h-full rounded-full bg-jade transition-all" style={{ width: `${(count / VIDEO_LESSONS.length) * 100}%` }} />
+        </div>
+        <span className="tnum text-sm font-semibold text-ink-soft">
+          {count}/{VIDEO_LESSONS.length}
+        </span>
+      </div>
+
+      <Button
+        size="lg"
+        block
+        className="mt-5"
+        onClick={() => {
+          completeLesson(key)
+          navigate(next ? next.to : '/curso')
+        }}
+      >
+        {done.includes(key) ? <Check className="size-5" /> : null}
+        {next ? 'Concluir e ir para a próxima' : 'Concluir'}
+      </Button>
     </div>
   )
 }

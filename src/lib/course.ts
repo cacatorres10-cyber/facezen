@@ -1,17 +1,19 @@
 import { COURSE, type CourseModule } from '../content/course'
 import { EXERCISES } from '../content/library'
+import { VIDEO_LESSONS } from '../content/videoLessons'
 
 export interface CourseItem {
   id: string
   title: string
   summary: string
-  kind: 'aula' | 'exercicio'
+  kind: 'aula' | 'exercicio' | 'video'
   /** Rota do tutorial. */
   to: string
 }
 
 /** Aulas de um módulo, na ordem: aulas de texto ou exercícios dos grupos. */
 export function moduleItems(m: CourseModule): CourseItem[] {
+  if (m.videos) return VIDEO_LESSONS.map((v) => ({ id: `v-${v.id}`, title: v.title, summary: v.summary ?? 'Aula em vídeo', kind: 'video', to: `/curso/video/${v.id}` }))
   const lessons: CourseItem[] = (m.lessons ?? []).map((l) => ({ id: l.id, title: l.title, summary: l.summary, kind: 'aula', to: `/curso/aula/${l.id}` }))
   const exercises: CourseItem[] = EXERCISES.filter((e) => m.groups?.includes(e.group)).map((e) => ({ id: e.id, title: e.title, summary: e.forWhat, kind: 'exercicio', to: `/exercicios/${e.id}` }))
   return [...lessons, ...exercises]
