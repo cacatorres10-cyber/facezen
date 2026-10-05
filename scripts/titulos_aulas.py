@@ -22,5 +22,5 @@ def repl(m):
     return f"{m.group(1)}title: '{t}', youtube: '{url}'"
 
 # Só troca títulos provisórios no formato "Aula NN".
-out = re.sub(r"(\{ id: '[^']+', )title: '(Aula \d+)', youtube: '([^']+)'", repl, src)
+out = re.sub(r"(\{ id: '[^']+', (?:module: '[^']+', )?)title: '(Aula \d+)', youtube: '([^']+)'", repl, src)
 open(PATH, 'w', encoding='utf-8').write(out)

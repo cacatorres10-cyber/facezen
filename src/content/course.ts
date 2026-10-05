@@ -29,8 +29,8 @@ export interface CourseModule {
   title: string
   intro: string
   lessons?: Lesson[]
-  /** Módulo das aulas em vídeo (`videoLessons.ts`). */
-  videos?: boolean
+  /** Módulo de aulas em vídeo (`VIDEO_MODULES` em `videoLessons.ts`). */
+  videoModule?: string
   /** Exercícios dos grupos (depois das aulas, se houver). */
   groups?: GroupId[]
 }
@@ -528,7 +528,7 @@ const ACOMPANHAR: Lesson[] = [
 ]
 
 export const COURSE: CourseModule[] = [
-  { id: 'comece', kind: 'teoria', title: 'Comece aqui', intro: 'Como funciona, as regras de ouro e o seu programa.', lessons: COMECE },
+  { id: 'comece', kind: 'teoria', title: 'Como funciona', intro: 'Como funciona, as regras de ouro e o seu programa.', lessons: COMECE },
   { id: 'drenagem', kind: 'exercicios', title: 'Drenagem facial com as mãos', intro: 'A prática de toda sessão, passo a passo.', lessons: DRENAGEM, groups: ['aquecimento', 'drenagem'] },
   { id: 'testa-olhos', kind: 'exercicios', title: 'Extras: testa e olhos', intro: 'Testa sem franzir e olhos com toque leve.', groups: ['testa', 'olhos'] },
   { id: 'bochechas-boca', kind: 'exercicios', title: 'Extras: bochechas e boca', intro: 'Maçãs do rosto, bigode chinês e contorno da boca.', groups: ['bochechas', 'bigode', 'labios'] },

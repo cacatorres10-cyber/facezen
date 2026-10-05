@@ -6,7 +6,7 @@ import { Stepper } from '../components/Stepper'
 import { Accordion, BackLink, Button, Card, cx, Eyebrow, Note, ProgressRing, Title } from '../components/ui'
 import { COURSE_ITEMS, COURSE_MODULES, itemAfter, moduleItems, nextItem } from '../lib/course'
 import { useStore } from '../lib/store'
-import { VIDEO_LESSONS, videoLessonById, youtubeId } from '../content/videoLessons'
+import { VIDEO_LESSONS, VIDEO_MODULES, videoLessonById, youtubeId } from '../content/videoLessons'
 
 const KIND_ICON: Record<ModuleKind, typeof BookOpen> = { teoria: BookOpen, exercicios: Hand, skincare: Droplets, video: PlayCircle }
 
@@ -238,7 +238,7 @@ export function VideoLessonPage() {
   return (
     <div className="px-5 pb-28">
       <div className="pt-4">
-        <BackLink to="/curso/aulas" label="Aulas em vídeo" />
+        <BackLink to={`/curso/video-${v.module}`} label={VIDEO_MODULES.find((m) => m.id === v.module)?.title ?? 'Curso'} />
       </div>
       <Eyebrow className="mt-3">
         Aula {index + 1} de {VIDEO_LESSONS.length}

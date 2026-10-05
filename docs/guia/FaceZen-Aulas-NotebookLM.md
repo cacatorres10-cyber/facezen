@@ -16,7 +16,7 @@
 - Segurança primeiro: diga sempre quando pular o exercício e os sinais para parar.
 - Sem meditação nem respiração guiada.
 
-# Módulo 1 · Comece aqui
+# Módulo 1 · Como funciona
 
 Como funciona, as regras de ouro e o seu programa.
 
