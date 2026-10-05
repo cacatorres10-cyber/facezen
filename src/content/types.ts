@@ -14,6 +14,9 @@ export type SkinBase = 'seca' | 'oleosa' | 'mista' | 'normal'
 /** Objetivos escolhidos no quiz inicial. */
 export type GoalId = 'pele' | 'papada' | 'linhas' | 'contorno' | 'olheiras' | 'bigode' | 'labios' | 'tensao'
 
+/** Acessórios opcionais que a pessoa tem. */
+export type ToolId = 'escova'
+
 export type Experience = 'nunca' | 'algumas' | 'pratico'
 
 export interface Exercise {

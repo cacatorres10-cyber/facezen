@@ -4,7 +4,7 @@ import { EXERCISES, exerciseById, GROUPS, groupById, LEVEL_LABEL, type GroupId, 
 import { ExerciseArt } from '../components/ExerciseArt'
 import { Photo } from '../components/Photo'
 import { Stepper } from '../components/Stepper'
-import { BackLink, Button, Card, Chip, cx, Eyebrow, Note, Title } from '../components/ui'
+import { BackLink, Button, Card, Chip, Eyebrow, Note, Title, Toggle, cx } from '../components/ui'
 import { formatDuration } from '../lib/dates'
 import { exerciseBlockedBy, FLAG_REASON, hadRecentDiscomfort, isAllowed, levelFor } from '../lib/plan'
 import { useStore } from '../lib/store'
@@ -79,6 +79,7 @@ export function Library() {
                           <span className="block font-semibold text-ink">{e.title}</span>
                           <span className="mt-0.5 flex flex-wrap items-center gap-x-2 text-xs text-ink-faint">
                             <span>{e.dose[level]}</span>
+                            {e.tool && <span className="font-semibold text-rose-ink">opcional · escova</span>}
                             {blocked && <span className="font-semibold text-danger">fora do seu plano</span>}
                             {practicedToday.includes(e.id) && <span className="font-semibold text-ok">feito hoje</span>}
                             {!practicedToday.includes(e.id) && lessonsDone.includes(e.id) && <span className="inline-flex items-center gap-0.5 text-ok"><Check className="size-3" /> aprendido</span>}
@@ -107,6 +108,7 @@ export function ExerciseDetail() {
   const lessonsDone = useStore((s) => s.lessonsDone)
   const toggleFavorite = useStore((s) => s.toggleFavorite)
   const completeLesson = useStore((s) => s.completeLesson)
+  const updateProfile = useStore((s) => s.updateProfile)
   const level = useLevel()
 
   if (!e) {
@@ -157,8 +159,19 @@ export function ExerciseDetail() {
       )}
       {blockedBy.length === 0 && blocked && (
         <Note tone="warn" className="mt-4">
-          Com pele sensível, este fica fora do seu plano.
+          Com pele sensível, a escova fica fora das sessões. Se quiser testar, comece numa área pequena.
         </Note>
+      )}
+      {e.tool === 'escova' && (
+        <Card className="mt-4 !py-1">
+          <Toggle
+            id="tem-escova"
+            checked={!!profile.tools?.includes('escova')}
+            onChange={(v) => updateProfile({ tools: v ? ['escova'] : [] })}
+            label="Tenho a escova facial"
+            hint={profile.sensitive ? 'Com pele sensível, ela não entra nas sessões.' : 'Entra nas suas sessões 2 a 3 vezes por semana, a partir da semana 3.'}
+          />
+        </Card>
       )}
       {adapt.length > 0 && (
         <Note tone="info" className="mt-4">
@@ -168,7 +181,9 @@ export function ExerciseDetail() {
 
       <div className="mt-5 rounded-3xl bg-surface p-4 shadow-soft">
         <ExerciseArt id={e.id} title={`Desenho: ${e.title}`} className="mx-auto max-w-[240px]" />
-        <p className="mt-2 text-center text-xs text-ink-faint">Dedos em rosa · setas mostram o movimento · pontos são onde tocar</p>
+        <p className="mt-2 text-center text-xs text-ink-faint">
+          {e.tool ? 'As setas mostram o caminho da escova · cerdas sempre encostando de leve' : 'Dedos em rosa · setas mostram o movimento · pontos são onde tocar'}
+        </p>
       </div>
 
       <div className="mt-4">

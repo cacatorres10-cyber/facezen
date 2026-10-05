@@ -1,4 +1,4 @@
-import { exerciseById, FOCUS, LEVEL_LABEL, SERIES, type Exercise, type FocusId, type Level } from '../content/library'
+import { BRUSH_BLOCK, exerciseById, FOCUS, LEVEL_LABEL, SERIES, type Exercise, type FocusId, type Level } from '../content/library'
 import { GOALS } from '../content/profileOptions'
 import { weekInfo, type ProgramWeek } from '../content/program'
 import type { RegionId, SafetyFlag } from '../content/types'
@@ -26,6 +26,8 @@ export interface SessionStep {
   note?: string
   /** Faz parte do módulo do objetivo. */
   focus?: boolean
+  /** Acessório opcional (escova): sai antes do foco quando falta tempo. */
+  extra?: boolean
 }
 
 export interface SessionPlan {
@@ -48,7 +50,7 @@ export interface PlanContext {
   recentDiscomfort?: boolean
 }
 
-type ProfileLike = Pick<Profile, 'goals' | 'minutes' | 'safety' | 'sensitive'>
+type ProfileLike = Pick<Profile, 'goals' | 'minutes' | 'safety' | 'sensitive' | 'tools'>
 
 /** Tempo máximo de cada sessão, em segundos, pelo tempo escolhido. */
 export const BUDGET: Record<Profile['minutes'], number> = { 5: 7 * 60, 10: 12 * 60, 15: 16 * 60 }
@@ -90,8 +92,15 @@ export function focusFor(goals: Profile['goals'], sessionIndex: number): FocusId
 /** Exercícios sem toque no rosto, para dias de pele irritada. */
 const SUAVE = ['A6', 'O5', 'B1', 'B3', 'L1', 'R3']
 
-export function isAllowed(ex: Exercise, profile: Pick<Profile, 'safety'>): boolean {
-  return !ex.avoidIf.some((f) => profile.safety.includes(f))
+export function isAllowed(ex: Exercise, profile: Pick<Profile, 'safety'> & { sensitive?: boolean }): boolean {
+  if (ex.avoidIf.some((f) => profile.safety.includes(f))) return false
+  // Pele sensível: nada de acessórios com fricção (guia 6.7).
+  return !(ex.tool && profile.sensitive)
+}
+
+/** A escova entra a partir da semana 3, em sessões alternadas (2 a 3 por semana). */
+export function brushToday(profile: Pick<Profile, 'tools'>, week: number, sessionIndex: number): boolean {
+  return !!profile.tools?.includes('escova') && phaseOf(week) >= 2 && sessionIndex % 2 === 0
 }
 
 /** Um exercício pronto para o cronômetro, no nível pedido. */
@@ -146,13 +155,20 @@ export function buildSession(profile: ProfileLike, ctx: PlanContext): SessionPla
   // O relaxamento fecha a sessão, depois do foco.
   const relax = base.filter((e) => e.group === 'relaxamento')
   const body = base.filter((e) => e.group !== 'relaxamento')
-  const items = [...body.map((e) => ({ e, focus: false })), ...focus.map((e) => ({ e, focus: true })), ...relax.map((e) => ({ e, focus: false }))]
+  const brush = brushToday(profile, week, ctx.sessionIndex) ? pick(BRUSH_BLOCK[profile.minutes] ?? BRUSH_BLOCK[10]) : []
+  const items = [
+    ...body.map((e) => ({ e, focus: false, extra: false })),
+    ...focus.map((e) => ({ e, focus: true, extra: false })),
+    ...brush.map((e) => ({ e, focus: false, extra: true })),
+    ...relax.map((e) => ({ e, focus: false, extra: false })),
+  ]
+  const toSteps = (level: Level) => items.map(({ e, focus, extra }, i) => ({ ...stepFrom(e, level, profile, `${e.id}-${i}`, focus), extra }))
 
   const levels: Level[] = ['ava', 'int', 'ini']
   const start = levels.indexOf(levelFor(week, ctx.recentDiscomfort))
   let chosen: { steps: SessionStep[]; level: Level } | undefined
   for (const level of levels.slice(start)) {
-    const steps = items.map(({ e, focus }, i) => stepFrom(e, level, profile, `${e.id}-${i}`, focus))
+    const steps = toSteps(level)
     const trimmed = fitTo(steps, budget)
     // Rosto inteiro: se precisar cortar mais de 3 exercícios, desce um nível.
     if (totalOf(trimmed) <= budget && steps.length - trimmed.length <= 3) {
@@ -161,28 +177,30 @@ export function buildSession(profile: ProfileLike, ctx: PlanContext): SessionPla
     }
   }
   if (!chosen) {
-    const steps = items.map(({ e, focus }, i) => stepFrom(e, 'ini', profile, `${e.id}-${i}`, focus))
-    chosen = { steps: fitTo(steps, budget, 0), level: 'ini' }
+    chosen = { steps: fitTo(toSteps('ini'), budget, 0), level: 'ini' }
   }
 
   const title = focusId ? `Série ${series} + ${FOCUS[focusId].title}` : `Série ${series}`
-  const subtitle = `${chosen.steps.length} exercícios · ${LEVEL_LABEL[chosen.level].toLowerCase()}`
+  const withBrush = chosen.steps.some((s) => s.extra)
+  const subtitle = `${chosen.steps.length} exercícios · ${LEVEL_LABEL[chosen.level].toLowerCase()}${withBrush ? ' · com a escova' : ''}`
   return plan(series === 'A' ? 'serie-a' : 'serie-b', title, subtitle, chosen.level, chosen.steps, adaptations)
 }
 
 /**
  * Corta até caber no tempo: primeiro os exercícios da série (de trás para frente),
- * mantendo o primeiro, o último e o foco; só depois o foco. Nunca fica abaixo de `minKeep`.
+ * mantendo o primeiro e o último; depois a escova; por último o foco. Nunca fica abaixo de `minKeep`.
  */
 export function fitTo(steps: SessionStep[], seconds: number, minKeep = 0): SessionStep[] {
   const out = [...steps]
-  const removable = (focus: boolean) => {
-    for (let i = out.length - 2; i >= 1; i--) if (!!out[i].focus === focus) return i
+  const kind = (s: SessionStep) => (s.focus ? 'foco' : s.extra ? 'extra' : 'serie')
+  const removable = (k: string) => {
+    for (let i = out.length - 2; i >= 1; i--) if (kind(out[i]) === k) return i
     return -1
   }
   while (totalOf(out) > seconds && out.length > Math.max(minKeep, 2)) {
-    let i = removable(false)
-    if (i < 0) i = removable(true)
+    let i = removable('serie')
+    if (i < 0) i = removable('extra')
+    if (i < 0) i = removable('foco')
     if (i < 0) break
     out.splice(i, 1)
   }

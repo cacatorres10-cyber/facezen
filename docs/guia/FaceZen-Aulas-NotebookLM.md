@@ -594,11 +594,135 @@ Queixo, pescoço e o final da sessão.
 > Use comparações do dia a dia, como no texto. A pessoa vai imitar o que ouvir.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-# Módulo 6 · Skincare: o básico
+# Módulo 6 · Escova facial (opcional)
+
+Para quem tem a escova de cerdas macias.
+
+## Aula 23 · Escova facial: o que é e como usar
+
+*Um acessório opcional para fazer a massagem com mais conforto.*
+
+**Passo a passo**
+
+1. É uma escova curva, de cerdas macias, que ficou famosa como “escova de drenagem”.
+2. No FaceZen ela é opcional: um jeito gostoso de massagear, que ajuda a relaxar. Muita gente sente o rosto menos inchado logo depois, mas é passageiro.
+3. Use na pele limpa, com um pouco de hidratante ou óleo para deslizar.
+4. A ordem é sempre a mesma: primeiro o pescoço, depois o rosto e por fim a testa.
+5. No rosto, sempre do centro para as orelhas. No pescoço, sempre de cima para baixo.
+6. Pressão leve: as cerdas deslizam, não esfregam. Nunca perto dos olhos.
+7. Depois de usar, lave com água e sabonete neutro e deixe secar com as cerdas para baixo.
+
+**Mais detalhes**
+
+- Escolha cerdas bem macias, sem cheiro forte e com cabo firme.
+- É de uso pessoal: não compartilhe.
+- Marcou que tem a escova? Ela entra nas suas sessões 2 a 3 vezes por semana, a partir da semana 3.
+
+**Evite**
+
+- Espinha inflamada, rosácea, feridas ou pele irritada
+- Logo depois de procedimento estético
+- Pele sensível: o app não inclui a escova nas sessões; se quiser testar, comece numa área pequena
+- Fazer força ou esfregar
+
+> **Para o NotebookLM (Visão geral em vídeo → Personalizar):**
+> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Escova facial: o que é e como usar” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
+> Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
+
+*Para quem tem a escova de cerdas macias: pescoço primeiro, depois rosto e testa, sempre de leve.*
+
+## Aula 24 · E1 Escova no pescoço
+
+*Começar a massagem com a escova pelo pescoço.*
+
+- **Região:** Escova facial (opcional)
+- **Dose:** Iniciante 5 passadas de cada lado · Intermediário 5 passadas de cada lado · Avançado 5 passadas de cada lado
+- **Lados:** faça de um lado e depois do outro.
+- **Material:** escova facial de cerdas macias (opcional).
+
+![Desenho do exercício E1 Escova no pescoço: dedos em rosa, setas verdes mostram o movimento, pontos verdes são onde tocar](desenhos/E1.svg)
+
+**Passo a passo**
+
+1. Encoste as cerdas de leve atrás da orelha.
+2. Desça pela lateral do pescoço até a clavícula, devagar.
+3. Faça 5 passadas de cada lado, sempre de cima para baixo.
+
+**Confira no espelho:** As cerdas só deslizam: a pele não fica vermelha nem repuxa.
+
+**Pule se:** Espinha inflamada, ferida, rosácea ou pele irritada.
+
+**Fica fora do plano de quem tem:** pele em crise (acne inflamada, rosácea, eczema, feridas).
+
+> **Para o NotebookLM (Visão geral em vídeo → Personalizar):**
+> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “E1 Escova no pescoço” do FaceZen. Mostre o exercício como um tutorial: para que serve, os 3 passos com calma, a dose de cada nível e como conferir no espelho.
+> Use o desenho da aula como imagem principal: explique onde ficam os dedos (em rosa) e o movimento das setas verdes.
+> Use comparações do dia a dia, como no texto. A pessoa vai imitar o que ouvir.
+> Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
+
+## Aula 25 · E2 Escova no rosto
+
+*Massagem do centro do rosto para as orelhas.*
+
+- **Região:** Escova facial (opcional)
+- **Dose:** Iniciante 5 passadas por linha · Intermediário 5 passadas por linha · Avançado 5 passadas por linha
+- **Lados:** faça de um lado e depois do outro.
+- **Material:** escova facial de cerdas macias (opcional).
+
+![Desenho do exercício E2 Escova no rosto: dedos em rosa, setas verdes mostram o movimento, pontos verdes são onde tocar](desenhos/E2.svg)
+
+**Passo a passo**
+
+1. Comece no queixo e deslize pela linha da mandíbula até a orelha.
+2. Depois, do lado do nariz até a orelha, passando pela bochecha.
+3. Termine descendo da orelha até o pescoço.
+
+**Confira no espelho:** Sempre para fora, sem esfregar e longe dos olhos.
+
+**Pule se:** Espinha inflamada, ferida, rosácea ou pele irritada.
+
+**Fica fora do plano de quem tem:** pele em crise (acne inflamada, rosácea, eczema, feridas).
+
+> **Para o NotebookLM (Visão geral em vídeo → Personalizar):**
+> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “E2 Escova no rosto” do FaceZen. Mostre o exercício como um tutorial: para que serve, os 3 passos com calma, a dose de cada nível e como conferir no espelho.
+> Use o desenho da aula como imagem principal: explique onde ficam os dedos (em rosa) e o movimento das setas verdes.
+> Use comparações do dia a dia, como no texto. A pessoa vai imitar o que ouvir.
+> Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
+
+## Aula 26 · E3 Escova na testa
+
+*Relaxar a testa com a escova.*
+
+- **Região:** Escova facial (opcional)
+- **Dose:** Iniciante 5 passadas de cada lado · Intermediário 5 passadas de cada lado · Avançado 5 passadas de cada lado
+- **Lados:** faça de um lado e depois do outro.
+- **Material:** escova facial de cerdas macias (opcional).
+
+![Desenho do exercício E3 Escova na testa: dedos em rosa, setas verdes mostram o movimento, pontos verdes são onde tocar](desenhos/E3.svg)
+
+**Passo a passo**
+
+1. Encoste a escova no meio da testa.
+2. Deslize até a têmpora, como quem penteia a testa para o lado.
+3. Termine descendo da têmpora até a orelha.
+
+**Confira no espelho:** Leve e lento. Não passe sobre as sobrancelhas nem perto dos olhos.
+
+**Pule se:** Espinha inflamada, ferida, rosácea ou pele irritada.
+
+**Fica fora do plano de quem tem:** pele em crise (acne inflamada, rosácea, eczema, feridas).
+
+> **Para o NotebookLM (Visão geral em vídeo → Personalizar):**
+> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “E3 Escova na testa” do FaceZen. Mostre o exercício como um tutorial: para que serve, os 3 passos com calma, a dose de cada nível e como conferir no espelho.
+> Use o desenho da aula como imagem principal: explique onde ficam os dedos (em rosa) e o movimento das setas verdes.
+> Use comparações do dia a dia, como no texto. A pessoa vai imitar o que ouvir.
+> Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
+
+# Módulo 7 · Skincare: o básico
 
 Limpar, hidratar e proteger bem feito.
 
-## Aula 23 · Limpar do jeito certo
+## Aula 27 · Limpar do jeito certo
 
 *Limpeza suave de manhã e completa à noite.*
 
@@ -615,7 +739,7 @@ Limpar, hidratar e proteger bem feito.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Limpar do jeito certo” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 24 · Hidratar (inclusive pele oleosa)
+## Aula 28 · Hidratar (inclusive pele oleosa)
 
 *Hidratar fortalece a barreira que protege a pele.*
 
@@ -630,7 +754,7 @@ Limpar, hidratar e proteger bem feito.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Hidratar (inclusive pele oleosa)” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 25 · Protetor solar: o passo mais importante
+## Aula 29 · Protetor solar: o passo mais importante
 
 *FPS 30 ou mais, na quantidade certa, todos os dias.*
 
@@ -651,7 +775,7 @@ Limpar, hidratar e proteger bem feito.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Protetor solar: o passo mais importante” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 26 · A ordem certa dos produtos
+## Aula 30 · A ordem certa dos produtos
 
 *Do mais líquido para o mais denso; protetor por último de manhã.*
 
@@ -666,7 +790,7 @@ Limpar, hidratar e proteger bem feito.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “A ordem certa dos produtos” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 27 · Quanto usar de cada produto
+## Aula 31 · Quanto usar de cada produto
 
 *A cola para deixar no espelho.*
 
@@ -683,11 +807,11 @@ Limpar, hidratar e proteger bem feito.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Quanto usar de cada produto” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-# Módulo 7 · Skincare: os ativos
+# Módulo 8 · Skincare: os ativos
 
 O que é cada ativo e quando usar.
 
-## Aula 28 · Ácido hialurônico e niacinamida
+## Aula 32 · Ácido hialurônico e niacinamida
 
 *Dois ativos gentis, que quase todo mundo tolera.*
 
@@ -702,7 +826,7 @@ O que é cada ativo e quando usar.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Ácido hialurônico e niacinamida” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 29 · Vitamina C
+## Aula 33 · Vitamina C
 
 *Antioxidante da manhã, parceira do protetor.*
 
@@ -717,7 +841,7 @@ O que é cada ativo e quando usar.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Vitamina C” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 30 · Ácidos esfoliantes
+## Aula 34 · Ácidos esfoliantes
 
 *Salicílico, glicólico, lático e mandélico: para que serve cada um.*
 
@@ -738,7 +862,7 @@ O que é cada ativo e quando usar.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Ácidos esfoliantes” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 31 · Retinol
+## Aula 35 · Retinol
 
 *O ativo mais estudado para linhas e textura. Só à noite.*
 
@@ -759,7 +883,7 @@ O que é cada ativo e quando usar.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Retinol” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 32 · Clareadores
+## Aula 36 · Clareadores
 
 *Para manchas e melasma, sempre com protetor com cor.*
 
@@ -773,7 +897,7 @@ O que é cada ativo e quando usar.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Clareadores” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 33 · Fotossensível ou fotossensibilizante?
+## Aula 37 · Fotossensível ou fotossensibilizante?
 
 *Duas palavras parecidas, dois cuidados diferentes.*
 
@@ -786,7 +910,7 @@ O que é cada ativo e quando usar.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Fotossensível ou fotossensibilizante?” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 34 · Pode misturar ativos?
+## Aula 38 · Pode misturar ativos?
 
 *As quatro regras para combinar sem irritar.*
 
@@ -801,11 +925,11 @@ O que é cada ativo e quando usar.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Pode misturar ativos?” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-# Módulo 8 · Skincare: a sua rotina
+# Módulo 9 · Skincare: a sua rotina
 
 Rotinas por tipo de pele, manchas e hábitos.
 
-## Aula 35 · Texturas: qual escolher
+## Aula 39 · Texturas: qual escolher
 
 *A textura certa para a sua pele e o seu clima.*
 
@@ -822,7 +946,7 @@ Rotinas por tipo de pele, manchas e hábitos.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Texturas: qual escolher” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 36 · Rotina fixa e reserva
+## Aula 40 · Rotina fixa e reserva
 
 *O que é todo dia e o que entra só quando a pele pede.*
 
@@ -837,7 +961,7 @@ Rotinas por tipo de pele, manchas e hábitos.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Rotina fixa e reserva” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 37 · Rotina para pele seca
+## Aula 41 · Rotina para pele seca
 
 *Conforto e água morna.*
 
@@ -858,7 +982,7 @@ Rotinas por tipo de pele, manchas e hábitos.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Rotina para pele seca” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 38 · Rotina para pele oleosa
+## Aula 42 · Rotina para pele oleosa
 
 *Leveza, sem pular o hidratante.*
 
@@ -878,7 +1002,7 @@ Rotinas por tipo de pele, manchas e hábitos.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Rotina para pele oleosa” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 39 · Rotina para pele mista
+## Aula 43 · Rotina para pele mista
 
 *Equilibrar a zona T sem ressecar as bochechas.*
 
@@ -893,7 +1017,7 @@ Rotinas por tipo de pele, manchas e hábitos.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Rotina para pele mista” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 40 · Rotina para pele normal
+## Aula 44 · Rotina para pele normal
 
 *Manter o que já está bom.*
 
@@ -907,7 +1031,7 @@ Rotinas por tipo de pele, manchas e hábitos.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Rotina para pele normal” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 41 · Rotina para pele sensível
+## Aula 45 · Rotina para pele sensível
 
 *Menos produtos, sem fragrância, sempre testando antes.*
 
@@ -922,7 +1046,7 @@ Rotinas por tipo de pele, manchas e hábitos.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Rotina para pele sensível” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 42 · Complementos por objetivo
+## Aula 46 · Complementos por objetivo
 
 *O que acrescentar ao básico, conforme o que te incomoda.*
 
@@ -938,7 +1062,7 @@ Rotinas por tipo de pele, manchas e hábitos.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Complementos por objetivo” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 43 · Manchas: o combo que funciona
+## Aula 47 · Manchas: o combo que funciona
 
 *Protetor, luz visível, clareador e zero atrito.*
 
@@ -958,7 +1082,7 @@ Rotinas por tipo de pele, manchas e hábitos.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Manchas: o combo que funciona” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 44 · Hábitos que mudam a pele
+## Aula 48 · Hábitos que mudam a pele
 
 *Pequenas escolhas diárias que somam.*
 
@@ -975,7 +1099,7 @@ Rotinas por tipo de pele, manchas e hábitos.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Hábitos que mudam a pele” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 45 · Mimo de fim de semana
+## Aula 49 · Mimo de fim de semana
 
 *Uma máscara calmante simples, opcional.*
 
@@ -994,11 +1118,11 @@ Rotinas por tipo de pele, manchas e hábitos.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Mimo de fim de semana” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-# Módulo 9 · Acompanhe a evolução
+# Módulo 10 · Acompanhe a evolução
 
 Fotos, expectativas realistas e dúvidas.
 
-## Aula 46 · Foto de acompanhamento
+## Aula 50 · Foto de acompanhamento
 
 *Uma vez por semana, sempre do mesmo jeito.*
 
@@ -1014,7 +1138,7 @@ Fotos, expectativas realistas e dúvidas.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Foto de acompanhamento” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 47 · O que é realista esperar
+## Aula 51 · O que é realista esperar
 
 *Sem promessas: o que muitas pessoas relatam.*
 
@@ -1029,7 +1153,7 @@ Fotos, expectativas realistas e dúvidas.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “O que é realista esperar” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 48 · Os erros mais comuns
+## Aula 52 · Os erros mais comuns
 
 *O que atrapalha, para você não repetir.*
 
@@ -1049,7 +1173,7 @@ Fotos, expectativas realistas e dúvidas.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Os erros mais comuns” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 49 · Perguntas frequentes
+## Aula 53 · Perguntas frequentes
 
 *As dúvidas que mais aparecem, em uma frase cada.*
 
@@ -1069,4 +1193,4 @@ Fotos, expectativas realistas e dúvidas.
 
 ---
 
-*Total: 49 aulas. Conteúdo próprio do FaceZen, gerado a partir do app. Não substitui avaliação médica, dermatológica ou fisioterapêutica.*
+*Total: 53 aulas. Conteúdo próprio do FaceZen, gerado a partir do app. Não substitui avaliação médica, dermatológica ou fisioterapêutica.*

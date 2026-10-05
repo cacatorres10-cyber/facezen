@@ -1,7 +1,7 @@
-import type { RegionId, SafetyFlag } from './types'
+import type { RegionId, SafetyFlag, ToolId } from './types'
 
 /**
- * Os 15 exercícios essenciais do FaceZen (fonte única: app + arquivo do NotebookLM).
+ * Os 15 exercícios essenciais do FaceZen (+ 3 opcionais com a escova facial) (fonte única: app + arquivo do NotebookLM).
  * Texto próprio e simples: 3 passos e um jeito de conferir. Os desenhos ficam em `art.ts`.
  */
 
@@ -19,6 +19,7 @@ export type GroupId =
   | 'mandibula'
   | 'pescoco'
   | 'relaxamento'
+  | 'escova'
 
 export interface Group {
   id: GroupId
@@ -37,6 +38,7 @@ export const GROUPS: Group[] = [
   { id: 'mandibula', title: 'Mandíbula, queixo e papada', intro: 'Contorno do queixo, papada e a tensão de quem aperta os dentes.', region: 'papada' },
   { id: 'pescoco', title: 'Pescoço e colo', intro: 'Postura e tônus do pescoço. No pescoço, a massagem vai sempre de cima para baixo.', region: 'pescoco' },
   { id: 'relaxamento', title: 'Relaxamento final', intro: 'Um minuto para soltar o rosto e terminar a sessão.' },
+  { id: 'escova', title: 'Escova facial (opcional)', intro: 'Para quem tem a escova de cerdas macias: pescoço primeiro, depois rosto e testa, sempre de leve.' },
 ]
 
 export const groupById = (id: GroupId) => GROUPS.find((g) => g.id === id)!
@@ -65,7 +67,8 @@ export interface Exercise {
   adapt?: Partial<Record<SafetyFlag, string>>
   /** Pode ser feito sem as mãos, em qualquer lugar. */
   anywhere?: boolean
-  tool?: boolean
+  /** Precisa deste acessório. */
+  tool?: ToolId
 }
 
 const reps = (ini: number, int: number, ava: number): Pick<Exercise, 'dose' | 'seconds'> => ({
@@ -183,6 +186,33 @@ export const EXERCISES: Exercise[] = [
     check: 'Vale fazer também durante o dia, sempre que lembrar.', avoidIf: [],
   },
 ]
+
+// ——— Escova facial (opcional; só entra nas sessões de quem marcou que tem)
+const BRUSH_SKIP = 'Espinha inflamada, ferida, rosácea ou pele irritada.'
+
+EXERCISES.push(
+  {
+    id: 'E1', group: 'escova', region: 'pescoco', title: 'Escova no pescoço', forWhat: 'Começar a massagem com a escova pelo pescoço.',
+    ...fixed('5 passadas de cada lado', 40), sided: true, tool: 'escova',
+    steps: ['Encoste as cerdas de leve atrás da orelha.', 'Desça pela lateral do pescoço até a clavícula, devagar.', 'Faça 5 passadas de cada lado, sempre de cima para baixo.'],
+    check: 'As cerdas só deslizam: a pele não fica vermelha nem repuxa.', skip: BRUSH_SKIP, avoidIf: ['peleCrise'],
+  },
+  {
+    id: 'E2', group: 'escova', region: 'bochechas', title: 'Escova no rosto', forWhat: 'Massagem do centro do rosto para as orelhas.',
+    ...fixed('5 passadas por linha', 60), sided: true, tool: 'escova',
+    steps: ['Comece no queixo e deslize pela linha da mandíbula até a orelha.', 'Depois, do lado do nariz até a orelha, passando pela bochecha.', 'Termine descendo da orelha até o pescoço.'],
+    check: 'Sempre para fora, sem esfregar e longe dos olhos.', skip: BRUSH_SKIP, avoidIf: ['peleCrise'],
+  },
+  {
+    id: 'E3', group: 'escova', region: 'testa', title: 'Escova na testa', forWhat: 'Relaxar a testa com a escova.',
+    ...fixed('5 passadas de cada lado', 30), sided: true, tool: 'escova',
+    steps: ['Encoste a escova no meio da testa.', 'Deslize até a têmpora, como quem penteia a testa para o lado.', 'Termine descendo da têmpora até a orelha.'],
+    check: 'Leve e lento. Não passe sobre as sobrancelhas nem perto dos olhos.', skip: BRUSH_SKIP, avoidIf: ['peleCrise'],
+  },
+)
+
+/** Bloco da escova: o rosto todo com 10 ou 15 minutos; só o rosto com 5. */
+export const BRUSH_BLOCK: Record<5 | 10 | 15, string[]> = { 5: ['E2'], 10: ['E1', 'E2', 'E3'], 15: ['E1', 'E2', 'E3'] }
 
 export const exerciseById = (id: string) => EXERCISES.find((e) => e.id === id)
 

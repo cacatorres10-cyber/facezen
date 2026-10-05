@@ -39,6 +39,7 @@ export function Onboarding() {
         days: [1, 3, 5],
         time: '07:30',
         safety: [],
+        tools: [],
         createdAt: new Date().toISOString(),
       },
   )

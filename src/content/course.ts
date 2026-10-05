@@ -29,7 +29,7 @@ export interface CourseModule {
   title: string
   intro: string
   lessons?: Lesson[]
-  /** Módulos de exercício: as aulas são os exercícios do grupo. */
+  /** Exercícios dos grupos (depois das aulas, se houver). */
   groups?: GroupId[]
 }
 
@@ -418,6 +418,34 @@ const SKIN_ROTINA: Lesson[] = [
   },
 ]
 
+const ESCOVA: Lesson[] = [
+  {
+    id: 's-escova',
+    title: 'Escova facial: o que é e como usar',
+    summary: 'Um acessório opcional para fazer a massagem com mais conforto.',
+    steps: [
+      'É uma escova curva, de cerdas macias, que ficou famosa como “escova de drenagem”.',
+      'No FaceZen ela é opcional: um jeito gostoso de massagear, que ajuda a relaxar. Muita gente sente o rosto menos inchado logo depois, mas é passageiro.',
+      'Use na pele limpa, com um pouco de hidratante ou óleo para deslizar.',
+      'A ordem é sempre a mesma: primeiro o pescoço, depois o rosto e por fim a testa.',
+      'No rosto, sempre do centro para as orelhas. No pescoço, sempre de cima para baixo.',
+      'Pressão leve: as cerdas deslizam, não esfregam. Nunca perto dos olhos.',
+      'Depois de usar, lave com água e sabonete neutro e deixe secar com as cerdas para baixo.',
+    ],
+    details: [
+      'Escolha cerdas bem macias, sem cheiro forte e com cabo firme.',
+      'É de uso pessoal: não compartilhe.',
+      'Marcou que tem a escova? Ela entra nas suas sessões 2 a 3 vezes por semana, a partir da semana 3.',
+    ],
+    avoid: [
+      'Espinha inflamada, rosácea, feridas ou pele irritada',
+      'Logo depois de procedimento estético',
+      'Pele sensível: o app não inclui a escova nas sessões; se quiser testar, comece numa área pequena',
+      'Fazer força ou esfregar',
+    ],
+  },
+]
+
 const ACOMPANHAR: Lesson[] = [
   {
     id: 'a-foto',
@@ -480,6 +508,7 @@ export const COURSE: CourseModule[] = [
   { id: 'testa-olhos', kind: 'exercicios', title: 'Testa e olhos', intro: 'Testa sem franzir e olhos com toque leve.', groups: ['testa', 'olhos'] },
   { id: 'bochechas-boca', kind: 'exercicios', title: 'Bochechas e boca', intro: 'Maçãs do rosto, bigode chinês e contorno da boca.', groups: ['bochechas', 'bigode', 'labios'] },
   { id: 'mandibula', kind: 'exercicios', title: 'Mandíbula, pescoço e relaxar', intro: 'Queixo, pescoço e o final da sessão.', groups: ['mandibula', 'pescoco', 'relaxamento'] },
+  { id: 'escova', kind: 'exercicios', title: 'Escova facial (opcional)', intro: 'Para quem tem a escova de cerdas macias.', lessons: ESCOVA, groups: ['escova'] },
   { id: 'skin-basico', kind: 'skincare', title: 'Skincare: o básico', intro: 'Limpar, hidratar e proteger bem feito.', lessons: SKIN_BASICO },
   { id: 'skin-ativos', kind: 'skincare', title: 'Skincare: os ativos', intro: 'O que é cada ativo e quando usar.', lessons: SKIN_ATIVOS },
   { id: 'skin-rotina', kind: 'skincare', title: 'Skincare: a sua rotina', intro: 'Rotinas por tipo de pele, manchas e hábitos.', lessons: SKIN_ROTINA },

@@ -32,7 +32,7 @@ export interface Pose {
   paths?: { d: string; both?: boolean }[]
   /** Pontos de pressão. */
   presses?: Pt[]
-  prop?: { kind: 'palito' | 'guasha' | 'rolo'; at: Pt; angle?: number }
+  prop?: { kind: 'palito' | 'guasha' | 'rolo' | 'escova'; at: Pt; angle?: number }
   /** Repete dedos, palmas, setas e pontos do outro lado do rosto. */
   sym?: boolean
   /** Texto curto no canto (ex.: "O → A"). */
@@ -126,6 +126,17 @@ function arrowEl(d: string, both?: boolean, id = 'fz-seta'): string {
 
 function prop(p: NonNullable<Pose['prop']>): string {
   const t = `translate(${p.at[0]} ${p.at[1]}) rotate(${p.angle ?? 0})`
+  if (p.kind === 'escova') {
+    // Escova curva: cabo claro por cima, cerdas macias por baixo, encostando na pele.
+    const bristles = Array.from({ length: 11 }, (_, i) => {
+      // Pontos ao longo da curva de baixo do cabo (Bézier quadrática).
+      const t = 0.05 + (i / 10) * 0.9
+      const x = -27 + 54 * t
+      const y = (1 - t) ** 2 * 4 + 2 * (1 - t) * t * -20 + t ** 2 * 4
+      return `<path d="M${x.toFixed(1)} ${(y + 1).toFixed(1)} L${x.toFixed(1)} ${(y + 10).toFixed(1)}"/>`
+    }).join('')
+    return `<g transform="${t} scale(1.3)"><path d="M-30 -2 Q0 -30 30 -2 L27 4 Q0 -20 -27 4 Z" fill="#efe6d6" stroke="${C.ink}" stroke-width="1.3"/><g stroke="#b9895a" stroke-width="2.2" stroke-linecap="round">${bristles}</g></g>`
+  }
   if (p.kind === 'palito') return `<g transform="${t}"><rect x="-38" y="-2.5" width="76" height="5" rx="2.5" fill="#c8a27a" stroke="#8a6440"/></g>`
   if (p.kind === 'guasha') return `<g transform="${t}"><path d="M-8 -16 C4 -20 14 -6 12 8 C10 18 -4 20 -12 12 C-18 4 -18 -12 -8 -16 Z" fill="${C.hand}" stroke="${C.handLine}" stroke-width="1.3" opacity="0.95"/></g>`
   return `<g transform="${t}"><rect x="-7" y="-12" width="14" height="24" rx="5" fill="${C.hand}" stroke="${C.handLine}" stroke-width="1.3"/><path d="M0 12 L0 26" stroke="${C.handLine}" stroke-width="2"/><path d="M-5 26 L5 26" stroke="${C.handLine}" stroke-width="2"/></g>`
@@ -182,6 +193,10 @@ export const POSES: Record<string, Pose> = {
   P2: { eyes: 'closed', sym: true, palms: [{ at: [84, 214], rx: 9, ry: 18 }], arrows: [{ pts: [[72, 206], [70, 246]] }] },
   // ——— Relaxamento
   R3: { eyes: 'closed', mouth: 'neutral', caption: 'dentes soltos' },
+  // ——— Escova facial (opcional)
+  E1: { eyes: 'closed', prop: { kind: 'escova', at: [56, 218], angle: -80 }, sym: true, arrows: [{ pts: [[48, 136], [64, 170], [74, 200]] }, { pts: [[80, 206], [78, 246]] }], caption: 'de cima para baixo' },
+  E2: { eyes: 'closed', prop: { kind: 'escova', at: [34, 150], angle: -100 }, sym: true, arrows: [{ pts: [[94, 194], [64, 182], [52, 150]] }, { pts: [[88, 128], [70, 120], [54, 114]] }], caption: 'para as orelhas' },
+  E3: { eyes: 'closed', prop: { kind: 'escova', at: [70, 46], angle: 10 }, sym: true, arrows: [{ pts: [[94, 74], [68, 72], [54, 94]] }], caption: 'para as têmporas' },
 }
 
 /** O desenho de um exercício pelo código (ou nada). */

@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 import { createJSONStorage, persist, type StateStorage } from 'zustand/middleware'
-import type { Experience, GoalId, RegionId, SafetyFlag, SkinBase } from '../content/types'
+import type { Experience, GoalId, RegionId, SafetyFlag, SkinBase, ToolId } from '../content/types'
 import { dayKey } from './dates'
 import { exerciseById } from '../content/library'
 import type { ProductId } from './skincare'
@@ -22,6 +22,8 @@ export interface Profile {
   /** Horário preferido, "HH:MM". */
   time: string
   safety: SafetyFlag[]
+  /** Acessórios que a pessoa tem (ex.: escova facial). */
+  tools: ToolId[]
   createdAt: string
 }
 
@@ -364,7 +366,7 @@ export const useStore = create<FaceZenState>()(
     }),
     {
       name: STORAGE_KEY,
-      version: 6,
+      version: 7,
       storage: createJSONStorage(() => safeStorage),
       // v1 → v2: "intenções" viraram "objetivos".
       migrate: (persisted, version) => {
@@ -387,6 +389,8 @@ export const useStore = create<FaceZenState>()(
           state.lessonsDone = state.lessonsDone ?? []
           state.favorites = (state.favorites ?? []).filter((id) => !!exerciseById(id))
         }
+        // v7: acessórios (escova facial).
+        if (version < 7 && state.profile) state.profile = { ...state.profile, tools: state.profile.tools ?? [] }
         return state
       },
     },

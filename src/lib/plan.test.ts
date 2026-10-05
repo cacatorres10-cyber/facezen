@@ -21,6 +21,7 @@ const profile = (patch: Partial<Profile> = {}): Profile => ({
   days: [1, 3, 5],
   time: '07:30',
   safety: [],
+  tools: [],
   createdAt: '2026-01-01T00:00:00.000Z',
   ...patch,
 })
@@ -100,12 +101,33 @@ describe('segurança', () => {
     expect(plan.steps.find((s) => s.id === 'M1')?.note).toMatch(/cabeça reta/)
   })
 
+  it('escova: só para quem tem, a partir da semana 3, em sessões alternadas', () => {
+    const comEscova = profile({ tools: ['escova'], goals: ['papada'], minutes: 15 })
+    const has = (p: Profile, week: number, sessionIndex: number) => ids(p, { week, sessionIndex }).some((id) => id.startsWith('E'))
+    expect(has(comEscova, 1, 0)).toBe(false)
+    expect(has(comEscova, 3, 0)).toBe(true)
+    expect(has(comEscova, 3, 1)).toBe(false)
+    expect(has(profile({ goals: ['papada'], minutes: 15 }), 3, 0)).toBe(false)
+    expect(has(profile({ tools: ['escova'], sensitive: true, minutes: 15 }), 3, 0)).toBe(false)
+    const plan = buildSession(comEscova, { week: 3, sessionIndex: 0 })
+    expect(plan.steps.at(-1)?.id).toBe('R3')
+    expect(plan.steps.filter((s) => s.extra).map((s) => s.id)).toEqual(['E1', 'E2', 'E3'])
+  })
+
+  it('com a escova, também cabe no tempo', () => {
+    for (const minutes of [5, 10, 15] as const)
+      for (const week of [3, 6, 9]) {
+        const plan = buildSession(profile({ minutes, tools: ['escova'], goals: ['bigode', 'tensao'] }), { week, sessionIndex: 0 })
+        expect(plan.totalSec).toBeLessThanOrEqual(BUDGET[minutes])
+      }
+  })
+
   it('todo exercício tem desenho e no máximo 3 passos', () => {
     for (const e of EXERCISES) {
       expect(exerciseSvg(e.id)).toContain('<svg')
       expect(e.steps.length).toBeLessThanOrEqual(3)
     }
-    expect(EXERCISES).toHaveLength(15)
+    expect(EXERCISES.filter((e) => !e.tool)).toHaveLength(15)
   })
 })
 

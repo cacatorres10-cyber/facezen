@@ -65,6 +65,7 @@ function exerciseLesson(e: Exercise) {
   w(`- **Dose:** ${LEVELS.map((l) => `${LEVEL_LABEL[l]} ${e.dose[l]}`).join(' · ')}`)
   if (e.sided) w('- **Lados:** faça de um lado e depois do outro.')
   if (e.anywhere) w('- **Onde:** dá para fazer em qualquer lugar, sem as mãos no rosto.')
+  if (e.tool === 'escova') w('- **Material:** escova facial de cerdas macias (opcional).')
   const svg = exerciseSvg(e.id, `Desenho: ${e.title}`)
   if (svg) {
     fs.writeFileSync(`${DRAW_DIR}/${e.id}.svg`, svg)
@@ -117,7 +118,8 @@ COURSE.forEach((m, i) => {
         videoPrompt('Séries e módulos de foco', 'Explique que a série trabalha o rosto inteiro, que A e B se alternam e que o módulo de foco é escolhido pelo objetivo da pessoa.')
       }
     }
-  } else {
+  }
+  {
     const groups = m.groups ?? []
     for (const gid of groups) {
       const g = groupById(gid)

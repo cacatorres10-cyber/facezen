@@ -68,6 +68,17 @@ export function Profile() {
         </div>
       </Card>
 
+      <Card className="mt-4">
+        <h2 className="font-display text-xl font-medium text-ink">Acessórios</h2>
+        <Toggle
+          id="p-escova"
+          checked={!!profile.tools?.includes('escova')}
+          onChange={(v) => updateProfile({ tools: v ? ['escova'] : [] })}
+          label="Tenho a escova facial"
+          hint="A escova entra nas sessões 2 a 3 vezes por semana, a partir da semana 3."
+        />
+      </Card>
+
       <Link to="/guia" className="mt-4 flex items-center gap-4 rounded-3xl bg-surface p-4 shadow-soft">
         <span className="grid size-11 shrink-0 place-items-center rounded-2xl bg-jade-soft text-jade">
           <CircleHelp className="size-5" />
