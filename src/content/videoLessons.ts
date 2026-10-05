@@ -10,7 +10,18 @@ export interface VideoLesson {
   youtube: string
 }
 
-export const VIDEO_LESSONS: VideoLesson[] = []
+export const VIDEO_LESSONS: VideoLesson[] = [
+  { id: 'aula-01', title: 'Aula 01', youtube: 'https://youtu.be/A6NZPxv0tqU' },
+  { id: 'aula-02', title: 'Aula 02', youtube: 'https://youtu.be/xIa2yHNyafM' },
+  { id: 'aula-03', title: 'Aula 03', youtube: 'https://youtu.be/9SbeDmCjucY' },
+  { id: 'aula-04', title: 'Aula 04', youtube: 'https://youtu.be/DYgC1kQW-xk' },
+  { id: 'aula-05', title: 'Aula 05', youtube: 'https://youtu.be/zAFoHNSXmJ4' },
+  { id: 'aula-06', title: 'Aula 06', youtube: 'https://youtu.be/oTpbvJkjiDQ' },
+  { id: 'aula-07', title: 'Aula 07', youtube: 'https://youtu.be/l69mor40fWs' },
+  { id: 'aula-08', title: 'Aula 08', youtube: 'https://youtu.be/h5Z4x-WpuVo' },
+  { id: 'aula-09', title: 'Aula 09', youtube: 'https://youtu.be/Ng_yTCxJgOA' },
+  { id: 'aula-10', title: 'Aula 10', youtube: 'https://youtu.be/cC78MA4jbQg' },
+]
 
 /** Extrai o código do vídeo de qualquer formato de link do YouTube. */
 export function youtubeId(url: string): string | undefined {

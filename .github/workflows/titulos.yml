@@ -1,0 +1,27 @@
+name: Atualizar títulos das aulas
+
+# Busca no YouTube o título de cada aula em vídeo que ainda está como "Aula NN"
+# e salva no repositório.
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - src/content/videoLessons.ts
+
+permissions:
+  contents: write
+
+jobs:
+  titulos:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Títulos do YouTube
+        run: python3 scripts/titulos_aulas.py
+      - name: Salvar no repositório
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/content/videoLessons.ts
+          git diff --cached --quiet || git commit -m "Atualiza títulos das aulas em vídeo"
+          git push
