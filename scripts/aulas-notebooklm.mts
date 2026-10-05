@@ -2,7 +2,7 @@
 // (src/content/library.ts e src/content/course.ts): uma aula por exercício e por tema de skincare.
 // Uso: npm run aulas
 import fs from 'node:fs'
-import { exerciseSvg } from '../src/content/art.ts'
+import { exerciseSvg, poseSvg, STEP_POSES } from '../src/content/art.ts'
 import { COURSE, type Lesson } from '../src/content/course.ts'
 import { EXERCISES, FOCUS, groupById, LEVEL_LABEL, ROUTINE, type Exercise, type Level } from '../src/content/library.ts'
 
@@ -72,7 +72,15 @@ function exerciseLesson(e: Exercise) {
     w('', `![Desenho do exercício ${e.id} ${e.title}: dedos em rosa, setas verdes mostram o movimento, pontos verdes são onde tocar](desenhos/${e.id}.svg)`)
   }
   w('', '**Passo a passo**', '')
-  e.steps.forEach((s, i) => w(`${i + 1}. ${s}`))
+  const stepPoses = STEP_POSES[e.id]
+  if (stepPoses) {
+    e.steps.forEach((s, i) => {
+      fs.writeFileSync(`${DRAW_DIR}/${e.id}-${i + 1}.svg`, poseSvg(stepPoses[i], `Passo ${i + 1}: ${e.title}`))
+      w(`**${i + 1}.** ${s}`, '', `![Passo ${i + 1} de ${e.id} ${e.title}](desenhos/${e.id}-${i + 1}.svg)`, '')
+    })
+  } else {
+    e.steps.forEach((s, i) => w(`${i + 1}. ${s}`))
+  }
   w('', `**Confira no espelho:** ${e.check}`)
   if (e.skip) w('', `**Pule se:** ${e.skip}`)
   if (e.avoidIf.length) w('', `**Fica fora do plano de quem tem:** ${e.avoidIf.map((f) => FLAG_TEXT[f]).join('; ')}.`)

@@ -2,7 +2,7 @@ import { Check, ChevronRight, Heart, Play, ShieldAlert } from 'lucide-react'
 import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import { EXERCISES, exerciseById, GROUPS, groupById, LEVEL_LABEL, type Exercise, type Level } from '../content/library'
 import type { RegionId } from '../content/types'
-import { ExerciseArt } from '../components/ExerciseArt'
+import { ExerciseArt, StepArt } from '../components/ExerciseArt'
 import { ExerciseVideo } from '../components/ExerciseVideo'
 import { exerciseVideo } from '../content/exerciseVideos'
 import { Photo } from '../components/Photo'
@@ -216,17 +216,12 @@ export function ExerciseDetail() {
 
       {exerciseVideo(e.id) && <ExerciseVideo id={e.id} title={e.title} className="mx-auto mt-5 h-[52vh] shadow-soft" />}
 
-      <div className="mt-5 rounded-3xl bg-surface p-4 shadow-soft">
-        <ExerciseArt id={e.id} title={`Desenho: ${e.title}`} className="mx-auto max-w-[240px]" />
-        <p className="mt-2 text-center text-xs text-ink-faint">
-          {e.tool ? 'As setas mostram o caminho da escova · cerdas sempre encostando de leve' : 'Dedos em rosa · setas mostram o movimento · pontos são onde tocar'}
-        </p>
-      </div>
-
-      <div className="mt-4">
+      <div className="mt-5">
         <Stepper
           key={e.id}
           steps={e.steps}
+          visualFor={(i) => <StepArt id={e.id} step={i} title={`Desenho do passo ${i + 1}: ${e.title}`} />}
+          legend={e.tool ? 'Setas: o caminho da escova · cerdas encostando de leve' : 'Dedos em rosa · setas mostram o movimento · pontos são onde tocar'}
           done={lessonsDone.includes(e.id)}
           finishLabel="Aprendi"
           onFinish={() => completeLesson(e.id)}

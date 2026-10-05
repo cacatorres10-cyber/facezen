@@ -6,6 +6,8 @@ import { Button, cx } from './ui'
 export function Stepper({
   steps,
   visual,
+  visualFor,
+  legend,
   onFinish,
   finishLabel = 'Concluir',
   done,
@@ -13,6 +15,10 @@ export function Stepper({
   steps: string[]
   /** Ilustração ao lado do passo (ex.: o mapa do rosto). */
   visual?: ReactNode
+  /** Ilustração grande, uma por passo, em cima do texto. */
+  visualFor?: (step: number) => ReactNode
+  /** Legenda curta abaixo da ilustração grande. */
+  legend?: string
   onFinish?: () => void
   finishLabel?: string
   /** Já concluído antes: mostra o selo no fim. */
@@ -40,7 +46,16 @@ export function Stepper({
         ))}
       </div>
 
-      <div className={cx('mt-5 grid min-h-[128px] items-center gap-4', visual ? 'grid-cols-[1fr_84px]' : 'grid-cols-1')}>
+      {visualFor && (
+        <div className="mt-4">
+          <div key={i} className="animate-rise mx-auto max-w-[260px] rounded-3xl bg-bg p-3">
+            {visualFor(i)}
+          </div>
+          {legend && <p className="mt-2 text-center text-xs text-ink-faint">{legend}</p>}
+        </div>
+      )}
+
+      <div className={cx('mt-5 grid min-h-[96px] items-center gap-4', visual ? 'grid-cols-[1fr_84px]' : 'grid-cols-1')}>
         <p key={i} className="animate-rise font-display text-[1.45rem] leading-snug font-medium text-ink" aria-live="polite">
           {steps[i]}
         </p>

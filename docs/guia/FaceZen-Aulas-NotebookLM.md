@@ -226,9 +226,18 @@ A prática de toda sessão, passo a passo.
 
 **Passo a passo**
 
-1. Desça o queixo em direção ao peito, devagar.
-2. Role a cabeça até a orelha chegar perto do ombro direito.
-3. Volte pelo meio e vá para o lado esquerdo.
+**1.** Desça o queixo em direção ao peito, devagar.
+
+![Passo 1 de A3 Meia-lua do pescoço](desenhos/A3-1.svg)
+
+**2.** Role a cabeça até a orelha chegar perto do ombro direito.
+
+![Passo 2 de A3 Meia-lua do pescoço](desenhos/A3-2.svg)
+
+**3.** Volte pelo meio e vá para o lado esquerdo.
+
+![Passo 3 de A3 Meia-lua do pescoço](desenhos/A3-3.svg)
+
 
 **Confira no espelho:** Só a metade da frente: a cabeça nunca vai para trás.
 
@@ -285,9 +294,18 @@ A prática de toda sessão, passo a passo.
 
 **Passo a passo**
 
-1. Encoste as pontas de três dedos no “buraquinho” logo acima de cada clavícula.
-2. Bem de leve, estique a pele um pouquinho para baixo e para dentro, e solte.
-3. Repita devagar, como um bombeamento suave.
+**1.** Encoste as pontas de três dedos no “buraquinho” logo acima de cada clavícula.
+
+![Passo 1 de D1 Abrir a clavícula](desenhos/D1-1.svg)
+
+**2.** Bem de leve, estique a pele um pouquinho para baixo e para dentro, e solte.
+
+![Passo 2 de D1 Abrir a clavícula](desenhos/D1-2.svg)
+
+**3.** Repita devagar, como um bombeamento suave.
+
+![Passo 3 de D1 Abrir a clavícula](desenhos/D1-3.svg)
+
 
 **Confira no espelho:** A pele só se mexe alguns milímetros e não fica vermelha. Sem creme.
 
@@ -310,9 +328,18 @@ A prática de toda sessão, passo a passo.
 
 **Passo a passo**
 
-1. Coloque as mãos abertas dos dois lados do pescoço, logo abaixo das orelhas.
-2. Estique a pele bem de leve para baixo, em direção à clavícula, e solte.
-3. Depois desça um pouco as mãos e repita.
+**1.** Coloque as mãos abertas dos dois lados do pescoço, logo abaixo das orelhas.
+
+![Passo 1 de D2 Laterais do pescoço](desenhos/D2-1.svg)
+
+**2.** Estique a pele bem de leve para baixo, em direção à clavícula, e solte.
+
+![Passo 2 de D2 Laterais do pescoço](desenhos/D2-2.svg)
+
+**3.** Depois desça um pouco as mãos e repita.
+
+![Passo 3 de D2 Laterais do pescoço](desenhos/D2-3.svg)
+
 
 **Confira no espelho:** Mãos só nas laterais: nunca na frente da garganta.
 
@@ -335,9 +362,18 @@ A prática de toda sessão, passo a passo.
 
 **Passo a passo**
 
-1. Faça um “V” com o indicador e o médio e encaixe em volta da orelha: um dedo na frente, outro atrás.
-2. Faça pequenos círculos bem leves, levando a pele para baixo e para trás.
-3. Repita devagar e solte.
+**1.** Faça um “V” com o indicador e o médio e encaixe em volta da orelha: um dedo na frente, outro atrás.
+
+![Passo 1 de D3 Em volta das orelhas](desenhos/D3-1.svg)
+
+**2.** Faça pequenos círculos bem leves, levando a pele para baixo e para trás.
+
+![Passo 2 de D3 Em volta das orelhas](desenhos/D3-2.svg)
+
+**3.** Repita devagar e solte.
+
+![Passo 3 de D3 Em volta das orelhas](desenhos/D3-3.svg)
+
 
 **Confira no espelho:** Os dedos quase não saem do lugar: quem se mexe é a pele.
 
@@ -360,9 +396,18 @@ A prática de toda sessão, passo a passo.
 
 **Passo a passo**
 
-1. Dedos abertos embaixo da mandíbula, perto do queixo.
-2. Estique a pele de leve em direção à orelha e solte.
-3. Repita no meio da mandíbula e depois perto da orelha.
+**1.** Dedos abertos embaixo da mandíbula, perto do queixo.
+
+![Passo 1 de D4 Embaixo da mandíbula](desenhos/D4-1.svg)
+
+**2.** Estique a pele de leve em direção à orelha e solte.
+
+![Passo 2 de D4 Embaixo da mandíbula](desenhos/D4-2.svg)
+
+**3.** Repita no meio da mandíbula e depois perto da orelha.
+
+![Passo 3 de D4 Embaixo da mandíbula](desenhos/D4-3.svg)
+
 
 **Confira no espelho:** Os dedos ficam embaixo do osso, sem apertar a garganta.
 
@@ -385,9 +430,18 @@ A prática de toda sessão, passo a passo.
 
 **Passo a passo**
 
-1. Indicador acima do lábio e dedo médio no queixo, dos dois lados.
-2. Estique a pele de leve para fora, em direção ao canto da mandíbula, e solte.
-3. Repita devagar, com os lábios relaxados.
+**1.** Indicador acima do lábio e dedo médio no queixo, dos dois lados.
+
+![Passo 1 de D5 Queixo e acima da boca](desenhos/D5-1.svg)
+
+**2.** Estique a pele de leve para fora, em direção ao canto da mandíbula, e solte.
+
+![Passo 2 de D5 Queixo e acima da boca](desenhos/D5-2.svg)
+
+**3.** Repita devagar, com os lábios relaxados.
+
+![Passo 3 de D5 Queixo e acima da boca](desenhos/D5-3.svg)
+
 
 **Confira no espelho:** A boca fica parada; quem se mexe é a pele.
 
@@ -412,9 +466,18 @@ A prática de toda sessão, passo a passo.
 
 **Passo a passo**
 
-1. Apoie os dedos esticados na bochecha, ao lado do nariz.
-2. Estique a pele de leve em direção à orelha e solte.
-3. Repita no meio da bochecha e depois perto da orelha.
+**1.** Apoie os dedos esticados na bochecha, ao lado do nariz.
+
+![Passo 1 de D6 Bochechas](desenhos/D6-1.svg)
+
+**2.** Estique a pele de leve em direção à orelha e solte.
+
+![Passo 2 de D6 Bochechas](desenhos/D6-2.svg)
+
+**3.** Repita no meio da bochecha e depois perto da orelha.
+
+![Passo 3 de D6 Bochechas](desenhos/D6-3.svg)
+
 
 **Confira no espelho:** Mãos macias e espalmadas, sem apertar nem deslizar.
 
@@ -439,9 +502,18 @@ A prática de toda sessão, passo a passo.
 
 **Passo a passo**
 
-1. Apoie o dedo anelar no osso abaixo do olho, perto do nariz.
-2. Leve a pele, bem de leve, em direção à têmpora e solte.
-3. Avance pelo osso até perto da têmpora e repita.
+**1.** Apoie o dedo anelar no osso abaixo do olho, perto do nariz.
+
+![Passo 1 de D7 Abaixo dos olhos](desenhos/D7-1.svg)
+
+**2.** Leve a pele, bem de leve, em direção à têmpora e solte.
+
+![Passo 2 de D7 Abaixo dos olhos](desenhos/D7-2.svg)
+
+**3.** Avance pelo osso até perto da têmpora e repita.
+
+![Passo 3 de D7 Abaixo dos olhos](desenhos/D7-3.svg)
+
 
 **Confira no espelho:** Sempre sobre o osso, nunca na pálpebra. O toque mais leve de todos.
 
@@ -466,9 +538,18 @@ A prática de toda sessão, passo a passo.
 
 **Passo a passo**
 
-1. Dedos esticados no meio da testa, uma mão para cada lado.
-2. Estique a pele de leve em direção às têmporas e solte.
-3. Avance as mãos até perto das têmporas e repita.
+**1.** Dedos esticados no meio da testa, uma mão para cada lado.
+
+![Passo 1 de D8 Testa](desenhos/D8-1.svg)
+
+**2.** Estique a pele de leve em direção às têmporas e solte.
+
+![Passo 2 de D8 Testa](desenhos/D8-2.svg)
+
+**3.** Avance as mãos até perto das têmporas e repita.
+
+![Passo 3 de D8 Testa](desenhos/D8-3.svg)
+
 
 **Confira no espelho:** Testa relaxada, sem franzir.
 
@@ -493,9 +574,18 @@ A prática de toda sessão, passo a passo.
 
 **Passo a passo**
 
-1. Apoie dois dedos em cada têmpora.
-2. Faça círculos bem leves, levando a pele para trás.
-3. No fim, deslize de leve na frente da orelha, descendo até o pescoço.
+**1.** Apoie dois dedos em cada têmpora.
+
+![Passo 1 de D9 Têmporas](desenhos/D9-1.svg)
+
+**2.** Faça círculos bem leves, levando a pele para trás.
+
+![Passo 2 de D9 Têmporas](desenhos/D9-2.svg)
+
+**3.** No fim, deslize de leve na frente da orelha, descendo até o pescoço.
+
+![Passo 3 de D9 Têmporas](desenhos/D9-3.svg)
+
 
 **Confira no espelho:** Toque leve, sem apertar a cabeça.
 
@@ -518,9 +608,18 @@ A prática de toda sessão, passo a passo.
 
 **Passo a passo**
 
-1. Mãos espalmadas logo abaixo das orelhas.
-2. Deslize bem de leve pelas laterais do pescoço até a clavícula.
-3. Termine com bombeamentos suaves acima da clavícula.
+**1.** Mãos espalmadas logo abaixo das orelhas.
+
+![Passo 1 de D10 Descer até a clavícula](desenhos/D10-1.svg)
+
+**2.** Deslize bem de leve pelas laterais do pescoço até a clavícula.
+
+![Passo 2 de D10 Descer até a clavícula](desenhos/D10-2.svg)
+
+**3.** Termine com bombeamentos suaves acima da clavícula.
+
+![Passo 3 de D10 Descer até a clavícula](desenhos/D10-3.svg)
+
 
 **Confira no espelho:** Sempre para baixo e nunca na frente da garganta.
 

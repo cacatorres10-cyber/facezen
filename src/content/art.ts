@@ -37,6 +37,8 @@ export interface Pose {
   sym?: boolean
   /** Texto curto no canto (ex.: "O → A"). */
   caption?: string
+  /** Recorte do desenho [x, y, largura, altura], para dar zoom numa região. */
+  view?: [number, number, number, number]
 }
 
 const mx = ([x, y]: Pt): Pt => [200 - x, y]
@@ -158,10 +160,14 @@ ${eyes(p.eyes)}${mouth(p.mouth)}</g>`
     .join('')
   const presses = (p.presses ?? []).map(([x, y]) => `<circle cx="${x}" cy="${y}" r="2.6" fill="${C.move}"/><circle cx="${x}" cy="${y}" r="5.5" fill="none" stroke="${C.move}" stroke-width="1.2" opacity="0.6"/>`).join('')
   const arrows = [...(p.arrows ?? []).map((a) => arrowEl(arrowPath(a), a.both)), ...(p.paths ?? []).map((a) => arrowEl(a.d, a.both))].join('')
+  // Legenda numa etiqueta clara no canto de cima, para não cobrir o desenho.
+  const [vx, vy, vw] = p.view ?? [0, 0, 200, 270]
+  const fs = 12
+  const cw = p.caption ? Math.min(vw - 8, p.caption.length * fs * 0.56 + 14) : 0
   const caption = p.caption
-    ? `<text x="196" y="22" text-anchor="end" font-family="Manrope, Arial, sans-serif" font-size="15" font-weight="700" fill="${C.move}">${p.caption}</text>`
+    ? `<g><rect x="${vx + vw - 4 - cw}" y="${vy + 4}" width="${cw}" height="${fs + 9}" rx="${(fs + 9) / 2}" fill="var(--jade-soft, #d5e6df)"/><text x="${vx + vw - 4 - cw / 2}" y="${vy + 4 + fs + 1.5}" text-anchor="middle" font-family="Manrope, Arial, sans-serif" font-size="${fs}" font-weight="700" fill="${C.move}">${p.caption}</text></g>`
     : ''
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 270" role="img" aria-label="${title}">
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${(p.view ?? [0, 0, 200, 270]).join(' ')}" role="img" aria-label="${title}">
 <defs>
 <marker id="fz-seta" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="4.5" markerHeight="4.5" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="${C.move}"/></marker>
 <marker id="fz-seta-i" viewBox="0 0 10 10" refX="3" refY="5" markerWidth="4.5" markerHeight="4.5" orient="auto"><path d="M10 0 L0 5 L10 10 Z" fill="${C.move}"/></marker>
@@ -215,4 +221,73 @@ export const POSES: Record<string, Pose> = {
 export function exerciseSvg(id: string, title?: string): string | undefined {
   const pose = POSES[id]
   return pose ? poseSvg(pose, title) : undefined
+}
+
+/**
+ * Um desenho por passo do tutorial (mesma ordem de `steps` em `library.ts`).
+ * Exercícios sem entrada aqui usam o desenho principal em todos os passos.
+ */
+const C1: Pose = { eyes: 'closed' }
+export const STEP_POSES: Record<string, Pose[]> = {
+  A3: [
+    { ...C1, arrows: [{ pts: [[100, 206], [100, 226]] }], caption: 'queixo ao peito' },
+    { ...C1, tilt: -16, arrows: [{ pts: [[100, 252], [58, 250], [40, 196]] }], caption: 'orelha ao ombro' },
+    { ...C1, tilt: 16, arrows: [{ pts: [[40, 176], [100, 262], [160, 176]] }], caption: 'outro lado' },
+  ],
+  D1: [
+    { ...C1, view: [10, 120, 180, 150], sym: true, fingers: [{ at: [70, 243], angle: 165, len: 26 }, { at: [79, 241], angle: 172, len: 26 }], presses: [[74, 248]], caption: 'acima da clavícula' },
+    { ...C1, view: [10, 120, 180, 150], sym: true, fingers: [{ at: [70, 243], angle: 165, len: 26 }, { at: [79, 241], angle: 172, len: 26 }], arrows: [{ pts: [[62, 232], [72, 244]] }], caption: 'estica e solta' },
+    { ...C1, view: [10, 120, 180, 150], sym: true, fingers: [{ at: [70, 243], angle: 165, len: 26 }, { at: [79, 241], angle: 172, len: 26 }], arrows: [{ pts: [[62, 232], [72, 244]] }], presses: [[74, 248]], caption: 'devagar' },
+  ],
+  D2: [
+    { ...C1, view: [10, 120, 180, 150], sym: true, palms: [{ at: [83, 208], rx: 9, ry: 16 }], caption: 'abaixo das orelhas' },
+    { ...C1, view: [10, 120, 180, 150], sym: true, palms: [{ at: [83, 208], rx: 9, ry: 16 }], arrows: [{ pts: [[70, 200], [70, 224]] }], caption: 'para baixo e solta' },
+    { ...C1, view: [10, 120, 180, 150], sym: true, palms: [{ at: [83, 228], rx: 9, ry: 14 }], arrows: [{ pts: [[70, 220], [70, 244]] }], caption: 'um pouco mais abaixo' },
+  ],
+  D3: [
+    { ...C1, view: [10, 70, 180, 160], sym: true, fingers: [{ at: [47, 112], angle: 10, len: 26 }, { at: [33, 112], angle: -10, len: 26 }], caption: 'frente e atrás' },
+    { ...C1, view: [10, 70, 180, 160], sym: true, fingers: [{ at: [47, 112], angle: 10, len: 26 }, { at: [33, 112], angle: -10, len: 26 }], arrows: [{ pts: [[38, 138], [42, 152], [54, 160]] }], caption: 'círculos para baixo' },
+    { ...C1, view: [10, 70, 180, 160], sym: true, fingers: [{ at: [47, 112], angle: 10, len: 26 }, { at: [33, 112], angle: -10, len: 26 }], arrows: [{ pts: [[38, 138], [42, 152], [54, 160]] }], caption: 'repita e solte' },
+  ],
+  D4: [
+    { ...C1, view: [10, 70, 180, 160], sym: true, fingers: [{ at: [90, 196], angle: 160, len: 26 }], caption: 'perto do queixo' },
+    { ...C1, view: [10, 70, 180, 160], sym: true, fingers: [{ at: [90, 196], angle: 160, len: 26 }], arrows: [{ pts: [[86, 186], [72, 182], [62, 170]] }], caption: 'em direção à orelha' },
+    { ...C1, view: [10, 70, 180, 160], sym: true, fingers: [{ at: [68, 186], angle: 140, len: 26 }, { at: [54, 166], angle: 120, len: 26 }], arrows: [{ pts: [[60, 172], [52, 158], [46, 140]] }], caption: 'meio e perto da orelha' },
+  ],
+  D5: [
+    { ...C1, view: [10, 70, 180, 160], sym: true, fingers: [{ at: [90, 146], angle: 100, len: 24 }, { at: [90, 180], angle: 80, len: 24 }], caption: 'lábio e queixo' },
+    { ...C1, view: [10, 70, 180, 160], sym: true, fingers: [{ at: [90, 146], angle: 100, len: 24 }, { at: [90, 180], angle: 80, len: 24 }], arrows: [{ pts: [[78, 166], [62, 172], [50, 156]] }], caption: 'para fora e solta' },
+    { ...C1, view: [10, 70, 180, 160], sym: true, fingers: [{ at: [90, 146], angle: 100, len: 24 }, { at: [90, 180], angle: 80, len: 24 }], arrows: [{ pts: [[78, 166], [62, 172], [50, 156]] }], caption: 'lábios relaxados' },
+  ],
+  D6: [
+    { ...C1, sym: true, fingers: [{ at: [86, 120], angle: 200, len: 26 }, { at: [84, 131], angle: 200, len: 26 }, { at: [82, 142], angle: 200, len: 26 }], caption: 'ao lado do nariz' },
+    { ...C1, sym: true, fingers: [{ at: [86, 120], angle: 200, len: 26 }, { at: [84, 131], angle: 200, len: 26 }, { at: [82, 142], angle: 200, len: 26 }], arrows: [{ pts: [[74, 132], [64, 128], [56, 124]] }], caption: 'em direção à orelha' },
+    { ...C1, sym: true, fingers: [{ at: [64, 124], angle: 210, len: 24 }, { at: [62, 136], angle: 210, len: 24 }], arrows: [{ pts: [[54, 130], [48, 126], [44, 120]] }], caption: 'meio, depois orelha' },
+  ],
+  D7: [
+    { ...C1, sym: true, fingers: [{ at: [86, 116], angle: 200, len: 24 }], caption: 'osso perto do nariz' },
+    { ...C1, sym: true, fingers: [{ at: [86, 116], angle: 200, len: 24 }], arrows: [{ pts: [[82, 122], [74, 124], [66, 120]] }], caption: 'bem de leve, para fora' },
+    { ...C1, sym: true, fingers: [{ at: [66, 118], angle: 220, len: 24 }], arrows: [{ pts: [[62, 122], [56, 116], [52, 104]] }], caption: 'até a têmpora' },
+  ],
+  D8: [
+    { ...C1, sym: true, fingers: [{ at: [94, 60], angle: 175, len: 24 }, { at: [94, 72], angle: 185, len: 24 }], caption: 'meio da testa' },
+    { ...C1, sym: true, fingers: [{ at: [94, 60], angle: 175, len: 24 }, { at: [94, 72], angle: 185, len: 24 }], arrows: [{ pts: [[86, 66], [76, 64], [68, 66]] }], caption: 'para os lados e solta' },
+    { ...C1, sym: true, fingers: [{ at: [68, 64], angle: 165, len: 24 }, { at: [66, 76], angle: 195, len: 24 }], arrows: [{ pts: [[60, 70], [54, 76], [50, 88]] }], caption: 'até as têmporas' },
+  ],
+  D9: [
+    { ...C1, sym: true, fingers: [{ at: [52, 86], angle: 40, len: 26 }], presses: [[50, 90]], caption: 'dedos nas têmporas' },
+    { ...C1, sym: true, fingers: [{ at: [52, 86], angle: 40, len: 26 }], paths: [{ d: 'M60 74 C70 84 62 100 50 98' }, { d: 'M140 74 C130 84 138 100 150 98' }], caption: 'círculos para trás' },
+    { ...C1, sym: true, arrows: [{ pts: [[46, 96], [42, 120], [46, 146]] }], caption: 'desce pela orelha' },
+  ],
+  D10: [
+    { ...C1, view: [10, 120, 180, 150], sym: true, palms: [{ at: [60, 160], rx: 9, ry: 16, angle: -15 }], caption: 'abaixo das orelhas' },
+    { ...C1, view: [10, 120, 180, 150], sym: true, palms: [{ at: [64, 176], rx: 9, ry: 16, angle: -15 }], arrows: [{ pts: [[48, 144], [60, 200], [72, 240]] }], caption: 'desce até a clavícula' },
+    { ...C1, view: [10, 120, 180, 150], sym: true, fingers: [{ at: [70, 243], angle: 165, len: 26 }, { at: [79, 241], angle: 172, len: 26 }], presses: [[74, 248]], caption: 'bombeia de leve' },
+  ],
+}
+
+/** Desenho de um passo (ou o desenho principal do exercício). */
+export function stepSvg(id: string, step: number, title?: string): string | undefined {
+  const pose = STEP_POSES[id]?.[step]
+  return pose ? poseSvg(pose, title) : exerciseSvg(id, title)
 }
