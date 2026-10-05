@@ -2,6 +2,8 @@ import { Check, ChevronRight, Heart, Play, ShieldAlert } from 'lucide-react'
 import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import { EXERCISES, exerciseById, GROUPS, groupById, LEVEL_LABEL, type GroupId, type Level } from '../content/library'
 import { ExerciseArt } from '../components/ExerciseArt'
+import { ExerciseVideo } from '../components/ExerciseVideo'
+import { exerciseVideo } from '../content/exerciseVideos'
 import { Photo } from '../components/Photo'
 import { Stepper } from '../components/Stepper'
 import { BackLink, Button, Card, Chip, Eyebrow, Note, Title, Toggle, cx } from '../components/ui'
@@ -92,6 +94,7 @@ export function Library() {
                           <span className="mt-0.5 flex flex-wrap items-center gap-x-2 text-xs text-ink-faint">
                             <span>{e.dose[level]}</span>
                             {e.tool && <span className="font-semibold text-rose-ink">opcional · escova</span>}
+                            {exerciseVideo(e.id) && <span className="font-semibold text-jade">com vídeo</span>}
                             {blocked && <span className="font-semibold text-danger">fora do seu plano</span>}
                             {practicedToday.includes(e.id) && <span className="font-semibold text-ok">feito hoje</span>}
                             {!practicedToday.includes(e.id) && lessonsDone.includes(e.id) && <span className="inline-flex items-center gap-0.5 text-ok"><Check className="size-3" /> aprendido</span>}
@@ -190,6 +193,8 @@ export function ExerciseDetail() {
           Para você: {adapt.join(' ')}
         </Note>
       )}
+
+      {exerciseVideo(e.id) && <ExerciseVideo id={e.id} title={e.title} className="mx-auto mt-5 h-[52vh] shadow-soft" />}
 
       <div className="mt-5 rounded-3xl bg-surface p-4 shadow-soft">
         <ExerciseArt id={e.id} title={`Desenho: ${e.title}`} className="mx-auto max-w-[240px]" />

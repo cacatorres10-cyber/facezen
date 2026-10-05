@@ -5,6 +5,8 @@ import { exerciseById } from '../content/library'
 import { regionById } from '../content/regions'
 import { STOP_SIGNALS } from '../content/guide'
 import { ExerciseArt } from '../components/ExerciseArt'
+import { ExerciseVideo } from '../components/ExerciseVideo'
+import { exerciseVideo } from '../content/exerciseVideos'
 import { Button, Card, Chip, cx, Eyebrow, Note, ProgressRing, Sheet, Title, YesNo } from '../components/ui'
 import { canSpeak, chime, speak, stopSpeaking, unlockAudio, vibrate } from '../lib/audio'
 import { clock, dayKey, formatDuration } from '../lib/dates'
@@ -278,11 +280,15 @@ function Player({ plan, onFinish }: { plan: SessionPlan; onFinish: (practicedSec
       </div>
 
       <div className="relative z-10 flex flex-1 flex-col items-center px-5 pt-6">
-        <ProgressRing value={ring} size={220} stroke={5}>
-          <div className="w-[150px]">
-            <ExerciseArt id={step.id} title={`Desenho: ${step.title}`} />
-          </div>
-        </ProgressRing>
+        {exerciseVideo(step.id) ? (
+          <ExerciseVideo id={step.id} title={step.title} className="h-[36vh] shadow-soft" />
+        ) : (
+          <ProgressRing value={ring} size={220} stroke={5}>
+            <div className="w-[150px]">
+              <ExerciseArt id={step.id} title={`Desenho: ${step.title}`} />
+            </div>
+          </ProgressRing>
+        )}
 
         <div className="mt-5 w-full text-center" aria-live="polite">
           <p className="eyebrow">
