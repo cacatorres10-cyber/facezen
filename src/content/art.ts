@@ -174,13 +174,14 @@ export const POSES: Record<string, Pose> = {
   // ——— Aquecimento
   A3: { eyes: 'closed', arrows: [{ pts: [[36, 150], [100, 262], [164, 150]], both: true }], caption: 'só pela frente' },
   A5: { eyes: 'open', mouth: 'puff', arrows: [{ pts: [[58, 150], [100, 182], [142, 150]], both: true }, { pts: [[100, 142], [100, 172]], both: true }] },
-  A6: { eyes: 'open', mouth: 'tongueArch', presses: [[100, 207]] },
   // ——— Testa
+  D1: { eyes: 'closed', sym: true, fingers: [{ at: [70, 243], angle: 165, len: 26 }, { at: [79, 241], angle: 172, len: 26 }], presses: [[74, 248]], arrows: [{ pts: [[60, 228], [68, 240]] }], caption: 'bem de leve' },
+  D2: { eyes: 'closed', sym: true, palms: [{ at: [83, 214], rx: 9, ry: 18 }], arrows: [{ pts: [[70, 204], [70, 232]] }], caption: 'só estica a pele' },
+  D3: { eyes: 'closed', sym: true, fingers: [{ at: [47, 112], angle: 10, len: 26 }, { at: [33, 112], angle: -10, len: 26 }], arrows: [{ pts: [[38, 138], [42, 152], [54, 160]] }] },
+  D4: { eyes: 'closed', sym: true, fingers: [{ at: [90, 194], angle: 160, len: 26 }], arrows: [{ pts: [[88, 186], [66, 176], [52, 152]] }, { pts: [[46, 150], [58, 200], [70, 240]] }], caption: 'até a clavícula' },
   T1: { eyes: 'closed', sym: true, fingers: [{ at: [72, 56], angle: 165 }, { at: [84, 52], angle: 172 }, { at: [96, 50], angle: 178 }], arrows: [{ pts: [[76, 70], [76, 82]] }] },
-  T6: { eyes: 'closed', sym: true, fingers: [{ at: [94, 64], angle: 180, len: 26 }], arrows: [{ pts: [[90, 70], [66, 66], [52, 86]] }], presses: [[50, 92]] },
   // ——— Olhos
   O4: { eyes: 'closed', sym: true, fingers: [{ at: [58, 100], angle: 60, len: 26 }], presses: [[84, 93], [70, 92], [74, 119]] },
-  O5: { eyes: 'side', paths: [{ d: 'M26 103 L8 103' }, { d: 'M174 103 L192 103' }, { d: 'M100 22 L100 4' }], arrows: [{ pts: [[172, 186], [172, 206]] }], caption: 'só os olhos' },
   // ——— Bochechas
   B1: { eyes: 'open', mouth: 'smile', sym: true, arrows: [{ pts: [[64, 150], [60, 126]] }], caption: 'O → sorriso' },
   B3: { eyes: 'open', mouth: 'fish', sym: true, arrows: [{ pts: [[84, 172], [78, 162]] }] },
@@ -190,8 +191,10 @@ export const POSES: Record<string, Pose> = {
   // ——— Mandíbula e pescoço
   M1: { eyes: 'up', mouth: 'lowerLipUp', arrows: [{ pts: [[132, 196], [132, 176]] }], caption: 'olhe o teto' },
   M4: { eyes: 'open', mouth: 'ajar', sym: true, fingers: [{ at: [60, 160], angle: 70, len: 28 }], paths: [{ d: 'M72 146 C84 150 82 172 68 174' }, { d: 'M128 146 C116 150 118 172 132 174' }] },
-  P2: { eyes: 'closed', sym: true, palms: [{ at: [84, 214], rx: 9, ry: 18 }], arrows: [{ pts: [[72, 206], [70, 246]] }] },
   // ——— Relaxamento
+  P1: { eyes: 'side', mouth: 'tongueSide', palms: [{ at: [90, 248], rx: 16, ry: 9, angle: 20 }, { at: [110, 248], rx: 16, ry: 9, angle: -20 }], paths: [{ d: 'M70 18 C100 6 130 8 150 22' }] },
+  L4: { eyes: 'open', mouth: 'lipsIn', fingers: [{ at: [86, 146], angle: 90, len: 26 }, { at: [86, 172], angle: 90, len: 26 }], arrows: [{ pts: [[112, 146], [138, 146]], both: true }, { pts: [[112, 172], [138, 172]], both: true }], caption: 'vai e volta' },
+  T5: { eyes: 'wide', sym: true, fingers: [{ at: [94, 112], angle: 0 }, { at: [72, 84], angle: 100, len: 34 }], caption: 'testa parada' },
   R3: { eyes: 'closed', mouth: 'neutral', caption: 'dentes soltos' },
   // ——— Escova facial (opcional)
   E1: { eyes: 'closed', prop: { kind: 'escova', at: [56, 218], angle: -80 }, sym: true, arrows: [{ pts: [[48, 136], [64, 170], [74, 200]] }, { pts: [[80, 206], [78, 246]] }], caption: 'de cima para baixo' },

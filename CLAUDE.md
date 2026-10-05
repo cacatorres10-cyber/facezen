@@ -17,7 +17,7 @@ Vite + React 19 + TypeScript, Tailwind CSS v4 (tokens em `src/index.css`), React
 
 ## Onde fica cada coisa
 
-- Conteúdo: `src/content/` — `library.ts` (15 exercícios essenciais + 3 opcionais com a escova facial, séries A/B e módulos de foco), `art.ts` (desenho de cada exercício), `course.ts` (aulas de teoria e skincare do Curso), `photos.ts` (fotos do Pexels em `src/assets/fotos`). Sem vídeos de terceiros.
+- Conteúdo: `src/content/` — `library.ts` (18 exercícios essenciais + 3 opcionais com a escova; `ROUTINE`: toda sessão abre e fecha com drenagem do pescoço; séries A/B e módulos de foco), `art.ts` (desenho de cada exercício), `course.ts` (aulas de teoria e skincare do Curso), `photos.ts` (fotos do Pexels em `src/assets/fotos`). Sem vídeos de terceiros.
 - `npm run aulas` gera `docs/guia/FaceZen-Aulas-NotebookLM.md` a partir de `library.ts` e `course.ts` (o PDF é feito a partir desse arquivo).
 - Fotos são baixadas pelo workflow "Atualizar fotos" (`scripts/baixar_midia.py`), que roda no GitHub.
 - Acessórios: `profile.tools` (ex.: `'escova'`). A escova entra nas sessões a partir da semana 3, em sessões alternadas, e nunca com pele sensível ou em crise.

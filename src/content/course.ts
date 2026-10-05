@@ -114,7 +114,7 @@ const COMECE: Lesson[] = [
     title: 'Seu programa de 8 semanas',
     summary: 'Como a sua sessão é montada e como ela evolui.',
     steps: [
-      'Toda sessão tem blocos: aquecer → rosto inteiro → seu foco → relaxar.',
+      'Toda sessão segue a mesma ordem: alongar o pescoço e abrir com drenagem → aquecer → exercícios do rosto → seu foco → fechar com drenagem e relaxar.',
       'Existem duas séries de rosto inteiro, A e B. Você alterna para o músculo não se acostumar.',
       'Semanas 1 e 2 · Adaptação: Série A, nível iniciante, sem foco. O objetivo é aprender sem franzir a testa.',
       'Semanas 3 a 5 · Construção: séries B e A, nível intermediário, e entra o módulo do seu objetivo.',
@@ -139,6 +139,27 @@ const COMECE: Lesson[] = [
       'Olho vermelho, dolorido ou visão alterada: oftalmologista.',
       'Acne profunda, mancha que muda, rosácea ou pinta nova: dermatologista.',
     ],
+  },
+]
+
+const DRENAGEM: Lesson[] = [
+  {
+    id: 'c-drenagem',
+    title: 'Drenagem do pescoço: como funciona',
+    summary: 'Por que a sessão começa e termina no pescoço, e o toque certo.',
+    steps: [
+      'O líquido do rosto desce pelo pescoço e termina logo acima da clavícula.',
+      'Por isso a drenagem começa ali: primeiro a clavícula, depois as laterais do pescoço e a região das orelhas.',
+      'O toque é levíssimo: os dedos só esticam a pele alguns milímetros e soltam. Não é para apertar o músculo nem deslizar.',
+      'Sem creme ou óleo: com a mão escorregando, não dá para esticar a pele.',
+      'Sempre para baixo e para trás, em direção à clavícula. Nunca na frente da garganta.',
+      'No fim da sessão, a drenagem fecha: da mandíbula até a clavícula.',
+    ],
+    details: [
+      'A drenagem linfática manual é bem estabelecida no tratamento de linfedema. No rosto, o que muitas pessoas sentem é relaxamento e o rosto mais leve logo depois, de forma passageira.',
+      'Se a pele ficar vermelha, a pressão foi forte demais.',
+    ],
+    avoid: ['Febre, infecção, garganta ou gânglios inflamados', 'Trombose, insuficiência cardíaca ou câncer em tratamento sem liberação médica', 'Apertar, esfregar ou fazer na frente da garganta'],
   },
 ]
 
@@ -504,7 +525,8 @@ const ACOMPANHAR: Lesson[] = [
 
 export const COURSE: CourseModule[] = [
   { id: 'comece', kind: 'teoria', title: 'Comece aqui', intro: 'Como funciona, as regras de ouro e o seu programa.', lessons: COMECE },
-  { id: 'aquecer', kind: 'exercicios', title: 'Aquecer', intro: 'Três exercícios para preparar pescoço e rosto.', groups: ['aquecimento'] },
+  { id: 'drenagem', kind: 'exercicios', title: 'Drenagem do pescoço', intro: 'O começo e o fim de toda sessão.', lessons: DRENAGEM, groups: ['drenagem'] },
+  { id: 'aquecer', kind: 'exercicios', title: 'Aquecer', intro: 'Alongar o pescoço e aquecer o rosto.', groups: ['aquecimento'] },
   { id: 'testa-olhos', kind: 'exercicios', title: 'Testa e olhos', intro: 'Testa sem franzir e olhos com toque leve.', groups: ['testa', 'olhos'] },
   { id: 'bochechas-boca', kind: 'exercicios', title: 'Bochechas e boca', intro: 'Maçãs do rosto, bigode chinês e contorno da boca.', groups: ['bochechas', 'bigode', 'labios'] },
   { id: 'mandibula', kind: 'exercicios', title: 'Mandíbula, pescoço e relaxar', intro: 'Queixo, pescoço e o final da sessão.', groups: ['mandibula', 'pescoco', 'relaxamento'] },

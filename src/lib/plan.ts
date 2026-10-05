@@ -1,4 +1,4 @@
-import { BRUSH_BLOCK, exerciseById, FOCUS, LEVEL_LABEL, SERIES, type Exercise, type FocusId, type Level } from '../content/library'
+import { BRUSH_BLOCK, exerciseById, FOCUS, LEVEL_LABEL, ROUTINE, SERIES, type Exercise, type FocusId, type Level } from '../content/library'
 import { GOALS } from '../content/profileOptions'
 import { weekInfo, type ProgramWeek } from '../content/program'
 import type { RegionId, SafetyFlag } from '../content/types'
@@ -28,6 +28,8 @@ export interface SessionStep {
   focus?: boolean
   /** Acessório opcional (escova): sai antes do foco quando falta tempo. */
   extra?: boolean
+  /** Abertura e fechamento com drenagem: nunca saem por falta de tempo. */
+  base?: boolean
 }
 
 export interface SessionPlan {
@@ -89,8 +91,8 @@ export function focusFor(goals: Profile['goals'], sessionIndex: number): FocusId
   return modules[modules.length > 1 && sessionIndex % 2 === 1 ? 1 : 0]
 }
 
-/** Exercícios sem toque no rosto, para dias de pele irritada. */
-const SUAVE = ['A6', 'O5', 'B1', 'B3', 'L1', 'R3']
+/** Sem tocar o rosto: drenagem só no pescoço e exercícios sem as mãos, para dias de pele irritada. */
+const SUAVE = ['D1', 'D2', 'A5', 'B1', 'B3', 'L1', 'R3']
 
 export function isAllowed(ex: Exercise, profile: Pick<Profile, 'safety'> & { sensitive?: boolean }): boolean {
   if (ex.avoidIf.some((f) => profile.safety.includes(f))) return false
@@ -150,19 +152,20 @@ export function buildSession(profile: ProfileLike, ctx: PlanContext): SessionPla
   const budget = BUDGET[profile.minutes] ?? BUDGET[10]
 
   const pick = (ids: string[]) => ids.map((id) => exerciseById(id)!).filter((e) => isAllowed(e, profile))
-  const base = pick(SERIES[series])
   const focus = focusId ? pick(FOCUS[focusId].ids) : []
-  // O relaxamento fecha a sessão, depois do foco.
-  const relax = base.filter((e) => e.group === 'relaxamento')
-  const body = base.filter((e) => e.group !== 'relaxamento')
   const brush = brushToday(profile, week, ctx.sessionIndex) ? pick(BRUSH_BLOCK[profile.minutes] ?? BRUSH_BLOCK[10]) : []
-  const items = [
-    ...body.map((e) => ({ e, focus: false, extra: false })),
-    ...focus.map((e) => ({ e, focus: true, extra: false })),
-    ...brush.map((e) => ({ e, focus: false, extra: true })),
-    ...relax.map((e) => ({ e, focus: false, extra: false })),
+  // Abrir com drenagem → aquecer → série → foco → escova → fechar com drenagem.
+  type Item = { e: Exercise; focus: boolean; extra: boolean; base: boolean }
+  const as = (list: Exercise[], k: Partial<Item>): Item[] => list.map((e) => ({ e, focus: false, extra: false, base: false, ...k }))
+  const items: Item[] = [
+    ...as(pick(ROUTINE.open), { base: true }),
+    ...as(pick(ROUTINE.warm), {}),
+    ...as(pick(SERIES[series]), {}),
+    ...as(focus, { focus: true }),
+    ...as(brush, { extra: true }),
+    ...as(pick(ROUTINE.close), { base: true }),
   ]
-  const toSteps = (level: Level) => items.map(({ e, focus, extra }, i) => ({ ...stepFrom(e, level, profile, `${e.id}-${i}`, focus), extra }))
+  const toSteps = (level: Level) => items.map(({ e, focus, extra, base }, i) => ({ ...stepFrom(e, level, profile, `${e.id}-${i}`, focus), extra, base }))
 
   const levels: Level[] = ['ava', 'int', 'ini']
   const start = levels.indexOf(levelFor(week, ctx.recentDiscomfort))
@@ -188,11 +191,11 @@ export function buildSession(profile: ProfileLike, ctx: PlanContext): SessionPla
 
 /**
  * Corta até caber no tempo: primeiro os exercícios da série (de trás para frente),
- * mantendo o primeiro e o último; depois a escova; por último o foco. Nunca fica abaixo de `minKeep`.
+ * depois a escova e por último o foco. A abertura e o fechamento com drenagem nunca saem.
  */
 export function fitTo(steps: SessionStep[], seconds: number, minKeep = 0): SessionStep[] {
   const out = [...steps]
-  const kind = (s: SessionStep) => (s.focus ? 'foco' : s.extra ? 'extra' : 'serie')
+  const kind = (s: SessionStep) => (s.base ? 'base' : s.focus ? 'foco' : s.extra ? 'extra' : 'serie')
   const removable = (k: string) => {
     for (let i = out.length - 2; i >= 1; i--) if (kind(out[i]) === k) return i
     return -1

@@ -112,7 +112,7 @@ function PreCheck({ plan, skinOk, setSkinOk, onStart }: { plan: SessionPlan; ski
         </ol>
       )}
 
-      <p className="mt-5 text-sm text-ink-faint">Mãos limpas, toque leve e um pouco de hidratante para deslizar.</p>
+      <p className="mt-5 text-sm text-ink-faint">Mãos limpas. A drenagem do pescoço é sem creme e com toque levíssimo; nos exercícios do rosto, um pouco de hidratante ajuda.</p>
 
       <div className="fixed inset-x-0 bottom-0 z-20 mx-auto max-w-[480px] bg-gradient-to-t from-bg via-bg to-transparent px-5 pt-6 pb-[calc(1rem+env(safe-area-inset-bottom,0px))]">
         {paused ? (

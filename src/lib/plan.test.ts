@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { exerciseSvg } from '../content/art'
-import { EXERCISES, FOCUS, SERIES } from '../content/library'
+import { EXERCISES, FOCUS, ROUTINE, SERIES } from '../content/library'
 import { weekInfo } from '../content/program'
 import type { SafetyFlag } from '../content/types'
 import { addDays, dayKey } from './dates'
@@ -29,9 +29,9 @@ const profile = (patch: Partial<Profile> = {}): Profile => ({
 const ids = (p: Profile, ctx: Partial<PlanContext> = {}) => buildSession(p, { week: 1, sessionIndex: 0, ...ctx }).steps.map((s) => s.id)
 
 describe('sessões montadas com as séries e os módulos de foco', () => {
-  it('semanas 1 e 2: Série A inteira, nível iniciante, sem foco', () => {
+  it('semanas 1 e 2: abre com drenagem, Série A inteira, fecha com drenagem, sem foco', () => {
     const plan = buildSession(profile({ goals: ['papada'] }), { week: 1, sessionIndex: 0 })
-    expect(plan.steps.map((s) => s.id)).toEqual(SERIES.A)
+    expect(plan.steps.map((s) => s.id)).toEqual([...ROUTINE.open, ...ROUTINE.warm, ...SERIES.A, ...ROUTINE.close])
     expect(plan.level).toBe('ini')
     expect(plan.steps.some((s) => s.focus)).toBe(false)
   })
@@ -85,7 +85,7 @@ describe('segurança', () => {
 
   it('pele irritada: só exercícios sem as mãos no rosto', () => {
     const s = ids(profile(), { week: 4, skinIrritatedToday: true })
-    expect(s).toEqual(['A6', 'O5', 'B1', 'B3', 'L1', 'R3'])
+    expect(s).toEqual(['D1', 'D2', 'A5', 'B1', 'B3', 'L1', 'R3'])
   })
 
   it('ATM: sem Balão e Peixinho', () => {
@@ -97,8 +97,17 @@ describe('segurança', () => {
 
   it('pescoço: sem a meia-lua e com M1 de cabeça reta', () => {
     const plan = buildSession(withFlags('cervical'), { week: 1, sessionIndex: 0 })
-    expect(plan.steps.map((s) => s.id)).not.toContain('A3')
+    for (const id of ['A3', 'P1']) expect(plan.steps.map((s) => s.id)).not.toContain(id)
     expect(plan.steps.find((s) => s.id === 'M1')?.note).toMatch(/cabeça reta/)
+  })
+
+  it('drenagem sempre abre e fecha, mesmo com pouco tempo', () => {
+    for (const minutes of [5, 10, 15] as const)
+      for (const week of [1, 3, 6, 9]) {
+        const s = ids(profile({ minutes, goals: ['papada', 'linhas'], tools: ['escova'] }), { week })
+        expect(s.slice(0, 4)).toEqual(['A3', 'D1', 'D2', 'D3'])
+        expect(s.slice(-2)).toEqual(['D4', 'R3'])
+      }
   })
 
   it('escova: só para quem tem, a partir da semana 3, em sessões alternadas', () => {
@@ -127,7 +136,7 @@ describe('segurança', () => {
       expect(exerciseSvg(e.id)).toContain('<svg')
       expect(e.steps.length).toBeLessThanOrEqual(3)
     }
-    expect(EXERCISES.filter((e) => !e.tool)).toHaveLength(15)
+    expect(EXERCISES.filter((e) => !e.tool)).toHaveLength(18)
   })
 })
 

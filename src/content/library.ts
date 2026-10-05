@@ -1,8 +1,10 @@
 import type { RegionId, SafetyFlag, ToolId } from './types'
 
 /**
- * Os 15 exercícios essenciais do FaceZen (+ 3 opcionais com a escova facial) (fonte única: app + arquivo do NotebookLM).
- * Texto próprio e simples: 3 passos e um jeito de conferir. Os desenhos ficam em `art.ts`.
+ * Os exercícios essenciais do FaceZen (+ 3 opcionais com a escova facial). Fonte única: app + arquivo do NotebookLM.
+ * Texto próprio, a partir dos materiais do curso (manual de exercícios e Xô Rugas) e da técnica de
+ * drenagem linfática manual (toque que só estica a pele, sempre em direção à clavícula).
+ * 3 passos e um jeito de conferir. Os desenhos ficam em `art.ts`.
  */
 
 export type Level = 'ini' | 'int' | 'ava'
@@ -11,6 +13,7 @@ export const LEVEL_LABEL: Record<Level, string> = { ini: 'Iniciante', int: 'Inte
 
 export type GroupId =
   | 'aquecimento'
+  | 'drenagem'
   | 'testa'
   | 'olhos'
   | 'bochechas'
@@ -30,6 +33,7 @@ export interface Group {
 
 export const GROUPS: Group[] = [
   { id: 'aquecimento', title: 'Aquecimento', intro: 'Um a dois minutos que preparam pescoço e rosto, como o alongamento de um atleta antes do jogo.', region: 'pescoco' },
+  { id: 'drenagem', title: 'Drenagem do pescoço', intro: 'Toque levíssimo que só estica a pele e solta, sempre em direção à clavícula. Sem creme.', region: 'pescoco' },
   { id: 'testa', title: 'Testa e entre as sobrancelhas', intro: 'Fortalecer a testa e ensinar o rosto a não franzir sem necessidade.', region: 'testa' },
   { id: 'olhos', title: 'Olhos e pálpebras', intro: 'A região mais delicada: dedos anelares, toque leve e nunca no globo ocular.', region: 'olhos' },
   { id: 'bochechas', title: 'Bochechas e maçãs do rosto', intro: 'Os músculos que levantam o sorriso e dão contorno ao terço médio do rosto.', region: 'bochechas' },
@@ -81,6 +85,8 @@ const fixed = (dose: string, seconds: number): Pick<Exercise, 'dose' | 'seconds'
   seconds: { ini: seconds, int: seconds, ava: seconds },
 })
 
+const DRAIN_SKIP = 'Febre, infecção, garganta ou gânglios inflamados, ou se o médico proibiu massagem (por exemplo, por trombose ou problema no coração).'
+
 export const EXERCISES: Exercise[] = [
   // ——— Aquecimento
   {
@@ -95,11 +101,31 @@ export const EXERCISES: Exercise[] = [
     steps: ['Encha as bochechas de ar, com a boca fechada.', 'Passe o ar de uma bochecha para a outra, contando 3 em cada.', 'Leve o ar para cima e para baixo dos lábios, e solte.'],
     check: 'Sem estufar ao máximo e sem prender a respiração.', skip: 'Dor na mandíbula ou no ouvido.', avoidIf: ['atm'],
   },
+
+  // ——— Drenagem do pescoço (técnica de drenagem linfática manual)
   {
-    id: 'A6', group: 'aquecimento', region: 'papada', title: 'Língua em ponte', forWhat: 'Acordar a região embaixo do queixo.',
-    ...fixed('5 repetições', 30),
-    steps: ['Abra um pouco a boca e encoste a ponta da língua atrás dos dentes de baixo.', 'Empurre o meio da língua para fora, como uma ponte.', 'Segure 3 segundos e relaxe.'],
-    check: 'Você sente o trabalho embaixo do queixo.', avoidIf: [],
+    id: 'D1', group: 'drenagem', region: 'pescoco', title: 'Abrir a clavícula', forWhat: 'Começar a drenagem pelo ponto onde o líquido do rosto termina.',
+    ...fixed('6 vezes', 30),
+    steps: ['Encoste as pontas de três dedos no “buraquinho” logo acima de cada clavícula.', 'Bem de leve, estique a pele um pouquinho para baixo e para dentro, e solte.', 'Faça 6 vezes, devagar, como um bombeamento suave.'],
+    check: 'A pele só se mexe alguns milímetros e não fica vermelha. Sem creme.', skip: DRAIN_SKIP, avoidIf: [],
+  },
+  {
+    id: 'D2', group: 'drenagem', region: 'pescoco', title: 'Laterais do pescoço', forWhat: 'Levar o líquido do pescoço em direção à clavícula.',
+    ...fixed('5 vezes, em 2 alturas', 40),
+    steps: ['Coloque as mãos abertas dos dois lados do pescoço, logo abaixo das orelhas.', 'Estique a pele bem de leve para baixo, em direção à clavícula, e solte.', 'Faça 5 vezes, desça um pouco as mãos e repita.'],
+    check: 'Mãos só nas laterais: nunca na frente da garganta.', skip: DRAIN_SKIP, avoidIf: [],
+  },
+  {
+    id: 'D3', group: 'drenagem', region: 'pescoco', title: 'Em volta das orelhas', forWhat: 'Abrir a frente e a parte de trás das orelhas.',
+    ...fixed('6 círculos', 30),
+    steps: ['Faça um “V” com o indicador e o médio e encaixe em volta da orelha: um dedo na frente, outro atrás.', 'Faça pequenos círculos bem leves, levando a pele para baixo e para trás.', 'Repita 6 vezes e solte.'],
+    check: 'Os dedos quase não saem do lugar: quem se mexe é a pele.', skip: DRAIN_SKIP, avoidIf: [],
+  },
+  {
+    id: 'D4', group: 'drenagem', region: 'papada', title: 'Da mandíbula à clavícula', forWhat: 'Fechar a sessão levando o líquido do rosto para baixo.',
+    ...fixed('3 pontos e 3 descidas', 50),
+    steps: ['Dedos abertos embaixo da mandíbula, perto do queixo: estique a pele de leve em direção à orelha e solte.', 'Repita no meio da mandíbula e logo abaixo da orelha.', 'Termine deslizando as mãos bem de leve da orelha até a clavícula, 3 vezes.'],
+    check: 'Tudo bem leve, sempre para trás e para baixo, nunca para cima.', skip: DRAIN_SKIP, avoidIf: [],
   },
 
   // ——— Testa
@@ -109,12 +135,6 @@ export const EXERCISES: Exercise[] = [
     steps: ['Apoie as mãos na testa, como quem afasta a franja, e segure a pele firme.', 'Feche os olhos e tente descer as sobrancelhas, como quando bate o sono.', 'As mãos não deixam descer: sinta a força e solte.'],
     check: 'A testa não enruga e nada de franzir entre as sobrancelhas.', avoidIf: [],
   },
-  {
-    id: 'T6', group: 'testa', region: 'testa', title: 'Alisar a testa', forWhat: 'Relaxar a testa.',
-    ...fixed('30 segundos', 30),
-    steps: ['Coloque as pontas dos dedos no meio da testa.', 'Deslize devagar até as têmporas, como quem alisa um lençol.', 'Aperte de leve as têmporas por 2 segundos e recomece do meio.'],
-    check: 'Pele com um pouco de creme, para deslizar sem repuxar.', avoidIf: [],
-  },
 
   // ——— Olhos
   {
@@ -122,12 +142,6 @@ export const EXERCISES: Exercise[] = [
     ...fixed('30 segundos', 30),
     steps: ['Use o dedo anelar, que é o mais leve.', 'Dê batidinhas em volta do olho, sobre o osso: embaixo da sobrancelha e em cima da maçã do rosto.', 'Como gotas de chuva, sem nunca tocar no olho.'],
     check: 'O toque é tão leve que a pele nem se mexe.', avoidIf: [],
-  },
-  {
-    id: 'O5', group: 'olhos', region: 'olhos', title: 'Olhar em cruz', forWhat: 'Descansar os olhos.',
-    ...fixed('2 voltas', 30), anywhere: true,
-    steps: ['Com a cabeça parada, olhe para a direita e depois para a esquerda.', 'Olhe para cima e depois para baixo.', 'Feche os olhos por 5 segundos.'],
-    check: 'Só os olhos se mexem; a cabeça fica parada.', skip: 'Tontura ou visão dupla.', avoidIf: [],
   },
 
   // ——— Bochechas
@@ -140,15 +154,15 @@ export const EXERCISES: Exercise[] = [
   {
     id: 'B3', group: 'bochechas', region: 'bochechas', title: 'Peixinho', forWhat: 'Bochechas e cantos da boca.',
     ...reps(10, 15, 15), anywhere: true,
-    steps: ['Chupe as bochechas para dentro, fazendo boca de peixe.', 'Nessa posição, tente sorrir.', 'Segure 3 segundos e solte.'],
+    steps: ['Feche os lábios e faça boca de peixinho.', 'Faça o movimento de sugar, com a boca fechada, suave e firme.', 'Se ajudar, coloque um dedo entre os lábios e sugue o dedo.'],
     check: 'Você sente as bochechas trabalhando, sem dor.', avoidIf: ['atm'],
   },
 
   // ——— Bigode chinês e boca
   {
-    id: 'N1', group: 'bigode', region: 'bigode', title: 'Sorriso escondido', forWhat: 'Bochechas e a linha entre o nariz e a boca.',
+    id: 'N1', group: 'bigode', region: 'bigode', title: 'Bigode chinês', forWhat: 'Bochechas e a linha entre o nariz e a boca.',
     dose: { ini: '1 × 20 s', int: '2 × 30 s', ava: '3 × 30 s' }, seconds: { ini: 20, int: 65, ava: 100 },
-    steps: ['Cubra as orelhas com as mãos e puxe a pele de leve para trás.', 'Esconda os lábios para dentro, cobrindo os dentes.', 'Sorria o máximo que conseguir e segure.'],
+    steps: ['Coloque as palmas sobre as orelhas e puxe a pele de leve para trás.', 'Dobre os lábios para dentro, cobrindo os dentes, sem enrugar.', 'Levante os cantos da boca num sorriso bem exagerado e segure.'],
     check: 'Trabalho nas bochechas e ao lado da boca, testa parada.', avoidIf: [],
   },
   {
@@ -162,7 +176,7 @@ export const EXERCISES: Exercise[] = [
   {
     id: 'M1', group: 'mandibula', region: 'papada', title: 'Lábio para cima', forWhat: 'Queixo e frente do pescoço.',
     ...reps(10, 15, 15),
-    steps: ['Olhe para o teto e empurre o queixo um pouco para frente.', 'Suba o lábio de baixo por cima do de cima.', 'Desça e suba o lábio, devagar.'],
+    steps: ['Junte as palmas na base do pescoço, olhe um pouco para cima e projete o queixo.', 'Leve o lábio de baixo para fora e para cima, cobrindo o lábio de cima.', 'Desça e suba o lábio, devagar.'],
     check: 'Você sente a frente do pescoço trabalhando.', avoidIf: [], adapt: { cervical: 'Faça olhando para frente, com a cabeça reta.' },
   },
   {
@@ -171,11 +185,27 @@ export const EXERCISES: Exercise[] = [
     steps: ['Deixe os dentes separados, com a boca levemente aberta.', 'Coloque dois dedos na bochecha, onde a mandíbula faz força ao morder.', 'Faça círculos lentos, com pressão média.'],
     check: 'Nunca em cima da articulação, na frente da orelha.', skip: 'Estalo com dor ou travamento.', avoidIf: [], adapt: { atm: 'Toque bem leve; pare ao primeiro estalo.' },
   },
+
+  // ——— Pescoço e colo (Xô Rugas)
   {
-    id: 'P2', group: 'pescoco', region: 'pescoco', title: 'Pescoço para baixo', forWhat: 'Relaxar o pescoço.',
-    ...fixed('30 segundos', 30),
-    steps: ['Espalhe um pouco de creme no pescoço.', 'Deslize as mãos do alto do pescoço até a clavícula.', 'Sempre de cima para baixo, devagar.'],
-    check: 'Sem apertar a garganta.', avoidIf: [],
+    id: 'P1', group: 'pescoco', region: 'pescoco', title: 'Língua ao canto', forWhat: 'Pescoço e colo.',
+    ...fixed('10 s de cada lado', 30), sided: true,
+    steps: ['Cruze as mãos e apoie as palmas no peito, logo abaixo do pescoço.', 'Vire a cabeça para a direita e estique a língua para fora, em direção ao canto de cima. Segure 10 segundos.', 'Volte ao centro e repita para a esquerda.'],
+    check: 'As mãos seguram o peito parado: quem alonga é só o pescoço.', skip: 'Dor no pescoço ou tontura.', avoidIf: ['cervical'],
+  },
+
+  // ——— Boca e olhos (Xô Rugas)
+  {
+    id: 'L4', group: 'labios', region: 'bigode', title: 'Código de barras', forWhat: 'As linhas acima dos lábios.',
+    dose: { ini: '10 repetições', int: '20 repetições', ava: '2 × 20' }, seconds: { ini: 30, int: 50, ava: 100 },
+    steps: ['Com a pele bem hidratada, cubra os dentes com os lábios.', 'Apoie os dedos em cima e embaixo da boca.', 'Faça uma pressão leve de vai e volta com os dedos.'],
+    check: 'Nunca com a pele seca. A pele não arde nem fica vermelha.', skip: 'Lábios rachados ou com herpes.', avoidIf: ['peleCrise'],
+  },
+  {
+    id: 'T5', group: 'olhos', region: 'olhos', title: 'Binóculo', forWhat: 'Testa e olhos: os olhos trabalham e a testa fica parada.',
+    ...fixed('1 rodada', 35),
+    steps: ['Polegares dos lados do nariz e indicadores sobre as sobrancelhas, como um binóculo. Abra o peito.', 'Olhe para longe e aperte os olhos por 10 segundos, sem franzir. Feche e relaxe 3 segundos.', 'Abra os olhos o máximo por 10 segundos, com os indicadores segurando as sobrancelhas. Feche e relaxe.'],
+    check: 'Sobrancelhas e testa paradas o tempo todo.', skip: 'Olhos irritados ou lentes incomodando.', avoidIf: ['olhos'],
   },
 
   // ——— Relaxamento
@@ -216,10 +246,20 @@ export const BRUSH_BLOCK: Record<5 | 10 | 15, string[]> = { 5: ['E2'], 10: ['E1'
 
 export const exerciseById = (id: string) => EXERCISES.find((e) => e.id === id)
 
-/** Duas séries de rosto inteiro, que se alternam. */
+/** A rotina: abrir com drenagem, exercícios do rosto e fechar com drenagem. */
+export const ROUTINE = {
+  /** Abertura: alongar o pescoço e abrir o caminho da drenagem (sempre). */
+  open: ['A3', 'D1', 'D2', 'D3'],
+  /** Aquecer o rosto. */
+  warm: ['A5'],
+  /** Fechamento: levar tudo para a clavícula e soltar (sempre). */
+  close: ['D4', 'R3'],
+}
+
+/** Duas séries de exercícios do rosto, que se alternam. */
 export const SERIES: Record<'A' | 'B', string[]> = {
-  A: ['A3', 'A5', 'T1', 'O4', 'B1', 'L1', 'M1', 'R3'],
-  B: ['A6', 'T6', 'O5', 'B3', 'N1', 'M4', 'P2', 'R3'],
+  A: ['T1', 'O4', 'B1', 'L1', 'M1'],
+  B: ['T5', 'B3', 'N1', 'P1', 'M4'],
 }
 
 /** Módulos de foco por objetivo (só com os essenciais). */
@@ -227,10 +267,10 @@ export type FocusId = 'A' | 'B' | 'C' | 'D' | 'E' | 'F' | 'G'
 
 export const FOCUS: Record<FocusId, { title: string; ids: string[] }> = {
   A: { title: 'Bigode chinês', ids: ['N1', 'B1'] },
-  B: { title: 'Papada e pescoço', ids: ['A6', 'M1', 'P2'] },
-  C: { title: 'Testa', ids: ['T1', 'T6'] },
-  D: { title: 'Olhos', ids: ['O4', 'O5'] },
-  E: { title: 'Lábios', ids: ['L1', 'N1'] },
+  B: { title: 'Papada e pescoço', ids: ['P1', 'M1'] },
+  C: { title: 'Testa', ids: ['T1', 'T5'] },
+  D: { title: 'Olhos', ids: ['T5', 'O4'] },
+  E: { title: 'Lábios', ids: ['L4', 'L1'] },
   F: { title: 'Bochechas e contorno', ids: ['B1', 'B3', 'M4'] },
-  G: { title: 'Tensão', ids: ['M4', 'T6', 'R3'] },
+  G: { title: 'Tensão', ids: ['M4', 'O4'] },
 }
