@@ -19,7 +19,13 @@ export function moduleItems(m: CourseModule): CourseItem[] {
   return [...lessons, ...exercises]
 }
 
-export const COURSE_ITEMS: CourseItem[] = COURSE.flatMap(moduleItems)
+/** O curso no app: as aulas em vídeo (quando houver) abrem o curso. */
+export const COURSE_MODULES: CourseModule[] = [
+  ...(VIDEO_LESSONS.length ? [{ id: 'aulas', kind: 'video', title: 'Aulas em vídeo', intro: 'Assista na ordem. Cada aula concluída avança o seu progresso.', videos: true } satisfies CourseModule] : []),
+  ...COURSE,
+]
+
+export const COURSE_ITEMS: CourseItem[] = COURSE_MODULES.flatMap(moduleItems)
 
 /** Próxima aula ainda não concluída (ou nada, se o curso acabou). */
 export function nextItem(done: string[]): CourseItem | undefined {

@@ -10,10 +10,7 @@ export interface VideoLesson {
   youtube: string
 }
 
-export const VIDEO_LESSONS: VideoLesson[] = [
-  { id: 'boas-vindas', title: 'Boas-vindas ao FaceZen', youtube: 'https://youtu.be/aaaaaaaaaaa' },
-  { id: 'drenagem', title: 'Como funciona a drenagem', youtube: 'https://www.youtube.com/watch?v=bbbbbbbbbbb' },
-]
+export const VIDEO_LESSONS: VideoLesson[] = []
 
 /** Extrai o código do vídeo de qualquer formato de link do YouTube. */
 export function youtubeId(url: string): string | undefined {

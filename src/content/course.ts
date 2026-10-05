@@ -1,5 +1,4 @@
 import type { GroupId } from './library'
-import { VIDEO_LESSONS } from './videoLessons'
 
 /**
  * Curso FaceZen: aulas de teoria e de skincare, em passos curtos.
@@ -529,7 +528,6 @@ const ACOMPANHAR: Lesson[] = [
 ]
 
 export const COURSE: CourseModule[] = [
-  ...(VIDEO_LESSONS.length ? [{ id: 'aulas', kind: 'video', title: 'Aulas em vídeo', intro: 'Assista na ordem. Cada aula concluída avança o seu progresso.', videos: true } satisfies CourseModule] : []),
   { id: 'comece', kind: 'teoria', title: 'Comece aqui', intro: 'Como funciona, as regras de ouro e o seu programa.', lessons: COMECE },
   { id: 'drenagem', kind: 'exercicios', title: 'Drenagem facial com as mãos', intro: 'A prática de toda sessão, passo a passo.', lessons: DRENAGEM, groups: ['aquecimento', 'drenagem'] },
   { id: 'testa-olhos', kind: 'exercicios', title: 'Extras: testa e olhos', intro: 'Testa sem franzir e olhos com toque leve.', groups: ['testa', 'olhos'] },

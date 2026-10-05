@@ -1,10 +1,10 @@
 import { ArrowRight, BookOpen, Check, ChevronRight, Droplets, Hand, PlayCircle } from 'lucide-react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
-import { COURSE, lessonById, moduleOfLesson, type ModuleKind } from '../content/course'
+import { lessonById, moduleOfLesson, type ModuleKind } from '../content/course'
 import { Photo } from '../components/Photo'
 import { Stepper } from '../components/Stepper'
 import { Accordion, BackLink, Button, Card, cx, Eyebrow, Note, ProgressRing, Title } from '../components/ui'
-import { COURSE_ITEMS, itemAfter, moduleItems, nextItem } from '../lib/course'
+import { COURSE_ITEMS, COURSE_MODULES, itemAfter, moduleItems, nextItem } from '../lib/course'
 import { useStore } from '../lib/store'
 import { VIDEO_LESSONS, videoLessonById, youtubeId } from '../content/videoLessons'
 
@@ -46,7 +46,7 @@ export function Course() {
         </Card>
 
         <ol className="mt-6 grid gap-2.5">
-          {COURSE.map((m, n) => {
+          {COURSE_MODULES.map((m, n) => {
             const items = moduleItems(m)
             const d = items.filter((i) => done.includes(i.id)).length
             const Icon = KIND_ICON[m.kind]
@@ -83,8 +83,8 @@ export function Course() {
 export function CourseModulePage() {
   const { modulo } = useParams()
   const done = useStore((s) => s.lessonsDone)
-  const index = COURSE.findIndex((m) => m.id === modulo)
-  const m = COURSE[index]
+  const index = COURSE_MODULES.findIndex((m) => m.id === modulo)
+  const m = COURSE_MODULES[index]
   if (!m) {
     return (
       <div className="px-5 pt-6">
