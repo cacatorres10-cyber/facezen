@@ -33,7 +33,7 @@ export interface Group {
 
 export const GROUPS: Group[] = [
   { id: 'aquecimento', title: 'Aquecimento', intro: 'Um a dois minutos que preparam pescoço e rosto, como o alongamento de um atleta antes do jogo.', region: 'pescoco' },
-  { id: 'drenagem', title: 'Drenagem com as mãos', intro: 'O caminho da drenagem: toque levíssimo que só estica a pele e solta, sempre em direção à clavícula. Sem creme.', region: 'pescoco' },
+  { id: 'drenagem', title: 'Drenagem facial com as mãos', intro: 'A prática principal: toque levíssimo que estica a pele e solta, do pescoço ao rosto e de volta à clavícula. Sem creme.', region: 'pescoco' },
   { id: 'testa', title: 'Testa e entre as sobrancelhas', intro: 'Fortalecer a testa e ensinar o rosto a não franzir sem necessidade.', region: 'testa' },
   { id: 'olhos', title: 'Olhos e pálpebras', intro: 'A região mais delicada: dedos anelares, toque leve e nunca no globo ocular.', region: 'olhos' },
   { id: 'bochechas', title: 'Bochechas e maçãs do rosto', intro: 'Os músculos que levantam o sorriso e dão contorno ao terço médio do rosto.', region: 'bochechas' },
@@ -80,6 +80,15 @@ const reps = (ini: number, int: number, ava: number): Pick<Exercise, 'dose' | 's
   // ~2 s por repetição + 5 s de pausa entre as séries
   seconds: { ini: ini * 2 + 5, int: int * 2 * 2 + 5, ava: ava * 3 * 2 + 10 },
 })
+/** Drenagem: repetições de "esticar e soltar" por ponto, ~2 s cada. */
+const drain = (points = 1): Pick<Exercise, 'dose' | 'seconds'> => {
+  const where = points > 1 ? ' em cada ponto' : ''
+  const n = { ini: 5, int: 8, ava: 10 }
+  return {
+    dose: { ini: `${n.ini} vezes${where}`, int: `${n.int} vezes${where}`, ava: `${n.ava} vezes${where}` },
+    seconds: { ini: n.ini * 2 * points + 5, int: n.int * 2 * points + 5, ava: n.ava * 2 * points + 5 },
+  }
+}
 const fixed = (dose: string, seconds: number): Pick<Exercise, 'dose' | 'seconds'> => ({
   dose: { ini: dose, int: dose, ava: dose },
   seconds: { ini: seconds, int: seconds, ava: seconds },
@@ -102,30 +111,68 @@ export const EXERCISES: Exercise[] = [
     check: 'Sem estufar ao máximo e sem prender a respiração.', skip: 'Dor na mandíbula ou no ouvido.', avoidIf: ['atm'],
   },
 
-  // ——— Drenagem do pescoço (técnica de drenagem linfática manual)
+  // ——— Drenagem facial com as mãos (técnica de drenagem linfática manual)
+  // Abrir: clavícula → pescoço → orelhas. Rosto: de baixo para cima, sempre em direção às orelhas.
+  // Fechar: descer tudo até a clavícula. Toque que só estica a pele e solta, sem creme.
   {
-    id: 'D1', group: 'drenagem', region: 'pescoco', title: 'Abrir a clavícula', forWhat: 'Começar a drenagem pelo ponto onde o líquido do rosto termina.',
-    ...fixed('6 vezes', 30),
-    steps: ['Encoste as pontas de três dedos no “buraquinho” logo acima de cada clavícula.', 'Bem de leve, estique a pele um pouquinho para baixo e para dentro, e solte.', 'Faça 6 vezes, devagar, como um bombeamento suave.'],
+    id: 'D1', group: 'drenagem', region: 'pescoco', title: 'Abrir a clavícula', forWhat: 'Começar pelo ponto onde o líquido do rosto termina.',
+    ...drain(1),
+    steps: ['Encoste as pontas de três dedos no “buraquinho” logo acima de cada clavícula.', 'Bem de leve, estique a pele um pouquinho para baixo e para dentro, e solte.', 'Repita devagar, como um bombeamento suave.'],
     check: 'A pele só se mexe alguns milímetros e não fica vermelha. Sem creme.', skip: DRAIN_SKIP, avoidIf: [],
   },
   {
-    id: 'D2', group: 'drenagem', region: 'pescoco', title: 'Laterais do pescoço', forWhat: 'Levar o líquido do pescoço em direção à clavícula.',
-    ...fixed('5 vezes, em 2 alturas', 40),
-    steps: ['Coloque as mãos abertas dos dois lados do pescoço, logo abaixo das orelhas.', 'Estique a pele bem de leve para baixo, em direção à clavícula, e solte.', 'Faça 5 vezes, desça um pouco as mãos e repita.'],
+    id: 'D2', group: 'drenagem', region: 'pescoco', title: 'Laterais do pescoço', forWhat: 'Abrir o caminho do pescoço até a clavícula.',
+    ...drain(2),
+    steps: ['Coloque as mãos abertas dos dois lados do pescoço, logo abaixo das orelhas.', 'Estique a pele bem de leve para baixo, em direção à clavícula, e solte.', 'Depois desça um pouco as mãos e repita.'],
     check: 'Mãos só nas laterais: nunca na frente da garganta.', skip: DRAIN_SKIP, avoidIf: [],
   },
   {
-    id: 'D3', group: 'drenagem', region: 'pescoco', title: 'Em volta das orelhas', forWhat: 'Abrir a frente e a parte de trás das orelhas.',
-    ...fixed('6 círculos', 30),
-    steps: ['Faça um “V” com o indicador e o médio e encaixe em volta da orelha: um dedo na frente, outro atrás.', 'Faça pequenos círculos bem leves, levando a pele para baixo e para trás.', 'Repita 6 vezes e solte.'],
+    id: 'D3', group: 'drenagem', region: 'pescoco', title: 'Em volta das orelhas', forWhat: 'Abrir a frente e a parte de trás das orelhas, por onde o rosto drena.',
+    ...drain(1),
+    steps: ['Faça um “V” com o indicador e o médio e encaixe em volta da orelha: um dedo na frente, outro atrás.', 'Faça pequenos círculos bem leves, levando a pele para baixo e para trás.', 'Repita devagar e solte.'],
     check: 'Os dedos quase não saem do lugar: quem se mexe é a pele.', skip: DRAIN_SKIP, avoidIf: [],
   },
   {
-    id: 'D4', group: 'drenagem', region: 'papada', title: 'Da mandíbula à clavícula', forWhat: 'Fechar a sessão levando o líquido do rosto para baixo.',
-    ...fixed('3 pontos e 3 descidas', 50),
-    steps: ['Dedos abertos embaixo da mandíbula, perto do queixo: estique a pele de leve em direção à orelha e solte.', 'Repita no meio da mandíbula e logo abaixo da orelha.', 'Termine deslizando as mãos bem de leve da orelha até a clavícula, 3 vezes.'],
-    check: 'Tudo bem leve, sempre para trás e para baixo, nunca para cima.', skip: DRAIN_SKIP, avoidIf: [],
+    id: 'D4', group: 'drenagem', region: 'papada', title: 'Embaixo da mandíbula', forWhat: 'Levar o líquido do queixo e da papada para as orelhas.',
+    ...drain(3),
+    steps: ['Dedos abertos embaixo da mandíbula, perto do queixo.', 'Estique a pele de leve em direção à orelha e solte.', 'Repita no meio da mandíbula e depois perto da orelha.'],
+    check: 'Os dedos ficam embaixo do osso, sem apertar a garganta.', skip: DRAIN_SKIP, avoidIf: [],
+  },
+  {
+    id: 'D5', group: 'drenagem', region: 'bigode', title: 'Queixo e acima da boca', forWhat: 'Em volta da boca, em direção à mandíbula.',
+    ...drain(1),
+    steps: ['Indicador acima do lábio e dedo médio no queixo, dos dois lados.', 'Estique a pele de leve para fora, em direção ao canto da mandíbula, e solte.', 'Repita devagar, com os lábios relaxados.'],
+    check: 'A boca fica parada; quem se mexe é a pele.', skip: DRAIN_SKIP, avoidIf: ['peleCrise'],
+  },
+  {
+    id: 'D6', group: 'drenagem', region: 'bochechas', title: 'Bochechas', forWhat: 'Do lado do nariz até as orelhas.',
+    ...drain(3),
+    steps: ['Apoie os dedos esticados na bochecha, ao lado do nariz.', 'Estique a pele de leve em direção à orelha e solte.', 'Repita no meio da bochecha e depois perto da orelha.'],
+    check: 'Mãos macias e espalmadas, sem apertar nem deslizar.', skip: DRAIN_SKIP, avoidIf: ['peleCrise'],
+  },
+  {
+    id: 'D7', group: 'drenagem', region: 'olhos', title: 'Abaixo dos olhos', forWhat: 'Pelo osso abaixo dos olhos, até a têmpora.',
+    ...drain(2),
+    steps: ['Apoie o dedo anelar no osso abaixo do olho, perto do nariz.', 'Leve a pele, bem de leve, em direção à têmpora e solte.', 'Avance pelo osso até perto da têmpora e repita.'],
+    check: 'Sempre sobre o osso, nunca na pálpebra. O toque mais leve de todos.', skip: 'Olhos irritados ou pele machucada nessa região.', avoidIf: ['olhos', 'peleCrise'],
+  },
+  {
+    id: 'D8', group: 'drenagem', region: 'testa', title: 'Testa', forWhat: 'Do meio da testa até as têmporas.',
+    ...drain(2),
+    steps: ['Dedos esticados no meio da testa, uma mão para cada lado.', 'Estique a pele de leve em direção às têmporas e solte.', 'Avance as mãos até perto das têmporas e repita.'],
+    check: 'Testa relaxada, sem franzir.', skip: DRAIN_SKIP, avoidIf: ['peleCrise'],
+  },
+  {
+    id: 'D9', group: 'drenagem', region: 'testa', title: 'Têmporas', forWhat: 'Juntar tudo nas têmporas e levar para baixo.',
+    ...drain(1),
+    steps: ['Apoie dois dedos em cada têmpora.', 'Faça círculos bem leves, levando a pele para trás.', 'No fim, deslize de leve na frente da orelha, descendo até o pescoço.'],
+    check: 'Toque leve, sem apertar a cabeça.', skip: DRAIN_SKIP, avoidIf: [],
+  },
+  {
+    id: 'D10', group: 'drenagem', region: 'pescoco', title: 'Descer até a clavícula', forWhat: 'Fechar a drenagem levando tudo para a clavícula.',
+    ...drain(1),
+    steps: ['Mãos espalmadas logo abaixo das orelhas.', 'Deslize bem de leve pelas laterais do pescoço até a clavícula.', 'Termine com bombeamentos suaves acima da clavícula.'],
+    check: 'Sempre para baixo e nunca na frente da garganta.', skip: DRAIN_SKIP, avoidIf: [],
   },
 
   // ——— Testa
@@ -261,36 +308,36 @@ EXERCISES.push(
   },
 )
 
-/** Bloco da escova, no caminho da drenagem: abre a clavícula, escova, e fecha da mandíbula à clavícula. */
-export const BRUSH_BLOCK: Record<5 | 10 | 15, string[]> = { 5: ['D1', 'E2', 'D4'], 10: ['D1', 'E1', 'E2', 'E4', 'E3', 'D4'], 15: ['D1', 'E1', 'E2', 'E4', 'E3', 'D4'] }
+/** Bloco da escova: entra depois do rosto, antes de fechar a drenagem. */
+export const BRUSH_BLOCK: Record<5 | 10 | 15, string[]> = { 5: ['E2'], 10: ['E1', 'E2', 'E4', 'E3'], 15: ['E1', 'E2', 'E4', 'E3'] }
 
 export const exerciseById = (id: string) => EXERCISES.find((e) => e.id === id)
 
-/** A sessão: aquecimento curto, exercícios do rosto (série + foco) e relaxar. */
+/**
+ * A sessão é a drenagem facial com as mãos, sempre na mesma ordem:
+ * alongar o pescoço → abrir (clavícula, pescoço, orelhas) → rosto de baixo para cima → seu foco → fechar.
+ */
 export const ROUTINE = {
-  /** Abertura: alongar o pescoço (sempre). */
-  open: ['A3'],
-  /** Aquecer o rosto. */
-  warm: ['A5'],
-  /** Fechamento: soltar a mandíbula (sempre). */
-  close: ['R3'],
+  /** Alongar o pescoço e abrir o caminho da drenagem. */
+  open: ['A3', 'D1', 'D2', 'D3'],
+  /** O rosto, de baixo para cima, sempre em direção às orelhas. */
+  face: ['D4', 'D5', 'D6', 'D7', 'D8', 'D9'],
+  /** Fechar: descer tudo até a clavícula. */
+  close: ['D10'],
 }
 
-/** Duas séries de exercícios do rosto, que se alternam. */
-export const SERIES: Record<'A' | 'B', string[]> = {
-  A: ['T1', 'O1', 'B1', 'N1', 'L1', 'M1'],
-  B: ['T5', 'B3', 'L4', 'M3', 'P1', 'M4'],
-}
-
-/** Módulos de foco por objetivo (só com os essenciais). */
+/**
+ * Foco por objetivo: os pontos da drenagem que ganham mais repetições (`boost`)
+ * e um exercício com as mãos daquela região (`ids`), feito antes de fechar.
+ */
 export type FocusId = 'A' | 'B' | 'C' | 'D' | 'E' | 'F' | 'G'
 
-export const FOCUS: Record<FocusId, { title: string; ids: string[] }> = {
-  A: { title: 'Bigode chinês', ids: ['N1', 'B1'] },
-  B: { title: 'Papada e pescoço', ids: ['M3', 'M1', 'P1'] },
-  C: { title: 'Testa', ids: ['T1', 'T5'] },
-  D: { title: 'Olhos', ids: ['O1', 'T5', 'O4'] },
-  E: { title: 'Lábios', ids: ['L4', 'L1'] },
-  F: { title: 'Bochechas e contorno', ids: ['B1', 'B3', 'M3'] },
-  G: { title: 'Tensão', ids: ['M4', 'O4'] },
+export const FOCUS: Record<FocusId, { title: string; boost: string[]; ids: string[] }> = {
+  A: { title: 'Bigode chinês', boost: ['D5', 'D6'], ids: ['N1'] },
+  B: { title: 'Papada e pescoço', boost: ['D4', 'D10'], ids: ['M3'] },
+  C: { title: 'Testa', boost: ['D8', 'D9'], ids: ['T1'] },
+  D: { title: 'Olhos', boost: ['D7', 'D9'], ids: ['O4'] },
+  E: { title: 'Lábios', boost: ['D5'], ids: ['L4'] },
+  F: { title: 'Bochechas e contorno', boost: ['D6', 'D4'], ids: ['M4'] },
+  G: { title: 'Tensão', boost: ['D9', 'D3'], ids: ['M4'] },
 }

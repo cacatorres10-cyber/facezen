@@ -117,12 +117,11 @@ Como funciona, as regras de ouro e o seu programa.
 
 **Passo a passo**
 
-1. Toda sessão segue a mesma ordem: aquecimento curto → exercícios do rosto → seu foco → relaxar a mandíbula.
-2. Existem duas séries de rosto inteiro, A e B. Você alterna para o músculo não se acostumar.
-3. Semanas 1 e 2 · Adaptação: Série A, nível iniciante, sem foco. O objetivo é aprender sem franzir a testa.
-4. Semanas 3 a 5 · Construção: séries B e A, nível intermediário, e entra o módulo do seu objetivo.
-5. Semanas 6 a 8 · Intensificação: nível avançado, só se estiver confortável. Houve incômodo? O app volta ao intermediário.
-6. Depois: manutenção, alternando as séries, 4 a 5 dias por semana.
+1. Toda sessão é a drenagem facial com as mãos, sempre na mesma ordem: alongar o pescoço, abrir o caminho, drenar o rosto de baixo para cima e fechar na clavícula.
+2. Semanas 1 e 2 · Adaptação: 5 repetições em cada ponto. O objetivo é aprender o caminho e o toque levíssimo.
+3. Semanas 3 a 5 · Construção: 8 repetições, e entra o seu foco: mais repetições na região do seu objetivo e um exercício com as mãos.
+4. Semanas 6 a 8 · Intensificação: 10 repetições, só se estiver confortável. Houve incômodo? O app volta para 8.
+5. Depois: manutenção, 4 a 5 dias por semana.
 
 **Mais detalhes**
 
@@ -134,35 +133,31 @@ Como funciona, as regras de ouro e o seu programa.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Seu programa de 8 semanas” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 6 · A ordem da sessão, séries e foco
+## Aula 6 · A ordem da drenagem e o seu foco
 
 *O que entra em cada sessão.*
 
 **A ordem de toda sessão**
 
-1. **Abrir:** A3 Meia-lua do pescoço
-2. **Aquecer:** A5 Balão
-3. **Exercícios do rosto:** Série A ou B (abaixo)
-4. **Seu foco:** o módulo do seu objetivo (a partir da semana 3)
-5. **Fechar:** R3 Mandíbula solta
+1. **Alongar e abrir o caminho:** A3 Meia-lua do pescoço → D1 Abrir a clavícula → D2 Laterais do pescoço → D3 Em volta das orelhas
+2. **Rosto, de baixo para cima:** D4 Embaixo da mandíbula → D5 Queixo e acima da boca → D6 Bochechas → D7 Abaixo dos olhos → D8 Testa → D9 Têmporas
+3. **Seu foco:** um exercício com as mãos do seu objetivo (a partir da semana 3)
+4. **Fechar:** D10 Descer até a clavícula
 
-- **Série A:** T1 Testa lisa → O1 Pálpebra firme → B1 Do “O” ao sorriso → N1 Bigode chinês → L1 “O” e “A” → M1 Lábio para cima
-- **Série B:** T5 Binóculo → B3 Peixinho → L4 Código de barras → M3 Queixo definido → P1 Língua ao canto → M4 Soltar o masseter
+**Foco por objetivo** (a partir da semana 3)
 
-**Módulos de foco** (entram a partir da semana 3, antes do relaxamento)
+- **A · Bigode chinês:** mais repetições em D5 Queixo e acima da boca → D6 Bochechas; exercício: N1 Bigode chinês
+- **B · Papada e pescoço:** mais repetições em D4 Embaixo da mandíbula → D10 Descer até a clavícula; exercício: M3 Queixo definido
+- **C · Testa:** mais repetições em D8 Testa → D9 Têmporas; exercício: T1 Testa lisa
+- **D · Olhos:** mais repetições em D7 Abaixo dos olhos → D9 Têmporas; exercício: O4 Toque de pena
+- **E · Lábios:** mais repetições em D5 Queixo e acima da boca; exercício: L4 Código de barras
+- **F · Bochechas e contorno:** mais repetições em D6 Bochechas → D4 Embaixo da mandíbula; exercício: M4 Soltar o masseter
+- **G · Tensão:** mais repetições em D9 Têmporas → D3 Em volta das orelhas; exercício: M4 Soltar o masseter
 
-- **A · Bigode chinês:** N1 Bigode chinês → B1 Do “O” ao sorriso
-- **B · Papada e pescoço:** M3 Queixo definido → M1 Lábio para cima → P1 Língua ao canto
-- **C · Testa:** T1 Testa lisa → T5 Binóculo
-- **D · Olhos:** O1 Pálpebra firme → T5 Binóculo → O4 Toque de pena
-- **E · Lábios:** L4 Código de barras → L1 “O” e “A”
-- **F · Bochechas e contorno:** B1 Do “O” ao sorriso → B3 Peixinho → M3 Queixo definido
-- **G · Tensão:** M4 Soltar o masseter → O4 Toque de pena
-
-Com 5 minutos por dia, as doses ficam no nível iniciante para caber o rosto inteiro. Com 10 ou 15 minutos, seguem a fase do programa.
+A drenagem é feita inteira em toda sessão, sem cortes. Com mais tempo e com o avanço das semanas, aumentam as repetições em cada ponto.
 
 > **Para o NotebookLM (Visão geral em vídeo → Personalizar):**
-> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Séries e módulos de foco” do FaceZen. Explique a ordem da sessão (abrir com drenagem, aquecer, exercícios, foco, fechar com drenagem), que as séries A e B se alternam e que o foco é escolhido pelo objetivo da pessoa.
+> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “A ordem da drenagem e o seu foco” do FaceZen. Explique a lógica da drenagem: abrir o caminho na clavícula, no pescoço e nas orelhas, drenar o rosto de baixo para cima em direção às orelhas e fechar descendo até a clavícula. Depois, como o foco do objetivo aumenta as repetições.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
 ## Aula 7 · Quando parar e quando procurar ajuda
@@ -182,13 +177,44 @@ Com 5 minutos por dia, as doses ficam no nível iniciante para caber o rosto int
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Quando parar e quando procurar ajuda” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-# Módulo 2 · Aquecer
+# Módulo 2 · Drenagem facial com as mãos
 
-Um minuto: alongar o pescoço e aquecer o rosto.
+A prática de toda sessão, passo a passo.
+
+## Aula 8 · Drenagem facial: o caminho
+
+*A prática principal: por onde começar, para onde levar e o toque certo.*
+
+**Passo a passo**
+
+1. O líquido do rosto desce pelo pescoço e termina logo acima da clavícula.
+2. Por isso a drenagem começa ali: primeiro a clavícula, depois as laterais do pescoço e a região das orelhas.
+3. O toque é levíssimo: os dedos só esticam a pele alguns milímetros e soltam. Não é para apertar o músculo nem deslizar.
+4. Sem creme ou óleo: com a mão escorregando, não dá para esticar a pele.
+5. Sempre para baixo e para trás, em direção à clavícula. Nunca na frente da garganta.
+6. No rosto, a ordem é de baixo para cima: mandíbula, boca, bochechas, abaixo dos olhos, testa e têmporas, sempre em direção às orelhas.
+7. Para fechar, desça das orelhas pelo pescoço até a clavícula.
+
+**Mais detalhes**
+
+- A drenagem linfática manual é bem estabelecida no tratamento de linfedema. No rosto, o que muitas pessoas sentem é relaxamento e o rosto mais leve logo depois, de forma passageira.
+- Se a pele ficar vermelha, a pressão foi forte demais.
+
+**Evite**
+
+- Febre, infecção, garganta ou gânglios inflamados
+- Trombose, insuficiência cardíaca ou câncer em tratamento sem liberação médica
+- Apertar, esfregar ou fazer na frente da garganta
+
+> **Para o NotebookLM (Visão geral em vídeo → Personalizar):**
+> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Drenagem facial: o caminho” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
+> Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
+
+### Aquecimento
 
 *Um a dois minutos que preparam pescoço e rosto, como o alongamento de um atleta antes do jogo.*
 
-## Aula 8 · A3 Meia-lua do pescoço
+## Aula 9 · A3 Meia-lua do pescoço
 
 *Soltar o pescoço antes de começar.*
 
@@ -216,7 +242,7 @@ Um minuto: alongar o pescoço e aquecer o rosto.
 > Use comparações do dia a dia, como no texto. A pessoa vai imitar o que ouvir.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 9 · A5 Balão
+## Aula 10 · A5 Balão
 
 *Aquecer bochechas e boca.*
 
@@ -244,7 +270,269 @@ Um minuto: alongar o pescoço e aquecer o rosto.
 > Use comparações do dia a dia, como no texto. A pessoa vai imitar o que ouvir.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-# Módulo 3 · Testa e olhos
+### Drenagem facial com as mãos
+
+*A prática principal: toque levíssimo que estica a pele e solta, do pescoço ao rosto e de volta à clavícula. Sem creme.*
+
+## Aula 11 · D1 Abrir a clavícula
+
+*Começar pelo ponto onde o líquido do rosto termina.*
+
+- **Região:** Drenagem facial com as mãos
+- **Dose:** Iniciante 5 vezes · Intermediário 8 vezes · Avançado 10 vezes
+
+![Desenho do exercício D1 Abrir a clavícula: dedos em rosa, setas verdes mostram o movimento, pontos verdes são onde tocar](desenhos/D1.svg)
+
+**Passo a passo**
+
+1. Encoste as pontas de três dedos no “buraquinho” logo acima de cada clavícula.
+2. Bem de leve, estique a pele um pouquinho para baixo e para dentro, e solte.
+3. Repita devagar, como um bombeamento suave.
+
+**Confira no espelho:** A pele só se mexe alguns milímetros e não fica vermelha. Sem creme.
+
+**Pule se:** Febre, infecção, garganta ou gânglios inflamados, ou se o médico proibiu massagem (por exemplo, por trombose ou problema no coração).
+
+> **Para o NotebookLM (Visão geral em vídeo → Personalizar):**
+> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “D1 Abrir a clavícula” do FaceZen. Mostre o exercício como um tutorial: para que serve, os 3 passos com calma, a dose de cada nível e como conferir no espelho.
+> Use o desenho da aula como imagem principal: explique onde ficam os dedos (em rosa) e o movimento das setas verdes.
+> Use comparações do dia a dia, como no texto. A pessoa vai imitar o que ouvir.
+> Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
+
+## Aula 12 · D2 Laterais do pescoço
+
+*Abrir o caminho do pescoço até a clavícula.*
+
+- **Região:** Drenagem facial com as mãos
+- **Dose:** Iniciante 5 vezes em cada ponto · Intermediário 8 vezes em cada ponto · Avançado 10 vezes em cada ponto
+
+![Desenho do exercício D2 Laterais do pescoço: dedos em rosa, setas verdes mostram o movimento, pontos verdes são onde tocar](desenhos/D2.svg)
+
+**Passo a passo**
+
+1. Coloque as mãos abertas dos dois lados do pescoço, logo abaixo das orelhas.
+2. Estique a pele bem de leve para baixo, em direção à clavícula, e solte.
+3. Depois desça um pouco as mãos e repita.
+
+**Confira no espelho:** Mãos só nas laterais: nunca na frente da garganta.
+
+**Pule se:** Febre, infecção, garganta ou gânglios inflamados, ou se o médico proibiu massagem (por exemplo, por trombose ou problema no coração).
+
+> **Para o NotebookLM (Visão geral em vídeo → Personalizar):**
+> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “D2 Laterais do pescoço” do FaceZen. Mostre o exercício como um tutorial: para que serve, os 3 passos com calma, a dose de cada nível e como conferir no espelho.
+> Use o desenho da aula como imagem principal: explique onde ficam os dedos (em rosa) e o movimento das setas verdes.
+> Use comparações do dia a dia, como no texto. A pessoa vai imitar o que ouvir.
+> Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
+
+## Aula 13 · D3 Em volta das orelhas
+
+*Abrir a frente e a parte de trás das orelhas, por onde o rosto drena.*
+
+- **Região:** Drenagem facial com as mãos
+- **Dose:** Iniciante 5 vezes · Intermediário 8 vezes · Avançado 10 vezes
+
+![Desenho do exercício D3 Em volta das orelhas: dedos em rosa, setas verdes mostram o movimento, pontos verdes são onde tocar](desenhos/D3.svg)
+
+**Passo a passo**
+
+1. Faça um “V” com o indicador e o médio e encaixe em volta da orelha: um dedo na frente, outro atrás.
+2. Faça pequenos círculos bem leves, levando a pele para baixo e para trás.
+3. Repita devagar e solte.
+
+**Confira no espelho:** Os dedos quase não saem do lugar: quem se mexe é a pele.
+
+**Pule se:** Febre, infecção, garganta ou gânglios inflamados, ou se o médico proibiu massagem (por exemplo, por trombose ou problema no coração).
+
+> **Para o NotebookLM (Visão geral em vídeo → Personalizar):**
+> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “D3 Em volta das orelhas” do FaceZen. Mostre o exercício como um tutorial: para que serve, os 3 passos com calma, a dose de cada nível e como conferir no espelho.
+> Use o desenho da aula como imagem principal: explique onde ficam os dedos (em rosa) e o movimento das setas verdes.
+> Use comparações do dia a dia, como no texto. A pessoa vai imitar o que ouvir.
+> Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
+
+## Aula 14 · D4 Embaixo da mandíbula
+
+*Levar o líquido do queixo e da papada para as orelhas.*
+
+- **Região:** Drenagem facial com as mãos
+- **Dose:** Iniciante 5 vezes em cada ponto · Intermediário 8 vezes em cada ponto · Avançado 10 vezes em cada ponto
+
+![Desenho do exercício D4 Embaixo da mandíbula: dedos em rosa, setas verdes mostram o movimento, pontos verdes são onde tocar](desenhos/D4.svg)
+
+**Passo a passo**
+
+1. Dedos abertos embaixo da mandíbula, perto do queixo.
+2. Estique a pele de leve em direção à orelha e solte.
+3. Repita no meio da mandíbula e depois perto da orelha.
+
+**Confira no espelho:** Os dedos ficam embaixo do osso, sem apertar a garganta.
+
+**Pule se:** Febre, infecção, garganta ou gânglios inflamados, ou se o médico proibiu massagem (por exemplo, por trombose ou problema no coração).
+
+> **Para o NotebookLM (Visão geral em vídeo → Personalizar):**
+> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “D4 Embaixo da mandíbula” do FaceZen. Mostre o exercício como um tutorial: para que serve, os 3 passos com calma, a dose de cada nível e como conferir no espelho.
+> Use o desenho da aula como imagem principal: explique onde ficam os dedos (em rosa) e o movimento das setas verdes.
+> Use comparações do dia a dia, como no texto. A pessoa vai imitar o que ouvir.
+> Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
+
+## Aula 15 · D5 Queixo e acima da boca
+
+*Em volta da boca, em direção à mandíbula.*
+
+- **Região:** Drenagem facial com as mãos
+- **Dose:** Iniciante 5 vezes · Intermediário 8 vezes · Avançado 10 vezes
+
+![Desenho do exercício D5 Queixo e acima da boca: dedos em rosa, setas verdes mostram o movimento, pontos verdes são onde tocar](desenhos/D5.svg)
+
+**Passo a passo**
+
+1. Indicador acima do lábio e dedo médio no queixo, dos dois lados.
+2. Estique a pele de leve para fora, em direção ao canto da mandíbula, e solte.
+3. Repita devagar, com os lábios relaxados.
+
+**Confira no espelho:** A boca fica parada; quem se mexe é a pele.
+
+**Pule se:** Febre, infecção, garganta ou gânglios inflamados, ou se o médico proibiu massagem (por exemplo, por trombose ou problema no coração).
+
+**Fica fora do plano de quem tem:** pele em crise (acne inflamada, rosácea, eczema, feridas).
+
+> **Para o NotebookLM (Visão geral em vídeo → Personalizar):**
+> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “D5 Queixo e acima da boca” do FaceZen. Mostre o exercício como um tutorial: para que serve, os 3 passos com calma, a dose de cada nível e como conferir no espelho.
+> Use o desenho da aula como imagem principal: explique onde ficam os dedos (em rosa) e o movimento das setas verdes.
+> Use comparações do dia a dia, como no texto. A pessoa vai imitar o que ouvir.
+> Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
+
+## Aula 16 · D6 Bochechas
+
+*Do lado do nariz até as orelhas.*
+
+- **Região:** Drenagem facial com as mãos
+- **Dose:** Iniciante 5 vezes em cada ponto · Intermediário 8 vezes em cada ponto · Avançado 10 vezes em cada ponto
+
+![Desenho do exercício D6 Bochechas: dedos em rosa, setas verdes mostram o movimento, pontos verdes são onde tocar](desenhos/D6.svg)
+
+**Passo a passo**
+
+1. Apoie os dedos esticados na bochecha, ao lado do nariz.
+2. Estique a pele de leve em direção à orelha e solte.
+3. Repita no meio da bochecha e depois perto da orelha.
+
+**Confira no espelho:** Mãos macias e espalmadas, sem apertar nem deslizar.
+
+**Pule se:** Febre, infecção, garganta ou gânglios inflamados, ou se o médico proibiu massagem (por exemplo, por trombose ou problema no coração).
+
+**Fica fora do plano de quem tem:** pele em crise (acne inflamada, rosácea, eczema, feridas).
+
+> **Para o NotebookLM (Visão geral em vídeo → Personalizar):**
+> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “D6 Bochechas” do FaceZen. Mostre o exercício como um tutorial: para que serve, os 3 passos com calma, a dose de cada nível e como conferir no espelho.
+> Use o desenho da aula como imagem principal: explique onde ficam os dedos (em rosa) e o movimento das setas verdes.
+> Use comparações do dia a dia, como no texto. A pessoa vai imitar o que ouvir.
+> Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
+
+## Aula 17 · D7 Abaixo dos olhos
+
+*Pelo osso abaixo dos olhos, até a têmpora.*
+
+- **Região:** Drenagem facial com as mãos
+- **Dose:** Iniciante 5 vezes em cada ponto · Intermediário 8 vezes em cada ponto · Avançado 10 vezes em cada ponto
+
+![Desenho do exercício D7 Abaixo dos olhos: dedos em rosa, setas verdes mostram o movimento, pontos verdes são onde tocar](desenhos/D7.svg)
+
+**Passo a passo**
+
+1. Apoie o dedo anelar no osso abaixo do olho, perto do nariz.
+2. Leve a pele, bem de leve, em direção à têmpora e solte.
+3. Avance pelo osso até perto da têmpora e repita.
+
+**Confira no espelho:** Sempre sobre o osso, nunca na pálpebra. O toque mais leve de todos.
+
+**Pule se:** Olhos irritados ou pele machucada nessa região.
+
+**Fica fora do plano de quem tem:** olho seco, olhos sensíveis ou lentes de contato; pele em crise (acne inflamada, rosácea, eczema, feridas).
+
+> **Para o NotebookLM (Visão geral em vídeo → Personalizar):**
+> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “D7 Abaixo dos olhos” do FaceZen. Mostre o exercício como um tutorial: para que serve, os 3 passos com calma, a dose de cada nível e como conferir no espelho.
+> Use o desenho da aula como imagem principal: explique onde ficam os dedos (em rosa) e o movimento das setas verdes.
+> Use comparações do dia a dia, como no texto. A pessoa vai imitar o que ouvir.
+> Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
+
+## Aula 18 · D8 Testa
+
+*Do meio da testa até as têmporas.*
+
+- **Região:** Drenagem facial com as mãos
+- **Dose:** Iniciante 5 vezes em cada ponto · Intermediário 8 vezes em cada ponto · Avançado 10 vezes em cada ponto
+
+![Desenho do exercício D8 Testa: dedos em rosa, setas verdes mostram o movimento, pontos verdes são onde tocar](desenhos/D8.svg)
+
+**Passo a passo**
+
+1. Dedos esticados no meio da testa, uma mão para cada lado.
+2. Estique a pele de leve em direção às têmporas e solte.
+3. Avance as mãos até perto das têmporas e repita.
+
+**Confira no espelho:** Testa relaxada, sem franzir.
+
+**Pule se:** Febre, infecção, garganta ou gânglios inflamados, ou se o médico proibiu massagem (por exemplo, por trombose ou problema no coração).
+
+**Fica fora do plano de quem tem:** pele em crise (acne inflamada, rosácea, eczema, feridas).
+
+> **Para o NotebookLM (Visão geral em vídeo → Personalizar):**
+> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “D8 Testa” do FaceZen. Mostre o exercício como um tutorial: para que serve, os 3 passos com calma, a dose de cada nível e como conferir no espelho.
+> Use o desenho da aula como imagem principal: explique onde ficam os dedos (em rosa) e o movimento das setas verdes.
+> Use comparações do dia a dia, como no texto. A pessoa vai imitar o que ouvir.
+> Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
+
+## Aula 19 · D9 Têmporas
+
+*Juntar tudo nas têmporas e levar para baixo.*
+
+- **Região:** Drenagem facial com as mãos
+- **Dose:** Iniciante 5 vezes · Intermediário 8 vezes · Avançado 10 vezes
+
+![Desenho do exercício D9 Têmporas: dedos em rosa, setas verdes mostram o movimento, pontos verdes são onde tocar](desenhos/D9.svg)
+
+**Passo a passo**
+
+1. Apoie dois dedos em cada têmpora.
+2. Faça círculos bem leves, levando a pele para trás.
+3. No fim, deslize de leve na frente da orelha, descendo até o pescoço.
+
+**Confira no espelho:** Toque leve, sem apertar a cabeça.
+
+**Pule se:** Febre, infecção, garganta ou gânglios inflamados, ou se o médico proibiu massagem (por exemplo, por trombose ou problema no coração).
+
+> **Para o NotebookLM (Visão geral em vídeo → Personalizar):**
+> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “D9 Têmporas” do FaceZen. Mostre o exercício como um tutorial: para que serve, os 3 passos com calma, a dose de cada nível e como conferir no espelho.
+> Use o desenho da aula como imagem principal: explique onde ficam os dedos (em rosa) e o movimento das setas verdes.
+> Use comparações do dia a dia, como no texto. A pessoa vai imitar o que ouvir.
+> Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
+
+## Aula 20 · D10 Descer até a clavícula
+
+*Fechar a drenagem levando tudo para a clavícula.*
+
+- **Região:** Drenagem facial com as mãos
+- **Dose:** Iniciante 5 vezes · Intermediário 8 vezes · Avançado 10 vezes
+
+![Desenho do exercício D10 Descer até a clavícula: dedos em rosa, setas verdes mostram o movimento, pontos verdes são onde tocar](desenhos/D10.svg)
+
+**Passo a passo**
+
+1. Mãos espalmadas logo abaixo das orelhas.
+2. Deslize bem de leve pelas laterais do pescoço até a clavícula.
+3. Termine com bombeamentos suaves acima da clavícula.
+
+**Confira no espelho:** Sempre para baixo e nunca na frente da garganta.
+
+**Pule se:** Febre, infecção, garganta ou gânglios inflamados, ou se o médico proibiu massagem (por exemplo, por trombose ou problema no coração).
+
+> **Para o NotebookLM (Visão geral em vídeo → Personalizar):**
+> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “D10 Descer até a clavícula” do FaceZen. Mostre o exercício como um tutorial: para que serve, os 3 passos com calma, a dose de cada nível e como conferir no espelho.
+> Use o desenho da aula como imagem principal: explique onde ficam os dedos (em rosa) e o movimento das setas verdes.
+> Use comparações do dia a dia, como no texto. A pessoa vai imitar o que ouvir.
+> Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
+
+# Módulo 3 · Extras: testa e olhos
 
 Testa sem franzir e olhos com toque leve.
 
@@ -252,7 +540,7 @@ Testa sem franzir e olhos com toque leve.
 
 *Fortalecer a testa e ensinar o rosto a não franzir sem necessidade.*
 
-## Aula 10 · T1 Testa lisa
+## Aula 21 · T1 Testa lisa
 
 *Treinar a testa a não enrugar.*
 
@@ -279,7 +567,7 @@ Testa sem franzir e olhos com toque leve.
 
 *A região mais delicada: dedos anelares, toque leve e nunca no globo ocular.*
 
-## Aula 11 · O4 Toque de pena
+## Aula 22 · O4 Toque de pena
 
 *Relaxar em volta dos olhos. Ótimo de manhã.*
 
@@ -302,7 +590,7 @@ Testa sem franzir e olhos com toque leve.
 > Use comparações do dia a dia, como no texto. A pessoa vai imitar o que ouvir.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 12 · O1 Pálpebra firme
+## Aula 23 · O1 Pálpebra firme
 
 *Trabalhar a pálpebra de baixo.*
 
@@ -329,7 +617,7 @@ Testa sem franzir e olhos com toque leve.
 > Use comparações do dia a dia, como no texto. A pessoa vai imitar o que ouvir.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 13 · T5 Binóculo
+## Aula 24 · T5 Binóculo
 
 *Testa e olhos: os olhos trabalham e a testa fica parada.*
 
@@ -356,7 +644,7 @@ Testa sem franzir e olhos com toque leve.
 > Use comparações do dia a dia, como no texto. A pessoa vai imitar o que ouvir.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-# Módulo 4 · Bochechas e boca
+# Módulo 4 · Extras: bochechas e boca
 
 Maçãs do rosto, bigode chinês e contorno da boca.
 
@@ -364,7 +652,7 @@ Maçãs do rosto, bigode chinês e contorno da boca.
 
 *Os músculos que levantam o sorriso e dão contorno ao terço médio do rosto.*
 
-## Aula 14 · B1 Do “O” ao sorriso
+## Aula 25 · B1 Do “O” ao sorriso
 
 *Trabalhar as maçãs do rosto.*
 
@@ -387,7 +675,7 @@ Maçãs do rosto, bigode chinês e contorno da boca.
 > Use comparações do dia a dia, como no texto. A pessoa vai imitar o que ouvir.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 15 · B3 Peixinho
+## Aula 26 · B3 Peixinho
 
 *Bochechas e cantos da boca.*
 
@@ -417,7 +705,7 @@ Maçãs do rosto, bigode chinês e contorno da boca.
 
 *Elevar bochechas e cantos da boca para suavizar a linha entre o nariz e a boca.*
 
-## Aula 16 · N1 Bigode chinês
+## Aula 27 · N1 Bigode chinês
 
 *Bochechas e a linha entre o nariz e a boca.*
 
@@ -444,7 +732,7 @@ Maçãs do rosto, bigode chinês e contorno da boca.
 
 *O contorno da boca e as linhas acima do lábio. Sempre com a pele lubrificada.*
 
-## Aula 17 · L1 “O” e “A”
+## Aula 28 · L1 “O” e “A”
 
 *Contorno da boca.*
 
@@ -469,7 +757,7 @@ Maçãs do rosto, bigode chinês e contorno da boca.
 > Use comparações do dia a dia, como no texto. A pessoa vai imitar o que ouvir.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 18 · L4 Código de barras
+## Aula 29 · L4 Código de barras
 
 *As linhas acima dos lábios.*
 
@@ -496,15 +784,15 @@ Maçãs do rosto, bigode chinês e contorno da boca.
 > Use comparações do dia a dia, como no texto. A pessoa vai imitar o que ouvir.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-# Módulo 5 · Mandíbula, pescoço e relaxar
+# Módulo 5 · Extras: mandíbula e pescoço
 
-Queixo, pescoço e o final da sessão.
+Queixo, pescoço e mandíbula solta.
 
 ### Mandíbula, queixo e papada
 
 *Contorno do queixo, papada e a tensão de quem aperta os dentes.*
 
-## Aula 19 · M1 Lábio para cima
+## Aula 30 · M1 Lábio para cima
 
 *Queixo e frente do pescoço.*
 
@@ -529,7 +817,7 @@ Queixo, pescoço e o final da sessão.
 > Use comparações do dia a dia, como no texto. A pessoa vai imitar o que ouvir.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 20 · M4 Soltar o masseter
+## Aula 31 · M4 Soltar o masseter
 
 *Aliviar quem aperta os dentes.*
 
@@ -556,7 +844,7 @@ Queixo, pescoço e o final da sessão.
 > Use comparações do dia a dia, como no texto. A pessoa vai imitar o que ouvir.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 21 · M3 Queixo definido
+## Aula 32 · M3 Queixo definido
 
 *Contorno do queixo e da mandíbula.*
 
@@ -583,7 +871,7 @@ Queixo, pescoço e o final da sessão.
 
 *Postura e tônus do pescoço. No pescoço, a massagem vai sempre de cima para baixo.*
 
-## Aula 22 · P1 Língua ao canto
+## Aula 33 · P1 Língua ao canto
 
 *Pescoço e colo.*
 
@@ -615,7 +903,7 @@ Queixo, pescoço e o final da sessão.
 
 *Um minuto para soltar o rosto e terminar a sessão.*
 
-## Aula 23 · R3 Mandíbula solta
+## Aula 34 · R3 Mandíbula solta
 
 *Terminar soltando os dentes apertados.*
 
@@ -639,39 +927,11 @@ Queixo, pescoço e o final da sessão.
 > Use comparações do dia a dia, como no texto. A pessoa vai imitar o que ouvir.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-# Módulo 6 · Ferramentas: drenagem e escova coreana
+# Módulo 6 · Exercícios com ferramentas
 
-O caminho da drenagem com as mãos e como usar a escova facial coreana.
+Escova facial coreana e gua sha.
 
-## Aula 24 · Drenagem: o caminho
-
-*Por onde começar, para onde levar e o toque certo, com as mãos ou com a escova.*
-
-**Passo a passo**
-
-1. O líquido do rosto desce pelo pescoço e termina logo acima da clavícula.
-2. Por isso a drenagem começa ali: primeiro a clavícula, depois as laterais do pescoço e a região das orelhas.
-3. O toque é levíssimo: os dedos só esticam a pele alguns milímetros e soltam. Não é para apertar o músculo nem deslizar.
-4. Sem creme ou óleo: com a mão escorregando, não dá para esticar a pele.
-5. Sempre para baixo e para trás, em direção à clavícula. Nunca na frente da garganta.
-6. Para fechar, desça da mandíbula até a clavícula. Dá para fazer só com as mãos ou junto com a escova.
-
-**Mais detalhes**
-
-- A drenagem linfática manual é bem estabelecida no tratamento de linfedema. No rosto, o que muitas pessoas sentem é relaxamento e o rosto mais leve logo depois, de forma passageira.
-- Se a pele ficar vermelha, a pressão foi forte demais.
-
-**Evite**
-
-- Febre, infecção, garganta ou gânglios inflamados
-- Trombose, insuficiência cardíaca ou câncer em tratamento sem liberação médica
-- Apertar, esfregar ou fazer na frente da garganta
-
-> **Para o NotebookLM (Visão geral em vídeo → Personalizar):**
-> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Drenagem: o caminho” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
-> Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
-
-## Aula 25 · Escova facial: o que é e como usar
+## Aula 35 · Escova facial: o que é e como usar
 
 *Um acessório opcional para fazer a massagem com mais conforto.*
 
@@ -704,115 +964,9 @@ O caminho da drenagem com as mãos e como usar a escova facial coreana.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Escova facial: o que é e como usar” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-### Drenagem com as mãos
-
-*O caminho da drenagem: toque levíssimo que só estica a pele e solta, sempre em direção à clavícula. Sem creme.*
-
-## Aula 26 · D1 Abrir a clavícula
-
-*Começar a drenagem pelo ponto onde o líquido do rosto termina.*
-
-- **Região:** Drenagem com as mãos
-- **Dose:** Iniciante 6 vezes · Intermediário 6 vezes · Avançado 6 vezes
-
-![Desenho do exercício D1 Abrir a clavícula: dedos em rosa, setas verdes mostram o movimento, pontos verdes são onde tocar](desenhos/D1.svg)
-
-**Passo a passo**
-
-1. Encoste as pontas de três dedos no “buraquinho” logo acima de cada clavícula.
-2. Bem de leve, estique a pele um pouquinho para baixo e para dentro, e solte.
-3. Faça 6 vezes, devagar, como um bombeamento suave.
-
-**Confira no espelho:** A pele só se mexe alguns milímetros e não fica vermelha. Sem creme.
-
-**Pule se:** Febre, infecção, garganta ou gânglios inflamados, ou se o médico proibiu massagem (por exemplo, por trombose ou problema no coração).
-
-> **Para o NotebookLM (Visão geral em vídeo → Personalizar):**
-> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “D1 Abrir a clavícula” do FaceZen. Mostre o exercício como um tutorial: para que serve, os 3 passos com calma, a dose de cada nível e como conferir no espelho.
-> Use o desenho da aula como imagem principal: explique onde ficam os dedos (em rosa) e o movimento das setas verdes.
-> Use comparações do dia a dia, como no texto. A pessoa vai imitar o que ouvir.
-> Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
-
-## Aula 27 · D2 Laterais do pescoço
-
-*Levar o líquido do pescoço em direção à clavícula.*
-
-- **Região:** Drenagem com as mãos
-- **Dose:** Iniciante 5 vezes, em 2 alturas · Intermediário 5 vezes, em 2 alturas · Avançado 5 vezes, em 2 alturas
-
-![Desenho do exercício D2 Laterais do pescoço: dedos em rosa, setas verdes mostram o movimento, pontos verdes são onde tocar](desenhos/D2.svg)
-
-**Passo a passo**
-
-1. Coloque as mãos abertas dos dois lados do pescoço, logo abaixo das orelhas.
-2. Estique a pele bem de leve para baixo, em direção à clavícula, e solte.
-3. Faça 5 vezes, desça um pouco as mãos e repita.
-
-**Confira no espelho:** Mãos só nas laterais: nunca na frente da garganta.
-
-**Pule se:** Febre, infecção, garganta ou gânglios inflamados, ou se o médico proibiu massagem (por exemplo, por trombose ou problema no coração).
-
-> **Para o NotebookLM (Visão geral em vídeo → Personalizar):**
-> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “D2 Laterais do pescoço” do FaceZen. Mostre o exercício como um tutorial: para que serve, os 3 passos com calma, a dose de cada nível e como conferir no espelho.
-> Use o desenho da aula como imagem principal: explique onde ficam os dedos (em rosa) e o movimento das setas verdes.
-> Use comparações do dia a dia, como no texto. A pessoa vai imitar o que ouvir.
-> Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
-
-## Aula 28 · D3 Em volta das orelhas
-
-*Abrir a frente e a parte de trás das orelhas.*
-
-- **Região:** Drenagem com as mãos
-- **Dose:** Iniciante 6 círculos · Intermediário 6 círculos · Avançado 6 círculos
-
-![Desenho do exercício D3 Em volta das orelhas: dedos em rosa, setas verdes mostram o movimento, pontos verdes são onde tocar](desenhos/D3.svg)
-
-**Passo a passo**
-
-1. Faça um “V” com o indicador e o médio e encaixe em volta da orelha: um dedo na frente, outro atrás.
-2. Faça pequenos círculos bem leves, levando a pele para baixo e para trás.
-3. Repita 6 vezes e solte.
-
-**Confira no espelho:** Os dedos quase não saem do lugar: quem se mexe é a pele.
-
-**Pule se:** Febre, infecção, garganta ou gânglios inflamados, ou se o médico proibiu massagem (por exemplo, por trombose ou problema no coração).
-
-> **Para o NotebookLM (Visão geral em vídeo → Personalizar):**
-> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “D3 Em volta das orelhas” do FaceZen. Mostre o exercício como um tutorial: para que serve, os 3 passos com calma, a dose de cada nível e como conferir no espelho.
-> Use o desenho da aula como imagem principal: explique onde ficam os dedos (em rosa) e o movimento das setas verdes.
-> Use comparações do dia a dia, como no texto. A pessoa vai imitar o que ouvir.
-> Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
-
-## Aula 29 · D4 Da mandíbula à clavícula
-
-*Fechar a sessão levando o líquido do rosto para baixo.*
-
-- **Região:** Drenagem com as mãos
-- **Dose:** Iniciante 3 pontos e 3 descidas · Intermediário 3 pontos e 3 descidas · Avançado 3 pontos e 3 descidas
-
-![Desenho do exercício D4 Da mandíbula à clavícula: dedos em rosa, setas verdes mostram o movimento, pontos verdes são onde tocar](desenhos/D4.svg)
-
-**Passo a passo**
-
-1. Dedos abertos embaixo da mandíbula, perto do queixo: estique a pele de leve em direção à orelha e solte.
-2. Repita no meio da mandíbula e logo abaixo da orelha.
-3. Termine deslizando as mãos bem de leve da orelha até a clavícula, 3 vezes.
-
-**Confira no espelho:** Tudo bem leve, sempre para trás e para baixo, nunca para cima.
-
-**Pule se:** Febre, infecção, garganta ou gânglios inflamados, ou se o médico proibiu massagem (por exemplo, por trombose ou problema no coração).
-
-> **Para o NotebookLM (Visão geral em vídeo → Personalizar):**
-> Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “D4 Da mandíbula à clavícula” do FaceZen. Mostre o exercício como um tutorial: para que serve, os 3 passos com calma, a dose de cada nível e como conferir no espelho.
-> Use o desenho da aula como imagem principal: explique onde ficam os dedos (em rosa) e o movimento das setas verdes.
-> Use comparações do dia a dia, como no texto. A pessoa vai imitar o que ouvir.
-> Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
-
-### Exercícios com ferramentas
-
 *Escova coreana e gua sha: veja os vídeos e depois pratique com a escova, sempre de leve, do centro do rosto para fora.*
 
-## Aula 30 · E1 Escova no pescoço
+## Aula 36 · E1 Escova no pescoço
 
 *Começar a massagem com a escova pelo pescoço.*
 
@@ -841,7 +995,7 @@ O caminho da drenagem com as mãos e como usar a escova facial coreana.
 > Use comparações do dia a dia, como no texto. A pessoa vai imitar o que ouvir.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 31 · E2 Escova na mandíbula e bochechas
+## Aula 37 · E2 Escova na mandíbula e bochechas
 
 *Do centro do rosto para as orelhas, em linhas.*
 
@@ -870,7 +1024,7 @@ O caminho da drenagem com as mãos e como usar a escova facial coreana.
 > Use comparações do dia a dia, como no texto. A pessoa vai imitar o que ouvir.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 32 · E4 Escova abaixo dos olhos
+## Aula 38 · E4 Escova abaixo dos olhos
 
 *Uma passada bem leve sobre o osso, de dentro para fora.*
 
@@ -899,7 +1053,7 @@ O caminho da drenagem com as mãos e como usar a escova facial coreana.
 > Use comparações do dia a dia, como no texto. A pessoa vai imitar o que ouvir.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 33 · E3 Escova na testa
+## Aula 39 · E3 Escova na testa
 
 *Da sobrancelha até o cabelo, em faixas.*
 
@@ -932,7 +1086,7 @@ O caminho da drenagem com as mãos e como usar a escova facial coreana.
 
 Limpar, hidratar e proteger bem feito.
 
-## Aula 34 · Limpar do jeito certo
+## Aula 40 · Limpar do jeito certo
 
 *Limpeza suave de manhã e completa à noite.*
 
@@ -949,7 +1103,7 @@ Limpar, hidratar e proteger bem feito.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Limpar do jeito certo” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 35 · Hidratar (inclusive pele oleosa)
+## Aula 41 · Hidratar (inclusive pele oleosa)
 
 *Hidratar fortalece a barreira que protege a pele.*
 
@@ -964,7 +1118,7 @@ Limpar, hidratar e proteger bem feito.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Hidratar (inclusive pele oleosa)” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 36 · Protetor solar: o passo mais importante
+## Aula 42 · Protetor solar: o passo mais importante
 
 *FPS 30 ou mais, na quantidade certa, todos os dias.*
 
@@ -985,7 +1139,7 @@ Limpar, hidratar e proteger bem feito.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Protetor solar: o passo mais importante” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 37 · A ordem certa dos produtos
+## Aula 43 · A ordem certa dos produtos
 
 *Do mais líquido para o mais denso; protetor por último de manhã.*
 
@@ -1000,7 +1154,7 @@ Limpar, hidratar e proteger bem feito.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “A ordem certa dos produtos” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 38 · Quanto usar de cada produto
+## Aula 44 · Quanto usar de cada produto
 
 *A cola para deixar no espelho.*
 
@@ -1021,7 +1175,7 @@ Limpar, hidratar e proteger bem feito.
 
 O que é cada ativo e quando usar.
 
-## Aula 39 · Ácido hialurônico e niacinamida
+## Aula 45 · Ácido hialurônico e niacinamida
 
 *Dois ativos gentis, que quase todo mundo tolera.*
 
@@ -1036,7 +1190,7 @@ O que é cada ativo e quando usar.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Ácido hialurônico e niacinamida” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 40 · Vitamina C
+## Aula 46 · Vitamina C
 
 *Antioxidante da manhã, parceira do protetor.*
 
@@ -1051,7 +1205,7 @@ O que é cada ativo e quando usar.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Vitamina C” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 41 · Ácidos esfoliantes
+## Aula 47 · Ácidos esfoliantes
 
 *Salicílico, glicólico, lático e mandélico: para que serve cada um.*
 
@@ -1072,7 +1226,7 @@ O que é cada ativo e quando usar.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Ácidos esfoliantes” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 42 · Retinol
+## Aula 48 · Retinol
 
 *O ativo mais estudado para linhas e textura. Só à noite.*
 
@@ -1093,7 +1247,7 @@ O que é cada ativo e quando usar.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Retinol” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 43 · Clareadores
+## Aula 49 · Clareadores
 
 *Para manchas e melasma, sempre com protetor com cor.*
 
@@ -1107,7 +1261,7 @@ O que é cada ativo e quando usar.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Clareadores” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 44 · Fotossensível ou fotossensibilizante?
+## Aula 50 · Fotossensível ou fotossensibilizante?
 
 *Duas palavras parecidas, dois cuidados diferentes.*
 
@@ -1120,7 +1274,7 @@ O que é cada ativo e quando usar.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Fotossensível ou fotossensibilizante?” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 45 · Pode misturar ativos?
+## Aula 51 · Pode misturar ativos?
 
 *As quatro regras para combinar sem irritar.*
 
@@ -1139,7 +1293,7 @@ O que é cada ativo e quando usar.
 
 Rotinas por tipo de pele, manchas e hábitos.
 
-## Aula 46 · Texturas: qual escolher
+## Aula 52 · Texturas: qual escolher
 
 *A textura certa para a sua pele e o seu clima.*
 
@@ -1156,7 +1310,7 @@ Rotinas por tipo de pele, manchas e hábitos.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Texturas: qual escolher” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 47 · Rotina fixa e reserva
+## Aula 53 · Rotina fixa e reserva
 
 *O que é todo dia e o que entra só quando a pele pede.*
 
@@ -1171,7 +1325,7 @@ Rotinas por tipo de pele, manchas e hábitos.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Rotina fixa e reserva” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 48 · Rotina para pele seca
+## Aula 54 · Rotina para pele seca
 
 *Conforto e água morna.*
 
@@ -1192,7 +1346,7 @@ Rotinas por tipo de pele, manchas e hábitos.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Rotina para pele seca” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 49 · Rotina para pele oleosa
+## Aula 55 · Rotina para pele oleosa
 
 *Leveza, sem pular o hidratante.*
 
@@ -1212,7 +1366,7 @@ Rotinas por tipo de pele, manchas e hábitos.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Rotina para pele oleosa” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 50 · Rotina para pele mista
+## Aula 56 · Rotina para pele mista
 
 *Equilibrar a zona T sem ressecar as bochechas.*
 
@@ -1227,7 +1381,7 @@ Rotinas por tipo de pele, manchas e hábitos.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Rotina para pele mista” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 51 · Rotina para pele normal
+## Aula 57 · Rotina para pele normal
 
 *Manter o que já está bom.*
 
@@ -1241,7 +1395,7 @@ Rotinas por tipo de pele, manchas e hábitos.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Rotina para pele normal” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 52 · Rotina para pele sensível
+## Aula 58 · Rotina para pele sensível
 
 *Menos produtos, sem fragrância, sempre testando antes.*
 
@@ -1256,7 +1410,7 @@ Rotinas por tipo de pele, manchas e hábitos.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Rotina para pele sensível” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 53 · Complementos por objetivo
+## Aula 59 · Complementos por objetivo
 
 *O que acrescentar ao básico, conforme o que te incomoda.*
 
@@ -1272,7 +1426,7 @@ Rotinas por tipo de pele, manchas e hábitos.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Complementos por objetivo” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 54 · Manchas: o combo que funciona
+## Aula 60 · Manchas: o combo que funciona
 
 *Protetor, luz visível, clareador e zero atrito.*
 
@@ -1292,7 +1446,7 @@ Rotinas por tipo de pele, manchas e hábitos.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Manchas: o combo que funciona” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 55 · Hábitos que mudam a pele
+## Aula 61 · Hábitos que mudam a pele
 
 *Pequenas escolhas diárias que somam.*
 
@@ -1309,7 +1463,7 @@ Rotinas por tipo de pele, manchas e hábitos.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Hábitos que mudam a pele” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 56 · Mimo de fim de semana
+## Aula 62 · Mimo de fim de semana
 
 *Uma máscara calmante simples, opcional.*
 
@@ -1332,7 +1486,7 @@ Rotinas por tipo de pele, manchas e hábitos.
 
 Fotos, expectativas realistas e dúvidas.
 
-## Aula 57 · Foto de acompanhamento
+## Aula 63 · Foto de acompanhamento
 
 *Uma vez por semana, sempre do mesmo jeito.*
 
@@ -1348,7 +1502,7 @@ Fotos, expectativas realistas e dúvidas.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Foto de acompanhamento” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 58 · O que é realista esperar
+## Aula 64 · O que é realista esperar
 
 *Sem promessas: o que muitas pessoas relatam.*
 
@@ -1363,7 +1517,7 @@ Fotos, expectativas realistas e dúvidas.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “O que é realista esperar” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 59 · Os erros mais comuns
+## Aula 65 · Os erros mais comuns
 
 *O que atrapalha, para você não repetir.*
 
@@ -1383,7 +1537,7 @@ Fotos, expectativas realistas e dúvidas.
 > Crie um vídeo curto, de 2 a 4 minutos, só sobre a aula “Os erros mais comuns” do FaceZen. Explique um ponto por vez, na ordem do passo a passo, com um exemplo prático do dia a dia.
 > Siga o tom do FaceZen: frases curtas, linguagem neutra em gênero, nenhuma promessa de resultado, e termine lembrando quando parar.
 
-## Aula 60 · Perguntas frequentes
+## Aula 66 · Perguntas frequentes
 
 *As dúvidas que mais aparecem, em uma frase cada.*
 
@@ -1403,4 +1557,4 @@ Fotos, expectativas realistas e dúvidas.
 
 ---
 
-*Total: 60 aulas. Conteúdo próprio do FaceZen, gerado a partir do app. Não substitui avaliação médica, dermatológica ou fisioterapêutica.*
+*Total: 66 aulas. Conteúdo próprio do FaceZen, gerado a partir do app. Não substitui avaliação médica, dermatológica ou fisioterapêutica.*

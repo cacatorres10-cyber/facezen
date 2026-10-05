@@ -4,7 +4,7 @@
 import fs from 'node:fs'
 import { exerciseSvg } from '../src/content/art.ts'
 import { COURSE, type Lesson } from '../src/content/course.ts'
-import { EXERCISES, FOCUS, groupById, LEVEL_LABEL, ROUTINE, SERIES, type Exercise, type Level } from '../src/content/library.ts'
+import { EXERCISES, FOCUS, groupById, LEVEL_LABEL, ROUTINE, type Exercise, type Level } from '../src/content/library.ts'
 
 const FLAG_TEXT: Record<string, string> = {
   cervical: 'dor ou histórico no pescoço (cervical)',
@@ -110,14 +110,13 @@ COURSE.forEach((m, i) => {
       textLesson(l)
       if (l.id === 'c-programa') {
         n++
-        w(`## Aula ${n} · A ordem da sessão, séries e foco`, '', '*O que entra em cada sessão.*', '')
+        w(`## Aula ${n} · A ordem da drenagem e o seu foco`, '', '*O que entra em cada sessão.*', '')
         w('**A ordem de toda sessão**', '')
-        w(`1. **Abrir:** ${names(ROUTINE.open)}`, `2. **Aquecer:** ${names(ROUTINE.warm)}`, '3. **Exercícios do rosto:** Série A ou B (abaixo)', '4. **Seu foco:** o módulo do seu objetivo (a partir da semana 3)', `5. **Fechar:** ${names(ROUTINE.close)}`, '')
-        w(`- **Série A:** ${names(SERIES.A)}`, `- **Série B:** ${names(SERIES.B)}`, '')
-        w('**Módulos de foco** (entram a partir da semana 3, antes do relaxamento)', '')
-        for (const [id, f] of Object.entries(FOCUS)) w(`- **${id} · ${f.title}:** ${names(f.ids)}`)
-        w('', 'Com 5 minutos por dia, as doses ficam no nível iniciante para caber o rosto inteiro. Com 10 ou 15 minutos, seguem a fase do programa.')
-        videoPrompt('Séries e módulos de foco', 'Explique a ordem da sessão (abrir com drenagem, aquecer, exercícios, foco, fechar com drenagem), que as séries A e B se alternam e que o foco é escolhido pelo objetivo da pessoa.')
+        w(`1. **Alongar e abrir o caminho:** ${names(ROUTINE.open)}`, `2. **Rosto, de baixo para cima:** ${names(ROUTINE.face)}`, '3. **Seu foco:** um exercício com as mãos do seu objetivo (a partir da semana 3)', `4. **Fechar:** ${names(ROUTINE.close)}`, '')
+        w('**Foco por objetivo** (a partir da semana 3)', '')
+        for (const [id, f] of Object.entries(FOCUS)) w(`- **${id} · ${f.title}:** mais repetições em ${names(f.boost)}; exercício: ${names(f.ids)}`)
+        w('', 'A drenagem é feita inteira em toda sessão, sem cortes. Com mais tempo e com o avanço das semanas, aumentam as repetições em cada ponto.')
+        videoPrompt('A ordem da drenagem e o seu foco', 'Explique a lógica da drenagem: abrir o caminho na clavícula, no pescoço e nas orelhas, drenar o rosto de baixo para cima em direção às orelhas e fechar descendo até a clavícula. Depois, como o foco do objetivo aumenta as repetições.')
       }
     }
   }

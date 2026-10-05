@@ -114,12 +114,11 @@ const COMECE: Lesson[] = [
     title: 'Seu programa de 8 semanas',
     summary: 'Como a sua sessão é montada e como ela evolui.',
     steps: [
-      'Toda sessão segue a mesma ordem: aquecimento curto → exercícios do rosto → seu foco → relaxar a mandíbula.',
-      'Existem duas séries de rosto inteiro, A e B. Você alterna para o músculo não se acostumar.',
-      'Semanas 1 e 2 · Adaptação: Série A, nível iniciante, sem foco. O objetivo é aprender sem franzir a testa.',
-      'Semanas 3 a 5 · Construção: séries B e A, nível intermediário, e entra o módulo do seu objetivo.',
-      'Semanas 6 a 8 · Intensificação: nível avançado, só se estiver confortável. Houve incômodo? O app volta ao intermediário.',
-      'Depois: manutenção, alternando as séries, 4 a 5 dias por semana.',
+      'Toda sessão é a drenagem facial com as mãos, sempre na mesma ordem: alongar o pescoço, abrir o caminho, drenar o rosto de baixo para cima e fechar na clavícula.',
+      'Semanas 1 e 2 · Adaptação: 5 repetições em cada ponto. O objetivo é aprender o caminho e o toque levíssimo.',
+      'Semanas 3 a 5 · Construção: 8 repetições, e entra o seu foco: mais repetições na região do seu objetivo e um exercício com as mãos.',
+      'Semanas 6 a 8 · Intensificação: 10 repetições, só se estiver confortável. Houve incômodo? O app volta para 8.',
+      'Depois: manutenção, 4 a 5 dias por semana.',
     ],
     details: [
       'Só avance se a fase anterior terminou sem dor, sem cansaço que dura e sem franzir.',
@@ -145,15 +144,16 @@ const COMECE: Lesson[] = [
 const DRENAGEM: Lesson[] = [
   {
     id: 'c-drenagem',
-    title: 'Drenagem: o caminho',
-    summary: 'Por onde começar, para onde levar e o toque certo, com as mãos ou com a escova.',
+    title: 'Drenagem facial: o caminho',
+    summary: 'A prática principal: por onde começar, para onde levar e o toque certo.',
     steps: [
       'O líquido do rosto desce pelo pescoço e termina logo acima da clavícula.',
       'Por isso a drenagem começa ali: primeiro a clavícula, depois as laterais do pescoço e a região das orelhas.',
       'O toque é levíssimo: os dedos só esticam a pele alguns milímetros e soltam. Não é para apertar o músculo nem deslizar.',
       'Sem creme ou óleo: com a mão escorregando, não dá para esticar a pele.',
       'Sempre para baixo e para trás, em direção à clavícula. Nunca na frente da garganta.',
-      'Para fechar, desça da mandíbula até a clavícula. Dá para fazer só com as mãos ou junto com a escova.',
+      'No rosto, a ordem é de baixo para cima: mandíbula, boca, bochechas, abaixo dos olhos, testa e têmporas, sempre em direção às orelhas.',
+      'Para fechar, desça das orelhas pelo pescoço até a clavícula.',
     ],
     details: [
       'A drenagem linfática manual é bem estabelecida no tratamento de linfedema. No rosto, o que muitas pessoas sentem é relaxamento e o rosto mais leve logo depois, de forma passageira.',
@@ -527,11 +527,11 @@ const ACOMPANHAR: Lesson[] = [
 
 export const COURSE: CourseModule[] = [
   { id: 'comece', kind: 'teoria', title: 'Comece aqui', intro: 'Como funciona, as regras de ouro e o seu programa.', lessons: COMECE },
-  { id: 'aquecer', kind: 'exercicios', title: 'Aquecer', intro: 'Um minuto: alongar o pescoço e aquecer o rosto.', groups: ['aquecimento'] },
-  { id: 'testa-olhos', kind: 'exercicios', title: 'Testa e olhos', intro: 'Testa sem franzir e olhos com toque leve.', groups: ['testa', 'olhos'] },
-  { id: 'bochechas-boca', kind: 'exercicios', title: 'Bochechas e boca', intro: 'Maçãs do rosto, bigode chinês e contorno da boca.', groups: ['bochechas', 'bigode', 'labios'] },
-  { id: 'mandibula', kind: 'exercicios', title: 'Mandíbula, pescoço e relaxar', intro: 'Queixo, pescoço e o final da sessão.', groups: ['mandibula', 'pescoco', 'relaxamento'] },
-  { id: 'ferramentas', kind: 'exercicios', title: 'Ferramentas: drenagem e escova coreana', intro: 'O caminho da drenagem com as mãos e como usar a escova facial coreana.', lessons: [...DRENAGEM, ...ESCOVA], groups: ['drenagem', 'escova'] },
+  { id: 'drenagem', kind: 'exercicios', title: 'Drenagem facial com as mãos', intro: 'A prática de toda sessão, passo a passo.', lessons: DRENAGEM, groups: ['aquecimento', 'drenagem'] },
+  { id: 'testa-olhos', kind: 'exercicios', title: 'Extras: testa e olhos', intro: 'Testa sem franzir e olhos com toque leve.', groups: ['testa', 'olhos'] },
+  { id: 'bochechas-boca', kind: 'exercicios', title: 'Extras: bochechas e boca', intro: 'Maçãs do rosto, bigode chinês e contorno da boca.', groups: ['bochechas', 'bigode', 'labios'] },
+  { id: 'mandibula', kind: 'exercicios', title: 'Extras: mandíbula e pescoço', intro: 'Queixo, pescoço e mandíbula solta.', groups: ['mandibula', 'pescoco', 'relaxamento'] },
+  { id: 'ferramentas', kind: 'exercicios', title: 'Exercícios com ferramentas', intro: 'Escova facial coreana e gua sha.', lessons: ESCOVA, groups: ['escova'] },
   { id: 'skin-basico', kind: 'skincare', title: 'Skincare: o básico', intro: 'Limpar, hidratar e proteger bem feito.', lessons: SKIN_BASICO },
   { id: 'skin-ativos', kind: 'skincare', title: 'Skincare: os ativos', intro: 'O que é cada ativo e quando usar.', lessons: SKIN_ATIVOS },
   { id: 'skin-rotina', kind: 'skincare', title: 'Skincare: a sua rotina', intro: 'Rotinas por tipo de pele, manchas e hábitos.', lessons: SKIN_ROTINA },

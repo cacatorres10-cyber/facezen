@@ -1,4 +1,4 @@
-import { BRUSH_BLOCK, exerciseById, FOCUS, LEVEL_LABEL, ROUTINE, SERIES, type Exercise, type FocusId, type Level } from '../content/library'
+import { BRUSH_BLOCK, exerciseById, FOCUS, LEVEL_LABEL, ROUTINE, type Exercise, type FocusId, type Level } from '../content/library'
 import { GOALS } from '../content/profileOptions'
 import { weekInfo, type ProgramWeek } from '../content/program'
 import type { RegionId, SafetyFlag } from '../content/types'
@@ -8,7 +8,7 @@ import type { Profile, SessionLog } from './store'
 /** Segundos de preparação antes de cada exercício. */
 export const PREP_SEC = 5
 
-export type VariantId = 'serie-a' | 'serie-b' | 'suave' | 'pausa' | 'avulso'
+export type VariantId = 'drenagem' | 'suave' | 'pausa' | 'avulso'
 
 export interface SessionStep {
   key: string
@@ -75,15 +75,6 @@ export function levelFor(week: number, recentDiscomfort = false): Level {
   return 'int'
 }
 
-/** Série do dia: A nas semanas 1–2; depois alterna, começando pela B (fase 2) ou pela A (fase 3). */
-export function seriesFor(week: number, sessionIndex: number): 'A' | 'B' {
-  const phase = phaseOf(week)
-  if (phase === 1) return 'A'
-  const first = phase === 2 ? 'B' : 'A'
-  const other = first === 'A' ? 'B' : 'A'
-  return sessionIndex % 2 === 0 ? first : other
-}
-
 /** Módulo de foco do dia: o objetivo principal, alternando com o secundário. */
 export function focusFor(goals: Profile['goals'], sessionIndex: number): FocusId | undefined {
   const modules = [...new Set(goals.map((g) => GOALS.find((x) => x.id === g)?.focus).filter((f): f is FocusId => !!f))]
@@ -91,8 +82,8 @@ export function focusFor(goals: Profile['goals'], sessionIndex: number): FocusId
   return modules[modules.length > 1 && sessionIndex % 2 === 1 ? 1 : 0]
 }
 
-/** Sem tocar o rosto: drenagem só no pescoço e exercícios sem as mãos, para dias de pele irritada. */
-const SUAVE = ['D1', 'D2', 'A5', 'B1', 'B3', 'L1', 'R3']
+/** Sem tocar o rosto: só a drenagem do pescoço, para dias de pele irritada. */
+const SUAVE = ['A3', 'D1', 'D2', 'D3', 'D10', 'R3']
 
 export function isAllowed(ex: Exercise, profile: Pick<Profile, 'safety'> & { sensitive?: boolean }): boolean {
   if (ex.avoidIf.some((f) => profile.safety.includes(f))) return false
@@ -147,25 +138,26 @@ export function buildSession(profile: ProfileLike, ctx: PlanContext): SessionPla
   }
 
   const week = Math.max(1, ctx.week)
-  const series = seriesFor(week, ctx.sessionIndex)
   const focusId = phaseOf(week) >= 2 ? focusFor(profile.goals, ctx.sessionIndex) : undefined
+  const boost = new Set(focusId ? FOCUS[focusId].boost : [])
   const budget = BUDGET[profile.minutes] ?? BUDGET[10]
 
   const pick = (ids: string[]) => ids.map((id) => exerciseById(id)!).filter((e) => isAllowed(e, profile))
-  const focus = focusId ? pick(FOCUS[focusId].ids) : []
   const brush = brushToday(profile, week, ctx.sessionIndex) ? pick(BRUSH_BLOCK[profile.minutes] ?? BRUSH_BLOCK[10]) : []
-  // Abrir com drenagem → aquecer → série → foco → escova → fechar com drenagem.
+  // Alongar e abrir → rosto de baixo para cima → foco → escova → fechar na clavícula.
   type Item = { e: Exercise; focus: boolean; extra: boolean; base: boolean }
   const as = (list: Exercise[], k: Partial<Item>): Item[] => list.map((e) => ({ e, focus: false, extra: false, base: false, ...k }))
   const items: Item[] = [
     ...as(pick(ROUTINE.open), { base: true }),
-    ...as(pick(ROUTINE.warm), {}),
-    ...as(pick(SERIES[series]), {}),
-    ...as(focus, { focus: true }),
+    ...pick(ROUTINE.face).map((e) => ({ e, focus: boost.has(e.id), extra: false, base: true })),
+    ...as(focusId ? pick(FOCUS[focusId].ids) : [], { focus: true }),
     ...as(brush, { extra: true }),
     ...as(pick(ROUTINE.close), { base: true }),
   ]
-  const toSteps = (level: Level) => items.map(({ e, focus, extra, base }, i) => ({ ...stepFrom(e, level, profile, `${e.id}-${i}`, focus), extra, base }))
+  // Os pontos do objetivo ganham um nível a mais de repetições.
+  const up = (l: Level): Level => (l === 'ini' ? 'int' : 'ava')
+  const toSteps = (level: Level) =>
+    items.map(({ e, focus, extra, base }, i) => ({ ...stepFrom(e, base && focus ? up(level) : level, profile, `${e.id}-${i}`, focus), extra, base }))
 
   const levels: Level[] = ['ava', 'int', 'ini']
   const start = levels.indexOf(levelFor(week, ctx.recentDiscomfort))
@@ -173,24 +165,21 @@ export function buildSession(profile: ProfileLike, ctx: PlanContext): SessionPla
   for (const level of levels.slice(start)) {
     const steps = toSteps(level)
     const trimmed = fitTo(steps, budget)
-    // Rosto inteiro: se precisar cortar mais de 3 exercícios, desce um nível.
     if (totalOf(trimmed) <= budget && steps.length - trimmed.length <= 3) {
       chosen = { steps: trimmed, level }
       break
     }
   }
-  if (!chosen) {
-    chosen = { steps: fitTo(toSteps('ini'), budget, 0), level: 'ini' }
-  }
+  if (!chosen) chosen = { steps: fitTo(toSteps('ini'), budget, 0), level: 'ini' }
 
-  const title = focusId ? `Série ${series} + ${FOCUS[focusId].title}` : `Série ${series}`
   const withBrush = chosen.steps.some((s) => s.extra)
-  const subtitle = `${chosen.steps.length} exercícios · ${LEVEL_LABEL[chosen.level].toLowerCase()}${withBrush ? ' · com a escova' : ''}`
-  return plan(series === 'A' ? 'serie-a' : 'serie-b', title, subtitle, chosen.level, chosen.steps, adaptations)
+  const title = focusId ? `Drenagem facial · ${FOCUS[focusId].title}` : 'Drenagem facial'
+  const subtitle = `Nível ${LEVEL_LABEL[chosen.level].toLowerCase()}${withBrush ? ' · com a escova' : ''}`
+  return plan('drenagem', title, subtitle, chosen.level, chosen.steps, adaptations)
 }
 
 /**
- * Corta até caber no tempo: primeiro os exercícios da série (de trás para frente),
+ * Corta até caber no tempo: primeiro exercícios avulsos (de trás para frente),
  * depois a escova e por último o foco. A abertura e o fechamento com drenagem nunca saem.
  */
 export function fitTo(steps: SessionStep[], seconds: number, minKeep = 0): SessionStep[] {
