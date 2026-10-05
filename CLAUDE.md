@@ -17,10 +17,10 @@ Vite + React 19 + TypeScript, Tailwind CSS v4 (tokens em `src/index.css`), React
 
 ## Onde fica cada coisa
 
-- Conteúdo: `src/content/` — `library.ts` (18 exercícios essenciais + 3 opcionais com a escova; `ROUTINE`: toda sessão abre e fecha com drenagem do pescoço; séries A/B e módulos de foco), `art.ts` (desenho de cada exercício), `course.ts` (aulas de teoria e skincare do Curso), `photos.ts` (fotos do Pexels em `src/assets/fotos`). Sem vídeos de terceiros.
+- Conteúdo: `src/content/` — `library.ts` (20 exercícios essenciais, incluindo a drenagem com as mãos, + 4 com a escova coreana; `ROUTINE`: aquecimento curto, série A/B, foco e relaxar; a drenagem entra no bloco das ferramentas), `art.ts` (desenho de cada exercício), `course.ts` (aulas de teoria e skincare do Curso), `photos.ts` (fotos do Pexels em `src/assets/fotos`). Sem vídeos de terceiros.
 - `npm run aulas` gera `docs/guia/FaceZen-Aulas-NotebookLM.md` a partir de `library.ts` e `course.ts` (o PDF é feito a partir desse arquivo).
 - Fotos são baixadas pelo workflow "Atualizar fotos" (`scripts/baixar_midia.py`), que roda no GitHub.
-- Acessórios: `profile.tools` (ex.: `'escova'`). A escova entra nas sessões a partir da semana 3, em sessões alternadas, e nunca com pele sensível ou em crise.
+- Acessórios: `profile.tools` (ex.: `'escova'`). O bloco da escova (abre a clavícula, escova, fecha da mandíbula à clavícula) entra a partir da semana 3, em sessões alternadas, e nunca com pele sensível ou em crise.
 - Montagem das sessões (fases, séries, foco, nível) e regras do calendário: `src/lib/plan.ts` (+ testes em `plan.test.ts`). Programa de 8 semanas em `src/content/program.ts`.
 - Skincare: rotina montada com os produtos que a pessoa marca (`products`), lógica dermatológica em `src/lib/skincare.ts` (base primeiro, um ativo por vez, sem conflitos); salvo por dia em `skincare[AAAA-MM-DD]`; histórico em `SkincareHistory`.
 - Sem servidor nem banco de dados: tudo fica no aparelho (infoproduto).

@@ -181,6 +181,7 @@ export const POSES: Record<string, Pose> = {
   D4: { eyes: 'closed', sym: true, fingers: [{ at: [90, 194], angle: 160, len: 26 }], arrows: [{ pts: [[88, 186], [66, 176], [52, 152]] }, { pts: [[46, 150], [58, 200], [70, 240]] }], caption: 'até a clavícula' },
   T1: { eyes: 'closed', sym: true, fingers: [{ at: [72, 56], angle: 165 }, { at: [84, 52], angle: 172 }, { at: [96, 50], angle: 178 }], arrows: [{ pts: [[76, 70], [76, 82]] }] },
   // ——— Olhos
+  O1: { eyes: 'open', sym: true, fingers: [{ at: [56, 104], angle: 90, len: 28 }], arrows: [{ pts: [[76, 118], [76, 110]] }], caption: 'só embaixo' },
   O4: { eyes: 'closed', sym: true, fingers: [{ at: [58, 100], angle: 60, len: 26 }], presses: [[84, 93], [70, 92], [74, 119]] },
   // ——— Bochechas
   B1: { eyes: 'open', mouth: 'smile', sym: true, arrows: [{ pts: [[64, 150], [60, 126]] }], caption: 'O → sorriso' },
@@ -190,6 +191,7 @@ export const POSES: Record<string, Pose> = {
   L1: { eyes: 'open', mouth: 'a', caption: 'O → A' },
   // ——— Mandíbula e pescoço
   M1: { eyes: 'up', mouth: 'lowerLipUp', arrows: [{ pts: [[132, 196], [132, 176]] }], caption: 'olhe o teto' },
+  M3: { eyes: 'open', mouth: 'blow', sym: true, fingers: [{ at: [56, 170], angle: 40, len: 28 }, { at: [62, 178], angle: 40, len: 28 }], arrows: [{ pts: [[50, 184], [42, 166]] }] },
   M4: { eyes: 'open', mouth: 'ajar', sym: true, fingers: [{ at: [60, 160], angle: 70, len: 28 }], paths: [{ d: 'M72 146 C84 150 82 172 68 174' }, { d: 'M128 146 C116 150 118 172 132 174' }] },
   // ——— Relaxamento
   P1: { eyes: 'side', mouth: 'tongueSide', palms: [{ at: [90, 248], rx: 16, ry: 9, angle: 20 }, { at: [110, 248], rx: 16, ry: 9, angle: -20 }], paths: [{ d: 'M70 18 C100 6 130 8 150 22' }] },
@@ -198,8 +200,9 @@ export const POSES: Record<string, Pose> = {
   R3: { eyes: 'closed', mouth: 'neutral', caption: 'dentes soltos' },
   // ——— Escova facial (opcional)
   E1: { eyes: 'closed', prop: { kind: 'escova', at: [56, 218], angle: -80 }, sym: true, arrows: [{ pts: [[48, 136], [64, 170], [74, 200]] }, { pts: [[80, 206], [78, 246]] }], caption: 'de cima para baixo' },
-  E2: { eyes: 'closed', prop: { kind: 'escova', at: [34, 150], angle: -100 }, sym: true, arrows: [{ pts: [[94, 194], [64, 182], [52, 150]] }, { pts: [[88, 128], [70, 120], [54, 114]] }], caption: 'para as orelhas' },
-  E3: { eyes: 'closed', prop: { kind: 'escova', at: [70, 46], angle: 10 }, sym: true, arrows: [{ pts: [[94, 74], [68, 72], [54, 94]] }], caption: 'para as têmporas' },
+  E2: { eyes: 'closed', prop: { kind: 'escova', at: [34, 150], angle: -100 }, sym: true, arrows: [{ pts: [[94, 194], [64, 184], [50, 146]] }, { pts: [[84, 160], [66, 146], [50, 128]] }, { pts: [[88, 126], [68, 108], [54, 92]] }], caption: 'para fora e para cima' },
+  E4: { eyes: 'closed', prop: { kind: 'escova', at: [44, 104], angle: -110 }, sym: true, arrows: [{ pts: [[88, 116], [70, 120], [54, 100]] }], caption: 'só no osso' },
+  E3: { eyes: 'closed', prop: { kind: 'escova', at: [74, 30], angle: 0 }, sym: true, arrows: [{ pts: [[92, 80], [92, 52]] }, { pts: [[76, 80], [76, 54]] }, { pts: [[62, 84], [56, 66]] }], caption: 'até o cabelo' },
 }
 
 /** O desenho de um exercício pelo código (ou nada). */

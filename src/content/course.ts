@@ -114,7 +114,7 @@ const COMECE: Lesson[] = [
     title: 'Seu programa de 8 semanas',
     summary: 'Como a sua sessão é montada e como ela evolui.',
     steps: [
-      'Toda sessão segue a mesma ordem: alongar o pescoço e abrir com drenagem → aquecer → exercícios do rosto → seu foco → fechar com drenagem e relaxar.',
+      'Toda sessão segue a mesma ordem: aquecimento curto → exercícios do rosto → seu foco → relaxar a mandíbula.',
       'Existem duas séries de rosto inteiro, A e B. Você alterna para o músculo não se acostumar.',
       'Semanas 1 e 2 · Adaptação: Série A, nível iniciante, sem foco. O objetivo é aprender sem franzir a testa.',
       'Semanas 3 a 5 · Construção: séries B e A, nível intermediário, e entra o módulo do seu objetivo.',
@@ -145,15 +145,15 @@ const COMECE: Lesson[] = [
 const DRENAGEM: Lesson[] = [
   {
     id: 'c-drenagem',
-    title: 'Drenagem do pescoço: como funciona',
-    summary: 'Por que a sessão começa e termina no pescoço, e o toque certo.',
+    title: 'Drenagem: o caminho',
+    summary: 'Por onde começar, para onde levar e o toque certo, com as mãos ou com a escova.',
     steps: [
       'O líquido do rosto desce pelo pescoço e termina logo acima da clavícula.',
       'Por isso a drenagem começa ali: primeiro a clavícula, depois as laterais do pescoço e a região das orelhas.',
       'O toque é levíssimo: os dedos só esticam a pele alguns milímetros e soltam. Não é para apertar o músculo nem deslizar.',
       'Sem creme ou óleo: com a mão escorregando, não dá para esticar a pele.',
       'Sempre para baixo e para trás, em direção à clavícula. Nunca na frente da garganta.',
-      'No fim da sessão, a drenagem fecha: da mandíbula até a clavícula.',
+      'Para fechar, desça da mandíbula até a clavícula. Dá para fazer só com as mãos ou junto com a escova.',
     ],
     details: [
       'A drenagem linfática manual é bem estabelecida no tratamento de linfedema. No rosto, o que muitas pessoas sentem é relaxamento e o rosto mais leve logo depois, de forma passageira.',
@@ -448,15 +448,17 @@ const ESCOVA: Lesson[] = [
       'É uma escova curva, de cerdas macias, que ficou famosa como “escova de drenagem”.',
       'No FaceZen ela é opcional: um jeito gostoso de massagear, que ajuda a relaxar. Muita gente sente o rosto menos inchado logo depois, mas é passageiro.',
       'Use na pele limpa, com um pouco de hidratante ou óleo para deslizar.',
-      'A ordem é sempre a mesma: primeiro o pescoço, depois o rosto e por fim a testa.',
+      'A ordem segue a drenagem: abra a clavícula com as mãos, passe a escova no pescoço, no rosto e na testa, e feche descendo da mandíbula até a clavícula.',
       'No rosto, sempre do centro para as orelhas. No pescoço, sempre de cima para baixo.',
-      'Pressão leve: as cerdas deslizam, não esfregam. Nunca perto dos olhos.',
+      'A escova tem dois lados: as cerdas, para deslizar, e as bolinhas, para massagear com um pouco mais de firmeza, sem doer.',
+      'Passe em linhas, sempre do centro para fora: testa de baixo para cima, embaixo dos olhos só sobre o osso, bochecha na diagonal até a orelha e mandíbula do queixo até a orelha.',
+      'Pressão leve: as cerdas deslizam, não esfregam. Embaixo dos olhos, só as cerdas e nunca na pálpebra.',
       'Depois de usar, lave com água e sabonete neutro e deixe secar com as cerdas para baixo.',
     ],
     details: [
       'Escolha cerdas bem macias, sem cheiro forte e com cabo firme.',
       'É de uso pessoal: não compartilhe.',
-      'Marcou que tem a escova? Ela entra nas suas sessões 2 a 3 vezes por semana, a partir da semana 3.',
+      'Marcou que tem a escova? O bloco da escova (com a abertura e o fechamento da drenagem) entra nas suas sessões 2 a 3 vezes por semana, a partir da semana 3.',
     ],
     avoid: [
       'Espinha inflamada, rosácea, feridas ou pele irritada',
@@ -525,12 +527,11 @@ const ACOMPANHAR: Lesson[] = [
 
 export const COURSE: CourseModule[] = [
   { id: 'comece', kind: 'teoria', title: 'Comece aqui', intro: 'Como funciona, as regras de ouro e o seu programa.', lessons: COMECE },
-  { id: 'drenagem', kind: 'exercicios', title: 'Drenagem do pescoço', intro: 'O começo e o fim de toda sessão.', lessons: DRENAGEM, groups: ['drenagem'] },
-  { id: 'aquecer', kind: 'exercicios', title: 'Aquecer', intro: 'Alongar o pescoço e aquecer o rosto.', groups: ['aquecimento'] },
+  { id: 'aquecer', kind: 'exercicios', title: 'Aquecer', intro: 'Um minuto: alongar o pescoço e aquecer o rosto.', groups: ['aquecimento'] },
   { id: 'testa-olhos', kind: 'exercicios', title: 'Testa e olhos', intro: 'Testa sem franzir e olhos com toque leve.', groups: ['testa', 'olhos'] },
   { id: 'bochechas-boca', kind: 'exercicios', title: 'Bochechas e boca', intro: 'Maçãs do rosto, bigode chinês e contorno da boca.', groups: ['bochechas', 'bigode', 'labios'] },
   { id: 'mandibula', kind: 'exercicios', title: 'Mandíbula, pescoço e relaxar', intro: 'Queixo, pescoço e o final da sessão.', groups: ['mandibula', 'pescoco', 'relaxamento'] },
-  { id: 'escova', kind: 'exercicios', title: 'Escova facial (opcional)', intro: 'Para quem tem a escova de cerdas macias.', lessons: ESCOVA, groups: ['escova'] },
+  { id: 'ferramentas', kind: 'exercicios', title: 'Ferramentas: drenagem e escova coreana', intro: 'O caminho da drenagem com as mãos e como usar a escova facial coreana.', lessons: [...DRENAGEM, ...ESCOVA], groups: ['drenagem', 'escova'] },
   { id: 'skin-basico', kind: 'skincare', title: 'Skincare: o básico', intro: 'Limpar, hidratar e proteger bem feito.', lessons: SKIN_BASICO },
   { id: 'skin-ativos', kind: 'skincare', title: 'Skincare: os ativos', intro: 'O que é cada ativo e quando usar.', lessons: SKIN_ATIVOS },
   { id: 'skin-rotina', kind: 'skincare', title: 'Skincare: a sua rotina', intro: 'Rotinas por tipo de pele, manchas e hábitos.', lessons: SKIN_ROTINA },

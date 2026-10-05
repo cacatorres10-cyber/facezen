@@ -101,12 +101,13 @@ describe('segurança', () => {
     expect(plan.steps.find((s) => s.id === 'M1')?.note).toMatch(/cabeça reta/)
   })
 
-  it('drenagem sempre abre e fecha, mesmo com pouco tempo', () => {
+  it('aquecimento curto: a sessão é quase toda de exercícios', () => {
     for (const minutes of [5, 10, 15] as const)
       for (const week of [1, 3, 6, 9]) {
         const s = ids(profile({ minutes, goals: ['papada', 'linhas'], tools: ['escova'] }), { week })
-        expect(s.slice(0, 4)).toEqual(['A3', 'D1', 'D2', 'D3'])
-        expect(s.slice(-2)).toEqual(['D4', 'R3'])
+        expect(s[0]).toBe('A3')
+        expect(s.at(-1)).toBe('R3')
+        if (!s.some((id) => id.startsWith('E'))) expect(s.filter((id) => id.startsWith('D'))).toHaveLength(0)
       }
   })
 
@@ -120,7 +121,7 @@ describe('segurança', () => {
     expect(has(profile({ tools: ['escova'], sensitive: true, minutes: 15 }), 3, 0)).toBe(false)
     const plan = buildSession(comEscova, { week: 3, sessionIndex: 0 })
     expect(plan.steps.at(-1)?.id).toBe('R3')
-    expect(plan.steps.filter((s) => s.extra).map((s) => s.id)).toEqual(['E1', 'E2', 'E3'])
+    expect(plan.steps.filter((s) => s.extra).map((s) => s.id)).toEqual(['D1', 'E1', 'E2', 'E4', 'E3', 'D4'])
   })
 
   it('com a escova, também cabe no tempo', () => {
@@ -136,7 +137,7 @@ describe('segurança', () => {
       expect(exerciseSvg(e.id)).toContain('<svg')
       expect(e.steps.length).toBeLessThanOrEqual(3)
     }
-    expect(EXERCISES.filter((e) => !e.tool)).toHaveLength(18)
+    expect(EXERCISES.filter((e) => !e.tool)).toHaveLength(20)
   })
 })
 

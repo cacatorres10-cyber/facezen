@@ -8,7 +8,7 @@ Mini app (PWA) feito a partir do ebook *Yoga Facial e Skincare Consciente*: func
 - **Onboarding**: nome, objetivos (como um quiz), tipo de pele, tempo por dia (5, 10 ou 15 min), dias da semana e perguntas de segurança.
 - **Hoje**: a sessão do dia, a meta da semana, o skincare do dia e a próxima aula do curso.
 - **Curso**: 12 módulos com tutoriais passo a passo (um passo por tela): teoria, cada exercício e cada tema de skincare. O progresso fica salvo no aparelho.
-- **Exercícios**: 18 essenciais, com a drenagem do pescoço abrindo e fechando toda sessão (`src/content/library.ts`), cada um com desenho próprio (`art.ts`: dedos, setas e expressão), 3 passos simples, dose por nível e como conferir no espelho. Mais 3 opcionais com a escova facial, para quem marca que tem.
+- **Exercícios**: 20 essenciais; a sessão é aquecimento curto, exercícios do rosto, foco e relaxar. A drenagem com as mãos fica em Ferramentas, junto com a escova coreana (`src/content/library.ts`), cada um com desenho próprio (`art.ts`: dedos, setas e expressão), 3 passos simples, dose por nível e como conferir no espelho. Mais 4 opcionais com a escova coreana, para quem marca que tem.
 - **Sessão guiada**: cronômetro por exercício, dose do dia, aviso de troca de lado, voz guiada, modo espelho e botão "Senti desconforto".
 - **Skincare**: o básico (limpar, hidratar, proteger) com os produtos que a pessoa já usa, recomendações e histórico.
 - **Progresso**: calendário de 8 semanas e histórico.

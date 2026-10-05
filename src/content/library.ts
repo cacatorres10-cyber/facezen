@@ -33,7 +33,7 @@ export interface Group {
 
 export const GROUPS: Group[] = [
   { id: 'aquecimento', title: 'Aquecimento', intro: 'Um a dois minutos que preparam pescoço e rosto, como o alongamento de um atleta antes do jogo.', region: 'pescoco' },
-  { id: 'drenagem', title: 'Drenagem do pescoço', intro: 'Toque levíssimo que só estica a pele e solta, sempre em direção à clavícula. Sem creme.', region: 'pescoco' },
+  { id: 'drenagem', title: 'Drenagem com as mãos', intro: 'O caminho da drenagem: toque levíssimo que só estica a pele e solta, sempre em direção à clavícula. Sem creme.', region: 'pescoco' },
   { id: 'testa', title: 'Testa e entre as sobrancelhas', intro: 'Fortalecer a testa e ensinar o rosto a não franzir sem necessidade.', region: 'testa' },
   { id: 'olhos', title: 'Olhos e pálpebras', intro: 'A região mais delicada: dedos anelares, toque leve e nunca no globo ocular.', region: 'olhos' },
   { id: 'bochechas', title: 'Bochechas e maçãs do rosto', intro: 'Os músculos que levantam o sorriso e dão contorno ao terço médio do rosto.', region: 'bochechas' },
@@ -42,7 +42,7 @@ export const GROUPS: Group[] = [
   { id: 'mandibula', title: 'Mandíbula, queixo e papada', intro: 'Contorno do queixo, papada e a tensão de quem aperta os dentes.', region: 'papada' },
   { id: 'pescoco', title: 'Pescoço e colo', intro: 'Postura e tônus do pescoço. No pescoço, a massagem vai sempre de cima para baixo.', region: 'pescoco' },
   { id: 'relaxamento', title: 'Relaxamento final', intro: 'Um minuto para soltar o rosto e terminar a sessão.' },
-  { id: 'escova', title: 'Escova facial (opcional)', intro: 'Para quem tem a escova de cerdas macias: pescoço primeiro, depois rosto e testa, sempre de leve.' },
+  { id: 'escova', title: 'Escova facial coreana (opcional)', intro: 'A escova segue o caminho da drenagem: abra a clavícula com as mãos, passe a escova no pescoço, no rosto e na testa, e feche da mandíbula à clavícula.' },
 ]
 
 export const groupById = (id: GroupId) => GROUPS.find((g) => g.id === id)!
@@ -144,6 +144,13 @@ export const EXERCISES: Exercise[] = [
     check: 'O toque é tão leve que a pele nem se mexe.', avoidIf: [],
   },
 
+  {
+    id: 'O1', group: 'olhos', region: 'olhos', title: 'Pálpebra firme', forWhat: 'Trabalhar a pálpebra de baixo.',
+    dose: { ini: '1 × 5', int: '2 × 10', ava: '3 × 10' }, seconds: { ini: 25, int: 50, ava: 80 },
+    steps: ['Apoie os indicadores no canto de fora dos olhos e estique a pele bem de leve para os lados.', 'Sem piscar, suba só a pálpebra de baixo, sem fechar o olho.', 'No fim, feche os olhos por 3 segundos e abra bem, sem franzir a testa.'],
+    check: 'Só a pálpebra de baixo se mexe; a testa fica parada.', skip: 'Olho seco, irritado ou com lente.', avoidIf: ['olhos'],
+  },
+
   // ——— Bochechas
   {
     id: 'B1', group: 'bochechas', region: 'bochechas', title: 'Do “O” ao sorriso', forWhat: 'Trabalhar as maçãs do rosto.',
@@ -184,6 +191,13 @@ export const EXERCISES: Exercise[] = [
     ...fixed('30 segundos', 30),
     steps: ['Deixe os dentes separados, com a boca levemente aberta.', 'Coloque dois dedos na bochecha, onde a mandíbula faz força ao morder.', 'Faça círculos lentos, com pressão média.'],
     check: 'Nunca em cima da articulação, na frente da orelha.', skip: 'Estalo com dor ou travamento.', avoidIf: [], adapt: { atm: 'Toque bem leve; pare ao primeiro estalo.' },
+  },
+
+  {
+    id: 'M3', group: 'mandibula', region: 'mandibula', title: 'Queixo definido', forWhat: 'Contorno do queixo e da mandíbula.',
+    ...fixed('5 repetições', 30),
+    steps: ['Apoie três dedos no fim da mandíbula, perto da orelha, e puxe a pele de leve para trás e para cima.', 'Puxe o ar pelo nariz.', 'Solte o ar com força pela boca, como quem apaga uma vela.'],
+    check: 'Os dedos só seguram a pele; a força vem do sopro.', avoidIf: [],
   },
 
   // ——— Pescoço e colo (Xô Rugas)
@@ -228,38 +242,44 @@ EXERCISES.push(
     check: 'As cerdas só deslizam: a pele não fica vermelha nem repuxa.', skip: BRUSH_SKIP, avoidIf: ['peleCrise'],
   },
   {
-    id: 'E2', group: 'escova', region: 'bochechas', title: 'Escova no rosto', forWhat: 'Massagem do centro do rosto para as orelhas.',
+    id: 'E2', group: 'escova', region: 'bochechas', title: 'Escova na mandíbula e bochechas', forWhat: 'Do centro do rosto para as orelhas, em linhas.',
     ...fixed('5 passadas por linha', 60), sided: true, tool: 'escova',
-    steps: ['Comece no queixo e deslize pela linha da mandíbula até a orelha.', 'Depois, do lado do nariz até a orelha, passando pela bochecha.', 'Termine descendo da orelha até o pescoço.'],
-    check: 'Sempre para fora, sem esfregar e longe dos olhos.', skip: BRUSH_SKIP, avoidIf: ['peleCrise'],
+    steps: ['Mandíbula: do queixo até a orelha, seguindo o osso.', 'Bochecha: do canto da boca até a orelha, subindo na diagonal.', 'Ao lado do nariz: suba pela maçã do rosto até a têmpora.'],
+    check: 'Cerdas encostando de leve, sempre para fora. Termine descendo da orelha até o pescoço.', skip: BRUSH_SKIP, avoidIf: ['peleCrise'],
   },
   {
-    id: 'E3', group: 'escova', region: 'testa', title: 'Escova na testa', forWhat: 'Relaxar a testa com a escova.',
+    id: 'E4', group: 'escova', region: 'olhos', title: 'Escova abaixo dos olhos', forWhat: 'Uma passada bem leve sobre o osso, de dentro para fora.',
     ...fixed('5 passadas de cada lado', 30), sided: true, tool: 'escova',
-    steps: ['Encoste a escova no meio da testa.', 'Deslize até a têmpora, como quem penteia a testa para o lado.', 'Termine descendo da têmpora até a orelha.'],
-    check: 'Leve e lento. Não passe sobre as sobrancelhas nem perto dos olhos.', skip: BRUSH_SKIP, avoidIf: ['peleCrise'],
+    steps: ['Use só as cerdas, nunca o lado das bolinhas.', 'Encoste no osso abaixo do olho, perto do nariz.', 'Deslize bem de leve até a têmpora.'],
+    check: 'Sempre sobre o osso, sem tocar a pálpebra nem puxar a pele.', skip: 'Olhos irritados, com lente ou pele sensível nessa região.', avoidIf: ['peleCrise', 'olhos'],
+  },
+  {
+    id: 'E3', group: 'escova', region: 'testa', title: 'Escova na testa', forWhat: 'Da sobrancelha até o cabelo, em faixas.',
+    ...fixed('5 passadas por faixa', 40), sided: true, tool: 'escova',
+    steps: ['Encoste a escova logo acima da sobrancelha, no meio da testa.', 'Suba até a raiz do cabelo, em linha reta.', 'Repita em faixas, do meio para o lado, e termine na têmpora.'],
+    check: 'Movimento lento e leve. Não esfregue para os lados.', skip: BRUSH_SKIP, avoidIf: ['peleCrise'],
   },
 )
 
-/** Bloco da escova: o rosto todo com 10 ou 15 minutos; só o rosto com 5. */
-export const BRUSH_BLOCK: Record<5 | 10 | 15, string[]> = { 5: ['E2'], 10: ['E1', 'E2', 'E3'], 15: ['E1', 'E2', 'E3'] }
+/** Bloco da escova, no caminho da drenagem: abre a clavícula, escova, e fecha da mandíbula à clavícula. */
+export const BRUSH_BLOCK: Record<5 | 10 | 15, string[]> = { 5: ['D1', 'E2', 'D4'], 10: ['D1', 'E1', 'E2', 'E4', 'E3', 'D4'], 15: ['D1', 'E1', 'E2', 'E4', 'E3', 'D4'] }
 
 export const exerciseById = (id: string) => EXERCISES.find((e) => e.id === id)
 
-/** A rotina: abrir com drenagem, exercícios do rosto e fechar com drenagem. */
+/** A sessão: aquecimento curto, exercícios do rosto (série + foco) e relaxar. */
 export const ROUTINE = {
-  /** Abertura: alongar o pescoço e abrir o caminho da drenagem (sempre). */
-  open: ['A3', 'D1', 'D2', 'D3'],
+  /** Abertura: alongar o pescoço (sempre). */
+  open: ['A3'],
   /** Aquecer o rosto. */
   warm: ['A5'],
-  /** Fechamento: levar tudo para a clavícula e soltar (sempre). */
-  close: ['D4', 'R3'],
+  /** Fechamento: soltar a mandíbula (sempre). */
+  close: ['R3'],
 }
 
 /** Duas séries de exercícios do rosto, que se alternam. */
 export const SERIES: Record<'A' | 'B', string[]> = {
-  A: ['T1', 'O4', 'B1', 'L1', 'M1'],
-  B: ['T5', 'B3', 'N1', 'P1', 'M4'],
+  A: ['T1', 'O1', 'B1', 'N1', 'L1', 'M1'],
+  B: ['T5', 'B3', 'L4', 'M3', 'P1', 'M4'],
 }
 
 /** Módulos de foco por objetivo (só com os essenciais). */
@@ -267,10 +287,10 @@ export type FocusId = 'A' | 'B' | 'C' | 'D' | 'E' | 'F' | 'G'
 
 export const FOCUS: Record<FocusId, { title: string; ids: string[] }> = {
   A: { title: 'Bigode chinês', ids: ['N1', 'B1'] },
-  B: { title: 'Papada e pescoço', ids: ['P1', 'M1'] },
+  B: { title: 'Papada e pescoço', ids: ['M3', 'M1', 'P1'] },
   C: { title: 'Testa', ids: ['T1', 'T5'] },
-  D: { title: 'Olhos', ids: ['T5', 'O4'] },
+  D: { title: 'Olhos', ids: ['O1', 'T5', 'O4'] },
   E: { title: 'Lábios', ids: ['L4', 'L1'] },
-  F: { title: 'Bochechas e contorno', ids: ['B1', 'B3', 'M4'] },
+  F: { title: 'Bochechas e contorno', ids: ['B1', 'B3', 'M3'] },
   G: { title: 'Tensão', ids: ['M4', 'O4'] },
 }
