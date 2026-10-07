@@ -2,7 +2,7 @@ import { ArrowRight, BookOpen, Check, ChevronRight, Droplets, ExternalLink, Hand
 import { useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { lessonById, moduleOfLesson, type ModuleKind } from '../content/course'
-import { Stepper } from '../components/Stepper'
+import { HelpLink } from '../components/HelpLink'
 import { Accordion, BackLink, Button, cx, Eyebrow, Note, Title } from '../components/ui'
 import { COURSE_ITEMS, COURSE_MODULES, itemAfter, moduleItems, nextItem } from '../lib/course'
 import { useStore } from '../lib/store'
@@ -149,18 +149,26 @@ export function LessonPage() {
       <Title className="mt-1.5">{lesson.title}</Title>
       <p className="mt-1 text-ink-soft">{lesson.summary}</p>
 
-      <div className="mt-5">
-        <Stepper
-          key={lesson.id}
-          steps={lesson.steps}
-          done={done.includes(lesson.id)}
-          finishLabel={next ? 'Concluir e seguir' : 'Concluir'}
-          onFinish={() => {
-            completeLesson(lesson.id)
-            navigate(next ? next.to : '/curso')
-          }}
-        />
-      </div>
+      <ol className="mt-5 grid gap-3">
+        {lesson.steps.map((step, i) => (
+          <li key={step} className="rounded-3xl bg-surface p-4 text-ink shadow-soft">
+            <span className="font-semibold text-jade">Passo {i + 1}:</span> {step}
+          </li>
+        ))}
+      </ol>
+
+      <Button
+        size="lg"
+        block
+        className="mt-5"
+        onClick={() => {
+          completeLesson(lesson.id)
+          navigate(next ? next.to : '/curso')
+        }}
+      >
+        {done.includes(lesson.id) && <Check className="size-5" />}
+        {next ? 'Concluir e ir para a próxima' : 'Concluir'}
+      </Button>
 
       {lesson.avoid && (
         <Note tone="warn" className="mt-4">
@@ -244,6 +252,7 @@ export function VideoLessonPage() {
       <a href={youtubeWatchUrl(v.youtube)} target="_blank" rel="noreferrer" className="mt-3 flex items-center justify-center gap-2 text-sm font-semibold text-jade">
         <ExternalLink className="size-4" /> Abrir no YouTube
       </a>
+      <HelpLink className="mt-4" />
 
       <div className="mt-5 flex items-center gap-3">
         <div className="h-2 flex-1 overflow-hidden rounded-full bg-surface-2">

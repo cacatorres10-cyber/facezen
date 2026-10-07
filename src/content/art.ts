@@ -291,3 +291,6 @@ export function stepSvg(id: string, step: number, title?: string): string | unde
   const pose = STEP_POSES[id]?.[step]
   return pose ? poseSvg(pose, title) : exerciseSvg(id, title)
 }
+
+/** O exercício tem um desenho próprio para cada passo? */
+export const hasStepPoses = (id: string) => !!STEP_POSES[id]

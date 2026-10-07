@@ -4,6 +4,7 @@ import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import { exerciseById } from '../content/library'
 import { regionById } from '../content/regions'
 import { STOP_SIGNALS } from '../content/guide'
+import { HELP_VIDEO_URL } from '../content/help'
 import { ExerciseArt } from '../components/ExerciseArt'
 import { ExerciseVideo } from '../components/ExerciseVideo'
 import { exerciseVideo } from '../content/exerciseVideos'
@@ -308,9 +309,14 @@ function Player({ plan, onFinish }: { plan: SessionPlan; onFinish: (practicedSec
             </li>
           ))}
         </ol>
-        <Link to={`/exercicios/${step.id}`} className="mt-2 text-sm font-semibold text-jade">
-          Ver o tutorial
-        </Link>
+        <div className="mt-2 flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-sm font-semibold">
+          <Link to={`/exercicios/${step.id}`} className="text-jade">
+            Ver o passo a passo
+          </Link>
+          <a href={HELP_VIDEO_URL} target="_blank" rel="noreferrer" className="text-rose-ink">
+            Não entendeu? Massagem guiada
+          </a>
+        </div>
       </div>
 
       <div className="sticky bottom-0 z-10 bg-gradient-to-t from-bg via-bg/90 to-transparent px-5 pt-4 pb-[calc(1.25rem+env(safe-area-inset-bottom,0px))]">

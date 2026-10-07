@@ -5,8 +5,9 @@ import type { RegionId } from '../content/types'
 import { ExerciseArt, StepArt } from '../components/ExerciseArt'
 import { ExerciseVideo } from '../components/ExerciseVideo'
 import { exerciseVideo } from '../content/exerciseVideos'
+import { hasStepPoses } from '../content/art'
 import { Photo } from '../components/Photo'
-import { Stepper } from '../components/Stepper'
+import { HelpLink } from '../components/HelpLink'
 import { BackLink, Button, Card, Chip, Eyebrow, Note, Title, Toggle, cx } from '../components/ui'
 import { formatDuration } from '../lib/dates'
 import { exerciseBlockedBy, FLAG_REASON, hadRecentDiscomfort, isAllowed, levelFor } from '../lib/plan'
@@ -140,9 +141,7 @@ export function ExerciseDetail() {
   const e = exerciseById(id ?? '')
   const profile = useStore((s) => s.profile)!
   const favorites = useStore((s) => s.favorites)
-  const lessonsDone = useStore((s) => s.lessonsDone)
   const toggleFavorite = useStore((s) => s.toggleFavorite)
-  const completeLesson = useStore((s) => s.completeLesson)
   const updateProfile = useStore((s) => s.updateProfile)
   const level = useLevel()
 
@@ -216,17 +215,31 @@ export function ExerciseDetail() {
 
       {exerciseVideo(e.id) && <ExerciseVideo id={e.id} title={e.title} className="mx-auto mt-5 h-[52vh] shadow-soft" />}
 
-      <div className="mt-5">
-        <Stepper
-          key={e.id}
-          steps={e.steps}
-          visualFor={(i) => <StepArt id={e.id} step={i} title={`Desenho do passo ${i + 1}: ${e.title}`} />}
-          legend={e.tool ? 'Setas: o caminho da escova · cerdas encostando de leve' : 'Dedos em rosa · setas mostram o movimento · pontos são onde tocar'}
-          done={lessonsDone.includes(e.id)}
-          finishLabel="Aprendi"
-          onFinish={() => completeLesson(e.id)}
-        />
-      </div>
+      {!hasStepPoses(e.id) && !exerciseVideo(e.id) && (
+        <div className="mx-auto mt-5 max-w-[260px] rounded-3xl bg-surface p-3 shadow-soft">
+          <ExerciseArt id={e.id} title={`Desenho: ${e.title}`} />
+        </div>
+      )}
+
+      <ol className="mt-5 grid gap-3">
+        {e.steps.map((step, i) => (
+          <li key={step} className="rounded-3xl bg-surface p-4 shadow-soft">
+            <p className="font-display text-xl leading-snug text-ink">
+              <span className="font-semibold text-jade">Passo {i + 1}:</span> {step}
+            </p>
+            {hasStepPoses(e.id) && (
+              <div className="mx-auto mt-3 max-w-[220px] rounded-2xl bg-bg p-2">
+                <StepArt id={e.id} step={i} title={`Desenho do passo ${i + 1}: ${e.title}`} />
+              </div>
+            )}
+          </li>
+        ))}
+      </ol>
+      <p className="mt-2 text-center text-xs text-ink-faint">
+        {e.tool ? 'Setas: o caminho da escova · cerdas encostando de leve' : 'Dedos em rosa · setas mostram o movimento · pontos são onde tocar'}
+      </p>
+
+      <HelpLink className="mt-4" />
 
       <div className="mt-4 grid gap-3">
         <Card className="!p-4">
@@ -238,7 +251,7 @@ export function ExerciseDetail() {
           <div className="mt-2 grid grid-cols-3 gap-2 text-center">
             {(['ini', 'int', 'ava'] as Level[]).map((l) => (
               <div key={l} className={cx('rounded-2xl p-2', l === level ? 'bg-jade-soft' : 'bg-surface-2')}>
-                <p className="text-[11px] font-bold tracking-wide text-ink-faint uppercase">{LEVEL_LABEL[l]}</p>
+                <p className="text-[10px] font-bold break-words text-ink-faint uppercase">{LEVEL_LABEL[l]}</p>
                 <p className="mt-0.5 text-sm font-semibold text-ink">{e.dose[l]}</p>
               </div>
             ))}
