@@ -8,6 +8,7 @@ import { Course, CourseModulePage, LessonPage, VideoLessonPage } from './screens
 import { ExerciseDetail, Library } from './screens/Library'
 import { Onboarding } from './screens/Onboarding'
 import { Profile } from './screens/Profile'
+import { Routine } from './screens/Routine'
 import { Session } from './screens/Session'
 import { Skincare } from './screens/Skincare'
 import { Today } from './screens/Today'
@@ -57,6 +58,7 @@ function AppRoutes() {
       <Route path="/curso/aula/:id" element={<WithTabs><LessonPage /></WithTabs>} />
       <Route path="/curso/video/:id" element={<WithTabs><VideoLessonPage /></WithTabs>} />
       <Route path="/curso/:modulo" element={<WithTabs><CourseModulePage /></WithTabs>} />
+      <Route path="/rotina" element={<WithTabs><Routine /></WithTabs>} />
       <Route path="/jornada" element={<WithTabs><Journey /></WithTabs>} />
       <Route path="/exercicios" element={<WithTabs><Library /></WithTabs>} />
       <Route path="/exercicios/:id" element={<WithTabs><ExerciseDetail /></WithTabs>} />

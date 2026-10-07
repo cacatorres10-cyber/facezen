@@ -24,6 +24,7 @@ Vite + React 19 + TypeScript, Tailwind CSS v4 (tokens em `src/index.css`), React
 - `npm run aulas` gera `docs/guia/FaceZen-Aulas-NotebookLM.md` a partir de `library.ts` e `course.ts` (o PDF é feito a partir desse arquivo).
 - Fotos são baixadas pelo workflow "Atualizar fotos" (`scripts/baixar_midia.py`), que roda no GitHub.
 - Acessórios: `profile.tools` (ex.: `'escova'`). O bloco da escova (abre a clavícula, escova, fecha da mandíbula à clavícula) entra a partir da semana 3, em sessões alternadas, e nunca com pele sensível ou em crise.
+- Aba "Rotina" (`src/screens/Routine.tsx`, rota `/rotina`): a sessão do dia inteira numa tela, na ordem e por partes (abrir, rosto, objetivo, escova, fechar), com "Passo n:" e desenhos, e o botão para fazer com o cronômetro. Usa `useTodayPlan` (`lib/useTodayPlan.ts`), o mesmo plano da tela Hoje. A lista de todos os exercícios (`/exercicios`) fica como "Ver todos os exercícios", dentro da rotina.
 - Montagem das sessões (fases, séries, foco, nível) e regras do calendário: `src/lib/plan.ts` (+ testes em `plan.test.ts`). Programa de 8 semanas em `src/content/program.ts`.
 - Skincare: rotina montada com os produtos que a pessoa marca (`products`), lógica dermatológica em `src/lib/skincare.ts` (base primeiro, um ativo por vez, sem conflitos); salvo por dia em `skincare[AAAA-MM-DD]`; histórico em `SkincareHistory`.
 - "Não entendeu?": link para a massagem guiada em tempo real (`content/help.ts`), em todos os exercícios, aulas em vídeo e na sessão.

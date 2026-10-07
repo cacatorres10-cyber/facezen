@@ -1,12 +1,12 @@
-import { ArrowRight, Check, GraduationCap, Moon, Play, RotateCcw, Sun } from 'lucide-react'
-import { useMemo } from 'react'
+import { ArrowRight, Check, GraduationCap, ListChecks, Moon, Play, RotateCcw, Sun } from 'lucide-react'
 import { Link, useNavigate } from 'react-router-dom'
 import { FaceMap } from '../components/FaceMap'
 import { Button, Card, cx, Eyebrow, Title } from '../components/ui'
 import { formatDuration, formatLong, greeting, isMorning } from '../lib/dates'
 import { useToday } from '../lib/useToday'
 import { COURSE_ITEMS, nextItem } from '../lib/course'
-import { buildSession, hadRecentDiscomfort, PHASE_LABEL, phaseOf, sessionsThisWeek, todayInfo, weekStart } from '../lib/plan'
+import { PHASE_LABEL, phaseOf } from '../lib/plan'
+import { useTodayPlan } from '../lib/useTodayPlan'
 import { morningRoutine, nightRoutine, type ProductId } from '../lib/skincare'
 
 const NO_PRODUCTS: ProductId[] = []
@@ -24,18 +24,14 @@ export function Today() {
 
   const today = useToday()
   const now = new Date()
-  const start = weekStart(program, now)
-  const info = todayInfo({ sessions, week: program.week, weekStartedAt: start, profile, now })
-  const index = sessionsThisWeek(sessions, start).length
-  const recentDiscomfort = hadRecentDiscomfort(sessions, now)
-  const plan = useMemo(() => buildSession(profile, { week: program.week, sessionIndex: index, recentDiscomfort }), [profile, program.week, index, recentDiscomfort])
+  const { plan, info } = useTodayPlan()
   const lessonsDone = useStore((s) => s.lessonsDone)
   const nextLesson = nextItem(lessonsDone)
   const firstLesson = COURSE_ITEMS[0]
   const skincareDays = useStore((s) => s.skincare)
   const firstSteps = [
     ...(firstLesson ? [{ label: `Assista: ${firstLesson.title}`, to: firstLesson.to, done: lessonsDone.includes(firstLesson.id) }] : []),
-    { label: 'Faça a sua primeira sessão', to: '/sessao', done: sessions.some((s) => s.completed) },
+    { label: 'Faça a sua rotina pela primeira vez', to: '/rotina', done: sessions.some((s) => s.completed) },
     { label: 'Marque o skincare de hoje', to: '/skincare', done: Object.values(skincareDays).some((d) => d.manha.length + d.noite.length > 0) },
   ]
   const firstStepsDone = firstSteps.every((f) => f.done)
@@ -101,7 +97,7 @@ export function Today() {
               {paused ? plan.title : canPractice ? plan.title : info.state === 'feita' ? 'Feito por hoje' : 'Dia de descanso'}
             </h2>
             <p className="mt-1 text-on-hero/80">
-              {paused ? plan.subtitle : canPractice ? `${formatDuration(plan.totalSec)} · ${plan.steps.length} passos` : info.state === 'feita' ? 'Volte amanhã. Uma sessão por dia basta.' : 'Descansar também faz parte.'}
+              {paused ? plan.subtitle : canPractice ? `${formatDuration(plan.totalSec)} · ${plan.steps.length} exercícios` : info.state === 'feita' ? 'Volte amanhã. Uma sessão por dia basta.' : 'Descansar também faz parte.'}
             </p>
             <p className="mt-3 text-sm text-on-hero/70">
               {info.done} de {info.target} sessões nesta semana
@@ -111,11 +107,16 @@ export function Today() {
             <FaceMap selected={profile.focus} />
           </div>
         </div>
-        {(canPractice || (!paused && info.state !== 'feita')) && (
+        {!paused && (
           <div className="mt-5 flex flex-wrap items-center gap-2">
-            <Button variant="quartz" size="lg" onClick={() => navigate('/sessao')}>
-              <Play className="size-5 fill-current" /> {canPractice ? 'Começar' : 'Praticar mesmo assim'}
-            </Button>
+            {info.state !== 'feita' && (
+              <Button variant="quartz" size="lg" onClick={() => navigate('/sessao')}>
+                <Play className="size-5 fill-current" /> {canPractice ? 'Começar' : 'Praticar mesmo assim'}
+              </Button>
+            )}
+            <Link to="/rotina" className="inline-flex h-14 items-center gap-2 rounded-full bg-on-hero/12 px-5 font-semibold text-on-hero">
+              <ListChecks className="size-5" /> Ver a rotina
+            </Link>
           </div>
         )}
       </section>

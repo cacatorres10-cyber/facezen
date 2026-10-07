@@ -1,4 +1,4 @@
-import { Check, ChevronRight, Heart, Play, ShieldAlert } from 'lucide-react'
+import { ArrowRight, Check, ChevronRight, Heart, ListChecks, Play, ShieldAlert } from 'lucide-react'
 import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import { EXERCISES, exerciseById, GROUPS, groupById, LEVEL_LABEL, type Exercise, type Level } from '../content/library'
 import type { RegionId } from '../content/types'
@@ -67,6 +67,11 @@ export function Library() {
         <p className="mt-1 text-ink-soft">
           {EXERCISES.length} exercícios, cada um com tutorial. Doses no seu nível: <span className="font-semibold text-ink">{LEVEL_LABEL[level].toLowerCase()}</span>.
         </p>
+        <Link to="/rotina" className="mt-3 flex items-center gap-3 rounded-2xl bg-jade-soft p-3 text-sm font-semibold text-jade">
+          <ListChecks className="size-5 shrink-0" />
+          <span className="min-w-0 flex-1">Não sabe por onde começar? Siga a sua rotina pronta.</span>
+          <ArrowRight className="size-4 shrink-0" />
+        </Link>
 
         <div className="no-scrollbar -mx-5 mt-4 flex gap-2 overflow-x-auto px-5 pb-1">
           <Chip selected={!area && !favOnly} onClick={() => setParams({}, { replace: true })} className="shrink-0">
