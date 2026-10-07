@@ -257,7 +257,7 @@ export function VideoLessonPage() {
       <Title className="mt-1.5">{v.title}</Title>
       {v.summary && <p className="mt-1 text-ink-soft">{v.summary}</p>}
 
-      <VideoPlayer key={yt} yt={yt} title={v.title} thumb={videoThumb(v.youtube)} />
+      <VideoPlayer key={yt} yt={yt} title={v.title} thumb={videoThumb(v.youtube)} watchUrl={youtubeWatchUrl(v.youtube)} />
       <a href={youtubeWatchUrl(v.youtube)} target="_blank" rel="noreferrer" className="mt-3 flex items-center justify-center gap-2 text-sm font-semibold text-jade">
         <ExternalLink className="size-4" /> Abrir no YouTube
       </a>
@@ -287,9 +287,26 @@ export function VideoLessonPage() {
   )
 }
 
-/** Capa com play; o vídeo do YouTube só carrega quando a pessoa toca. */
-function VideoPlayer({ yt, title, thumb }: { yt: string; title: string; thumb?: string }) {
+/**
+ * Capa com play; o vídeo do YouTube só carrega quando a pessoa toca.
+ * Na prévia do Claude (que bloqueia o player do YouTube), tocar na capa abre a aula no YouTube.
+ */
+const EMBED_BLOCKED = !!import.meta.env.VITE_MEMORY_ROUTER
+
+function VideoPlayer({ yt, title, thumb, watchUrl }: { yt: string; title: string; thumb?: string; watchUrl: string }) {
   const [playing, setPlaying] = useState(false)
+  if (EMBED_BLOCKED) {
+    return (
+      <a href={watchUrl} target="_blank" rel="noreferrer" aria-label={`Assistir no YouTube: ${title}`} className="group relative mt-5 grid aspect-video place-items-center overflow-hidden rounded-3xl bg-hero shadow-soft">
+        {thumb && <img src={thumb} alt="" className="absolute inset-0 size-full object-cover" />}
+        <span className="absolute inset-0 bg-gradient-to-t from-[rgb(8_20_17/0.55)] to-transparent" />
+        <span className="relative grid size-16 place-items-center rounded-full bg-surface/95 text-jade shadow-soft transition group-active:scale-95">
+          <Play className="ml-1 size-7 fill-current" />
+        </span>
+        <span className="absolute bottom-3 rounded-full bg-surface/95 px-3 py-1 text-xs font-semibold text-ink">Toque para assistir no YouTube</span>
+      </a>
+    )
+  }
   return (
     <div className="relative mt-5 aspect-video overflow-hidden rounded-3xl bg-hero shadow-soft">
       {playing ? (
