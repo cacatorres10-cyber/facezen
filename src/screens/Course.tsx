@@ -2,9 +2,8 @@ import { ArrowRight, BookOpen, Check, ChevronRight, Droplets, ExternalLink, Hand
 import { useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { lessonById, moduleOfLesson, type ModuleKind } from '../content/course'
-import { Photo } from '../components/Photo'
 import { Stepper } from '../components/Stepper'
-import { Accordion, BackLink, Button, Card, cx, Eyebrow, Note, ProgressRing, Title } from '../components/ui'
+import { Accordion, BackLink, Button, cx, Eyebrow, Note, Title } from '../components/ui'
 import { COURSE_ITEMS, COURSE_MODULES, itemAfter, moduleItems, nextItem } from '../lib/course'
 import { useStore } from '../lib/store'
 import { VIDEO_LESSONS, VIDEO_MODULES, videoLessonById, videoThumb, youtubeId, youtubeWatchUrl } from '../content/videoLessons'
@@ -18,65 +17,52 @@ export function Course() {
   const count = COURSE_ITEMS.filter((i) => done.includes(i.id)).length
 
   return (
-    <div className="pb-28">
-      <div className="relative">
-        <Photo k="espelho" className="h-44 w-full" position="50% 35%" />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-bg" />
-      </div>
-      <div className="-mt-8 px-5">
-        <Title className="relative">Curso</Title>
-        <p className="mt-1 text-ink-soft">Cada exercício e cada cuidado com a pele, um passo por vez.</p>
+    <div className="px-5 pb-28">
+      <header className="pt-6">
+        <Title>Curso</Title>
+        <p className="mt-1 text-ink-soft">
+          {count} de {total} aulas concluídas
+        </p>
+        <div className="mt-3 h-2 overflow-hidden rounded-full bg-surface-2">
+          <div className="h-full rounded-full bg-jade transition-all" style={{ width: `${total ? (count / total) * 100 : 0}%` }} />
+        </div>
+      </header>
 
-        <Card className="mt-5">
-          <div className="flex items-center gap-4">
-            <ProgressRing value={total ? count / total : 0} size={60}>
-              <span className="tnum text-sm font-bold text-ink">{Math.round((count / total) * 100)}%</span>
-            </ProgressRing>
-            <div className="min-w-0 flex-1">
-              <p className="font-semibold text-ink">
-                {count} de {total} aulas
-              </p>
-              <p className="truncate text-sm text-ink-soft">{next ? `Próxima: ${next.title}` : 'Curso concluído. Que bom que você chegou até aqui!'}</p>
-            </div>
-          </div>
-          {next && (
-            <Link to={next.to} className="mt-4 flex h-12 items-center justify-center gap-2 rounded-full bg-jade font-semibold text-on-jade">
-              {count === 0 ? 'Começar o curso' : 'Continuar'} <ArrowRight className="size-5" />
-            </Link>
-          )}
-        </Card>
+      {next && (
+        <Link to={next.to} className="mt-5 flex items-center gap-3 rounded-3xl bg-hero p-4 text-on-hero shadow-soft">
+          <span className="grid size-11 shrink-0 place-items-center rounded-full bg-surface text-jade">
+            <Play className="ml-0.5 size-5 fill-current" />
+          </span>
+          <span className="min-w-0 flex-1">
+            <span className="block text-xs font-bold tracking-wider uppercase opacity-75">{count === 0 ? 'Comece por aqui' : 'Continuar'}</span>
+            <span className="block truncate font-semibold">{next.title}</span>
+          </span>
+          <ArrowRight className="size-5 shrink-0 opacity-75" />
+        </Link>
+      )}
 
-        <ol className="mt-6 grid gap-2.5">
-          {COURSE_MODULES.map((m, n) => {
-            const items = moduleItems(m)
-            const d = items.filter((i) => done.includes(i.id)).length
-            const Icon = KIND_ICON[m.kind]
-            const complete = d === items.length
-            return (
-              <li key={m.id}>
-                <Link to={`/curso/${m.id}`} className="flex items-center gap-3 rounded-3xl bg-surface p-4 shadow-soft">
-                  <span className={cx('grid size-11 shrink-0 place-items-center rounded-2xl', complete ? 'bg-ok-soft text-ok' : m.kind === 'skincare' ? 'bg-quartz-soft text-rose-ink' : 'bg-jade-soft text-jade')}>
-                    {complete ? <Check className="size-5" /> : <Icon className="size-5" />}
-                  </span>
-                  <span className="min-w-0 flex-1">
-                    <span className="block text-[11px] font-bold tracking-wider text-ink-faint uppercase">Módulo {n + 1}</span>
-                    <span className="block font-semibold text-ink">{m.title}</span>
-                    <span className="mt-1.5 flex items-center gap-2">
-                      <span className="h-1.5 flex-1 overflow-hidden rounded-full bg-surface-2">
-                        <span className="block h-full rounded-full bg-jade" style={{ width: `${(d / items.length) * 100}%` }} />
-                      </span>
-                      <span className="tnum text-xs text-ink-faint">
-                        {d}/{items.length}
-                      </span>
-                    </span>
-                  </span>
-                  <ChevronRight className="size-5 shrink-0 text-ink-faint" />
-                </Link>
-              </li>
-            )
-          })}
-        </ol>
-      </div>
+      <ol className="mt-6 grid gap-2">
+        {COURSE_MODULES.map((m) => {
+          const items = moduleItems(m)
+          const d = items.filter((i) => done.includes(i.id)).length
+          const Icon = KIND_ICON[m.kind]
+          const complete = d === items.length
+          return (
+            <li key={m.id}>
+              <Link to={`/curso/${m.id}`} className="flex items-center gap-3 rounded-2xl bg-surface p-4 shadow-soft">
+                <span className={cx('grid size-10 shrink-0 place-items-center rounded-xl', complete ? 'bg-ok-soft text-ok' : m.kind === 'skincare' ? 'bg-quartz-soft text-rose-ink' : 'bg-jade-soft text-jade')}>
+                  {complete ? <Check className="size-5" /> : <Icon className="size-5" />}
+                </span>
+                <span className="min-w-0 flex-1 font-semibold text-ink">{m.title}</span>
+                <span className="tnum text-sm text-ink-faint">
+                  {d}/{items.length}
+                </span>
+                <ChevronRight className="size-5 shrink-0 text-ink-faint" />
+              </Link>
+            </li>
+          )
+        })}
+      </ol>
     </div>
   )
 }
@@ -123,10 +109,7 @@ export function CourseModulePage() {
                     {ok ? <Check className="size-4" /> : it.kind === 'exercicio' ? it.id : n + 1}
                   </span>
                 )}
-                <span className="min-w-0 flex-1">
-                  <span className="block font-semibold text-ink">{it.title}</span>
-                  <span className="block truncate text-sm text-ink-faint">{it.summary}</span>
-                </span>
+                <span className="min-w-0 flex-1 font-semibold text-ink">{it.title}</span>
                 <ChevronRight className="size-5 shrink-0 text-ink-faint" />
               </Link>
             </li>

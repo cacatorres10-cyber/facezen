@@ -2,11 +2,10 @@ import { ArrowRight, Check, GraduationCap, Moon, Play, RotateCcw, Sun } from 'lu
 import { useMemo } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { FaceMap } from '../components/FaceMap'
-import { Button, Card, cx, Eyebrow, ProgressRing, Title } from '../components/ui'
+import { Button, Card, cx, Eyebrow, Title } from '../components/ui'
 import { formatDuration, formatLong, greeting, isMorning } from '../lib/dates'
 import { useToday } from '../lib/useToday'
 import { COURSE_ITEMS, nextItem } from '../lib/course'
-import { Photo } from '../components/Photo'
 import { buildSession, hadRecentDiscomfort, PHASE_LABEL, phaseOf, sessionsThisWeek, todayInfo, weekStart } from '../lib/plan'
 import { morningRoutine, nightRoutine, type ProductId } from '../lib/skincare'
 
@@ -32,7 +31,14 @@ export function Today() {
   const plan = useMemo(() => buildSession(profile, { week: program.week, sessionIndex: index, recentDiscomfort }), [profile, program.week, index, recentDiscomfort])
   const lessonsDone = useStore((s) => s.lessonsDone)
   const nextLesson = nextItem(lessonsDone)
-  const lessonsCount = COURSE_ITEMS.filter((i) => lessonsDone.includes(i.id)).length
+  const firstLesson = COURSE_ITEMS[0]
+  const skincareDays = useStore((s) => s.skincare)
+  const firstSteps = [
+    ...(firstLesson ? [{ label: `Assista: ${firstLesson.title}`, to: firstLesson.to, done: lessonsDone.includes(firstLesson.id) }] : []),
+    { label: 'Faça a sua primeira sessão', to: '/sessao', done: sessions.some((s) => s.completed) },
+    { label: 'Marque o skincare de hoje', to: '/skincare', done: Object.values(skincareDays).some((d) => d.manha.length + d.noite.length > 0) },
+  ]
+  const firstStepsDone = firstSteps.every((f) => f.done)
 
   const morning = morningRoutine(profile, products)
   const night = nightRoutine(profile, products, now.getDay())
@@ -61,6 +67,31 @@ export function Today() {
         <p className="mt-4 rounded-2xl bg-danger-soft p-3 text-sm text-ink">Seus dados não estão sendo salvos neste navegador (modo anônimo?). Abra numa aba normal.</p>
       )}
 
+      {/* Primeiros passos: some quando os três estiverem feitos */}
+      {!firstStepsDone && (
+        <section aria-label="Primeiros passos" className="mt-6 rounded-3xl bg-surface p-5 shadow-soft">
+          <div className="flex items-baseline justify-between gap-3">
+            <h2 className="font-display text-2xl font-medium text-ink">Comece por aqui</h2>
+            <span className="tnum text-sm font-semibold text-ink-soft">
+              {firstSteps.filter((f) => f.done).length} de {firstSteps.length}
+            </span>
+          </div>
+          <ol className="mt-3 grid gap-2">
+            {firstSteps.map((f, n) => (
+              <li key={f.label}>
+                <Link to={f.to} className={cx('flex items-center gap-3 rounded-2xl p-3', f.done ? 'bg-ok-soft' : 'bg-surface-2')}>
+                  <span className={cx('tnum grid size-8 shrink-0 place-items-center rounded-full text-sm font-bold', f.done ? 'bg-ok text-surface' : 'bg-jade text-on-jade')}>
+                    {f.done ? <Check className="size-4" /> : n + 1}
+                  </span>
+                  <span className={cx('min-w-0 flex-1 font-semibold', f.done ? 'text-ink-soft line-through' : 'text-ink')}>{f.label}</span>
+                  {!f.done && <ArrowRight className="size-5 shrink-0 text-ink-faint" />}
+                </Link>
+              </li>
+            ))}
+          </ol>
+        </section>
+      )}
+
       {/* Sessão do dia */}
       <section aria-label="Sessão de hoje" className="mt-6 overflow-hidden rounded-[32px] bg-hero p-5 text-on-hero shadow-soft">
         <div className="flex items-start justify-between gap-3">
@@ -70,7 +101,10 @@ export function Today() {
               {paused ? plan.title : canPractice ? plan.title : info.state === 'feita' ? 'Feito por hoje' : 'Dia de descanso'}
             </h2>
             <p className="mt-1 text-on-hero/80">
-              {paused ? plan.subtitle : canPractice ? `${formatDuration(plan.totalSec)} · ${plan.subtitle}` : info.state === 'feita' ? 'Volte amanhã. Uma sessão por dia basta.' : 'Descansar também faz parte.'}
+              {paused ? plan.subtitle : canPractice ? `${formatDuration(plan.totalSec)} · ${plan.steps.length} passos` : info.state === 'feita' ? 'Volte amanhã. Uma sessão por dia basta.' : 'Descansar também faz parte.'}
+            </p>
+            <p className="mt-3 text-sm text-on-hero/70">
+              {info.done} de {info.target} sessões nesta semana
             </p>
           </div>
           <div className="w-[76px] shrink-0 rounded-2xl bg-surface p-1.5">
@@ -86,31 +120,21 @@ export function Today() {
         )}
       </section>
 
-      {/* Semana */}
-      <Card className="mt-4">
-        <div className="flex items-center gap-4">
-          <ProgressRing value={info.target ? info.done / info.target : 0} size={60}>
-            <span className="tnum font-display text-lg font-medium text-ink">
-              {info.done}/{info.target}
-            </span>
-          </ProgressRing>
-          <div className="min-w-0 flex-1">
-            <p className="font-semibold text-ink">Sessões da semana</p>
-            <p className="text-sm text-ink-soft">{info.weekComplete ? 'Meta cumprida!' : `Faltam ${info.target - info.done}.`}</p>
-          </div>
-        </div>
-        {info.weekComplete && program.week <= 8 && (
-          <div className="mt-4 flex flex-wrap gap-2 border-t border-line pt-4">
+      {/* Semana concluída: avançar ou repetir */}
+      {info.weekComplete && program.week <= 8 && (
+        <Card className="mt-4">
+          <p className="font-semibold text-ink">Semana concluída!</p>
+          {info.flaggedThisWeek && <p className="mt-1 text-sm text-warn">Houve incômodo nesta semana: melhor repetir.</p>}
+          <div className="mt-3 flex flex-wrap gap-2">
             <Button size="sm" variant={info.flaggedThisWeek ? 'soft' : 'primary'} onClick={advanceWeek}>
               {program.week === 8 ? 'Ir para manutenção' : `Ir para a semana ${program.week + 1}`} <ArrowRight className="size-4" />
             </Button>
             <Button size="sm" variant={info.flaggedThisWeek ? 'primary' : 'soft'} onClick={repeatWeek}>
               <RotateCcw className="size-4" /> Repetir semana
             </Button>
-            {info.flaggedThisWeek && <p className="w-full text-sm text-warn">Houve incômodo nesta semana: melhor repetir.</p>}
           </div>
-        )}
-      </Card>
+        </Card>
+      )}
 
       {/* Skincare */}
       <div className="mt-4 grid grid-cols-2 gap-3">
@@ -118,33 +142,19 @@ export function Today() {
         <SkincareTile icon={<Moon className="size-5" />} label="Skincare noite" done={nDone} total={night.steps.length} highlight={!isMorning(now)} />
       </div>
 
-      {/* Curso */}
-      <Link to={nextLesson?.to ?? '/curso'} className="mt-4 flex items-center gap-4 rounded-3xl bg-surface p-4 shadow-soft">
-        <span className="grid size-12 shrink-0 place-items-center rounded-2xl bg-quartz-soft text-rose-ink">
-          <GraduationCap className="size-6" />
-        </span>
-        <span className="min-w-0 flex-1">
-          <span className="block text-xs font-bold tracking-wider text-rose-ink uppercase">
-            Curso · {lessonsCount}/{COURSE_ITEMS.length}
+      {/* Próxima aula */}
+      {nextLesson && (
+        <Link to={nextLesson.to} className="mt-4 flex items-center gap-4 rounded-3xl bg-surface p-4 shadow-soft">
+          <span className="grid size-12 shrink-0 place-items-center rounded-2xl bg-quartz-soft text-rose-ink">
+            <GraduationCap className="size-6" />
           </span>
-          <span className="block truncate font-semibold text-ink">{nextLesson ? (lessonsCount === 0 ? 'Comece pelo passo a passo' : nextLesson.title) : 'Curso concluído'}</span>
-          {nextLesson && lessonsCount === 0 && <span className="block truncate text-sm text-ink-soft">{nextLesson.title}</span>}
-        </span>
-        <ArrowRight className="size-5 shrink-0 text-ink-faint" />
-      </Link>
-
-      <div className="mt-4 grid grid-cols-2 gap-3">
-        <Link to="/exercicios" className="relative h-32 overflow-hidden rounded-3xl shadow-soft">
-          <Photo k="pescoco" className="absolute inset-0" position="50% 30%" />
-          <span className="absolute inset-0 bg-gradient-to-t from-[rgb(8_20_17/0.7)] to-transparent" />
-          <span className="absolute bottom-3 left-3 font-semibold text-white">Exercícios</span>
+          <span className="min-w-0 flex-1">
+            <span className="block text-xs font-bold tracking-wider text-rose-ink uppercase">Próxima aula</span>
+            <span className="block truncate font-semibold text-ink">{nextLesson.title}</span>
+          </span>
+          <ArrowRight className="size-5 shrink-0 text-ink-faint" />
         </Link>
-        <Link to="/skincare" className="relative h-32 overflow-hidden rounded-3xl shadow-soft">
-          <Photo k="protetor" className="absolute inset-0" position="50% 30%" />
-          <span className="absolute inset-0 bg-gradient-to-t from-[rgb(8_20_17/0.7)] to-transparent" />
-          <span className="absolute bottom-3 left-3 font-semibold text-white">Skincare</span>
-        </Link>
-      </div>
+      )}
     </div>
   )
 }
